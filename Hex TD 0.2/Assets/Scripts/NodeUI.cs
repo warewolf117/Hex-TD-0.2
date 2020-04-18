@@ -8,6 +8,7 @@ public class NodeUI : MonoBehaviour
     public Text upgradeCost;
     private Node target;
     public Button upgradeButton;
+    public Text sellAmmount;
 
     public void SetTarget(Node _target)
     {
@@ -26,7 +27,9 @@ public class NodeUI : MonoBehaviour
             upgradeCost.text = "Done";
             upgradeButton.interactable = false;
         }
-            
+
+        sellAmmount.text = "$" + target.turretBlueprint.GetSellAmount();
+
         ui.SetActive(true);
     }
 
@@ -41,6 +44,12 @@ public class NodeUI : MonoBehaviour
         BuildManager.instance.DeselectNode(); //hides menu when upgrade is done
         //need to use this function so that node is deselected too instead of just hiding the
         //ui which is what the Hide() function does
+    }
+
+    public void Sell()
+    {
+        target.SellTurret();
+        BuildManager.instance.DeselectNode(); //deselects node after selling turret
     }
 
 }

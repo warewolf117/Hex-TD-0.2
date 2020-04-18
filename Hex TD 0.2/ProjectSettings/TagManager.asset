@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Mimic
   - Enemy
+  - Wall
   layers:
   - Default
   - TransparentFX
@@ -16,7 +17,7 @@ TagManager:
   - 
   - 
   - Enemy
-  - 
+  - HexWall
   - 
   - 
   - 

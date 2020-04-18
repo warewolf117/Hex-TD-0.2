@@ -1,6 +1,9 @@
 ﻿using UnityEngine.EventSystems;
 using UnityEngine;
 
+using UnityEngine.EventSystems;
+using UnityEngine;
+
 
 public class Node : MonoBehaviour
 {
@@ -22,7 +25,7 @@ public class Node : MonoBehaviour
 
     void Start()
     {
-        
+
         rend = GetComponent<Renderer>();
         startColor = rend.material.color;
 
@@ -30,17 +33,17 @@ public class Node : MonoBehaviour
 
     }
 
-    public Vector3 GetBuildPosition ()
+    public Vector3 GetBuildPosition()
     {
         return transform.position + positionOffset;
     }
 
-     void OnMouseDown()
+    void OnMouseDown()
     {
         if (EventSystem.current.IsPointerOverGameObject())
             return;
 
-        if(turret != null)
+        if (turret != null)
         {
             buildManager.SelectNode(this); //this prevents from building where theres a turret
             Debug.Log("Cant build there");
@@ -53,7 +56,7 @@ public class Node : MonoBehaviour
         BuildTurret(buildManager.GetTurretToBuild());
     }
 
-    void BuildTurret (TurretBlueprint blueprint)
+    void BuildTurret(TurretBlueprint blueprint)
     {
         if (PlayerStats.money < blueprint.cost)
         {
@@ -78,7 +81,7 @@ public class Node : MonoBehaviour
         if (PlayerStats.money < turretBlueprint.upgradeCost)
         {
             Debug.Log("Insufficient funds");
-            return; 
+            return;
         }
 
         PlayerStats.money -= turretBlueprint.upgradeCost;
@@ -93,6 +96,15 @@ public class Node : MonoBehaviour
         //display turret upgraded
 
         isUpgraded = true;
+    }
+
+    public void SellTurret()
+    {
+        PlayerStats.money += turretBlueprint.GetSellAmount();
+        //put sell effect here
+        Destroy(turret);
+        turretBlueprint = null;
+
     }
 
     void OnMouseEnter()
@@ -113,10 +125,10 @@ public class Node : MonoBehaviour
             {
                 rend.material.color = notEnoughMoneyColor;
             }
-            
+
         }
 
-        
+
 
     }
 

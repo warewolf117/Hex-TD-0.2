@@ -34,6 +34,7 @@ GameObject:
   - component: {fileID: 5391081056419589270}
   - component: {fileID: 5391081056419589271}
   - component: {fileID: 5391081056419589265}
+  - component: {fileID: -2695688022737079815}
   m_Layer: 8
   m_Name: MimicSpawner
   m_TagString: Enemy
@@ -162,12 +163,28 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5391081056419589256}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: af4c2fc336624c34d8e83d832a0f3455, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   health: 50
+--- !u!114 &-2695688022737079815
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5391081056419589256}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e90d44365b9cf6d4a83a8e42b46b5884, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 3
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!64 &5391081056810122240
 MeshCollider:
   m_ObjectHideFlags: 0
