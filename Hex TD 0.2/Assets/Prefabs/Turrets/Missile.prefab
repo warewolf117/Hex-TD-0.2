@@ -126,5 +126,4 @@ MonoBehaviour:
   damage: 50
   speed: 20
   SplashRadius: 1.2
-  impactEffect: {fileID: 8310399509571788677, guid: 1e0c4cd7d26d9d340872cc52f46db6ba,
-    type: 3}
+  impactEffect: {fileID: 100002, guid: f7efb0d9df2264096af57128df85dddb, type: 3}

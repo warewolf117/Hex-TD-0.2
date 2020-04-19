@@ -65,8 +65,7 @@ public class Bullet : MonoBehaviour
 
     void HitTarget()
     {
-        GameObject effectIns = (GameObject)Instantiate(impactEffect, transform.position, transform.rotation);
-        Destroy(effectIns, 1f);
+        
 
         if (SplashRadius > 0f)
         {
@@ -76,6 +75,8 @@ public class Bullet : MonoBehaviour
         {
             if (target != null)
             {
+                GameObject effectIns = (GameObject)Instantiate(impactEffect, transform.position, transform.rotation);
+                Destroy(effectIns, 0.2f);
                 Damage(target);
             }
 
@@ -83,6 +84,8 @@ public class Bullet : MonoBehaviour
 
         void Explode()
         {
+            GameObject effectIns = (GameObject)Instantiate(impactEffect, transform.position, transform.rotation);
+            Destroy(effectIns, 0.8f);
             //OverlapSphere creates a sphere and checks for all colliders that are in range of the sphere. Collider array to store all objects hit by sphere.
             Collider[] colliders = Physics.OverlapSphere(transform.position, SplashRadius);
 

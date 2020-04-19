@@ -7,6 +7,11 @@ public class Spawner : MonoBehaviour
 {
     public Transform mimic;
 
+    public Transform Enemy1;
+    public Transform Enemy2;
+    public Transform Enemy3;
+    public Transform Enemy4;
+
     public Transform DaMiniBoss;
 
     public Transform spawnPoint;
@@ -24,9 +29,16 @@ public class Spawner : MonoBehaviour
     private GameObject[] enemiesLeft;
     private int count = 1;
 
+    Vector2 newPosition;
+
+    private bool TextTracker = true; // ASDAFASDFASDF = Nomas para evitar que todos los spawners intenten accesar el wave countdown text en lo que lo movemos a otro lado
     void Start()
     {
-
+        // ASDASDFSDASDFASDF
+        if (waveCountdownText && levelCleared == null)
+        {
+            TextTracker = false;
+        }
     }
 
 
@@ -40,13 +52,22 @@ public class Spawner : MonoBehaviour
         {
             StartCoroutine(spawnWave());
             countdown = timeBetweenWaves;
-            waveCountdownText.gameObject.SetActive(false);
+
+            if (TextTracker == true) // ASDFASFASDFASDFASDF
+            {
+               // waveCountdownText.gameObject.SetActive(false);
+            }
+            
             
                     }
         if (waveIndex == 6 && count == 0)
         {
-            levelCleared.text = "LEVEL CLEARED";
-        }
+            if (TextTracker == true) // ASDASDASDASDADSASDF
+            {
+                levelCleared.text = "LEVEL CLEARED";
+            }
+
+            }
 
         countdown -= Time.deltaTime;
 
@@ -55,7 +76,11 @@ public class Spawner : MonoBehaviour
         //mathf.round cuts the decimals remaining from the countdown variable
         //so that the ToString function can properly convert from numerical to 
         //string value
-        waveCountdownText.text = string.Format("{0:00.00}", countdown);
+        if (TextTracker == true) // ASDASDASDASDADSASDF
+        {
+            // waveCountdownText.text = string.Format("{0:00.00}", countdown);
+        }
+            
     }
     IEnumerator spawnWave()
     {
@@ -68,8 +93,8 @@ public class Spawner : MonoBehaviour
                 case 1:
                     while (enemyCounter < 2)
                     {
-                        spawnEnemy();
-                        yield return new WaitForSeconds(0.5f);
+                        spawnEnemy1();
+                        yield return new WaitForSeconds(1f);
                         enemyCounter++;
                     }
                     enemyCounter = 0;
@@ -80,8 +105,8 @@ public class Spawner : MonoBehaviour
                 case 2:
                     while (enemyCounter < 3)
                     {
-                        spawnEnemy();
-                        yield return new WaitForSeconds(0.5f);
+                        spawnEnemy2();
+                        yield return new WaitForSeconds(1f);
                         enemyCounter++;
                     }
                     enemyCounter = 0;
@@ -91,8 +116,8 @@ public class Spawner : MonoBehaviour
                 case 3:
                     while (enemyCounter < 3)
                     {
-                        spawnEnemy();
-                        yield return new WaitForSeconds(0.5f);
+                        spawnEnemy3();
+                        yield return new WaitForSeconds(1f);
                         enemyCounter++;
                     }
                     enemyCounter = 0;
@@ -101,10 +126,10 @@ public class Spawner : MonoBehaviour
                     break;
 
                 case 4:
-                    while (enemyCounter < 4)
+                    while (enemyCounter < 1)
                     {
-                        spawnEnemy();
-                        yield return new WaitForSeconds(0.5f);
+                        spawnEnemy4();
+                        yield return new WaitForSeconds(1f);
                         enemyCounter++;
                     }
                     enemyCounter = 0;
@@ -114,9 +139,14 @@ public class Spawner : MonoBehaviour
                 case 5:
                     while (enemyCounter < 1)
                     {
-                        spawnDaMiniBoss();
-                        yield return new WaitForSeconds(0.5f);
-                        enemyCounter++;
+                        if (DaMiniBoss != null)
+                        {
+                            spawnDaMiniBoss();
+                            yield return new WaitForSeconds(1f);
+                            enemyCounter++;
+                        }
+                        
+                        
                     }
                     enemyCounter = 0;
                     waveIndex++;
@@ -128,13 +158,36 @@ public class Spawner : MonoBehaviour
         
 
     }
-    void spawnEnemy()
+    void spawnEnemy1()
     {
-        Instantiate(mimic, spawnPoint.position, spawnPoint.rotation);//spawn on top of spawner
+        Vector3 position1 = new Vector3(Random.Range(-5f, 5f), 1, Random.Range(-5f, 5f));
+
+        Instantiate(Enemy1, spawnPoint.position + position1 , spawnPoint.rotation);//spawn on top of spawner
+    }
+
+    void spawnEnemy2()
+    {
+        Vector3 position1 = new Vector3(Random.Range(-5f, 5f), 1, Random.Range(-5f, 5f));
+        Instantiate(Enemy2, spawnPoint.position + position1, spawnPoint.rotation);//spawn on top of spawner
+    }
+
+    void spawnEnemy3()
+    {
+        Vector3 position1 = new Vector3(Random.Range(-5f, 5f), 1, Random.Range(-5f, 5f));
+        Instantiate(Enemy3, spawnPoint.position + position1, spawnPoint.rotation);//spawn on top of spawner
+    }
+
+    void spawnEnemy4()
+    {
+        Vector3 position1 = new Vector3(Random.Range(-5f, 5f), 1, Random.Range(-5f, 5f));
+        Instantiate(Enemy4, spawnPoint.position + position1, spawnPoint.rotation);//spawn on top of spawner
     }
 
     void spawnDaMiniBoss()
     {
-        Instantiate(DaMiniBoss, spawnPoint.position, spawnPoint.rotation);
+        Vector3 position1 = new Vector3(Random.Range(-5f, 5f), 1, Random.Range(-5f, 5f));
+        Instantiate(DaMiniBoss, spawnPoint.position + position1, spawnPoint.rotation);
     }
+
+
 }

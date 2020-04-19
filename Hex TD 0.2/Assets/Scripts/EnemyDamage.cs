@@ -20,7 +20,7 @@ public class EnemyDamage : MonoBehaviour
         this.damageCountdown -= Time.deltaTime;
 
         RaycastHit hit;
-        if (Physics.Raycast(this.transform.position, dir, out hit, 0.6f))
+        if (Physics.Raycast(this.transform.position, dir, out hit, 1f))
         {
             if (hit.transform.tag == "Wall")
             {
