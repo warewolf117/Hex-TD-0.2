@@ -5,7 +5,9 @@ using UnityEngine.UI; // Allows use of UI commands
 
 public class Spawner : MonoBehaviour
 {
-    public Transform enemyPrefab;
+    public Transform mimic;
+
+    public Transform DaMiniBoss;
 
     public Transform spawnPoint;
 
@@ -13,7 +15,6 @@ public class Spawner : MonoBehaviour
     public float countdown = 2f; // Timer before enemies start spawinng
 
     public Text waveCountdownText; //UI display of wave number
-    public Text getReadyText;
     public Text levelCleared;
 
     private int waveIndex = 1;//Number of the actual wave
@@ -40,7 +41,7 @@ public class Spawner : MonoBehaviour
             StartCoroutine(spawnWave());
             countdown = timeBetweenWaves;
             waveCountdownText.gameObject.SetActive(false);
-            getReadyText.gameObject.SetActive(false);
+            
                     }
         if (waveIndex == 6 && count == 0)
         {
@@ -111,9 +112,9 @@ public class Spawner : MonoBehaviour
                     yield return new WaitForSeconds(timeBetweenWaves);
                     break;
                 case 5:
-                    while (enemyCounter < 4)
+                    while (enemyCounter < 1)
                     {
-                        spawnEnemy();
+                        spawnDaMiniBoss();
                         yield return new WaitForSeconds(0.5f);
                         enemyCounter++;
                     }
@@ -129,6 +130,11 @@ public class Spawner : MonoBehaviour
     }
     void spawnEnemy()
     {
-        Instantiate(enemyPrefab, spawnPoint.position, spawnPoint.rotation);//spawn on top of spawner
+        Instantiate(mimic, spawnPoint.position, spawnPoint.rotation);//spawn on top of spawner
+    }
+
+    void spawnDaMiniBoss()
+    {
+        Instantiate(DaMiniBoss, spawnPoint.position, spawnPoint.rotation);
     }
 }

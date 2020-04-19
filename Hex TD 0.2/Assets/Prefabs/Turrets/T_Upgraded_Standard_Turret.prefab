@@ -160,7 +160,7 @@ MonoBehaviour:
   range: 15
   bulletPrefab: {fileID: 3202347554510308892, guid: 13d53ffd0b91f41479ce558c03e9dd10,
     type: 3}
-  fireRate: 1
+  fireRate: 4
   useLaser: 0
   lineRenderer: {fileID: 0}
   enemyTag: Enemy

@@ -6,34 +6,49 @@ public class EnemyDamage : MonoBehaviour
 {
 
     public float damage;
+    public float attackSpeed;
+
+    private float damageCountdown = 0f;
+
     public Transform target;
-    
 
 
-    // Start is called before the first frame update
-    void Start()
+    private void Update()
     {
-        
+        Vector3 dir = target.position - transform.position;
 
-    }
+        this.damageCountdown -= Time.deltaTime;
 
-    // Update is called once per frame
-    void Update()
-    {
-        float distance = Vector3.Distance(transform.position, target.position);
-
-        if (distance <= 1)
+        RaycastHit hit;
+        if (Physics.Raycast(this.transform.position, dir, out hit, 0.6f))
         {
-            Health health = target.transform.GetComponent<Health>();
-            health.TakeDamage(damage);
-            Debug.Log("YOU HIITTTTTTTTTTTTT ITT!!!!!!!!!!!!!");
+            if (hit.transform.tag == "Wall")
+            {
+                if (this.damageCountdown <= 0)
+                {
+                    Health healthScript = hit.transform.gameObject.GetComponent<Health>();
+                    healthScript.cur_health -= this.damage;
+                    damageCountdown = 1f / attackSpeed;
+
+                    if (healthScript.cur_health <= 0)
+                    {
+                        healthScript.Die();
+                    }
+
+                }
+
+
+            }
+
+
+
+
+
         }
-
-           
-
     }
-
-   
-    
 }
+
+
+
+
 

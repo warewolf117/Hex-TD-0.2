@@ -7,6 +7,7 @@ public class Bullet : MonoBehaviour
 
     private Transform target;
 
+    public float damage = 30f;
     public float speed = 70f;
     public float SplashRadius = 0f;
     public GameObject impactEffect;
@@ -30,15 +31,7 @@ public class Bullet : MonoBehaviour
         TargetAquired = true;
         float distancePerFrame = speed * Time.deltaTime;
 
-        if (TargetAquired == true && target == null)
-        {
-            dir = TargetPosition - transform.position;
-            transform.Translate(dir.normalized * distancePerFrame, Space.World); //moves the bullet
-            transform.LookAt(target);
-
-
-        }
-
+       
         if (TargetAquired == true && target != null)
         {
             TargetPosition = target.position;
@@ -48,6 +41,14 @@ public class Bullet : MonoBehaviour
 
         }
 
+        if (TargetAquired == true && target == null)
+        {
+            dir = TargetPosition - transform.position;
+            transform.Translate(dir.normalized * distancePerFrame, Space.World); //moves the bullet
+            transform.LookAt(target);
+
+
+        }
 
         if (dir.magnitude <= distancePerFrame)
         {
@@ -93,9 +94,17 @@ public class Bullet : MonoBehaviour
                 }
             }
         }
-        void Damage(Transform enemy)
+
+        void Damage(Transform target)
         {
-            Destroy(enemy.gameObject);
+            Health healthScript = target.transform.gameObject.GetComponent<Health>();
+            healthScript.cur_health -= damage;
+
+            if (healthScript.cur_health <= 0)
+            {
+                healthScript.Die();
+            }
+
         }
 
     }

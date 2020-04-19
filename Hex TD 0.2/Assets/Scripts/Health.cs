@@ -4,14 +4,22 @@ using UnityEngine;
 
 public class Health : MonoBehaviour
 {
-    public float health;
-   
+    public float max_health = 5000f;
+    public float cur_health = 0f;
+
+
+    void Start()
+    {
+        cur_health = max_health;
+    }
+
 
     public void TakeDamage(float amount)
     {
-        health -= amount;
+        cur_health -= amount;
 
-        if (health < 1)
+
+        if (cur_health < 1)
         {
             Die();
         }
@@ -23,17 +31,14 @@ public class Health : MonoBehaviour
         // Destroy literally erases an objects existence, thats why I kept the spawner away from the turrets
         // cus if the turret kills the spawner then spawns will stop 
         Destroy(this.gameObject);
-        
+
     }
 
-    void Start()
-    {
-        
-    }
+
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 }
