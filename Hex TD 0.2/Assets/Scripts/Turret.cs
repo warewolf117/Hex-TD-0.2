@@ -5,9 +5,11 @@ using UnityEngine;
 public class Turret : MonoBehaviour
 {
     private Transform target;
+    private Health targetEnemy;
+    private BasicMovement targetEnemyM;
 
 
-    [Header ("General")]
+    [Header("General")]
 
     public float range = 15f;
 
@@ -20,17 +22,21 @@ public class Turret : MonoBehaviour
     [Header("Use Laser")]
 
     public bool useLaser = false;
-    public LineRenderer lineRenderer;
-    public GameObject laserImpact;
 
-    [Header ("Unity Setup Fields")]
+    public int damageOverTime = 30;
+
+    public float Slowpct = 0.3f;
+
+    public LineRenderer lineRenderer;
+
+    [Header("Unity Setup Fields")]
 
     public string enemyTag = "Enemy";
 
     public Transform partToRotate;
     public float turnSpeed = 10f;
 
-    
+
     public Transform firePoint;
 
 
@@ -55,13 +61,15 @@ public class Turret : MonoBehaviour
             {
                 shortestDistance = distance;
                 nearestEnemy = enemy;
-                               
+
             }
-           
+
         }
         if (nearestEnemy != null && shortestDistance <= range)
         {
             target = nearestEnemy.transform;
+            targetEnemy = nearestEnemy.GetComponent<Health>();
+            targetEnemyM = nearestEnemy.GetComponent<BasicMovement>();
         }
         else
         {
@@ -78,14 +86,14 @@ public class Turret : MonoBehaviour
                 if (lineRenderer.enabled)
                 {
                     lineRenderer.enabled = false;
-                    
+
                 }
-                    
+
 
             }
             return; //no target, return and do nothing 
         }
-            
+
 
         LockOnTarget();
 
@@ -103,10 +111,10 @@ public class Turret : MonoBehaviour
 
             fireCountdown -= Time.deltaTime;
         }
-                                  
-        
-    } 
-    
+
+
+    }
+
     void LockOnTarget()
     {
         // target lock on
@@ -116,28 +124,29 @@ public class Turret : MonoBehaviour
         partToRotate.rotation = Quaternion.Euler(0f, rotation.y, 0f);
     }
 
-    void Laser ()
+    void Laser()
 
     {
+        targetEnemy.takeDamage(damageOverTime * Time.deltaTime);
+        targetEnemyM.Slow(Slowpct);
+
         if (!lineRenderer.enabled)
         {
             lineRenderer.enabled = true;
-            GameObject effectIns = (GameObject)Instantiate(laserImpact, target.position, transform.rotation);
+
 
         }
-            
+
 
 
         lineRenderer.SetPosition(0, firePoint.position);
         lineRenderer.SetPosition(1, target.position);
 
-        Vector3 dir = firePoint.position - target.position;
 
-        laserImpact.transform.position = target.position + dir.normalized * .5f;
 
-        laserImpact.transform.rotation = Quaternion.LookRotation(dir);
 
-        
+
+
     }
 
     void Shoot()
@@ -151,7 +160,7 @@ public class Turret : MonoBehaviour
 
 
     // Shows turret range if selected
-    void OnDrawGizmosSelected ()
+    void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, range);

@@ -104,10 +104,7 @@ public class Bullet : MonoBehaviour
             
             healthScript.takeDamage(damage);
 
-            if (healthScript.cur_health <= 0)
-            {
-                healthScript.Die();
-            }
+           
 
         }
 

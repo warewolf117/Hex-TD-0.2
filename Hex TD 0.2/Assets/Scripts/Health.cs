@@ -21,6 +21,11 @@ public class Health : MonoBehaviour
     {
         cur_health -= amount;
         healthBar.fillAmount = cur_health / max_health;
+
+        if (cur_health <= 0)
+        {
+            Die();
+        }
     }
 
     public void Die()
