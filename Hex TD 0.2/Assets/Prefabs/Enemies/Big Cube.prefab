@@ -401,6 +401,7 @@ MonoBehaviour:
   max_health: 500
   cur_health: 0
   healthBar: {fileID: 1914225939}
+  worth: 250
 --- !u!114 &7855303999188464210
 MonoBehaviour:
   m_ObjectHideFlags: 0

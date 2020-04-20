@@ -357,6 +357,7 @@ MonoBehaviour:
   max_health: 60
   cur_health: 0
   healthBar: {fileID: 4450437384554438681}
+  worth: 30
 --- !u!114 &-2695688022737079815
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -401,6 +402,7 @@ MonoBehaviour:
   max_health: 5000
   cur_health: 0
   healthBar: {fileID: 0}
+  worth: 0
 --- !u!1 &7701270627999170325
 GameObject:
   m_ObjectHideFlags: 0
