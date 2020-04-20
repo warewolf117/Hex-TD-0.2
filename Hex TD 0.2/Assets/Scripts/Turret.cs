@@ -21,6 +21,7 @@ public class Turret : MonoBehaviour
 
     public bool useLaser = false;
     public LineRenderer lineRenderer;
+    public GameObject laserImpact;
 
     [Header ("Unity Setup Fields")]
 
@@ -75,7 +76,12 @@ public class Turret : MonoBehaviour
             if (useLaser)
             {
                 if (lineRenderer.enabled)
+                {
                     lineRenderer.enabled = false;
+                    
+                }
+                    
+
             }
             return; //no target, return and do nothing 
         }
@@ -114,10 +120,24 @@ public class Turret : MonoBehaviour
 
     {
         if (!lineRenderer.enabled)
+        {
             lineRenderer.enabled = true;
+            GameObject effectIns = (GameObject)Instantiate(laserImpact, target.position, transform.rotation);
+
+        }
+            
+
 
         lineRenderer.SetPosition(0, firePoint.position);
         lineRenderer.SetPosition(1, target.position);
+
+        Vector3 dir = firePoint.position - target.position;
+
+        laserImpact.transform.position = target.position + dir.normalized * .5f;
+
+        laserImpact.transform.rotation = Quaternion.LookRotation(dir);
+
+        
     }
 
     void Shoot()

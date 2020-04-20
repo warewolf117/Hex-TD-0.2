@@ -139,13 +139,10 @@ public class Spawner : MonoBehaviour
                 case 5:
                     while (enemyCounter < 1)
                     {
-
-                        spawnDaMiniBoss();
-                        yield return new WaitForSeconds(1f);
-                        enemyCounter++;
-
-
-                    }
+                            spawnDaMiniBoss();
+                            yield return new WaitForSeconds(1f);
+                            enemyCounter++;
+                     }
                     enemyCounter = 0;
                     waveIndex++;
                     yield return new WaitForSeconds(timeBetweenWaves);
