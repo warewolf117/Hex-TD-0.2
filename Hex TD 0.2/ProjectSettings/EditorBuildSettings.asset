@@ -5,6 +5,13 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
-    path: Assets/Neon/Scenes/TutorialScene.unity
+  - enabled: 0
+    path: Assets/NeonSphere - Starter Pack/Scenes/NeonScene.unity
     guid: a4c251521ce2ec2499d5db4fd55c1c9f
+  - enabled: 1
+    path: Assets/Scenes/MainMenu.unity
+    guid: 1884ec14bb967ab429ef2f6c1e77438d
+  - enabled: 1
+    path: Assets/Scenes/Hex TD Base 0.2.unity
+    guid: 03539ba0c0e2c264ead25409cb88a867
+  m_configObjects: {}
