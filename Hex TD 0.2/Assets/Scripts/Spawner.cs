@@ -139,14 +139,12 @@ public class Spawner : MonoBehaviour
                 case 5:
                     while (enemyCounter < 1)
                     {
-                        if (DaMiniBoss != null)
-                        {
-                            spawnDaMiniBoss();
-                            yield return new WaitForSeconds(1f);
-                            enemyCounter++;
-                        }
-                        
-                        
+
+                        spawnDaMiniBoss();
+                        yield return new WaitForSeconds(1f);
+                        enemyCounter++;
+
+
                     }
                     enemyCounter = 0;
                     waveIndex++;
@@ -155,14 +153,14 @@ public class Spawner : MonoBehaviour
 
             }
         }
-        
+
 
     }
     void spawnEnemy1()
     {
         Vector3 position1 = new Vector3(Random.Range(-5f, 5f), 1, Random.Range(-5f, 5f));
 
-        Instantiate(Enemy1, spawnPoint.position + position1 , spawnPoint.rotation);//spawn on top of spawner
+        Instantiate(Enemy1, spawnPoint.position + position1, spawnPoint.rotation);//spawn on top of spawner
     }
 
     void spawnEnemy2()
