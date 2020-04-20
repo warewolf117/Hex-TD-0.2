@@ -16,18 +16,10 @@ public class Health : MonoBehaviour
     }
 
 
-    public void TakeDamage(float amount)
+   public void takeDamage(float amount)
     {
         cur_health -= amount;
-
         healthBar.fillAmount = cur_health / max_health;
-
-
-        if (cur_health < 1)
-        {
-            Die();
-        }
-
     }
 
     public void Die()
@@ -43,6 +35,6 @@ public class Health : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        
     }
 }

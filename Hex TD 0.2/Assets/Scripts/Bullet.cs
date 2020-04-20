@@ -101,7 +101,8 @@ public class Bullet : MonoBehaviour
         void Damage(Transform target)
         {
             Health healthScript = target.transform.gameObject.GetComponent<Health>();
-            healthScript.cur_health -= damage;
+            
+            healthScript.takeDamage(damage);
 
             if (healthScript.cur_health <= 0)
             {
