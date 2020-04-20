@@ -34,6 +34,7 @@ public class Health : MonoBehaviour
         // cus if the turret kills the spawner then spawns will stop 
         Destroy(this.gameObject);
         PlayerStats.money += worth;
+        Spawner.enemiesLeft--;
 
 
     }

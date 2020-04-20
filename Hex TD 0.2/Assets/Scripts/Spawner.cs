@@ -24,10 +24,9 @@ public class Spawner : MonoBehaviour
 
     private int waveIndex = 1;//Number of the actual wave
 
-    private int enemyCounter = 0;
+    private int enemyCounter = 0; //determines how many enemies per wave spawn  
 
-    private GameObject[] enemiesLeft;
-    private int count = 1;
+    public static int enemiesLeft;//keeps track of the number of living enemies
 
     Vector2 newPosition;
 
@@ -45,9 +44,6 @@ public class Spawner : MonoBehaviour
     void Update()
     {    
 
-        enemiesLeft = GameObject.FindGameObjectsWithTag("Enemy");
-        count = enemiesLeft.Length;
-
         if (countdown <= 0f)
         {
             StartCoroutine(spawnWave());
@@ -60,11 +56,12 @@ public class Spawner : MonoBehaviour
             
             
                     }
-        if (waveIndex == 6 && count == 0)
+        if (waveIndex == 6 && enemiesLeft == 0)
         {
             if (TextTracker == true) // ASDASDASDASDADSASDF
             {
                 levelCleared.text = "LEVEL CLEARED";
+                Debug.Log("Level cleared" + enemiesLeft);
             }
 
             }
@@ -158,30 +155,35 @@ public class Spawner : MonoBehaviour
         Vector3 position1 = new Vector3(Random.Range(-5f, 5f), 1, Random.Range(-5f, 5f));
 
         Instantiate(Enemy1, spawnPoint.position + position1, spawnPoint.rotation);//spawn on top of spawner
+        enemiesLeft++;
     }
 
     void spawnEnemy2()
     {
         Vector3 position1 = new Vector3(Random.Range(-5f, 5f), 1, Random.Range(-5f, 5f));
         Instantiate(Enemy2, spawnPoint.position + position1, spawnPoint.rotation);//spawn on top of spawner
+        enemiesLeft++;
     }
 
     void spawnEnemy3()
     {
         Vector3 position1 = new Vector3(Random.Range(-5f, 5f), 1, Random.Range(-5f, 5f));
         Instantiate(Enemy3, spawnPoint.position + position1, spawnPoint.rotation);//spawn on top of spawner
+        enemiesLeft++;
     }
 
     void spawnEnemy4()
     {
         Vector3 position1 = new Vector3(Random.Range(-5f, 5f), 1, Random.Range(-5f, 5f));
         Instantiate(Enemy4, spawnPoint.position + position1, spawnPoint.rotation);//spawn on top of spawner
+        enemiesLeft++;
     }
 
     void spawnDaMiniBoss()
     {
         Vector3 position1 = new Vector3(Random.Range(-5f, 5f), 1, Random.Range(-5f, 5f));
         Instantiate(DaMiniBoss, spawnPoint.position + position1, spawnPoint.rotation);
+        enemiesLeft++;
     }
 
 
