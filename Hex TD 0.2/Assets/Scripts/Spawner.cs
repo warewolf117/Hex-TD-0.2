@@ -42,7 +42,7 @@ public class Spawner : MonoBehaviour
 
 
     void Update()
-    {    
+    {
 
         if (countdown <= 0f)
         {
@@ -51,11 +51,11 @@ public class Spawner : MonoBehaviour
 
             if (TextTracker == true) // ASDFASFASDFASDFASDF
             {
-               // waveCountdownText.gameObject.SetActive(false);
+                // waveCountdownText.gameObject.SetActive(false);
             }
-            
-            
-                    }
+
+
+        }
         if (waveIndex == 6 && enemiesLeft == 0)
         {
             if (TextTracker == true) // ASDASDASDASDADSASDF
@@ -64,7 +64,7 @@ public class Spawner : MonoBehaviour
                 Debug.Log("Level cleared" + enemiesLeft);
             }
 
-            }
+        }
 
         countdown -= Time.deltaTime;
 
@@ -77,7 +77,7 @@ public class Spawner : MonoBehaviour
         {
             // waveCountdownText.text = string.Format("{0:00.00}", countdown);
         }
-            
+
     }
     IEnumerator spawnWave()
     {
@@ -136,10 +136,10 @@ public class Spawner : MonoBehaviour
                 case 5:
                     while (enemyCounter < 1)
                     {
-                            spawnDaMiniBoss();
-                            yield return new WaitForSeconds(1f);
-                            enemyCounter++;
-                     }
+                        spawnDaMiniBoss();
+                        yield return new WaitForSeconds(1f);
+                        enemyCounter++;
+                    }
                     enemyCounter = 0;
                     waveIndex++;
                     yield return new WaitForSeconds(timeBetweenWaves);

@@ -538,7 +538,9 @@ MonoBehaviour:
   range: 15
   bulletPrefab: {fileID: 0}
   fireRate: 1
-  useLaser: 0
+  useLaser: 1
+  damageOverTime: 60
+  Slowpct: 0.5
   lineRenderer: {fileID: 2048290447241327753}
   enemyTag: Enemy
   partToRotate: {fileID: 4966439953513653330}

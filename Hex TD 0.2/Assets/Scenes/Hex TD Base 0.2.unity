@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 1137376155}
-  m_IndirectSpecularColor: {r: 0.07846565, g: 0.6922382, b: 0.77786547, a: 1}
+  m_IndirectSpecularColor: {r: 0.15091464, g: 0.098639674, b: 0.4179982, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -429,7 +429,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 61255af9920503a409e8bdeb4358efea, type: 2}
+      objectReference: {fileID: 2100000, guid: 875057e07c7883b42b85cf2304bddb89, type: 2}
     - target: {fileID: -927199367670048503, guid: 75485697adba60548bd3304b098f2918,
         type: 3}
       propertyPath: m_Name
@@ -662,7 +662,7 @@ PrefabInstance:
     - target: {fileID: 9158453140363016557, guid: 17df805d603082540867e3c2e1d471db,
         type: 3}
       propertyPath: countdown
-      value: 20
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 9158453140363016557, guid: 17df805d603082540867e3c2e1d471db,
         type: 3}
@@ -1317,7 +1317,7 @@ PrefabInstance:
     - target: {fileID: 9158453140363016557, guid: 17df805d603082540867e3c2e1d471db,
         type: 3}
       propertyPath: countdown
-      value: 10
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 9158453140363016557, guid: 17df805d603082540867e3c2e1d471db,
         type: 3}
@@ -2735,70 +2735,6 @@ Transform:
   m_Father: {fileID: 781744885}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 120, z: 0}
---- !u!1 &585984256
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 585984258}
-  - component: {fileID: 585984257}
-  m_Layer: 0
-  m_Name: Reflection Probe
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!215 &585984257
-ReflectionProbe:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 585984256}
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Type: 0
-  m_Mode: 1
-  m_RefreshMode: 0
-  m_TimeSlicingMode: 0
-  m_Resolution: 128
-  m_UpdateFrequency: 0
-  m_BoxSize: {x: 50.29023, y: 10.499804, z: 52.366787}
-  m_BoxOffset: {x: -0.40071106, y: -0.07547283, z: 0.43198204}
-  m_NearClip: 0.3
-  m_FarClip: 1000
-  m_ShadowDistance: 100
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
-  m_CullingMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IntensityMultiplier: 1
-  m_BlendDistance: 1
-  m_HDR: 1
-  m_BoxProjection: 0
-  m_RenderDynamicObjects: 0
-  m_UseOcclusionCulling: 1
-  m_Importance: 1
-  m_CustomBakedTexture: {fileID: 0}
---- !u!4 &585984258
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 585984256}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 5.35, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 7
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &603217695
 GameObject:
   m_ObjectHideFlags: 0
@@ -4060,9 +3996,9 @@ GameObject:
   - component: {fileID: 963194228}
   - component: {fileID: 963194227}
   - component: {fileID: 963194226}
-  - component: {fileID: 963194229}
   - component: {fileID: 963194231}
   - component: {fileID: 963194230}
+  - component: {fileID: 963194229}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -4144,14 +4080,21 @@ MonoBehaviour:
   m_GameObject: {fileID: 963194225}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 42873eb6bfa929f48b851294bab12040, type: 3}
+  m_Script: {fileID: 11500000, guid: 72171b89b40fabc4894fee7613251667, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  panSpeed: 30
-  panBorderThickness: 10
-  scrollSpeed: 5
-  minY: 10
-  maxY: 30
+  target: {fileID: 1602617000}
+  targetOffset: {x: 0, y: 0, z: 0}
+  distance: 5
+  maxDistance: 20
+  minDistance: 0.6
+  xSpeed: 5
+  ySpeed: 5
+  yMinLimit: -80
+  yMaxLimit: 80
+  zoomRate: 10
+  panSpeed: 0.3
+  zoomDampening: 5
 --- !u!114 &963194230
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4737,7 +4680,7 @@ PrefabInstance:
     - target: {fileID: 9158453140363016557, guid: 17df805d603082540867e3c2e1d471db,
         type: 3}
       propertyPath: countdown
-      value: 15
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 9158453140363016557, guid: 17df805d603082540867e3c2e1d471db,
         type: 3}
@@ -5512,13 +5455,13 @@ Light:
   m_Type: 1
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 1
+  m_Intensity: 2
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 2
+    m_Type: 0
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1
