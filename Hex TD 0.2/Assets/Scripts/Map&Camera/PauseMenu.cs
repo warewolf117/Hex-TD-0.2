@@ -12,7 +12,7 @@ public class PauseMenu : MonoBehaviour
 
     public void TogglePause()
     {
-        ui.SetActive(true);
+        ui.SetActive(true); //toggles on pause menu
         pauseButton.SetActive(false);
         if (ui.activeSelf)
         {
@@ -38,6 +38,7 @@ public class PauseMenu : MonoBehaviour
 
     public void Exit ()
     {
+        Time.timeScale = 1f;
         screenFader.FadeTo(menuSceneName);
     }
 
