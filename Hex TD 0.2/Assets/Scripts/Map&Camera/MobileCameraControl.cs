@@ -16,7 +16,7 @@ public class MobileCameraControl : MonoBehaviour
     public int yMinLimit = -80;
     public int yMaxLimit = 80;
     public float zoomRate = 10.0f;
-    public float panSpeed = 0.3f;
+    public float panSpeed = 1f;
     public float zoomDampening = 5.0f;
 
     private float xDeg = 0.0f;
@@ -37,13 +37,13 @@ public class MobileCameraControl : MonoBehaviour
     //private Vector3 Targetposition;
     //private Vector3 MoveDistance;
 
-    public int xx = 800, yy = 500;
-    public Camera cam;
+   // public int xx = 1280, yy = 720;
+   // public Camera cam;
 
     void Start()
     {
-        Screen.SetResolution(xx, yy, true);
-        cam.aspect = 16f / 9;
+       // Screen.SetResolution(xx, yy, true);
+       // cam.aspect = 16f / 9;
         Init();
     }
     void OnEnable() { Init(); }
