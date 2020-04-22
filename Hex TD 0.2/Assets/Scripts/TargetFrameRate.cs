@@ -8,7 +8,7 @@ public class TargetFrameRate : MonoBehaviour
     void Start()
     {
         QualitySettings.vSyncCount = 0;
-        Application.targetFrameRate = 60;
+        Application.targetFrameRate = 30;
     }
 
     // Update is called once per frame
