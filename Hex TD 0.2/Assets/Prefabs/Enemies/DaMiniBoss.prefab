@@ -109,7 +109,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 1.1
+  m_Speed: 2.5
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
@@ -138,6 +138,8 @@ MonoBehaviour:
     type: 3}
   spawnPoint: {fileID: 9158453140363016558, guid: 17df805d603082540867e3c2e1d471db,
     type: 3}
+  startingSpeed: 2.5
+  currentSpeed: 0
 --- !u!114 &637410317746341853
 MonoBehaviour:
   m_ObjectHideFlags: 0

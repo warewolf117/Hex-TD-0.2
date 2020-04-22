@@ -28,16 +28,13 @@ public class Spawner : MonoBehaviour
 
     public static int enemiesLeft;//keeps track of the number of living enemies
 
-    Vector2 newPosition;
+    private bool DaMiniBossSpawned;
 
-    private bool TextTracker = true; // ASDAFASDFASDF = Nomas para evitar que todos los spawners intenten accesar el wave countdown text en lo que lo movemos a otro lado
+
+
     void Start()
     {
-        // ASDASDFSDASDFASDF
-        if (waveCountdownText && levelCleared == null)
-        {
-            TextTracker = false;
-        }
+        DaMiniBossSpawned = false;
     }
 
 
@@ -49,20 +46,17 @@ public class Spawner : MonoBehaviour
             StartCoroutine(spawnWave());
             countdown = timeBetweenWaves;
 
-            if (TextTracker == true) // ASDFASFASDFASDFASDF
-            {
-                // waveCountdownText.gameObject.SetActive(false);
-            }
+          
 
 
         }
-        if (waveIndex == 6 && enemiesLeft == 0)
+        if (DaMiniBossSpawned == true && enemiesLeft == 0)
         {
-            if (TextTracker == true) // ASDASDASDASDADSASDF
-            {
+            
+           
                 levelCleared.text = "LEVEL CLEARED";
                 Debug.Log("Level cleared" + enemiesLeft);
-            }
+           
 
         }
 
@@ -73,10 +67,8 @@ public class Spawner : MonoBehaviour
         //mathf.round cuts the decimals remaining from the countdown variable
         //so that the ToString function can properly convert from numerical to 
         //string value
-        if (TextTracker == true) // ASDASDASDASDADSASDF
-        {
-            // waveCountdownText.text = string.Format("{0:00.00}", countdown);
-        }
+      
+       
 
     }
     IEnumerator spawnWave()
@@ -140,7 +132,6 @@ public class Spawner : MonoBehaviour
                         yield return new WaitForSeconds(1f);
                         enemyCounter++;
                     }
-                    enemyCounter = 0;
                     waveIndex++;
                     yield return new WaitForSeconds(timeBetweenWaves);
                     break;
@@ -184,6 +175,7 @@ public class Spawner : MonoBehaviour
         Vector3 position1 = new Vector3(Random.Range(-5f, 5f), 1, Random.Range(-5f, 5f));
         Instantiate(DaMiniBoss, spawnPoint.position + position1, spawnPoint.rotation);
         enemiesLeft++;
+        DaMiniBossSpawned = true;
     }
 
 

@@ -342,6 +342,8 @@ MonoBehaviour:
     type: 3}
   spawnPoint: {fileID: 9158453140363016558, guid: 17df805d603082540867e3c2e1d471db,
     type: 3}
+  startingSpeed: 2.5
+  currentSpeed: 0
 --- !u!114 &5391081056419589265
 MonoBehaviour:
   m_ObjectHideFlags: 0

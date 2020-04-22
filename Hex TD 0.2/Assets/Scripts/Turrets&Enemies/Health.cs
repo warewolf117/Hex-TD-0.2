@@ -19,10 +19,13 @@ public class Health : MonoBehaviour
 
    public void takeDamage(float amount)
     {
+       
+        
         cur_health -= amount;
         healthBar.fillAmount = cur_health / max_health;
+       
 
-        if (cur_health <= 0)
+        if (cur_health < 0)
         {
             Die();
         }
@@ -32,9 +35,28 @@ public class Health : MonoBehaviour
     {
         // Destroy literally erases an objects existence, thats why I kept the spawner away from the turrets
         // cus if the turret kills the spawner then spawns will stop 
-        Destroy(this.gameObject);
-        PlayerStats.money += worth;
-        Spawner.enemiesLeft--;
+
+        if (gameObject.tag == "Enemy")
+        {
+            Destroy(this.gameObject);
+            PlayerStats.money += worth;
+            Spawner.enemiesLeft--;
+            WaveSpawner.EnemiesAlive--;
+            WaveSpawner.EnemyCount--;
+
+            Debug.Log("enemies Alive:" + WaveSpawner.EnemiesAlive);
+            Debug.Log("enemy count:" + WaveSpawner.EnemyCount);
+
+            Debug.Log("ENEMY KILLED");
+        }
+
+       
+        if (gameObject.tag == "Wall")
+        {
+            Destroy(this.gameObject);
+        }
+
+
 
 
     }

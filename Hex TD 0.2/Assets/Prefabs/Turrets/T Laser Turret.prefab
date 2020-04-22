@@ -88,7 +88,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 670224309865224971, guid: b912f041e8ad84d43b68e9eab80f8790, type: 3}
+  - {fileID: 2100000, guid: 875057e07c7883b42b85cf2304bddb89, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -353,9 +353,9 @@ MonoBehaviour:
   bulletPrefab: {fileID: 0}
   fireRate: 1
   useLaser: 1
+  damageOverTime: 30
+  Slowpct: 0.3
   lineRenderer: {fileID: 2048290447241327753}
-  laserImpact: {fileID: 2978741091948502996, guid: e9a6a44c25716b24193d31bcb3894dc0,
-    type: 3}
   enemyTag: Enemy
   partToRotate: {fileID: 4966439953513653330}
   turnSpeed: 10
