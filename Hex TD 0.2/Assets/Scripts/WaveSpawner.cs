@@ -11,9 +11,14 @@ public class WaveSpawner : MonoBehaviour
 
     public Wave[] waves;
 
-    public Transform spawnPoint;
+    public Transform spawnPoint1;
+    public Transform spawnPoint2;
+    public Transform spawnPoint3;
+    public Transform spawnPoint4;
+    public Transform spawnPoint5;
+    private int spawnSpacer = 1;
 
-    public float timeBetweenWaves = 5f;
+    public float timeBetweenWaves = 3f;
     private float countdown = 4f;
 
     
@@ -51,8 +56,6 @@ public class WaveSpawner : MonoBehaviour
 
             countdown = Mathf.Clamp(countdown, 0f, Mathf.Infinity);
 
-            Debug.Log("Time is: " + countdown);
-
             waveCountdownText.text = string.Format("{0:00.00}", countdown);
         
        
@@ -80,12 +83,51 @@ public class WaveSpawner : MonoBehaviour
 
     void SpawnEnemy(GameObject enemy)
     {
+        Debug.Log("spawn position: " + spawnSpacer);
+        switch (spawnSpacer)
+        {
+            case 1:
+                Vector3 position1 = new Vector3(1, 0, 1);
 
-        Vector3 position1 = new Vector3(Random.Range(-3f, 3f), 1, Random.Range(-3f, 3f));
+                Instantiate(enemy, spawnPoint1.position + position1, spawnPoint1.rotation);
+                EnemiesAlive++;
+                spawnSpacer++;
+                break;
 
-        Instantiate(enemy, spawnPoint.position + position1, spawnPoint.rotation);
-        EnemiesAlive ++;
-        //Debug.Log("enemies Alive:" + EnemiesAlive);
+            case 2:
+                Vector3 position2 = new Vector3(1, 0, 1);
+
+                Instantiate(enemy, spawnPoint2.position + position2, spawnPoint2.rotation);
+                EnemiesAlive++;
+                spawnSpacer++;
+                break;
+            case 3:
+                Vector3 position3 = new Vector3(1, 0, 1);
+
+                Instantiate(enemy, spawnPoint3.position + position3, spawnPoint3.rotation);
+                EnemiesAlive++;
+                spawnSpacer++;
+                break;
+
+            case 4:
+                Vector3 position4 = new Vector3(1, 0, 1);
+
+                Instantiate(enemy, spawnPoint4.position + position4, spawnPoint4.rotation);
+                EnemiesAlive++;
+                spawnSpacer++;
+                break;
+            case 5:
+                Vector3 position5 = new Vector3(1, 0, 1);
+
+                Instantiate(enemy, spawnPoint5.position + position5, spawnPoint5.rotation);
+                EnemiesAlive++;
+                spawnSpacer = 1;
+                //Debug.Log("enemies Alive:" + EnemiesAlive);
+
+                break;
+
+
+        }
     }
 
 }
