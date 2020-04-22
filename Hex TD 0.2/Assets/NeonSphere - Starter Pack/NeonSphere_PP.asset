@@ -81,7 +81,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a34fa72bd4185749832024e9c8010bf, type: 3}
   m_Name: ScreenSpaceReflections
   m_EditorClassIdentifier: 
-  active: 1
+  active: 0
   enabled:
     overrideState: 1
     value: 1
@@ -102,7 +102,7 @@ MonoBehaviour:
     value: 100.35
   distanceFade:
     overrideState: 1
-    value: 0.5
+    value: 0.412
   vignette:
     overrideState: 1
     value: 0.5
@@ -152,16 +152,16 @@ MonoBehaviour:
     value: 1
   filtering:
     overrideState: 1
-    value: {x: 48.986904, y: 93.98688}
+    value: {x: 54.00003, y: 99}
   minLuminance:
     overrideState: 1
-    value: -0.23
+    value: 0
   maxLuminance:
     overrideState: 1
-    value: 0
+    value: 5
   keyValue:
     overrideState: 1
-    value: 1
+    value: 0.92
   eyeAdaptation:
     overrideState: 1
     value: 0
@@ -1500,25 +1500,25 @@ MonoBehaviour:
     value: 1
   intensity:
     overrideState: 1
-    value: 6
+    value: 7
   threshold:
     overrideState: 1
     value: 1.01
   softKnee:
     overrideState: 1
-    value: 0.487
+    value: 0
   clamp:
     overrideState: 1
     value: 65472
   diffusion:
     overrideState: 1
-    value: 6.51
+    value: 5.8
   anamorphicRatio:
     overrideState: 1
     value: 0
   color:
     overrideState: 1
-    value: {r: 0.094055064, g: 0.8063235, b: 0.86694217, a: 1}
+    value: {r: 0.52429694, g: 0.78946614, b: 0.8113208, a: 1}
   fastMode:
     overrideState: 0
     value: 0
@@ -1556,10 +1556,10 @@ MonoBehaviour:
     value: {x: 0.5, y: 0.5}
   intensity:
     overrideState: 1
-    value: 0.274
+    value: 0.47
   smoothness:
     overrideState: 1
-    value: 0.2
+    value: 0.209
   roundness:
     overrideState: 1
     value: 1
