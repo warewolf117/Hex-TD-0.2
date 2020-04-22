@@ -7,6 +7,8 @@ public class PauseMenu : MonoBehaviour
 {
     public GameObject ui;
     public GameObject pauseButton;
+    public ScreenFader screenFader;
+    public string menuSceneName = "MainMenu";
 
     public void TogglePause()
     {
@@ -31,12 +33,12 @@ public class PauseMenu : MonoBehaviour
     {
         Time.timeScale = 1f;
         //scenemanager.loadscene() selects the scene to load, in this we load the current scene
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        screenFader.FadeTo(SceneManager.GetActiveScene().name);
     }
 
     public void Exit ()
     {
-        SceneManager.LoadScene("MainMenu");
+        screenFader.FadeTo(menuSceneName);
     }
 
     void Update ()

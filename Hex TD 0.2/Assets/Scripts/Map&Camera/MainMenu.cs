@@ -8,10 +8,12 @@ public class MainMenu : MonoBehaviour
 {
     public string levelToLoad = "Hex TD Base 0.2";
 
+    public ScreenFader screenFader;
+
     public void Play()
     {
         Debug.Log("Loading Level");
-        SceneManager.LoadScene(levelToLoad);
+        screenFader.FadeTo(levelToLoad);
     }
 
     public void Quit()
