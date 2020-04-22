@@ -10,7 +10,7 @@ public class MobileCameraControl : MonoBehaviour
     public Vector3 targetOffset;
     public float distance = 5.0f;
     public float maxDistance = 20;
-    public float minDistance = .6f;
+    public float minDistance = 5f;
     public float xSpeed = 5.0f;
     public float ySpeed = 5.0f;
     public int yMinLimit = -80;
@@ -37,8 +37,15 @@ public class MobileCameraControl : MonoBehaviour
     //private Vector3 Targetposition;
     //private Vector3 MoveDistance;
 
+    public int xx = 800, yy = 500;
+    public Camera cam;
 
-    void Start() { Init(); }
+    void Start()
+    {
+        Screen.SetResolution(xx, yy, true);
+        cam.aspect = 16f / 9;
+        Init();
+    }
     void OnEnable() { Init(); }
 
     public void Init()
