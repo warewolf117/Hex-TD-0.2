@@ -14,7 +14,7 @@ public class WaveSpawner : MonoBehaviour
     public Transform spawnPoint;
 
     public float timeBetweenWaves = 5f;
-    private float countdown = 2f;
+    private float countdown = 4f;
 
     
     public Text waveCountdownText;
@@ -51,6 +51,8 @@ public class WaveSpawner : MonoBehaviour
 
             countdown = Mathf.Clamp(countdown, 0f, Mathf.Infinity);
 
+            Debug.Log("Time is: " + countdown);
+
             waveCountdownText.text = string.Format("{0:00.00}", countdown);
         
        
@@ -65,7 +67,7 @@ public class WaveSpawner : MonoBehaviour
         EnemyCount = wave.count;
         EnemiesAlive = 0;
 
-        Debug.Log("enemy count:" + EnemyCount);
+        //Debug.Log("enemy count:" + EnemyCount);
 
         for (int i = 0; i < wave.count; i++)
         {
@@ -83,7 +85,7 @@ public class WaveSpawner : MonoBehaviour
 
         Instantiate(enemy, spawnPoint.position + position1, spawnPoint.rotation);
         EnemiesAlive ++;
-        Debug.Log("enemies Alive:" + EnemiesAlive);
+        //Debug.Log("enemies Alive:" + EnemiesAlive);
     }
 
 }

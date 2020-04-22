@@ -64,6 +64,8 @@ public class Spawner : MonoBehaviour
 
         countdown = Mathf.Clamp(countdown, 0f, Mathf.Infinity);
 
+        Debug.Log("time is: " + countdown);
+
         //mathf.round cuts the decimals remaining from the countdown variable
         //so that the ToString function can properly convert from numerical to 
         //string value

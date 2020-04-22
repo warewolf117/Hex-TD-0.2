@@ -9,6 +9,7 @@ public class Health : MonoBehaviour
     public float cur_health = 0f;
     public Image healthBar;
     public int worth;
+    private bool checkAlive = true;
 
 
     void Start()
@@ -25,9 +26,10 @@ public class Health : MonoBehaviour
         healthBar.fillAmount = cur_health / max_health;
        
 
-        if (cur_health < 0)
+        if (cur_health < 0 && checkAlive)
         {
             Die();
+            checkAlive = false;
         }
     }
 
@@ -44,10 +46,10 @@ public class Health : MonoBehaviour
             WaveSpawner.EnemiesAlive--;
             WaveSpawner.EnemyCount--;
 
-            Debug.Log("enemies Alive:" + WaveSpawner.EnemiesAlive);
-            Debug.Log("enemy count:" + WaveSpawner.EnemyCount);
+           // Debug.Log("enemies Alive:" + WaveSpawner.EnemiesAlive);
+          //  Debug.Log("enemy count:" + WaveSpawner.EnemyCount);
 
-            Debug.Log("ENEMY KILLED");
+          //  Debug.Log("ENEMY KILLED");
         }
 
        

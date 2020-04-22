@@ -24,11 +24,13 @@ public class ScreenFader : MonoBehaviour
 
         while (t > 0)
         {
-            t -= Time.deltaTime * 0.5f;
+            t -= Time.deltaTime * 1f;
             float a = curve.Evaluate(t); //controls the curve
             Image.color = new Color(0f, 0f, 0f, a); // this modifies the alpha value
             yield return 0; //skips to the next frame
         }
+        WaveSpawner.EnemiesAlive = 0;
+        WaveSpawner.EnemyCount = 0;
         //load a scene
     }
 
