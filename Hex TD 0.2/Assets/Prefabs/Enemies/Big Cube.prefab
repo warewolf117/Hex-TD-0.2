@@ -398,7 +398,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af4c2fc336624c34d8e83d832a0f3455, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  max_health: 500
+  max_health: 750
   cur_health: 0
   healthBar: {fileID: 1914225939}
   worth: 250
@@ -418,7 +418,7 @@ MonoBehaviour:
   moveTarget: {fileID: 6334955249659344108, guid: 440f97069ec8181479dc2063ac0a40c5,
     type: 3}
   spawnPoint: {fileID: 0}
-  startingSpeed: 2.5
+  startingSpeed: 1.8
   currentSpeed: 0
 --- !u!195 &7855303999188464211
 NavMeshAgent:

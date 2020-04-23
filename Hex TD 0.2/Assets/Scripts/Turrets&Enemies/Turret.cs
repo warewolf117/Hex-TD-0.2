@@ -23,6 +23,8 @@ public class Turret : MonoBehaviour
 
     public bool useLaser = false;
 
+    public bool focusBack = false;
+
     public int damageOverTime = 30;
 
     public float Slowpct = 0.3f;
@@ -51,29 +53,64 @@ public class Turret : MonoBehaviour
     {
         GameObject[] enemies = GameObject.FindGameObjectsWithTag(enemyTag);  //looks for all objects with enemyTag
         float shortestDistance = Mathf.Infinity; //sets shortestDistance to infinity if there is no enemy
+        float furthestDistance = Mathf.NegativeInfinity;
         GameObject nearestEnemy = null;
+        GameObject furthestEnemy = null;
 
-        foreach (GameObject enemy in enemies)
+
+
+        if (focusBack == true)  //Back Targeting
         {
-            float distance = Vector3.Distance(transform.position, enemy.transform.position); //measures distance between turret and enemy
-
-            if (distance < shortestDistance)
+            foreach (GameObject enemy in enemies)
             {
-                shortestDistance = distance;
-                nearestEnemy = enemy;
+                float distance = Vector3.Distance(transform.position, enemy.transform.position); //measures distance between turret and enemy
+
+                if (distance > furthestDistance && distance <= range)
+                {
+                    furthestDistance = distance;
+                    furthestEnemy = enemy;
+
+                }
 
             }
+            if (furthestEnemy != null && furthestDistance <= range)
+            {
+                target = furthestEnemy.transform;
+                targetEnemy = furthestEnemy.GetComponent<Health>();
+                targetEnemyM = furthestEnemy.GetComponent<BasicMovement>();
+            }
+            else
+            {
+                target = null;
+            }
+        }
 
-        }
-        if (nearestEnemy != null && shortestDistance <= range)
+        else //Regular Targeting
         {
-            target = nearestEnemy.transform;
-            targetEnemy = nearestEnemy.GetComponent<Health>();
-            targetEnemyM = nearestEnemy.GetComponent<BasicMovement>();
-        }
-        else
-        {
-            target = null;
+
+
+            foreach (GameObject enemy in enemies)
+            {
+                float distance = Vector3.Distance(transform.position, enemy.transform.position); //measures distance between turret and enemy
+
+                if (distance < shortestDistance)
+                {
+                    shortestDistance = distance;
+                    nearestEnemy = enemy;
+
+                }
+
+            }
+            if (nearestEnemy != null && shortestDistance <= range)
+            {
+                target = nearestEnemy.transform;
+                targetEnemy = nearestEnemy.GetComponent<Health>();
+                targetEnemyM = nearestEnemy.GetComponent<BasicMovement>();
+            }
+            else
+            {
+                target = null;
+            }
         }
     }
 

@@ -29,7 +29,7 @@ public class ScreenFader : MonoBehaviour
             Image.color = new Color(0f, 0f, 0f, a); // this modifies the alpha value
             yield return 0; //skips to the next frame
         }
-        WaveSpawner.EnemiesAlive = 0;
+        Wave.EnemiesAlive = 0;
         WaveSpawner.EnemyCount = 0;
         //load a scene
     }

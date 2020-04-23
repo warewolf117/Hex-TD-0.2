@@ -233,7 +233,7 @@ MonoBehaviour:
   moveTarget: {fileID: 6334955249659344108, guid: 440f97069ec8181479dc2063ac0a40c5,
     type: 3}
   spawnPoint: {fileID: 0}
-  startingSpeed: 2.5
+  startingSpeed: 2
   currentSpeed: 0
 --- !u!195 &4277588789801228934
 NavMeshAgent:

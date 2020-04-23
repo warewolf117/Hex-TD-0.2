@@ -26,7 +26,7 @@ public class Health : MonoBehaviour
         healthBar.fillAmount = cur_health / max_health;
        
 
-        if (cur_health < 0 && checkAlive)
+        if (cur_health <= 0 && checkAlive)
         {
             Die();
             checkAlive = false;
@@ -43,13 +43,13 @@ public class Health : MonoBehaviour
             Destroy(this.gameObject);
             PlayerStats.money += worth;
             Spawner.enemiesLeft--;
-            WaveSpawner.EnemiesAlive--;
+            Wave.EnemiesAlive--;
             WaveSpawner.EnemyCount--;
 
-           // Debug.Log("enemies Alive:" + WaveSpawner.EnemiesAlive);
+            Debug.Log("enemies Alive:" + Wave.EnemiesAlive);
           //  Debug.Log("enemy count:" + WaveSpawner.EnemyCount);
 
-          //  Debug.Log("ENEMY KILLED");
+            Debug.Log("ENEMY KILLED");
         }
 
        
