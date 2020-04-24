@@ -14,7 +14,7 @@ public class NodeUI : MonoBehaviour
     {
         target = _target;
 
-        transform.position = target.GetBuildPosition(); //this uses the node location with the offset
+        //transform.position = target.GetBuildPosition(); //this uses the node location with the offset
         // we made before
 
         if (!target.isUpgraded)
