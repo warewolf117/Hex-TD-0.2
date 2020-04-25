@@ -8,22 +8,26 @@ public class Health : MonoBehaviour
     public float max_health = 5000f;
     public float cur_health = 0f;
     public Image healthBar;
+    public Text damageTaken;
     public int worth;
     private bool checkAlive = true;
+    
 
 
     void Start()
     {
         cur_health = max_health;
+        //damageTaken.enabled = false;
     }
 
 
    public void takeDamage(float amount)
     {
-       
         
+        damageTaken.text = "- " + amount.ToString();
         cur_health -= amount;
         healthBar.fillAmount = cur_health / max_health;
+        
        
 
         if (cur_health <= 0 && checkAlive)
