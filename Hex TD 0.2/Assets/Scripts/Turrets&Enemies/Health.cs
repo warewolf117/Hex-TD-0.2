@@ -24,7 +24,7 @@ public class Health : MonoBehaviour
    public void takeDamage(float amount)
     {
         
-        damageTaken.text = "- " + amount.ToString();
+        // damageTaken.text = "- " + amount.ToString();
         cur_health -= amount;
         healthBar.fillAmount = cur_health / max_health;
         
