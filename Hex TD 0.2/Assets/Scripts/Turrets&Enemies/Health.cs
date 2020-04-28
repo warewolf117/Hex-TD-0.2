@@ -10,21 +10,24 @@ public class Health : MonoBehaviour
     public Image healthBar;
     public int worth;
     private bool checkAlive = true;
-    
+    public Turret turret;
 
 
     void Start()
     {
         cur_health = max_health;
-        DamagePopupController.Initialize();
+        
     }
 
 
    public void takeDamage(float amount)
     {
-        DamagePopupController.CreateFloatingText(amount.ToString(), transform);
-        cur_health -= amount;
-        healthBar.fillAmount = cur_health / max_health;
+        
+       DamagePopup2.Create(gameObject.transform.position, amount);
+        
+       
+       cur_health -= amount;
+       healthBar.fillAmount = cur_health / max_health;
         
        
 
@@ -70,6 +73,6 @@ public class Health : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        DamagePopupController.Initialize();
     }
 }

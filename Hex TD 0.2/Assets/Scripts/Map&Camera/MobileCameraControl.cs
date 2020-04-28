@@ -20,12 +20,14 @@ public class MobileCameraControl : MonoBehaviour
     private bool wasZoomingLastFrame; // Touch mode only
     private Vector2[] lastZoomPositions; // Touch mode only
 
-    public int xx = 2160, yy = 1080;
+    public int xx = 1920, yy = 1080;
     
     void Start()
     {
-        Screen.SetResolution(xx, yy, true);
-        cam.aspect = 18 / 9;
+        xx = 1920;
+        yy = 1080;
+        // Screen.SetResolution(xx, yy, true);
+        // cam.aspect = 16 / 9;
     }
         void Awake()
     {
