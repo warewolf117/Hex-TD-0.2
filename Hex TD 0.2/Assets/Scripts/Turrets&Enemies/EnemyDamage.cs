@@ -28,6 +28,7 @@ public class EnemyDamage : MonoBehaviour
                 {
                     Health healthScript = hit.transform.gameObject.GetComponent<Health>();
                     healthScript.cur_health -= this.damage;
+
                     damageCountdown = 1f / attackSpeed;
 
                     if (healthScript.cur_health <= 0)
