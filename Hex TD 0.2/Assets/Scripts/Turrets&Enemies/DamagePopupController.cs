@@ -16,10 +16,11 @@ public class DamagePopupController : MonoBehaviour
     
    public static void CreateFloatingText(string text, Transform location)
     {
-       // foreach (GameObject canvas  in canvases)
-        
-        DamagePopup instance = Instantiate(popupText);
-        instance.transform.SetParent(canvas.transform, false);
-        instance.SetText(text);
+        foreach (GameObject canvas in canvases) //Le quite los // a esta linea para quitar el error, y le puse sus { } 
+        {
+            DamagePopup instance = Instantiate(popupText);
+            instance.transform.SetParent(canvas.transform, false);
+            instance.SetText(text);
+        }
     }
 }

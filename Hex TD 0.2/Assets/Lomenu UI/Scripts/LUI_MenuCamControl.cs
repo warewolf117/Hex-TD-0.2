@@ -5,7 +5,7 @@ public class LUI_MenuCamControl : MonoBehaviour {
 
 	[Header("OBJECTS")]
 	public Transform currentMount;
-	public Camera camera;
+	
 
 	[Header("SETTINGS")]
 	[Tooltip("Set 1.1 for instant fly")]
@@ -23,7 +23,7 @@ public class LUI_MenuCamControl : MonoBehaviour {
 	{
 		transform.position = Vector3.Lerp(transform.position,currentMount.position,speed);
 		transform.rotation = Quaternion.Slerp(transform.rotation,currentMount.rotation,speed);
-		camera.fieldOfView = 60 + zoom;
+		GetComponent<Camera>().fieldOfView = 60 + zoom;
 		lastPosition = transform.position;
 	}
 
