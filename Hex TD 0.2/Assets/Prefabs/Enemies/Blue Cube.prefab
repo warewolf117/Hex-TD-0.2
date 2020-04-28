@@ -344,8 +344,8 @@ GameObject:
   - component: {fileID: 8027585092797497010}
   - component: {fileID: 3266937823628131916}
   m_Layer: 5
-  m_Name: HPBigCube (1)
-  m_TagString: Untagged
+  m_Name: HPBlueCube
+  m_TagString: EnemyHP
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

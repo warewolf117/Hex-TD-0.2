@@ -8,7 +8,6 @@ public class Health : MonoBehaviour
     public float max_health = 5000f;
     public float cur_health = 0f;
     public Image healthBar;
-    public Text damageTaken;
     public int worth;
     private bool checkAlive = true;
     
@@ -17,14 +16,13 @@ public class Health : MonoBehaviour
     void Start()
     {
         cur_health = max_health;
-        //damageTaken.enabled = false;
+        DamagePopupController.Initialize();
     }
 
 
    public void takeDamage(float amount)
     {
-        
-        // damageTaken.text = "- " + amount.ToString();
+        DamagePopupController.CreateFloatingText(amount.ToString(), transform);
         cur_health -= amount;
         healthBar.fillAmount = cur_health / max_health;
         
