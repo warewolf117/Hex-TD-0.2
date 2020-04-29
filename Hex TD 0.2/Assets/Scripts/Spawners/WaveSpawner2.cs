@@ -18,15 +18,19 @@ public class WaveSpawner2 : MonoBehaviour
     public Transform spawnPoint5;
     private int spawnSpacer = 1;
 
-    
-    
-
-    
-    public Text waveCountdownText;
-
-    public Text levelCleared;
+    public Transform WaveIndicatorPosition;
+    public GameObject waveIndicator;
 
     private int waveIndex = 0;
+
+    private void Start()
+    {
+
+        waveIndicator.SetActive(true);
+        Instantiate(waveIndicator, WaveIndicatorPosition.position + (WaveIndicatorPosition.transform.up * 1), Quaternion.Euler(90f, -120f, 0f));
+
+
+    }
 
     void Update()
     {

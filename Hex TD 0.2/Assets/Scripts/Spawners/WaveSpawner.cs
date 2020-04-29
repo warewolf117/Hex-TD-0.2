@@ -2,6 +2,8 @@
 using System.Collections;
 using UnityEngine.UI;
 
+
+
 public class WaveSpawner : MonoBehaviour
 {
 
@@ -18,6 +20,14 @@ public class WaveSpawner : MonoBehaviour
     public Transform spawnPoint5;
     private int spawnSpacer = 1;
 
+    
+    
+    public Transform WaveIndicatorPosition;
+    public GameObject waveIndicator;
+    // public GameObject WaveIndicator;
+    public static int startFirstWave = 0;
+    
+
     public float timeBetweenWaves = 3f;
     public static float countdown = 4f;
 
@@ -28,9 +38,33 @@ public class WaveSpawner : MonoBehaviour
 
     private int waveIndex = 0;
 
-    void Update()
+
+    private void Start()
     {
         
+        waveIndicator.SetActive(true);
+        Instantiate(waveIndicator, WaveIndicatorPosition.position + (WaveIndicatorPosition.transform.up * 1) , Quaternion.Euler(90f, -60f, 0f));
+        
+             
+    }
+
+
+    public void WaveStart ()
+    {
+        startFirstWave++;
+        Debug.Log("Wave Started");
+        
+    }
+
+    void Update()
+    {
+      
+       if (startFirstWave <= 0)
+        {
+            return;
+        }
+        
+
         if (Wave.EnemiesAlive > 0 && EnemyCount > 0)
         {
             
