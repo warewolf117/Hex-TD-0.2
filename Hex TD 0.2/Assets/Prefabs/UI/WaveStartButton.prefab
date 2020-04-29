@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 6563506405678594868}
   m_LocalRotation: {x: 0.48296294, y: 0.22414392, z: -0.12940955, w: 0.8365163}
   m_LocalPosition: {x: 5.24, y: 1.287, z: 8.74}
-  m_LocalScale: {x: 1, y: 1.5, z: 1}
+  m_LocalScale: {x: 3, y: 3, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -73,7 +73,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300058, guid: 76bdad1258c27a64fa6bff9c813759cb, type: 3}
+  m_Sprite: {fileID: 21300000, guid: fac8ec2c375ec0b47ace1b7ba59a844e, type: 3}
   m_Color: {r: 1, g: 0, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -111,8 +111,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2.0000005, y: 2.56, z: 0.20000018}
-  m_Center: {x: 0, y: 0, z: -0.00000047683716}
+  m_Size: {x: 0.53983784, y: 0.5007473, z: 0.11997251}
+  m_Center: {x: 0.000927051, y: 0.00010061257, z: 0.040017415}
 --- !u!114 &6563506405678594867
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -122,22 +122,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 6563506405678594868}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 475b9b197ec179141896c59d5c557f04, type: 3}
+  m_Script: {fileID: 11500000, guid: 30feb786c50a7b547bdad236deeec1a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   waveStarter: {fileID: 6563506405678594868}
   OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 6289094773443845262, guid: 86e1a00a6f0011e4c80e3108a078dbb8,
-          type: 3}
-        m_MethodName: WaveStart
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []

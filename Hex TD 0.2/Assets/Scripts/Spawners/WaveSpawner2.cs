@@ -27,7 +27,7 @@ public class WaveSpawner2 : MonoBehaviour
     {
 
         waveIndicator.SetActive(true);
-        Instantiate(waveIndicator, WaveIndicatorPosition.position + (WaveIndicatorPosition.transform.up * 1), Quaternion.Euler(90f, -120f, 0f));
+        Instantiate(waveIndicator, WaveIndicatorPosition.position + (WaveIndicatorPosition.transform.up * 4), Quaternion.Euler(90f, -30f, 0f));
 
 
     }
