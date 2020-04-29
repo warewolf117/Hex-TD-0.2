@@ -15,6 +15,12 @@ public class EnemyDamage : MonoBehaviour
 
     private void Update()
     {
+        WallTakeDamage();
+      
+    }
+
+    public void WallTakeDamage()
+    {
         Vector3 dir = target.position - transform.position;
 
         this.damageCountdown -= Time.deltaTime;
@@ -31,20 +37,14 @@ public class EnemyDamage : MonoBehaviour
 
                     damageCountdown = 1f / attackSpeed;
 
+                    
+
                     if (healthScript.cur_health <= 0)
                     {
                         healthScript.Die();
                     }
-
                 }
-
-
             }
-
-
-
-
-
         }
     }
 }
