@@ -23,8 +23,9 @@ public class WaveSpawner : MonoBehaviour
     
     
     public Transform WaveIndicatorPosition;
+    public GameObject waveStarter;
     public GameObject waveIndicator;
-    // public GameObject WaveIndicator;
+    private bool waveIndicatorPlaced = false;
     public static int startFirstWave = 0;
     
 
@@ -42,8 +43,8 @@ public class WaveSpawner : MonoBehaviour
     private void Start()
     {
         
-        waveIndicator.SetActive(true);
-        Instantiate(waveIndicator, WaveIndicatorPosition.position + (WaveIndicatorPosition.transform.up * 4), Quaternion.Euler(90f, 30f, 0f));
+        waveStarter.SetActive(true);
+        Instantiate(waveStarter, WaveIndicatorPosition.position, Quaternion.Euler(90f, 30f, 0f));
         
              
     }
@@ -84,11 +85,21 @@ public class WaveSpawner : MonoBehaviour
         {
             StartCoroutine(SpawnWave());
             countdown = timeBetweenWaves;
+            //waveIndicator.SetActive(false);
+            waveIndicatorPlaced = false;
             return;
         }
 
         if (Wave.EnemiesAlive == 0)
         {
+            if (waveIndicatorPlaced == false)
+            {
+                Debug.Log("INCOMING WAVE");
+                Instantiate(waveIndicator, WaveIndicatorPosition.position, Quaternion.Euler(90f, 30f, 0f));
+                waveIndicatorPlaced = true;
+            }
+            
+
             countdown -= Time.deltaTime;
 
             countdown = Mathf.Clamp(countdown, 0f, Mathf.Infinity);

@@ -19,15 +19,17 @@ public class WaveSpawner2 : MonoBehaviour
     private int spawnSpacer = 1;
 
     public Transform WaveIndicatorPosition;
+    public GameObject waveStarter;
     public GameObject waveIndicator;
+    private bool waveIndicatorPlaced;
 
     private int waveIndex = 0;
 
     private void Start()
     {
 
-        waveIndicator.SetActive(true);
-        Instantiate(waveIndicator, WaveIndicatorPosition.position + (WaveIndicatorPosition.transform.up * 4), Quaternion.Euler(90f, -30f, 0f));
+        waveStarter.SetActive(true);
+        Instantiate(waveStarter, WaveIndicatorPosition.position, Quaternion.Euler(90f, -30f, 0f));
 
 
     }
@@ -42,11 +44,20 @@ public class WaveSpawner2 : MonoBehaviour
         if (WaveSpawner.countdown <= 0f)
         {
             StartCoroutine(SpawnWave());
+            waveIndicator.SetActive(false);
+            waveIndicatorPlaced = false;
             return;
         }
 
-      
-              
+        if (Wave.EnemiesAlive == 0)
+        {
+            if (waveIndicatorPlaced == false && waveIndex < 0)
+            {
+                Instantiate(waveIndicator, WaveIndicatorPosition.position, Quaternion.Euler(90f, 30f, 0f));
+            }
+            waveIndicatorPlaced = true;
+        }
+
     }
 
     IEnumerator SpawnWave()
