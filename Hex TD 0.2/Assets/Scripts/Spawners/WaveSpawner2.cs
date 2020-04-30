@@ -22,14 +22,31 @@ public class WaveSpawner2 : MonoBehaviour
     public GameObject waveStarter;
     public GameObject waveIndicator;
     private bool waveIndicatorPlaced;
+    private bool noEnemiesComing = false;
 
     private int waveIndex = 0;
 
     private void Start()
     {
+        Wave wave = waves[waveIndex];
+        waveIndex++;
+        if (wave.count == 0)
+        {
+            noEnemiesComing = true;
 
-        waveStarter.SetActive(true);
-        Instantiate(waveStarter, WaveIndicatorPosition.position, Quaternion.Euler(90f, -30f, 0f));
+        }
+        else
+        {
+            noEnemiesComing = false;
+        }
+
+        if (noEnemiesComing == false)
+        {
+            waveStarter.SetActive(true);
+            Instantiate(waveStarter, WaveIndicatorPosition.position, Quaternion.Euler(90f, -30f, 0f));
+
+        }
+        waveIndex--;
 
 
     }
@@ -44,18 +61,33 @@ public class WaveSpawner2 : MonoBehaviour
         if (WaveSpawner.countdown <= 0f)
         {
             StartCoroutine(SpawnWave());
-            waveIndicator.SetActive(false);
             waveIndicatorPlaced = false;
             return;
         }
 
         if (Wave.EnemiesAlive == 0)
         {
-            if (waveIndicatorPlaced == false && waveIndex < 0)
+            Wave wave = waves[waveIndex];
+            waveIndex++;
+            if (wave.count == 0)
             {
-                Instantiate(waveIndicator, WaveIndicatorPosition.position, Quaternion.Euler(90f, 30f, 0f));
+                noEnemiesComing = true;
+                
             }
-            waveIndicatorPlaced = true;
+            else
+            {
+                noEnemiesComing = false;
+            }
+
+            if (waveIndicatorPlaced == false && waveIndex > 1 && noEnemiesComing == false)
+            {
+                waveIndicator.SetActive(true);
+                Instantiate(waveIndicator, WaveIndicatorPosition.position, Quaternion.Euler(90f, -30f, 0f));
+         
+                waveIndicatorPlaced = true;
+            }
+            waveIndex--;
+
         }
 
     }

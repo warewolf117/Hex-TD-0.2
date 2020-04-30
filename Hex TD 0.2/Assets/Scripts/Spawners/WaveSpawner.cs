@@ -26,6 +26,7 @@ public class WaveSpawner : MonoBehaviour
     public GameObject waveStarter;
     public GameObject waveIndicator;
     private bool waveIndicatorPlaced = false;
+    private bool noEnemiesComing = false;
     public static int startFirstWave = 0;
     
 
@@ -42,11 +43,26 @@ public class WaveSpawner : MonoBehaviour
 
     private void Start()
     {
-        
-        waveStarter.SetActive(true);
+        Wave wave = waves[waveIndex];
+        waveIndex++;
+        if (wave.count == 0)
+        {
+            noEnemiesComing = true;
+
+        }
+        else
+        {
+            noEnemiesComing = false;
+        }
+
+        if (noEnemiesComing == false)
+        {
+            waveStarter.SetActive(true);
         Instantiate(waveStarter, WaveIndicatorPosition.position, Quaternion.Euler(90f, 30f, 0f));
-        
-             
+
+        }
+        waveIndex--;
+
     }
 
 
@@ -83,22 +99,43 @@ public class WaveSpawner : MonoBehaviour
 
         if (countdown <= 0f)
         {
+            
+
             StartCoroutine(SpawnWave());
             countdown = timeBetweenWaves;
-            //waveIndicator.SetActive(false);
+
+            GameObject[] objects = GameObject.FindGameObjectsWithTag("WaveIndicator");
+
+            for (int i = 0; i < objects.Length; i++)
+            {
+                Destroy(objects[i]);
+            }
             waveIndicatorPlaced = false;
             return;
         }
 
         if (Wave.EnemiesAlive == 0)
         {
-            if (waveIndicatorPlaced == false)
+            Wave wave = waves[waveIndex];
+            waveIndex++;
+            if (wave.count == 0)
             {
-                Debug.Log("INCOMING WAVE");
-                Instantiate(waveIndicator, WaveIndicatorPosition.position, Quaternion.Euler(90f, 30f, 0f));
-                waveIndicatorPlaced = true;
+                noEnemiesComing = true;
+            }
+            else
+            {
+                noEnemiesComing = false;
             }
             
+
+            if (waveIndicatorPlaced == false && waveIndex > 1 && noEnemiesComing == false)
+            {            
+                waveIndicator.SetActive(true);
+                Instantiate(waveIndicator, WaveIndicatorPosition.position, Quaternion.Euler(90f, 30f, 0f));
+                waveIndicatorPlaced = true;
+                
+            }
+            waveIndex--;
 
             countdown -= Time.deltaTime;
 
@@ -128,7 +165,9 @@ public class WaveSpawner : MonoBehaviour
             yield return new WaitForSeconds(1f / wave.rate);
         }
         waveIndex++;
-       // Debug.Log("Wave =" + waveIndex);
+       
+       
+
     }
 
     void SpawnEnemy(GameObject enemy)
