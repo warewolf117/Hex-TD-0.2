@@ -7,7 +7,7 @@ public class Bullet : MonoBehaviour
 
     private Transform target;
 
-    public float damage = 30f;
+    public int damage = 30;
     public float speed = 70f;
     public float SplashRadius = 0f;
     public GameObject impactEffect;
@@ -25,7 +25,6 @@ public class Bullet : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
 
 
         TargetAquired = true;
@@ -65,7 +64,8 @@ public class Bullet : MonoBehaviour
 
     void HitTarget()
     {
-        
+        damage = Random.Range(damage - (damage/7), damage + (damage/6));
+
 
         if (SplashRadius > 0f)
         {
