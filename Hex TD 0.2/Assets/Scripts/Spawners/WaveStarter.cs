@@ -30,7 +30,7 @@ public class WaveStarter : MonoBehaviour
             if (Physics.Raycast(ray, out Hit) && Hit.collider.gameObject == gameObject)
             {
                 Debug.Log("Button Clicked");
-                WaveSpawner.startFirstWave++;
+                WaveSpawnerTopRight_Main.startFirstWave++;
                 OnClick.Invoke();
 
                     GameObject[] objects = GameObject.FindGameObjectsWithTag("WaveIndicator");

@@ -16,9 +16,25 @@ public class DamagePopup2: MonoBehaviour
         return damagePopup;
     }
 
+    public static DamagePopup2 CreateLaser(Vector3 position, float damageAmount)
+    {
+
+             float f = damageAmount;
+             f = Mathf.Round(f * 1.0f) * 1f;
+             Transform damagePopupTransform = Instantiate(GameAssets.i.pfDamagePopup, position + Vector3.up * 2 , Quaternion.identity);
+             DamagePopup2 damagePopupL = damagePopupTransform.GetComponent<DamagePopup2>();
+            
+            
+            damagePopupL.SetupL(f);
+            return damagePopupL;  
+        
+
+    }
+
     private static int sortingOrder;
 
     private const float DISAPPEAR_TIMER_MAX = 0.2f;
+  
 
     private TextMeshPro textMesh;
     private float disappearTimer;
@@ -29,10 +45,25 @@ public class DamagePopup2: MonoBehaviour
         textMesh = transform.GetComponent<TextMeshPro>();
     }
 
+    public void SetupL(float damageAmount)
+    {
+        Color Lasercolor = Color.magenta;
+        textMesh.SetText(damageAmount.ToString());
+        textMesh.color = Lasercolor;
+        disappearTimer = DISAPPEAR_TIMER_MAX;
+
+        moveVector = new Vector3(-0.7f, 1) * 10f;
+
+        sortingOrder++;
+        textMesh.sortingOrder = sortingOrder;
+    }
+
     public void Setup(float damageAmount)
     {
+       
         textMesh.SetText(damageAmount.ToString());
         textColor = textMesh.color;
+        
         disappearTimer = DISAPPEAR_TIMER_MAX;
 
         moveVector = new Vector3(.7f,1) * 15f;

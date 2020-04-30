@@ -30,7 +30,7 @@ public class ScreenFader : MonoBehaviour
             yield return 0; //skips to the next frame
         }
         Wave.EnemiesAlive = 0;
-        WaveSpawner.EnemyCount = 0;
+        WaveSpawnerTopRight_Main.EnemyCount = 0;
         //load a scene
     }
 

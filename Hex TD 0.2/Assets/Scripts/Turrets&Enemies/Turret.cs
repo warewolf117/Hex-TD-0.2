@@ -164,7 +164,7 @@ public class Turret : MonoBehaviour
     void Laser()
 
     {
-        targetEnemy.takeDamage(damageOverTime * Time.deltaTime);
+        targetEnemy.takeDamageLaser(damageOverTime * Time.deltaTime);
         targetEnemyM.Slow(Slowpct);
 
         if (!lineRenderer.enabled)
