@@ -4,8 +4,8 @@ using System.Collections;
 public class MobileCameraControl : MonoBehaviour
 {
 
-    private static readonly float PanSpeed = 5f;
-    private static readonly float ZoomSpeedTouch = 0.1f;
+    private static readonly float PanSpeed = 10f;
+    private static readonly float ZoomSpeedTouch = 0.5f;
     private static readonly float ZoomSpeedMouse = 5f;
 
     private static readonly float[] BoundsX = new float[] { -10f, 5f };
@@ -26,8 +26,8 @@ public class MobileCameraControl : MonoBehaviour
     {
         xx = 1920;
         yy = 1080;
-        Screen.SetResolution(xx, yy, true);
-        cam.aspect = 16 / 9;
+        // Screen.SetResolution(xx, yy, true);
+        // cam.aspect = 16 / 9;
     }
         void Awake()
     {
