@@ -4,8 +4,8 @@ using System.Collections;
 public class MobileCameraControl : MonoBehaviour
 {
 
-    private static readonly float PanSpeed = 10f;
-    private static readonly float ZoomSpeedTouch = 0.5f;
+    private static readonly float PanSpeed = 5f;
+    private static readonly float ZoomSpeedTouch = 0.1f;
     private static readonly float ZoomSpeedMouse = 5f;
 
     private static readonly float[] BoundsX = new float[] { -10f, 5f };
