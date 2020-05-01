@@ -88,7 +88,7 @@ public class WaveSpawnerTopRight_Main : MonoBehaviour
             return;
         }
 
-        if (waveIndex == waves.Length)
+        if (waveIndex == waves.Length && Wave.EnemiesAlive == 0)
         {
             waveCountdownText.enabled = false;
             levelCleared.text = "LEVEL CLEARED";

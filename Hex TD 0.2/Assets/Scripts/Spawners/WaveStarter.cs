@@ -6,8 +6,8 @@ using UnityEngine.Events;
 public class WaveStarter : MonoBehaviour
 {
     public GameObject waveStarter;
-    public UnityEvent OnClick = new UnityEvent();
-
+   // public UnityEvent OnClick = new UnityEvent();
+   // OnClick.Invoke();
      
 
 
@@ -19,6 +19,8 @@ public class WaveStarter : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
+
         if (waveStarter == enabled)
         {
 
@@ -31,7 +33,7 @@ public class WaveStarter : MonoBehaviour
             {
                 Debug.Log("Button Clicked");
                 WaveSpawnerTopRight_Main.startFirstWave++;
-                OnClick.Invoke();
+                
 
                     GameObject[] objects = GameObject.FindGameObjectsWithTag("WaveIndicator");
                 
@@ -43,6 +45,5 @@ public class WaveStarter : MonoBehaviour
             }
         }
         }
-
     }
 }

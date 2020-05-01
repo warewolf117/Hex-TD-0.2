@@ -89,8 +89,8 @@ MeshRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: 4dedfe34ea7fc2d459cc0ca6405875c7, type: 2}
-  - {fileID: 2100000, guid: 2bd04c192593ee241a85485475c3cca5, type: 2}
-  - {fileID: 2100000, guid: aac59335530046c488c1a4a15988e06f, type: 2}
+  - {fileID: 2100000, guid: e32d7d32b35da4f4f8386bd2858ba8b1, type: 2}
+  - {fileID: 2100000, guid: aaaf51e2fadef4742810f194a57aaf88, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -162,8 +162,10 @@ MonoBehaviour:
     type: 3}
   fireRate: 1.5
   useLaser: 0
+  focusBack: 0
+  damageOverTime: 30
+  Slowpct: 0.3
   lineRenderer: {fileID: 0}
-  laserImpact: {fileID: 0}
   enemyTag: Enemy
   partToRotate: {fileID: 3581172146614571055}
   turnSpeed: 10
@@ -339,8 +341,8 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 2bd04c192593ee241a85485475c3cca5, type: 2}
-  - {fileID: 2100000, guid: 4dedfe34ea7fc2d459cc0ca6405875c7, type: 2}
+  - {fileID: 2100000, guid: e32d7d32b35da4f4f8386bd2858ba8b1, type: 2}
+  - {fileID: 2100000, guid: e32d7d32b35da4f4f8386bd2858ba8b1, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
