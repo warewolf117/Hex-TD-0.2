@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Bullet : MonoBehaviour
+public class Missile : MonoBehaviour
 {
 
     private Transform target;
@@ -17,7 +17,7 @@ public class Bullet : MonoBehaviour
 
     private bool TargetAquired = false;
 
-    public void Seek(Transform _target)
+    public void Seek1(Transform _target)
     {
         target = _target;
     }
@@ -30,7 +30,7 @@ public class Bullet : MonoBehaviour
         TargetAquired = true;
         float distancePerFrame = speed * Time.deltaTime;
 
-       
+
         if (TargetAquired == true && target != null)
         {
             TargetPosition = target.position;
@@ -53,7 +53,7 @@ public class Bullet : MonoBehaviour
         {
 
             HitTarget();
-            BulletPooler.Instance.AddToPool(gameObject);
+            MissilePooler.Instance.AddToPool(gameObject);
             //Destroy(gameObject);
             TargetAquired = false;
             return;
@@ -65,25 +65,37 @@ public class Bullet : MonoBehaviour
 
     void HitTarget()
     {
-        damage = Random.Range(damage - (damage/7), damage + (damage/6));
+        damage = Random.Range(damage - (damage / 7), damage + (damage / 6));
 
 
-       
-            if (target != null)
+        if (SplashRadius > 0f)
+        {
+            Explode();
+        }
+
+        void Explode()
+        {
+            GameObject effectIns = (GameObject)Instantiate(impactEffect, transform.position, transform.rotation);
+            Destroy(effectIns, 0.8f);
+            //OverlapSphere creates a sphere and checks for all colliders that are in range of the sphere. Collider array to store all objects hit by sphere.
+            Collider[] colliders = Physics.OverlapSphere(transform.position, SplashRadius);
+
+            foreach (Collider collider in colliders) //for each object hit by the sphere, if tagged as Enemy then damage.
             {
-                GameObject effectIns = (GameObject)Instantiate(impactEffect, transform.position, transform.rotation);
-                Destroy(effectIns, 0.2f);
-                Damage(target);
+                if (collider.tag == "Enemy")
+                {
+                    Damage(collider.transform);
+                }
             }
-
+        }
 
         void Damage(Transform target)
         {
             Health healthScript = target.transform.gameObject.GetComponent<Health>();
-            
+
             healthScript.takeDamage(damage);
 
-           
+
 
         }
 
