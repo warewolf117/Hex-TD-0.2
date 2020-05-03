@@ -88,9 +88,9 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 4dedfe34ea7fc2d459cc0ca6405875c7, type: 2}
-  - {fileID: 2100000, guid: 851606413f9fc6b4bbb169e012590ab7, type: 2}
-  - {fileID: 2100000, guid: aac59335530046c488c1a4a15988e06f, type: 2}
+  - {fileID: 2100000, guid: ec8cc910d2d8dbd4ea0b4cecdf397a8b, type: 2}
+  - {fileID: 2100000, guid: ec8cc910d2d8dbd4ea0b4cecdf397a8b, type: 2}
+  - {fileID: 2100000, guid: e32d7d32b35da4f4f8386bd2858ba8b1, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -158,10 +158,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   range: 10
+  bulletPrefab: {fileID: 3202347554510308892, guid: 13d53ffd0b91f41479ce558c03e9dd10,
+    type: 3}
   fireRate: 3
   useLaser: 0
-  useBullet: 1
-  useMissile: 0
   focusBack: 0
   damageOverTime: 30
   Slowpct: 0.3
@@ -230,7 +230,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 2bd04c192593ee241a85485475c3cca5, type: 2}
+  - {fileID: 2100000, guid: 61255af9920503a409e8bdeb4358efea, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -341,8 +341,8 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 2bd04c192593ee241a85485475c3cca5, type: 2}
-  - {fileID: 2100000, guid: 4dedfe34ea7fc2d459cc0ca6405875c7, type: 2}
+  - {fileID: 2100000, guid: ec8cc910d2d8dbd4ea0b4cecdf397a8b, type: 2}
+  - {fileID: 2100000, guid: e32d7d32b35da4f4f8386bd2858ba8b1, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

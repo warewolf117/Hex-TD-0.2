@@ -4,13 +4,13 @@ using System.Collections;
 public class MobileCameraControl : MonoBehaviour
 {
 
-    private static readonly float PanSpeed = 10f;
-    private static readonly float ZoomSpeedTouch = 0.5f;
+    private static readonly float PanSpeed = 5f;
+    private static readonly float ZoomSpeedTouch = 0.1f;
     private static readonly float ZoomSpeedMouse = 5f;
 
-    private static readonly float[] BoundsX = new float[] { -10f, 5f };
-    private static readonly float[] BoundsZ = new float[] { -18f, -4f };
-    private static readonly float[] ZoomBounds = new float[] { 10f, 85f };
+    private static readonly float[] BoundsX = new float[] { -3f, 3f };
+    private static readonly float[] BoundsZ = new float[] { -12f, -6f };
+    private static readonly float[] ZoomBounds = new float[] { 40f, 60f };
 
     private Camera cam;
 
@@ -20,13 +20,12 @@ public class MobileCameraControl : MonoBehaviour
     private bool wasZoomingLastFrame; // Touch mode only
     private Vector2[] lastZoomPositions; // Touch mode only
 
-    public int xx = 1920, yy = 1080;
+
     
     void Start()
     {
-        xx = 1920;
-        yy = 1080;
-        // Screen.SetResolution(xx, yy, true);
+
+        Screen.SetResolution(1280, 720, true);
         // cam.aspect = 16 / 9;
     }
         void Awake()

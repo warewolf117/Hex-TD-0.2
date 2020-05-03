@@ -126,6 +126,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   waveStarter: {fileID: 6563506405678594868}
-  OnClick:
-    m_PersistentCalls:
-      m_Calls: []
