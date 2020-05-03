@@ -22,7 +22,7 @@ public class Bullet : MonoBehaviour
         target = _target;
     }
 
-
+    // Update is called once per frame
     void Update()
     {
 
@@ -53,8 +53,7 @@ public class Bullet : MonoBehaviour
         {
 
             HitTarget();
-            BulletPooler.Instance.AddToPool(gameObject);
-            //Destroy(gameObject);
+            Destroy(gameObject);
             TargetAquired = false;
             return;
 
@@ -68,7 +67,12 @@ public class Bullet : MonoBehaviour
         damage = Random.Range(damage - (damage/7), damage + (damage/6));
 
 
-       
+        if (SplashRadius > 0f)
+        {
+            Explode();
+        }
+        else
+        {
             if (target != null)
             {
                 GameObject effectIns = (GameObject)Instantiate(impactEffect, transform.position, transform.rotation);
@@ -76,6 +80,23 @@ public class Bullet : MonoBehaviour
                 Damage(target);
             }
 
+        }
+
+        void Explode()
+        {
+            GameObject effectIns = (GameObject)Instantiate(impactEffect, transform.position, transform.rotation);
+            Destroy(effectIns, 0.8f);
+            //OverlapSphere creates a sphere and checks for all colliders that are in range of the sphere. Collider array to store all objects hit by sphere.
+            Collider[] colliders = Physics.OverlapSphere(transform.position, SplashRadius);
+
+            foreach (Collider collider in colliders) //for each object hit by the sphere, if tagged as Enemy then damage.
+            {
+                if (collider.tag == "Enemy")
+                {
+                    Damage(collider.transform);
+                }
+            }
+        }
 
         void Damage(Transform target)
         {

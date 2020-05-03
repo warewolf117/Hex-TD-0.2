@@ -8,8 +8,6 @@ public class Turret : MonoBehaviour
     private Health targetEnemy;
     private BasicMovement targetEnemyM;
 
-    BulletPooler bulletPooler;
-    MissilePooler missilePooler;
 
     [Header("General")]
 
@@ -17,17 +15,13 @@ public class Turret : MonoBehaviour
 
     [Header("Use Bullets (default)")]
 
-    //public GameObject bulletPrefab;
+    public GameObject bulletPrefab;
     public float fireRate = 1f;
     private float fireCountdown = 0f;
 
     [Header("Use Laser")]
 
     public bool useLaser = false;
-
-    public bool useBullet = false;
-
-    public bool useMissile = false;
 
     public bool focusBack = false;
 
@@ -52,8 +46,6 @@ public class Turret : MonoBehaviour
 
     void Start()
     {
-        bulletPooler = BulletPooler.Instance;
-        missilePooler = MissilePooler.Instance;
         InvokeRepeating("UpdateTarget", 0f, 0.5f);  //Calls Update target twice per second (to avoid it looking for a new target too fast)
     }
 
@@ -196,29 +188,11 @@ public class Turret : MonoBehaviour
 
     void Shoot()
     {
-        if (useBullet)
-        {
-            GameObject bulletGO = BulletPooler.Instance.GetFromPool();
-            bulletGO.transform.position = firePoint.position;
-            bulletGO.transform.rotation = firePoint.rotation;
-            Bullet bullet = bulletGO.GetComponent<Bullet>();
+        GameObject bulletGO = (GameObject)Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+        Bullet bullet = bulletGO.GetComponent<Bullet>();
 
-
-            if (bullet != null)
-                bullet.Seek(target);
-        }
-        if (useMissile)
-        {
-            GameObject missileGO = MissilePooler.Instance.GetFromPool();
-            missileGO.transform.position = firePoint.position;
-            missileGO.transform.rotation = firePoint.rotation;
-            Missile missile = missileGO.GetComponent<Missile>();
-
-
-            if (missile != null)
-                missile.Seek1(target);
-        }
-
+        if (bullet != null)
+            bullet.Seek(target);
     }
 
 
