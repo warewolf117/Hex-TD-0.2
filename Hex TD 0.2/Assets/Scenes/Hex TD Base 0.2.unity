@@ -3825,7 +3825,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13a61e1fec654404dac0f7e087b31f48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefab: {fileID: 2864666841318716826, guid: 1a8f5f42c5ee3344c85c3104f480acdd, type: 3}
+  missilePrefab: {fileID: 2864666841318716826, guid: 1a8f5f42c5ee3344c85c3104f480acdd,
+    type: 3}
+  missileEffectPrefab: {fileID: 100002, guid: f7efb0d9df2264096af57128df85dddb, type: 3}
 --- !u!114 &1994524848
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3840,6 +3842,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 3202347554510308892, guid: 13d53ffd0b91f41479ce558c03e9dd10,
     type: 3}
+  bulletEffectPrefab: {fileID: 100000, guid: 876cb26c7c6ab42e49a9cace28b90b8b, type: 3}
 --- !u!4 &1994524849
 Transform:
   m_ObjectHideFlags: 0

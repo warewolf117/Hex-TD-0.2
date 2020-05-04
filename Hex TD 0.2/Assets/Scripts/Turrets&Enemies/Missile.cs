@@ -11,6 +11,7 @@ public class Missile : MonoBehaviour
     public float speed = 70f;
     public float SplashRadius = 0f;
     public GameObject impactEffect;
+    public GameObject effectIns;
 
     Vector3 TargetPosition;
     Vector3 dir;
@@ -75,8 +76,12 @@ public class Missile : MonoBehaviour
 
         void Explode()
         {
-            GameObject effectIns = (GameObject)Instantiate(impactEffect, transform.position, transform.rotation);
-            Destroy(effectIns, 0.8f);
+            //effectIns = (GameObject)Instantiate(impactEffect, transform.position, transform.rotation);
+            effectIns = MissilePooler.Instance.EffectGetFromPool();
+            effectIns.transform.position = transform.position;
+            effectIns.transform.rotation = transform.rotation;
+            //Destroy(effectIns, 0.8f);
+            Invoke("Destroy", 0.8f);
             //OverlapSphere creates a sphere and checks for all colliders that are in range of the sphere. Collider array to store all objects hit by sphere.
             Collider[] colliders = Physics.OverlapSphere(transform.position, SplashRadius);
 
@@ -98,7 +103,12 @@ public class Missile : MonoBehaviour
 
 
         }
+        
 
+    }
+    void Destroy()
+    {
+        MissilePooler.Instance.EffectAddToPool(effectIns);
     }
     void OnDrawGizmosSelected()
     {

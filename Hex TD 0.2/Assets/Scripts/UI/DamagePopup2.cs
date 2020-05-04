@@ -5,10 +5,10 @@ using TMPro;
 
 public class DamagePopup2: MonoBehaviour
 {
-    
-
+   
     public static DamagePopup2 Create(Vector3 position, float damageAmount)
     {
+        
         Transform damagePopupTransform = Instantiate(GameAssets.i.pfDamagePopup, position, Quaternion.identity);
         DamagePopup2 damagePopup = damagePopupTransform.GetComponent<DamagePopup2>();
         damagePopup.Setup(damageAmount);
@@ -40,6 +40,9 @@ public class DamagePopup2: MonoBehaviour
     private float disappearTimer;
     private Color textColor;
     private Vector3 moveVector;
+
+
+
     private void Awake()
     {
         textMesh = transform.GetComponent<TextMeshPro>();
@@ -98,6 +101,7 @@ public class DamagePopup2: MonoBehaviour
             if (textColor.a <0)
             {
                 Destroy(gameObject);
+                //gameObject.SetActive(false);
             }
         }
     }

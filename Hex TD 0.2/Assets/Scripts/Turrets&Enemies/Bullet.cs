@@ -11,6 +11,7 @@ public class Bullet : MonoBehaviour
     public float speed = 70f;
     public float SplashRadius = 0f;
     public GameObject impactEffect;
+    public GameObject effectIns;
 
     Vector3 TargetPosition;
     Vector3 dir;
@@ -63,7 +64,7 @@ public class Bullet : MonoBehaviour
 
     }
 
-    void HitTarget()
+     void HitTarget()
     {
         damage = Random.Range(damage - (damage / 7), damage + (damage / 6));
 
@@ -71,8 +72,16 @@ public class Bullet : MonoBehaviour
 
         if (target != null)
         {
-            GameObject effectIns = (GameObject)Instantiate(impactEffect, transform.position, transform.rotation);
-            Destroy(effectIns, 0.2f);
+            //GameObject effectIns = (GameObject)Instantiate(impactEffect, transform.position, transform.rotation); 
+            effectIns = BulletPooler.Instance.EffectGetFromPool();
+            effectIns.transform.position = transform.position;
+            effectIns.transform.rotation = transform.rotation;
+            
+            //BulletPooler.Instance.EffectAddToPool(effectIns);
+            Invoke("Enqueue", 0.3f);
+
+            //Destroy(effectIns, 0.2f);
+
             Damage(target);
         }
 
@@ -88,6 +97,14 @@ public class Bullet : MonoBehaviour
         }
 
     }
+    void Enqueue()
+    {
+        BulletPooler.Instance.EffectAddToPool(effectIns);
+    }
+
+
+
+
     void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
