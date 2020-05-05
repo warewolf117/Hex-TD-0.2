@@ -3,13 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class DamagePopup2: MonoBehaviour
+public class DamagePopup2 : MonoBehaviour
 {
-   
+
     public static DamagePopup2 Create(Vector3 position, float damageAmount)
     {
-        
-        Transform damagePopupTransform = Instantiate(GameAssets.i.pfDamagePopup, position, Quaternion.identity);
+
+        GameObject damagePopupTransform = DmgPopUpPooler.Instance.GetFromPool();
+        damagePopupTransform.transform.position = position;
+        damagePopupTransform.transform.rotation = Quaternion.identity;
+        //Transform damagePopupTransform = Instantiate(GameAssets.i.pfDamagePopup, position, Quaternion.identity);
         DamagePopup2 damagePopup = damagePopupTransform.GetComponent<DamagePopup2>();
         damagePopup.Setup(damageAmount);
 
@@ -19,22 +22,26 @@ public class DamagePopup2: MonoBehaviour
     public static DamagePopup2 CreateLaser(Vector3 position, float damageAmount)
     {
 
-             float f = damageAmount;
-             f = Mathf.Round(f * 1.0f) * 1f;
-             Transform damagePopupTransform = Instantiate(GameAssets.i.pfDamagePopup, position + Vector3.up * 2 , Quaternion.identity);
-             DamagePopup2 damagePopupL = damagePopupTransform.GetComponent<DamagePopup2>();
-            
-            
-            damagePopupL.SetupL(f);
-            return damagePopupL;  
-        
+        float f = damageAmount;
+        f = Mathf.Round(f * 1.0f) * 1f;
+        GameObject damagePopupTransform = DmgPopUpPooler.Instance.GetFromPool();
+        damagePopupTransform.transform.position = position + Vector3.up * 2;
+        damagePopupTransform.transform.rotation = Quaternion.identity;
+
+        //Transform damagePopupTransform = Instantiate(GameAssets.i.pfDamagePopup, position + Vector3.up * 2 , Quaternion.identity);
+        DamagePopup2 damagePopupL = damagePopupTransform.GetComponent<DamagePopup2>();
+
+
+        damagePopupL.SetupL(f);
+        return damagePopupL;
+
 
     }
 
     private static int sortingOrder;
 
     private const float DISAPPEAR_TIMER_MAX = 0.2f;
-  
+
 
     private TextMeshPro textMesh;
     private float disappearTimer;
@@ -63,13 +70,12 @@ public class DamagePopup2: MonoBehaviour
 
     public void Setup(float damageAmount)
     {
-       
+        Color turretcolor = Color.white;
         textMesh.SetText(damageAmount.ToString());
-        textColor = textMesh.color;
-        
+        textMesh.color = turretcolor;
         disappearTimer = DISAPPEAR_TIMER_MAX;
 
-        moveVector = new Vector3(.7f,1) * 15f;
+        moveVector = new Vector3(.7f, 1) * 15f;
 
         sortingOrder++;
         textMesh.sortingOrder = sortingOrder;
@@ -77,7 +83,7 @@ public class DamagePopup2: MonoBehaviour
 
     private void Update()
     {
-        
+
         transform.position += (moveVector * Time.deltaTime);
         moveVector -= moveVector * 8f * Time.deltaTime;
 
@@ -93,15 +99,15 @@ public class DamagePopup2: MonoBehaviour
         }
 
         disappearTimer -= Time.deltaTime;
-        if(disappearTimer < 0)
+        if (disappearTimer < 0)
         {
-            float disappearSpeed = 2f;
+            float disappearSpeed = 3f;
             textColor.a -= disappearSpeed * Time.deltaTime;
             textMesh.color = textColor;
-            if (textColor.a <0)
+            if (textColor.a < 0)
             {
-                Destroy(gameObject);
-                //gameObject.SetActive(false);
+                // Destroy(gameObject);
+                DmgPopUpPooler.Instance.AddToPool(gameObject);
             }
         }
     }
