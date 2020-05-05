@@ -10,7 +10,7 @@ public class MobileCameraControl : MonoBehaviour
 
     private static readonly float[] BoundsX = new float[] { -3f, 3f };
     private static readonly float[] BoundsZ = new float[] { -12f, -6f };
-    private static readonly float[] ZoomBounds = new float[] { 40f, 60f };
+    private static readonly float[] ZoomBounds = new float[] { 40f, 80f };
 
     private Camera cam;
 

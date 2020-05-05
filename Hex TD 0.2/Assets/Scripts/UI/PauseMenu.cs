@@ -34,6 +34,7 @@ public class PauseMenu : MonoBehaviour
         Time.timeScale = 1f;
         //scenemanager.loadscene() selects the scene to load, in this we load the current scene
         screenFader.FadeTo(SceneManager.GetActiveScene().name);
+        WaveSpawnerTopRight_Main.startFirstWave = 0;
     }
 
     public void Exit ()
