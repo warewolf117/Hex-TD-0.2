@@ -68,7 +68,7 @@ public class MissilePooler : MonoBehaviour
         for (int i = 0; i < 5; i++)
         {
             var effectInstanceToAdd = Instantiate(missileEffectPrefab);
-            //effectInstanceToAdd.transform.SetParent(transform);
+            effectInstanceToAdd.transform.SetParent(transform);
             EffectAddToPool(effectInstanceToAdd);
         }
     }

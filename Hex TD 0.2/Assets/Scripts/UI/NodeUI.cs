@@ -1,10 +1,12 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public class NodeUI : MonoBehaviour
 {
 
     public GameObject ui;
+    public GameObject disableUIButton;
 
     public Text upgradeCost;
     public Text fireRate;
@@ -19,6 +21,8 @@ public class NodeUI : MonoBehaviour
     private Node target;
     public Button upgradeButton;
 
+
+   
 
     public void SetTarget(Node _target)
     {
@@ -42,7 +46,7 @@ public class NodeUI : MonoBehaviour
         {
             upgradeCost.text = "$" + target.turretBlueprint.upgradeCost;
             upgradeButton.interactable = true;
-            
+
             fireRate.text = target.turretBlueprint.GetFireRate().ToString();
             damage.text = target.turretBlueprint.GetDamage().ToString();
             range.text = target.turretBlueprint.GetRange().ToString();
@@ -55,21 +59,29 @@ public class NodeUI : MonoBehaviour
             upgradeButton.interactable = false;
         }
 
-        
+
 
         ui.SetActive(true);
+        
+        
+            disableUIButton.SetActive(true);
+        
+        
+
     }
 
     public void Hide()
     {
-        ui.SetActive(false);
+        disableUIButton.SetActive(false);
+        ui.SetActive(false);      
     }
 
 
     public void Upgrade() 
     {
         target.UpgradeTurret();
-        BuildManager.instance.DeselectNode(); //hides menu when upgrade is done
+        BuildManager.instance.DeselectNode();
+        Hide();                               //hides menu when upgrade is done
                                               //need to use this function so that node is deselected too instead of just hiding the
                                               //ui which is what the Hide() function does
 
@@ -90,5 +102,6 @@ public class NodeUI : MonoBehaviour
         
         
     }
+
 
 }
