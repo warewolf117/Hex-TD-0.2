@@ -22,7 +22,6 @@ public class NodeUI : MonoBehaviour
     public Button upgradeButton;
 
 
-   
 
     public void SetTarget(Node _target)
     {
@@ -64,7 +63,7 @@ public class NodeUI : MonoBehaviour
         ui.SetActive(true);
         
         
-            disableUIButton.SetActive(true);
+            
         
         
 
@@ -72,16 +71,20 @@ public class NodeUI : MonoBehaviour
 
     public void Hide()
     {
+        ui.SetActive(false);
+              
+    }
+
+    public void DeactivateButton()
+    {
         disableUIButton.SetActive(false);
-        ui.SetActive(false);      
     }
 
 
     public void Upgrade() 
     {
         target.UpgradeTurret();
-        BuildManager.instance.DeselectNode();
-        Hide();                               //hides menu when upgrade is done
+        BuildManager.instance.DeselectNode(); //hides menu when upgrade is done
                                               //need to use this function so that node is deselected too instead of just hiding the
                                               //ui which is what the Hide() function does
 
@@ -102,6 +105,13 @@ public class NodeUI : MonoBehaviour
         
         
     }
-
+    public void Update()
+    {
+        if (ui.activeSelf)
+        {
+            disableUIButton.SetActive(true);
+        }
+        
+    }
 
 }
