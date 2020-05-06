@@ -5,14 +5,35 @@ public class NodeUI : MonoBehaviour
 {
 
     public GameObject ui;
+
     public Text upgradeCost;
+    public Text fireRate;
+    public Text damage;
+    public Text range;
+    public Text sellAmmount;
+
+    public TurretBlueprint standartTurret;
+    public TurretBlueprint missileLauncher;
+    public TurretBlueprint laserTurret;
+
     private Node target;
     public Button upgradeButton;
-    public Text sellAmmount;
+
 
     public void SetTarget(Node _target)
     {
+
+
         target = _target;
+
+        fireRate.text = target.turretBlueprint.GetUpgradedFireRate().ToString();
+        damage.text = target.turretBlueprint.GetUpgradedDamage().ToString();
+        range.text = target.turretBlueprint.GetUpgradedRange().ToString();
+
+        sellAmmount.text = "$" + target.turretBlueprint.GetUpgradedSellAmount();
+
+
+
 
         //transform.position = target.GetBuildPosition(); //this uses the node location with the offset
         // we made before
@@ -21,6 +42,12 @@ public class NodeUI : MonoBehaviour
         {
             upgradeCost.text = "$" + target.turretBlueprint.upgradeCost;
             upgradeButton.interactable = true;
+            
+            fireRate.text = target.turretBlueprint.GetFireRate().ToString();
+            damage.text = target.turretBlueprint.GetDamage().ToString();
+            range.text = target.turretBlueprint.GetRange().ToString();
+
+            sellAmmount.text = "$" + target.turretBlueprint.GetSellAmount();
         }
         else
         {
@@ -28,7 +55,7 @@ public class NodeUI : MonoBehaviour
             upgradeButton.interactable = false;
         }
 
-        sellAmmount.text = "$" + target.turretBlueprint.GetSellAmount();
+        
 
         ui.SetActive(true);
     }
@@ -38,18 +65,30 @@ public class NodeUI : MonoBehaviour
         ui.SetActive(false);
     }
 
-    public void Upgrade() //
+
+    public void Upgrade() 
     {
         target.UpgradeTurret();
         BuildManager.instance.DeselectNode(); //hides menu when upgrade is done
-        //need to use this function so that node is deselected too instead of just hiding the
-        //ui which is what the Hide() function does
+                                              //need to use this function so that node is deselected too instead of just hiding the
+                                              //ui which is what the Hide() function does
+
     }
 
     public void Sell()
     {
-        target.SellTurret();
-        BuildManager.instance.DeselectNode(); //deselects node after selling turret
+        if (target.isUpgraded)
+        {
+            target.SellUpgradedTurret();
+            BuildManager.instance.DeselectNode();
+        }
+        else
+        {
+            target.SellTurret();
+            BuildManager.instance.DeselectNode(); //deselects node after selling turret
+        }
+        
+        
     }
 
 }
