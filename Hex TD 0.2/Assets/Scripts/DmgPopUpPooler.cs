@@ -40,7 +40,7 @@ public class DmgPopUpPooler : MonoBehaviour
         for (int i = 0; i < 10; i++)
         {
             var instanceToAdd = Instantiate(popUpPrefab);
-            //instanceToAdd.transform.SetParent(transform);
+            instanceToAdd.transform.SetParent(transform);
             AddToPool(instanceToAdd);
         }
     }

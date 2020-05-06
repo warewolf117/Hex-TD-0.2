@@ -68,7 +68,7 @@ public class BulletPooler : MonoBehaviour
         for (int i = 0; i < 10; i++)
         {
             var effectInstanceToAdd = Instantiate(bulletEffectPrefab);
-            //effectInstanceToAdd.transform.SetParent(transform);
+            effectInstanceToAdd.transform.SetParent(transform);
             EffectAddToPool(effectInstanceToAdd);
         }
     }
