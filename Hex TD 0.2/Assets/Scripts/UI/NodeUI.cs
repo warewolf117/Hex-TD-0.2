@@ -1,12 +1,14 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using Boo.Lang;
 
 public class NodeUI : MonoBehaviour
 {
 
     public GameObject ui;
     public GameObject disableUIButton;
+    private bool checkUI = false;
 
     public Text upgradeCost;
     public Text fireRate;
@@ -61,6 +63,7 @@ public class NodeUI : MonoBehaviour
 
 
         ui.SetActive(true);
+        checkUI = true;
         
         
             
@@ -77,7 +80,12 @@ public class NodeUI : MonoBehaviour
 
     public void DeactivateButton()
     {
-        disableUIButton.SetActive(false);
+        if (checkUI)
+        {
+            disableUIButton.SetActive(false);
+            checkUI = false;
+        }
+            
     }
 
 

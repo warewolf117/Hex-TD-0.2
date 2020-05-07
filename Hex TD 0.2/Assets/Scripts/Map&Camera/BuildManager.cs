@@ -49,11 +49,11 @@ public class BuildManager : MonoBehaviour
     //the following lines till line 71 is so that nodes and turrets cant be selected at the same time  
     public void SelectNode (Node node)
     {
-        if(selectedNode == node)
+        /*if(selectedNode == node)
         {
             DeselectNode();
             return;
-        }
+        }*/
         selectedNode = node;
         turretToBuild = null;
 
