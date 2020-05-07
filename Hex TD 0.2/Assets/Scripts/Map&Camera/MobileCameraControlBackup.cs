@@ -10,6 +10,7 @@ public class MobileCameraControlBackup : MonoBehaviour
 
     private static readonly float PanSpeed = 1f;
 
+
     private static readonly float[] BoundsX = new float[] { -3f, 3f };
     private static readonly float[] BoundsZ = new float[] { -12f, -6f };
 
@@ -167,6 +168,7 @@ public class MobileCameraControlBackup : MonoBehaviour
                     PanCamera(Input.GetTouch(0).deltaPosition.x);
                 }
                 break;
+
         }
     }
 
@@ -182,6 +184,7 @@ public class MobileCameraControlBackup : MonoBehaviour
         {
             PanCamera(Input.GetAxis("Mouse X"));
         }
+
     }
 
     void PanCamera(float newPanPosition)
@@ -194,7 +197,6 @@ public class MobileCameraControlBackup : MonoBehaviour
 
             transform.Rotate(move, Space.World);
         }
-
 
     }
 }
