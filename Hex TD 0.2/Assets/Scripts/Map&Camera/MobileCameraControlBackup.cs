@@ -8,8 +8,8 @@ using System.Collections.Specialized;
 public class MobileCameraControlBackup : MonoBehaviour
 {
 
-    private static readonly float PanSpeed = 2f;
-    private static readonly float ZoomSpeedTouch = 0.5f;
+    private static readonly float PanSpeed = 1f;
+    private static readonly float ZoomSpeedTouch = 5f;
     private static readonly float ZoomSpeedMouse = 5f;
 
     private static readonly float[] BoundsX = new float[] { -3f, 3f };
@@ -180,11 +180,11 @@ public class MobileCameraControlBackup : MonoBehaviour
                 {
                     // Zoom based on the distance between the new positions compared to the 
                     // distance between the previous positions.
-                    float newDistance = Vector2.Distance(newPositions[0], newPositions[1]);
-                    float oldDistance = Vector2.Distance(lastZoomPositions[0], lastZoomPositions[1]);
-                    float offset = newDistance - oldDistance;
+                   // float newDistance = Vector2.Distance(newPositions[0], newPositions[1]);
+                   // float oldDistance = Vector2.Distance(lastZoomPositions[0], lastZoomPositions[1]);
+                   // float offset = newDistance - oldDistance;
 
-                    ZoomCamera(offset, ZoomSpeedTouch);
+                    ZoomCamera(5f, ZoomSpeedTouch);
 
                     lastZoomPositions = newPositions;
                 }
@@ -211,6 +211,7 @@ public class MobileCameraControlBackup : MonoBehaviour
 
         // Check for scrolling to zoom the camera
         float scroll = Input.GetAxis("Mouse ScrollWheel");
+
         ZoomCamera(scroll, ZoomSpeedMouse);
     }
 
@@ -236,7 +237,7 @@ public class MobileCameraControlBackup : MonoBehaviour
     void ZoomCamera(float offset, float speed)
     {
         zoomtrue = true;
-
+        offset = 5f; //trying shit
         if (offset == 0)
         {
             return;
