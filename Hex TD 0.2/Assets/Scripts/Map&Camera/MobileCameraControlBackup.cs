@@ -8,11 +8,13 @@ using System.Collections.Specialized;
 public class MobileCameraControlBackup : MonoBehaviour
 {
 
-    private static readonly float PanSpeed = 1f;
+    private static readonly float PanSpeed = 5f;
+    private static readonly float RotateSpeed = 1f;
 
 
-    private static readonly float[] BoundsX = new float[] { -3f, 3f };
-    private static readonly float[] BoundsZ = new float[] { -12f, -6f };
+
+    private static readonly float[] BoundsX = new float[] { -5f, 5f };
+    private static readonly float[] BoundsZ = new float[] { -18f, -12f };
 
     private Camera cam;
     public GameObject target;
@@ -75,6 +77,12 @@ public class MobileCameraControlBackup : MonoBehaviour
 
         if (CurrentPosition == 1)
         {
+            Vector3 StartPosition2 = cam.transform.position;
+
+            Vector3 move2 = new Vector3(0f, 18.5f, -7f);
+
+            cam.transform.position = Vector3.Lerp(StartPosition2, move2, 0.2f);
+
             cam.fieldOfView = Mathf.Lerp(cam.fieldOfView, 36.5f, 0.2f);
             return;
         }
@@ -165,7 +173,13 @@ public class MobileCameraControlBackup : MonoBehaviour
                 }
                 else if (touch.fingerId == panFingerId && touch.phase == TouchPhase.Moved)
                 {
-                    PanCamera(Input.GetTouch(0).deltaPosition.x);
+                    RotateCamera(Input.GetTouch(0).deltaPosition.x);
+
+                    if (CurrentPosition ==0)
+                    {
+                        PanCamera(touch.position);
+                    }
+                    
                 }
                 break;
 
@@ -182,22 +196,49 @@ public class MobileCameraControlBackup : MonoBehaviour
         }
         else if (Input.GetMouseButton(0))
         {
-            PanCamera(Input.GetAxis("Mouse X"));
+            RotateCamera(Input.GetAxis("Mouse X"));
+
+            if (CurrentPosition == 0)
+            {
+                PanCamera(Input.mousePosition);
+            }
+            
         }
 
     }
 
-    void PanCamera(float newPanPosition)
+    void RotateCamera(float newPanPosition)
     {
         // Determine how much to move the camera
         // Vector3 offset = cam.ScreenToWorldPoint(lastPanPosition - newPanPosition);
         if (CurrentPosition == 2)
         {
-            Vector3 move = new Vector3(0, newPanPosition * PanSpeed, 0);
+            Vector3 move = new Vector3(0, newPanPosition * RotateSpeed, 0);
 
             transform.Rotate(move, Space.World);
         }
 
+
+
+    }
+
+    void PanCamera(Vector3 newPanPosition)
+    {
+        // Determine how much to move the camera
+        Vector3 offset = cam.ScreenToViewportPoint(lastPanPosition - newPanPosition);
+        Vector3 move = new Vector3(offset.x * PanSpeed, 0, offset.y * PanSpeed);
+
+        // Perform the movement
+        transform.Translate(move, Space.World);
+
+        // Ensure the camera remains within bounds.
+        Vector3 pos = transform.position;
+        pos.x = Mathf.Clamp(transform.position.x, BoundsX[0], BoundsX[1]);
+        pos.z = Mathf.Clamp(transform.position.z, BoundsZ[0], BoundsZ[1]);
+        transform.position = pos;
+
+        // Cache the position
+        lastPanPosition = newPanPosition;
     }
 }
 
