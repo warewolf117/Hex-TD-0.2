@@ -106,7 +106,8 @@ public class Health : MonoBehaviour
         // Destroy literally erases an objects existence, thats why I kept the spawner away from the turrets
         // cus if the turret kills the spawner then spawns will stop 
 
-        if (gameObject.tag == "Enemy")
+        if (gameObject.tag == "EnemyTopLeft" || gameObject.tag == "EnemyTopRight" || gameObject.tag == "EnemyLeft" || 
+            gameObject.tag == "EnemyRight" || gameObject.tag == "EnemyBottomLeft" || gameObject.tag == "EnemyBottomRight" )
         {
             Destroy(this.gameObject);
             PlayerStats.money += worth;
