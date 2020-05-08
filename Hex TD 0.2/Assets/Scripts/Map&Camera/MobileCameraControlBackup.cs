@@ -13,8 +13,8 @@ public class MobileCameraControlBackup : MonoBehaviour
 
 
 
-    private static readonly float[] BoundsX = new float[] { -5f, 5f };
-    private static readonly float[] BoundsZ = new float[] { -18f, -12f };
+    private static readonly float[] BoundsX = new float[] { -6f, 6f };
+    private static readonly float[] BoundsZ = new float[] { -22.5f, -2f };
 
     private Camera cam;
     public GameObject target;
