@@ -9,19 +9,24 @@ public class MobileCameraControlBackup : MonoBehaviour
 {
 
     private static readonly float PanSpeed = 5f;
-    private static readonly float RotateSpeed = 1f;
+    private static readonly float RotateSpeed = 0.2f;
 
 
+    private static float BoundsX1 = -6f;
+    private static float BoundsX2 = 6f;
 
-    private static readonly float[] BoundsX = new float[] { -6f, 6f };
-    private static readonly float[] BoundsZ = new float[] { -22.5f, -2f };
+    private static float BoundsY1 = -22.5f;
+    private static float BoundsY2 = -2f;
+
+    private  float[] BoundsX = new float[] { BoundsX1, BoundsX2 };
+    private  float[] BoundsZ = new float[] { BoundsY1, BoundsY2 };
 
     private Camera cam;
     public GameObject target;
     public int CurrentPosition; // 0 = far out, 1=zoomed in hexes. 2=zoomed in lane
     private float CurrentFOV;
-    private bool zoomingin;
-    private bool zoomingout;
+    public bool zoomingin;
+    public bool zoomingout;
     private Vector3 lastPanPosition;
     private int panFingerId; // Touch mode only
 
@@ -41,7 +46,10 @@ public class MobileCameraControlBackup : MonoBehaviour
 
     void Update()
     {
-        CurrentFOV = cam.fieldOfView;
+        BoundsX = new float[] { BoundsX1, BoundsX2 };
+        BoundsZ = new float[] { BoundsY1, BoundsY2 };
+
+    CurrentFOV = cam.fieldOfView;
         if (Input.touchSupported && Application.platform != RuntimePlatform.WebGLPlayer)
         {
             HandleTouch();
@@ -51,43 +59,102 @@ public class MobileCameraControlBackup : MonoBehaviour
             HandleMouse();
         }
 
-        if (CurrentPosition == 0)
+        if (CurrentPosition == 0 && CurrentFOV >= 80f)
         {
+            zoomingout = false;
+            zoomingin = false;
+        }
+
+        if (CurrentPosition == 1 && CurrentFOV <= 55.5f && CurrentFOV >= 55f)
+        {
+            zoomingin = false;
+            zoomingout = false;
+        }
+
+        if (CurrentPosition == 2 && CurrentFOV <= 37f && CurrentFOV >= 36f)
+        {
+            zoomingin = false;
+            zoomingout = false;
+        }
+
+        if (CurrentPosition == 3 && CurrentFOV >= 80f)
+        {
+            zoomingout = false;
+            zoomingin = false;
+        }
+
+        if (CurrentPosition == 0 && zoomingout == true) //Going from Position 1 to Position 0
+        {
+            Vector3 StartPosition = cam.transform.position;
+
+            Vector3 move = new Vector3(0f, 18.5f, -7f);
+
+            cam.transform.position = Vector3.Lerp(StartPosition, move, 0.2f);
+
             cam.fieldOfView = Mathf.Lerp(cam.fieldOfView, 80.5f, 0.2f);
         }
 
-
-
-        if (CurrentPosition == 1 && zoomingout == true)
+        if (CurrentPosition == 1 && zoomingin == true) //Going from Position 0 to Position 1
         {
-             Vector3 StartPosition2 = cam.transform.position;
+            Vector3 StartPosition = cam.transform.position;
 
-             Vector3 move2 = new Vector3(0f, 18.5f, -7f);
+            Vector3 move = new Vector3(0f, 18.5f, -7f);
 
-             cam.transform.position = Vector3.Lerp(StartPosition2, move2, 0.2f);
+            cam.transform.position = Vector3.Lerp(StartPosition, move, 0.2f);
 
-             Quaternion StartRotation2 = cam.transform.rotation;
+            cam.fieldOfView = Mathf.Lerp(cam.fieldOfView, 55.2f, 0.2f);
 
-             Quaternion rotate2 = Quaternion.Euler(70f, 0f, 0f);
-
-             cam.transform.rotation = Quaternion.Lerp(StartRotation2, rotate2, 0.2f);
-
-             cam.fieldOfView = Mathf.Lerp(cam.fieldOfView, 36.5f, 0.2f);
+            return;
         }
 
-        if (CurrentPosition == 1)
+        if (CurrentPosition == 1 && zoomingout == true) //Going from Position 2 to Position 1
         {
-            Vector3 StartPosition2 = cam.transform.position;
+            Vector3 StartPosition = cam.transform.position;
 
-            Vector3 move2 = new Vector3(0f, 18.5f, -7f);
+            Vector3 move = new Vector3(0f, 18.5f, -7f);
 
-            cam.transform.position = Vector3.Lerp(StartPosition2, move2, 0.2f);
+            cam.transform.position = Vector3.Lerp(StartPosition, move, 0.2f);
+
+            Quaternion StartRotation = cam.transform.rotation;
+
+            Quaternion rotate = Quaternion.Euler(70f, 0f, 0f);
+
+            cam.transform.rotation = Quaternion.Lerp(StartRotation, rotate, 0.2f);
+
+            cam.fieldOfView = Mathf.Lerp(cam.fieldOfView, 55.2f, 0.2f);
+        }
+
+        if (CurrentPosition == 2 && zoomingin == true) //Going from Position 1 to Position 2
+        {
+            Vector3 StartPosition = cam.transform.position;
+
+            Vector3 move = new Vector3(0f, 18.5f, -7f);
+
+            cam.transform.position = Vector3.Lerp(StartPosition, move, 0.2f);
 
             cam.fieldOfView = Mathf.Lerp(cam.fieldOfView, 36.5f, 0.2f);
             return;
         }
 
-        if (CurrentPosition == 2 && zoomingin == true)
+        if (CurrentPosition == 2 && zoomingout == true) //Going from Position 2 to Position 1
+        {
+             Vector3 StartPosition = cam.transform.position;
+
+             Vector3 move = new Vector3(0f, 18.5f, -7f);
+
+             cam.transform.position = Vector3.Lerp(StartPosition, move, 0.2f);
+
+             Quaternion StartRotation = cam.transform.rotation;
+
+             Quaternion rotate = Quaternion.Euler(70f, 0f, 0f);
+
+             cam.transform.rotation = Quaternion.Lerp(StartRotation, rotate, 0.2f);
+
+             cam.fieldOfView = Mathf.Lerp(cam.fieldOfView, 36.5f, 0.2f);
+        }
+
+
+        if (CurrentPosition == 3 && zoomingin == true) //Going from Position 2 to Position 3
         {
             Vector3 StartPosition = cam.transform.position;
 
@@ -103,31 +170,19 @@ public class MobileCameraControlBackup : MonoBehaviour
 
             cam.fieldOfView = Mathf.Lerp(cam.fieldOfView, 80.5f, 0.2f);
         }
-        if (CurrentPosition == 0 && CurrentFOV >= 80f)
-        {
-            zoomingout = false;
-        }
-
-        if (CurrentPosition == 1 && CurrentFOV >= 36f)
-        {
-            zoomingout = false;
-        }
-        if (CurrentPosition == 2 && CurrentFOV >= 80f)
-        {
-            zoomingin = false;
-        }
-
-
-
-
     }
-
 
     public void ZoomIn()
     {    
 
         if (CurrentPosition == 0)
         {
+            BoundsX1 = -9f;
+            BoundsX2 = 9f;
+
+            BoundsY1 = -26.5f;
+            BoundsY2 = 9f;
+
             CurrentPosition = 1;
             zoomingin = true;
             return;
@@ -135,9 +190,27 @@ public class MobileCameraControlBackup : MonoBehaviour
 
         if (CurrentPosition == 1)
         {
+
+            BoundsX1 = -15f;
+            BoundsX2 = 15f;
+
+            BoundsY1 = -29f;
+            BoundsY2 = 15f;
+
             CurrentPosition = 2;
             zoomingin = true;
+            return;
         }
+
+
+        if (CurrentPosition == 2)
+        {
+            CurrentPosition = 3;
+            zoomingin = true;
+            return;
+        }
+
+
     }
 
     public void ZoomOut()
@@ -154,6 +227,15 @@ public class MobileCameraControlBackup : MonoBehaviour
         {
             CurrentPosition = 1;
             zoomingout = true;
+            return;
+
+        }
+
+        if (CurrentPosition == 3)
+        {
+            CurrentPosition = 2;
+            zoomingout = true;
+            return;
 
         }
     }
@@ -175,7 +257,7 @@ public class MobileCameraControlBackup : MonoBehaviour
                 {
                     RotateCamera(Input.GetTouch(0).deltaPosition.x);
 
-                    if (CurrentPosition ==0)
+                    if (CurrentPosition != 3)
                     {
                         PanCamera(touch.position);
                     }
@@ -198,7 +280,7 @@ public class MobileCameraControlBackup : MonoBehaviour
         {
             RotateCamera(Input.GetAxis("Mouse X"));
 
-            if (CurrentPosition == 0)
+            if (CurrentPosition != 3)
             {
                 PanCamera(Input.mousePosition);
             }
@@ -211,7 +293,7 @@ public class MobileCameraControlBackup : MonoBehaviour
     {
         // Determine how much to move the camera
         // Vector3 offset = cam.ScreenToWorldPoint(lastPanPosition - newPanPosition);
-        if (CurrentPosition == 2)
+        if (CurrentPosition == 3)
         {
             Vector3 move = new Vector3(0, newPanPosition * RotateSpeed, 0);
 
