@@ -134,8 +134,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   navMeshAgent: {fileID: 637410317746341850}
-  target: {fileID: 0}
-  startingSpeed: 1
+  moveTarget: {fileID: 6334955249659344108, guid: 8d3d8827762dc2b4c919c69632a15b8f,
+    type: 3}
+  spawnPoint: {fileID: 9158453140363016558, guid: 17df805d603082540867e3c2e1d471db,
+    type: 3}
+  startingSpeed: 2.5
   currentSpeed: 0
 --- !u!114 &637410317746341853
 MonoBehaviour:
@@ -153,8 +156,6 @@ MonoBehaviour:
   cur_health: 0
   healthBar: {fileID: 2106657094631140810}
   worth: 1000
-  turret: {fileID: 0}
-  TotalDamage: 0
 --- !u!114 &1773997003952462517
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -231,7 +232,6 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 0.68235296}
   m_RaycastTarget: 1
-  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -275,8 +275,6 @@ MonoBehaviour:
   cur_health: 0
   healthBar: {fileID: 0}
   worth: 0
-  turret: {fileID: 0}
-  TotalDamage: 0
 --- !u!1 &5177902535277497131
 GameObject:
   m_ObjectHideFlags: 0
@@ -337,7 +335,6 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 0.0126776695, g: 1, b: 0, a: 1}
   m_RaycastTarget: 0
-  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []

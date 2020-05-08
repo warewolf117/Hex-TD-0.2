@@ -15,11 +15,6 @@ public class WaveSpawnerRight: MonoBehaviour
     public Transform spawnPoint3;
     public Transform spawnPoint4;
     public Transform spawnPoint5;
-    public Transform Target1;
-    public Transform Target2;
-    public Transform Target3;
-    public Transform Target4;
-    public Transform Target5;
     private int spawnSpacer = 1;
 
     GameObject clone;
@@ -59,7 +54,7 @@ public class WaveSpawnerRight: MonoBehaviour
 
     void Update()
     {
-
+        
         if (WaveSpawnerTopRight_Main.countdown <= 0f)
         {
             StartCoroutine(SpawnWave());
@@ -74,7 +69,7 @@ public class WaveSpawnerRight: MonoBehaviour
             if (wave.count == 0)
             {
                 noEnemiesComing = true;
-
+                
             }
             else
             {
@@ -85,7 +80,7 @@ public class WaveSpawnerRight: MonoBehaviour
             {
                 waveIndicator.SetActive(true);
                 Instantiate(waveIndicator, WaveIndicatorPosition.position, Quaternion.Euler(90f, 60f, -30f));
-
+         
                 waveIndicatorPlaced = true;
             }
             waveIndex--;
@@ -96,7 +91,7 @@ public class WaveSpawnerRight: MonoBehaviour
 
     IEnumerator SpawnWave()
     {
-
+        
 
         Wave wave = waves[waveIndex];
 
@@ -116,27 +111,22 @@ public class WaveSpawnerRight: MonoBehaviour
 
     void SpawnEnemy(GameObject enemy)
     {
-        // Debug.Log("spawn position: " + spawnSpacer);
+       // Debug.Log("spawn position: " + spawnSpacer);
         switch (spawnSpacer)
         {
             case 1:
                 Vector3 position1 = new Vector3(1, 0, 1);
 
-                BasicMovement basicMovement1 = enemy.transform.gameObject.GetComponent<BasicMovement>();
-                basicMovement1.MoveTarget(Target1);
                 clone = Instantiate(enemy, spawnPoint1.position + position1, spawnPoint1.rotation);
                 clone.tag = "EnemyRight";
                 Wave.EnemiesAlive++;
                 spawnSpacer++;
                 Debug.Log("enemies Alive:" + Wave.EnemiesAlive);
-
                 break;
 
             case 2:
                 Vector3 position2 = new Vector3(1, 0, 1);
 
-                BasicMovement basicMovement2 = enemy.transform.gameObject.GetComponent<BasicMovement>();
-                basicMovement2.MoveTarget(Target2);
                 clone = Instantiate(enemy, spawnPoint2.position + position2, spawnPoint2.rotation);
                 clone.tag = "EnemyRight";
                 Wave.EnemiesAlive++;
@@ -146,8 +136,6 @@ public class WaveSpawnerRight: MonoBehaviour
             case 3:
                 Vector3 position3 = new Vector3(1, 0, 1);
 
-                BasicMovement basicMovement3 = enemy.transform.gameObject.GetComponent<BasicMovement>();
-                basicMovement3.MoveTarget(Target3);
                 clone = Instantiate(enemy, spawnPoint3.position + position3, spawnPoint3.rotation);
                 clone.tag = "EnemyRight";
                 Wave.EnemiesAlive++;
@@ -158,8 +146,6 @@ public class WaveSpawnerRight: MonoBehaviour
             case 4:
                 Vector3 position4 = new Vector3(1, 0, 1);
 
-                BasicMovement basicMovement4 = enemy.transform.gameObject.GetComponent<BasicMovement>();
-                basicMovement4.MoveTarget(Target4);
                 clone = Instantiate(enemy, spawnPoint4.position + position4, spawnPoint4.rotation);
                 clone.tag = "EnemyRight";
                 Wave.EnemiesAlive++;
@@ -169,8 +155,6 @@ public class WaveSpawnerRight: MonoBehaviour
             case 5:
                 Vector3 position5 = new Vector3(1, 0, 1);
 
-                BasicMovement basicMovement5 = enemy.transform.gameObject.GetComponent<BasicMovement>();
-                basicMovement5.MoveTarget(Target5);
                 clone = Instantiate(enemy, spawnPoint5.position + position5, spawnPoint5.rotation);
                 clone.tag = "EnemyRight";
                 Wave.EnemiesAlive++;
