@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using System.Linq;
 
 public class Turret : MonoBehaviour
 {
@@ -40,13 +39,7 @@ public class Turret : MonoBehaviour
 
     [Header("Unity Setup Fields")]
 
-
-    GameObject[] enemies;
-
-    string[] allTags; 
-    
-
-    int turretSector;
+    public string enemyTag = "Enemy";
 
     public Transform partToRotate;
     public float turnSpeed = 10f;
@@ -62,78 +55,11 @@ public class Turret : MonoBehaviour
         bulletPooler = BulletPooler.Instance;
         missilePooler = MissilePooler.Instance;
         InvokeRepeating("UpdateTarget", 0f, 0.5f);  //Calls Update target twice per second (to avoid it looking for a new target too fast)
-        
-    }
-
-    public void NodeSectionTargetingShit(int nodeSector)
-    {
-        turretSector = nodeSector;
     }
 
     void UpdateTarget()
     {
-      
-        if (turretSector == 1)
-        {
-            enemies = GameObject.FindGameObjectsWithTag("EnemyTopLeft");
-        }
-        if (turretSector == 2)
-        {
-           var enemy1 = GameObject.FindGameObjectsWithTag("EnemyTopLeft");
-           var enemy2 = GameObject.FindGameObjectsWithTag("EnemyTopRight");
-            enemies = enemy1.Concat(enemy2).ToArray();
-        }
-        if (turretSector == 3)
-        {
-            enemies = GameObject.FindGameObjectsWithTag("EnemyTopRight");
-        }
-        if (turretSector == 4)
-        {
-            var enemy1 = GameObject.FindGameObjectsWithTag("EnemyTopRight");
-            var enemy2 = GameObject.FindGameObjectsWithTag("EnemyRight");
-            enemies = enemy1.Concat(enemy2).ToArray();
-        }
-        if (turretSector == 5)
-        {
-            enemies = GameObject.FindGameObjectsWithTag("EnemyRight");
-        }
-        if (turretSector == 6)
-        {
-            var enemy1 = GameObject.FindGameObjectsWithTag("EnemyBottomRight");
-            var enemy2 = GameObject.FindGameObjectsWithTag("EnemyRight");
-            enemies = enemy1.Concat(enemy2).ToArray();
-        }
-        if (turretSector == 7)
-        {
-            enemies = GameObject.FindGameObjectsWithTag("EnemyBottomRight");
-        }
-        if (turretSector == 8)
-        {
-            var enemy1 = GameObject.FindGameObjectsWithTag("EnemyBottomRight");
-            var enemy2 = GameObject.FindGameObjectsWithTag("EnemyBottomLeft");
-            enemies = enemy1.Concat(enemy2).ToArray();
-        }
-        if (turretSector == 9)
-        {
-            enemies = GameObject.FindGameObjectsWithTag("EnemyBottomLeft");
-        }
-        if (turretSector == 10)
-        {
-            var enemy1 = GameObject.FindGameObjectsWithTag("EnemyBottomLeft");
-            var enemy2 = GameObject.FindGameObjectsWithTag("EnemyLeft");
-            enemies = enemy1.Concat(enemy2).ToArray();
-        }
-        if (turretSector == 11)
-        {
-            enemies = GameObject.FindGameObjectsWithTag("EnemyLeft");
-        }
-        if (turretSector == 12)
-        {
-            var enemy1 = GameObject.FindGameObjectsWithTag("EnemyLeft");
-            var enemy2 = GameObject.FindGameObjectsWithTag("EnemyTopLeft");
-            enemies = enemy1.Concat(enemy2).ToArray();
-        }
-
+        GameObject[] enemies = GameObject.FindGameObjectsWithTag(enemyTag);  //looks for all objects with enemyTag
         float shortestDistance = Mathf.Infinity; //sets shortestDistance to infinity if there is no enemy
         float furthestDistance = Mathf.NegativeInfinity;
         GameObject nearestEnemy = null;
@@ -198,7 +124,6 @@ public class Turret : MonoBehaviour
 
     void Update()
     {
-
         if (target == null)
         {
             if (useLaser)
