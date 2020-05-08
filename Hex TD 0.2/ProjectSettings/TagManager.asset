@@ -7,6 +7,13 @@ TagManager:
   - Wall
   - Enemy
   - EnemyHP
+  - WaveIndicator
+  - EnemyTopLeft
+  - EnemyTopRight
+  - EnemyRight
+  - EnemyBottomRight
+  - EnemyBottomLeft
+  - EnemyLeft
   layers:
   - Default
   - TransparentFX
