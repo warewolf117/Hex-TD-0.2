@@ -18,6 +18,8 @@ public class WaveSpawnerTopLeft : MonoBehaviour
     public Transform spawnPoint5;
     private int spawnSpacer = 1;
 
+    GameObject clone;
+
     public Transform WaveIndicatorPosition;
     public GameObject waveStarter;
     public GameObject waveIndicator;
@@ -117,7 +119,8 @@ public class WaveSpawnerTopLeft : MonoBehaviour
             case 1:
                 Vector3 position1 = new Vector3(1, 0, 1);
 
-                Instantiate(enemy, spawnPoint1.position + position1, spawnPoint1.rotation);
+                clone = Instantiate(enemy, spawnPoint1.position + position1, spawnPoint1.rotation);
+                clone.tag = "EnemyTopLeft";
                 Wave.EnemiesAlive++;
                 spawnSpacer++;
                 Debug.Log("enemies Alive:" + Wave.EnemiesAlive);
@@ -126,7 +129,8 @@ public class WaveSpawnerTopLeft : MonoBehaviour
             case 2:
                 Vector3 position2 = new Vector3(1, 0, 1);
 
-                Instantiate(enemy, spawnPoint2.position + position2, spawnPoint2.rotation);
+                clone = Instantiate(enemy, spawnPoint2.position + position2, spawnPoint2.rotation);
+                clone.tag = "EnemyTopLeft";
                 Wave.EnemiesAlive++;
                 spawnSpacer++;
                 Debug.Log("enemies Alive:" + Wave.EnemiesAlive);
@@ -134,7 +138,8 @@ public class WaveSpawnerTopLeft : MonoBehaviour
             case 3:
                 Vector3 position3 = new Vector3(1, 0, 1);
 
-                Instantiate(enemy, spawnPoint3.position + position3, spawnPoint3.rotation);
+                clone = Instantiate(enemy, spawnPoint3.position + position3, spawnPoint3.rotation);
+                clone.tag = "EnemyTopLeft";
                 Wave.EnemiesAlive++;
                 spawnSpacer++;
                 Debug.Log("enemies Alive:" + Wave.EnemiesAlive);
@@ -143,7 +148,8 @@ public class WaveSpawnerTopLeft : MonoBehaviour
             case 4:
                 Vector3 position4 = new Vector3(1, 0, 1);
 
-                Instantiate(enemy, spawnPoint4.position + position4, spawnPoint4.rotation);
+                clone = Instantiate(enemy, spawnPoint4.position + position4, spawnPoint4.rotation);
+                clone.tag = "EnemyTopLeft";
                 Wave.EnemiesAlive++;
                 spawnSpacer++;
                 Debug.Log("enemies Alive:" + Wave.EnemiesAlive);
@@ -151,7 +157,8 @@ public class WaveSpawnerTopLeft : MonoBehaviour
             case 5:
                 Vector3 position5 = new Vector3(1, 0, 1);
 
-                Instantiate(enemy, spawnPoint5.position + position5, spawnPoint5.rotation);
+                clone = Instantiate(enemy, spawnPoint5.position + position5, spawnPoint5.rotation);
+                clone.tag = "EnemyTopLeft";
                 Wave.EnemiesAlive++;
                 spawnSpacer = 1;
                 Debug.Log("enemies Alive:" + Wave.EnemiesAlive);
