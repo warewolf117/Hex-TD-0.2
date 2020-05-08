@@ -18,8 +18,6 @@ public class Node : MonoBehaviour
     private Renderer rend;
     private Color startColor;
 
-    public int nodeSector;
-
     BuildManager buildManager;
 
     void Start()
@@ -53,7 +51,6 @@ public class Node : MonoBehaviour
             return;
 
         BuildTurret(buildManager.GetTurretToBuild());
-
     }
 
     void BuildTurret(TurretBlueprint blueprint)
@@ -68,9 +65,6 @@ public class Node : MonoBehaviour
 
         GameObject _turret = (GameObject)Instantiate(blueprint.pref, GetBuildPosition(), Quaternion.identity);
         turret = _turret;
-        Turret Sturret = turret.transform.GetComponent<Turret>();
-         Sturret.NodeSectionTargetingShit(nodeSector); //sends nodeSector value to the void function in the turret script
-
 
         turretBlueprint = blueprint;
 
