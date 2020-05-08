@@ -19,19 +19,19 @@ public class Health : MonoBehaviour
     void Start()
     {
         cur_health = max_health;
-        
+
     }
 
 
-   public void takeDamage(float amount)
+    public void takeDamage(float amount)
     {
-        
-        
-       DamagePopup2.Create(gameObject.transform.position, amount);
-        
-       
-       cur_health -= amount;
-       healthBar.fillAmount = cur_health / max_health;
+
+
+        DamagePopup2.Create(gameObject.transform.position, amount);
+
+
+        cur_health -= amount;
+        healthBar.fillAmount = cur_health / max_health;
         if (healthBar.fillAmount < 0.8f && healthBar.fillAmount > 0.6f)
         {
             healthBar.color = new Color32(196, 255, 0, 100);
@@ -60,7 +60,7 @@ public class Health : MonoBehaviour
 
     public void takeDamageLaser(float amount)
     {
-      
+
         TotalDamage += amount;
         float f = TotalDamage;
         f = Mathf.Round(f * 10.0f) * 0.1f;
@@ -70,7 +70,7 @@ public class Health : MonoBehaviour
             DamagePopup2.CreateLaser(gameObject.transform.position, f);
             laserPopupTimer = 0.15f;
         }
-     
+
 
         cur_health -= amount;
         healthBar.fillAmount = cur_health / max_health;
@@ -106,7 +106,8 @@ public class Health : MonoBehaviour
         // Destroy literally erases an objects existence, thats why I kept the spawner away from the turrets
         // cus if the turret kills the spawner then spawns will stop 
 
-        if (gameObject.tag == "Enemy")
+        if (gameObject.tag == "EnemyTopLeft" || gameObject.tag == "EnemyTopRight" || gameObject.tag == "EnemyLeft" ||
+            gameObject.tag == "EnemyRight" || gameObject.tag == "EnemyBottomLeft" || gameObject.tag == "EnemyBottomRight")
         {
             Destroy(this.gameObject);
             PlayerStats.money += worth;
@@ -114,13 +115,13 @@ public class Health : MonoBehaviour
             Wave.EnemiesAlive--;
             WaveSpawnerTopRight_Main.EnemyCount--;
 
-          // Debug.Log("enemies Alive:" + Wave.EnemiesAlive);
-          //  Debug.Log("enemy count:" + WaveSpawner.EnemyCount);
+            // Debug.Log("enemies Alive:" + Wave.EnemiesAlive);
+            //  Debug.Log("enemy count:" + WaveSpawner.EnemyCount);
 
-          //  Debug.Log("ENEMY KILLED");
+            //  Debug.Log("ENEMY KILLED");
         }
 
-       
+
         if (gameObject.tag == "Wall")
         {
             Destroy(this.gameObject);
@@ -136,7 +137,7 @@ public class Health : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
         laserPopupTimer -= Time.deltaTime;
     }
 }
