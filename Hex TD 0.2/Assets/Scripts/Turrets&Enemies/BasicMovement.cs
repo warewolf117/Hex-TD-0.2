@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Security.Cryptography;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -7,17 +8,25 @@ public class BasicMovement : MonoBehaviour
 {
 
     public NavMeshAgent navMeshAgent;
-    public Transform moveTarget;
-    public Transform spawnPoint;
-
+    public Transform target;
     public float startingSpeed = 1.5f;
+
 
     [HideInInspector]
     public float currentSpeed;
 
     private bool slowed = false;
 
-      
+
+
+
+    public void MoveTarget(Transform moveTarget)
+    {
+        target = moveTarget;
+
+
+    }
+
     void Start()
     {
         currentSpeed = startingSpeed;
@@ -25,18 +34,13 @@ public class BasicMovement : MonoBehaviour
         if (gameObject.activeSelf)
         {
             //navMeshAgent.destination = spawnPoint.position;
-            navMeshAgent.destination = moveTarget.position;
+            navMeshAgent.destination = target.position;
         }
-        else
-        {
-
-            navMeshAgent.destination = spawnPoint.position;
-            //navMeshAgent.destination = moveTarget.position;
-
-            
-       }
 
     }
+
+
+  
 
     public void Slow(float pct)
     {
@@ -45,9 +49,10 @@ public class BasicMovement : MonoBehaviour
         
     }
 
-
     void Update()
     {
+ 
+
         if (slowed == true)
         {
             navMeshAgent.speed = currentSpeed;

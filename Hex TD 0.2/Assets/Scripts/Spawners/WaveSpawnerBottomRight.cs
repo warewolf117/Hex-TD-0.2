@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class WaveSpawnerBottomRight : MonoBehaviour
 {
@@ -15,9 +16,12 @@ public class WaveSpawnerBottomRight : MonoBehaviour
     public Transform spawnPoint3;
     public Transform spawnPoint4;
     public Transform spawnPoint5;
+    public Transform Target1;
+    public Transform Target2;
+    public Transform Target3;
+    public Transform Target4;
+    public Transform Target5;
     private int spawnSpacer = 1;
-
-    GameObject clone;
 
     public Transform WaveIndicatorPosition;
     public GameObject waveStarter;
@@ -112,24 +116,27 @@ public class WaveSpawnerBottomRight : MonoBehaviour
 
     void SpawnEnemy(GameObject enemy)
     {
-       // Debug.Log("spawn position: " + spawnSpacer);
+        // Debug.Log("spawn position: " + spawnSpacer);
         switch (spawnSpacer)
         {
             case 1:
                 Vector3 position1 = new Vector3(1, 0, 1);
 
-                clone = Instantiate(enemy, spawnPoint1.position + position1, spawnPoint1.rotation);
-                clone.tag = "EnemyBottomRight";
+                BasicMovement basicMovement1 = enemy.transform.gameObject.GetComponent<BasicMovement>();
+                basicMovement1.MoveTarget(Target1);
+                Instantiate(enemy, spawnPoint1.position + position1, spawnPoint1.rotation);
                 Wave.EnemiesAlive++;
                 spawnSpacer++;
                 Debug.Log("enemies Alive:" + Wave.EnemiesAlive);
+
                 break;
 
             case 2:
                 Vector3 position2 = new Vector3(1, 0, 1);
 
-                clone = Instantiate(enemy, spawnPoint2.position + position2, spawnPoint2.rotation);
-                clone.tag = "EnemyBottomRight";
+                BasicMovement basicMovement2 = enemy.transform.gameObject.GetComponent<BasicMovement>();
+                basicMovement2.MoveTarget(Target2);
+                Instantiate(enemy, spawnPoint2.position + position2, spawnPoint2.rotation);
                 Wave.EnemiesAlive++;
                 spawnSpacer++;
                 Debug.Log("enemies Alive:" + Wave.EnemiesAlive);
@@ -137,8 +144,9 @@ public class WaveSpawnerBottomRight : MonoBehaviour
             case 3:
                 Vector3 position3 = new Vector3(1, 0, 1);
 
-                clone = Instantiate(enemy, spawnPoint3.position + position3, spawnPoint3.rotation);
-                clone.tag = "EnemyBottomRight";
+                BasicMovement basicMovement3 = enemy.transform.gameObject.GetComponent<BasicMovement>();
+                basicMovement3.MoveTarget(Target3);
+                Instantiate(enemy, spawnPoint3.position + position3, spawnPoint3.rotation);
                 Wave.EnemiesAlive++;
                 spawnSpacer++;
                 Debug.Log("enemies Alive:" + Wave.EnemiesAlive);
@@ -147,8 +155,9 @@ public class WaveSpawnerBottomRight : MonoBehaviour
             case 4:
                 Vector3 position4 = new Vector3(1, 0, 1);
 
-                clone = Instantiate(enemy, spawnPoint4.position + position4, spawnPoint4.rotation);
-                clone.tag = "EnemyBottomRight";
+                BasicMovement basicMovement4 = enemy.transform.gameObject.GetComponent<BasicMovement>();
+                basicMovement4.MoveTarget(Target4);
+                Instantiate(enemy, spawnPoint4.position + position4, spawnPoint4.rotation);
                 Wave.EnemiesAlive++;
                 spawnSpacer++;
                 Debug.Log("enemies Alive:" + Wave.EnemiesAlive);
@@ -156,8 +165,9 @@ public class WaveSpawnerBottomRight : MonoBehaviour
             case 5:
                 Vector3 position5 = new Vector3(1, 0, 1);
 
-                clone = Instantiate(enemy, spawnPoint5.position + position5, spawnPoint5.rotation);
-                clone.tag = "EnemyBottomRight";
+                BasicMovement basicMovement5 = enemy.transform.gameObject.GetComponent<BasicMovement>();
+                basicMovement5.MoveTarget(Target5);
+                Instantiate(enemy, spawnPoint5.position + position5, spawnPoint5.rotation);
                 Wave.EnemiesAlive++;
                 spawnSpacer = 1;
                 Debug.Log("enemies Alive:" + Wave.EnemiesAlive);
