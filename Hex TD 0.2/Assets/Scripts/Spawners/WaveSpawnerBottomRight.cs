@@ -23,6 +23,8 @@ public class WaveSpawnerBottomRight : MonoBehaviour
     public Transform Target5;
     private int spawnSpacer = 1;
 
+    public static bool waverushed;
+
     GameObject clone;
 
     public Transform WaveIndicatorPosition;
@@ -57,14 +59,20 @@ public class WaveSpawnerBottomRight : MonoBehaviour
 
 
     }
+    public void WaveRushed()
 
+    {
+        Debug.Log("Bottom Right Spawner Rushed");
+        waverushed = true;
+    }
     void Update()
     {
 
 
-        if (WaveSpawnerTopRight_Main.countdown <= 0f)
+        if (WaveSpawnerTopRight_Main.countdown <= 0f || waverushed == true)
         {
             StartCoroutine(SpawnWave());
+            waverushed = false;
             waveIndicatorPlaced = false;
             return;
         }
@@ -130,7 +138,7 @@ public class WaveSpawnerBottomRight : MonoBehaviour
                 clone.tag = "EnemyBottomRight";
                 Wave.EnemiesAlive++;
                 spawnSpacer++;
-                Debug.Log("enemies Alive:" + Wave.EnemiesAlive);
+                
 
                 break;
 
@@ -143,7 +151,7 @@ public class WaveSpawnerBottomRight : MonoBehaviour
                 clone.tag = "EnemyBottomRight";
                 Wave.EnemiesAlive++;
                 spawnSpacer++;
-                Debug.Log("enemies Alive:" + Wave.EnemiesAlive);
+                
                 break;
             case 3:
                 Vector3 position3 = new Vector3(1, 0, 1);
@@ -154,7 +162,7 @@ public class WaveSpawnerBottomRight : MonoBehaviour
                 clone.tag = "EnemyBottomRight";
                 Wave.EnemiesAlive++;
                 spawnSpacer++;
-                Debug.Log("enemies Alive:" + Wave.EnemiesAlive);
+                
                 break;
 
             case 4:
@@ -166,7 +174,7 @@ public class WaveSpawnerBottomRight : MonoBehaviour
                 clone.tag = "EnemyBottomRight";
                 Wave.EnemiesAlive++;
                 spawnSpacer++;
-                Debug.Log("enemies Alive:" + Wave.EnemiesAlive);
+                
                 break;
             case 5:
                 Vector3 position5 = new Vector3(1, 0, 1);
@@ -177,7 +185,7 @@ public class WaveSpawnerBottomRight : MonoBehaviour
                 clone.tag = "EnemyBottomRight";
                 Wave.EnemiesAlive++;
                 spawnSpacer = 1;
-                Debug.Log("enemies Alive:" + Wave.EnemiesAlive);
+                
 
                 break;
 

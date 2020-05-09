@@ -87,7 +87,7 @@ public class MobileCameraControlBackup : MonoBehaviour
         {
             Vector3 StartPosition = cam.transform.position;
 
-            Vector3 move = new Vector3(0f, 18.5f, -7f);
+            Vector3 move = new Vector3(-4f, 18f, -6.5f);
 
             cam.transform.position = Vector3.Lerp(StartPosition, move, 0.2f);
 
@@ -98,7 +98,7 @@ public class MobileCameraControlBackup : MonoBehaviour
         {
             Vector3 StartPosition = cam.transform.position;
 
-            Vector3 move = new Vector3(0f, 18.5f, -7f);
+            Vector3 move = new Vector3(-4f, 18f, -6.5f);
 
             cam.transform.position = Vector3.Lerp(StartPosition, move, 0.2f);
 
@@ -111,13 +111,13 @@ public class MobileCameraControlBackup : MonoBehaviour
         {
             Vector3 StartPosition = cam.transform.position;
 
-            Vector3 move = new Vector3(0f, 18.5f, -7f);
+            Vector3 move = new Vector3(-4f, 18f, -6.5f);
 
             cam.transform.position = Vector3.Lerp(StartPosition, move, 0.2f);
 
             Quaternion StartRotation = cam.transform.rotation;
 
-            Quaternion rotate = Quaternion.Euler(70f, 0f, 0f);
+            Quaternion rotate = Quaternion.Euler(70f, 30f, 0f);
 
             cam.transform.rotation = Quaternion.Lerp(StartRotation, rotate, 0.2f);
 
@@ -128,7 +128,7 @@ public class MobileCameraControlBackup : MonoBehaviour
         {
             Vector3 StartPosition = cam.transform.position;
 
-            Vector3 move = new Vector3(0f, 18.5f, -7f);
+            Vector3 move = new Vector3(-4f, 18f, -5.7f);
 
             cam.transform.position = Vector3.Lerp(StartPosition, move, 0.2f);
 
@@ -140,13 +140,13 @@ public class MobileCameraControlBackup : MonoBehaviour
         {
              Vector3 StartPosition = cam.transform.position;
 
-             Vector3 move = new Vector3(0f, 18.5f, -7f);
+             Vector3 move = new Vector3(-4f, 18f, -6.5f);
 
              cam.transform.position = Vector3.Lerp(StartPosition, move, 0.2f);
 
              Quaternion StartRotation = cam.transform.rotation;
 
-             Quaternion rotate = Quaternion.Euler(70f, 0f, 0f);
+             Quaternion rotate = Quaternion.Euler(70f, 30f, 0f);
 
              cam.transform.rotation = Quaternion.Lerp(StartRotation, rotate, 0.2f);
 

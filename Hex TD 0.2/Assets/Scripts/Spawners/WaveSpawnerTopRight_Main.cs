@@ -25,7 +25,7 @@ public class WaveSpawnerTopRight_Main : MonoBehaviour
     public Transform Target5;
 
     private int spawnSpacer = 1;
-    private float skipcountdown;
+    public static bool waverushed;
 
     GameObject clone;
 
@@ -75,17 +75,8 @@ public class WaveSpawnerTopRight_Main : MonoBehaviour
     public void WaveRushed()
 
     {
-        skipcountdown = 5f;
-        Debug.Log("WaveRushed");
-
-        if (skipcountdown > 0)
-        {
-            Debug.Log("ASfsafsad");
-            countdown -= Time.deltaTime * 500;
-            skipcountdown -= Time.deltaTime;
-
-        }
-
+        waverushed = true;
+        Debug.Log("Main Spawner Rushed");
     }
 
     public void WaveStart()
@@ -97,14 +88,16 @@ public class WaveSpawnerTopRight_Main : MonoBehaviour
 
     void Update()
     {
-        countdown = Mathf.Clamp(countdown, 0f, Mathf.Infinity);
-        waveCountdownText.text = string.Format("{0:00.00}", countdown);
-
 
 
         if (startFirstWave <= 0)
         {
             return;
+        }
+
+        if (waverushed == true)
+        {
+            waveCountdownText.text = string.Format("{0:00.00}", 0f);
         }
 
 
@@ -113,6 +106,7 @@ public class WaveSpawnerTopRight_Main : MonoBehaviour
 
             return;
         }
+
 
         if (waveIndex == waves.Length && Wave.EnemiesAlive == 0)
         {
@@ -123,7 +117,7 @@ public class WaveSpawnerTopRight_Main : MonoBehaviour
             this.enabled = false;
         }
 
-        if (countdown <= 0f)
+        if (countdown <= 0f || waverushed == true)
         {
 
             StartCoroutine(SpawnWave());
@@ -135,6 +129,7 @@ public class WaveSpawnerTopRight_Main : MonoBehaviour
             {
                 Destroy(objects[i]);
             }
+            waverushed = false;
             waveIndicatorPlaced = false;
             return;
         }
@@ -162,14 +157,13 @@ public class WaveSpawnerTopRight_Main : MonoBehaviour
             }
             waveIndex--;
 
-            if (skipcountdown <= 0)
-            {
+
                 countdown -= Time.deltaTime;
 
                 countdown = Mathf.Clamp(countdown, 0f, Mathf.Infinity);
 
                 waveCountdownText.text = string.Format("{0:00.00}", countdown);
-            }
+            
 
 
         }
@@ -214,7 +208,7 @@ public class WaveSpawnerTopRight_Main : MonoBehaviour
                 clone.tag = "EnemyTopRight";
                 Wave.EnemiesAlive++;
                 spawnSpacer++;
-                Debug.Log("enemies Alive:" + Wave.EnemiesAlive);
+
 
                 break;
 
@@ -227,7 +221,7 @@ public class WaveSpawnerTopRight_Main : MonoBehaviour
                 clone.tag = "EnemyTopRight";
                 Wave.EnemiesAlive++;
                 spawnSpacer++;
-                Debug.Log("enemies Alive:" + Wave.EnemiesAlive);
+
                 break;
             case 3:
                 Vector3 position3 = new Vector3(1, 0, 1);
@@ -238,7 +232,7 @@ public class WaveSpawnerTopRight_Main : MonoBehaviour
                 clone.tag = "EnemyTopRight";
                 Wave.EnemiesAlive++;
                 spawnSpacer++;
-                Debug.Log("enemies Alive:" + Wave.EnemiesAlive);
+
                 break;
 
             case 4:
@@ -250,7 +244,7 @@ public class WaveSpawnerTopRight_Main : MonoBehaviour
                 clone.tag = "EnemyTopRight";
                 Wave.EnemiesAlive++;
                 spawnSpacer++;
-                Debug.Log("enemies Alive:" + Wave.EnemiesAlive);
+
                 break;
             case 5:
                 Vector3 position5 = new Vector3(1, 0, 1);
@@ -261,7 +255,7 @@ public class WaveSpawnerTopRight_Main : MonoBehaviour
                 clone.tag = "EnemyTopRight";
                 Wave.EnemiesAlive++;
                 spawnSpacer = 1;
-                Debug.Log("enemies Alive:" + Wave.EnemiesAlive);
+
 
                 break;
 
