@@ -6,9 +6,8 @@ using UnityEngine.Events;
 public class WaveRush : MonoBehaviour
 {
     public GameObject WaveIndicator;
-    // public UnityEvent OnClick = new UnityEvent();
-    // OnClick.Invoke();
-
+    public UnityEvent OnClick = new UnityEvent();
+    
 
 
     void Start()
@@ -31,7 +30,7 @@ public class WaveRush : MonoBehaviour
             {
                 if (Physics.Raycast(ray, out Hit) && Hit.collider.gameObject == gameObject)
                 {
-                    WaveSpawnerTopRight_Main.WaveRushed = true;
+                    OnClick.Invoke();
                     GameObject[] objects = GameObject.FindGameObjectsWithTag("WaveIndicator");
 
                     for (int i = 0; i < objects.Length; i++)

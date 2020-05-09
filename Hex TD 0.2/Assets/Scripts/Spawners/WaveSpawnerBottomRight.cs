@@ -4,6 +4,9 @@ using UnityEngine.UI;
 
 public class WaveSpawnerBottomRight : MonoBehaviour
 {
+
+    // public static int EnemiesAlive = 0;
+
     public static int EnemyCount = 0;
 
     public Wave[] waves;
@@ -59,14 +62,14 @@ public class WaveSpawnerBottomRight : MonoBehaviour
     {
 
 
-        if ((WaveSpawnerTopRight_Main.countdown <= 0f || WaveSpawnerTopRight_Main.WaveRushed == true) && Wave.EnemiesAlive == 0)
+        if (WaveSpawnerTopRight_Main.countdown <= 0f)
         {
             StartCoroutine(SpawnWave());
             waveIndicatorPlaced = false;
             return;
         }
 
-        if (waveIndex != waves.Length && Wave.EnemiesAlive == 0)
+        if (Wave.EnemiesAlive == 0 && waveIndex != waves.Length)
         {
             Wave wave = waves[waveIndex];
             waveIndex++;
@@ -83,12 +86,11 @@ public class WaveSpawnerBottomRight : MonoBehaviour
             if (waveIndicatorPlaced == false && waveIndex > 1 && noEnemiesComing == false)
             {
                 waveIndicator.SetActive(true);
-                Instantiate(waveIndicator, WaveIndicatorPosition.position, Quaternion.Euler(90f, -30f, 0f));
+                Instantiate(waveIndicator, WaveIndicatorPosition.position, Quaternion.Euler(90f, 90f, -60f));
 
                 waveIndicatorPlaced = true;
             }
             waveIndex--;
-
 
         }
 
@@ -96,11 +98,14 @@ public class WaveSpawnerBottomRight : MonoBehaviour
 
     IEnumerator SpawnWave()
     {
-        
+
 
         Wave wave = waves[waveIndex];
 
         EnemyCount = wave.count;
+        // EnemiesAlive = 0;
+
+        //Debug.Log("enemy count:" + EnemyCount);
 
         for (int i = 0; i < wave.count; i++)
         {
@@ -108,7 +113,7 @@ public class WaveSpawnerBottomRight : MonoBehaviour
             yield return new WaitForSeconds(1f / wave.rate);
         }
         waveIndex++;
-        Debug.Log("BRight Wave =" + waveIndex);
+        // Debug.Log("Wave =" + waveIndex);
     }
 
     void SpawnEnemy(GameObject enemy)
@@ -125,6 +130,8 @@ public class WaveSpawnerBottomRight : MonoBehaviour
                 clone.tag = "EnemyBottomRight";
                 Wave.EnemiesAlive++;
                 spawnSpacer++;
+                Debug.Log("enemies Alive:" + Wave.EnemiesAlive);
+
                 break;
 
             case 2:
@@ -136,6 +143,7 @@ public class WaveSpawnerBottomRight : MonoBehaviour
                 clone.tag = "EnemyBottomRight";
                 Wave.EnemiesAlive++;
                 spawnSpacer++;
+                Debug.Log("enemies Alive:" + Wave.EnemiesAlive);
                 break;
             case 3:
                 Vector3 position3 = new Vector3(1, 0, 1);
@@ -146,6 +154,7 @@ public class WaveSpawnerBottomRight : MonoBehaviour
                 clone.tag = "EnemyBottomRight";
                 Wave.EnemiesAlive++;
                 spawnSpacer++;
+                Debug.Log("enemies Alive:" + Wave.EnemiesAlive);
                 break;
 
             case 4:
@@ -157,6 +166,7 @@ public class WaveSpawnerBottomRight : MonoBehaviour
                 clone.tag = "EnemyBottomRight";
                 Wave.EnemiesAlive++;
                 spawnSpacer++;
+                Debug.Log("enemies Alive:" + Wave.EnemiesAlive);
                 break;
             case 5:
                 Vector3 position5 = new Vector3(1, 0, 1);
@@ -167,6 +177,8 @@ public class WaveSpawnerBottomRight : MonoBehaviour
                 clone.tag = "EnemyBottomRight";
                 Wave.EnemiesAlive++;
                 spawnSpacer = 1;
+                Debug.Log("enemies Alive:" + Wave.EnemiesAlive);
+
                 break;
 
 
