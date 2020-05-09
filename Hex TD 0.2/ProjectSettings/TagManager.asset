@@ -14,6 +14,7 @@ TagManager:
   - EnemyBottomRight
   - EnemyBottomLeft
   - EnemyLeft
+  - WaveStarter
   layers:
   - Default
   - TransparentFX

@@ -270,7 +270,7 @@ GameObject:
   - component: {fileID: 6563506405678594867}
   m_Layer: 0
   m_Name: WaveStartButton
-  m_TagString: WaveIndicator
+  m_TagString: WaveStarter
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295

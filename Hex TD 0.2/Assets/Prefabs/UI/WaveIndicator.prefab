@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6563506405678594871}
   - component: {fileID: 6563506405678594865}
   - component: {fileID: 6563506405678594864}
-  - component: {fileID: 6563506405678594867}
+  - component: {fileID: 6607051567657163294}
   m_Layer: 0
   m_Name: WaveIndicator
   m_TagString: WaveIndicator
@@ -113,16 +113,16 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.53983784, y: 0.5007473, z: 0.11997251}
   m_Center: {x: 0.000927051, y: 0.00010061257, z: 0.040017415}
---- !u!114 &6563506405678594867
+--- !u!114 &6607051567657163294
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6563506405678594868}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 30feb786c50a7b547bdad236deeec1a5, type: 3}
+  m_Script: {fileID: 11500000, guid: 967aad60fb6333f47b105e1831c8318b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waveStarter: {fileID: 6563506405678594868}
+  WaveIndicator: {fileID: 6563506405678594868}

@@ -24,6 +24,9 @@ public class WaveSpawnerTopRight_Main : MonoBehaviour
     public Transform Target4;
     public Transform Target5;
 
+    public static bool WaveRushed;
+    private bool spawning;
+
     private int spawnSpacer = 1;
 
     GameObject clone;
@@ -81,16 +84,34 @@ public class WaveSpawnerTopRight_Main : MonoBehaviour
 
     void Update()
     {
-      
-       if (startFirstWave <= 0)
+        if (startFirstWave <= 0)
         {
             return;
         }
-        
 
-        if (Wave.EnemiesAlive > 0 && EnemyCount > 0)
+
+        if (Wave.EnemiesAlive == 0 && spawning == true)
         {
-            
+            spawning = false;
+        }
+        else
+        {
+            if (spawning == true)
+            {
+                WaveRushed = false;
+            }
+
+        }
+
+        if (WaveRushed == true && spawning == false)
+        {
+                  Debug.Log("WAVE RUSHED");
+                  countdown = 0f;
+                  waveCountdownText.text = string.Format("{0:00.00}", countdown);
+        }
+
+        if (Wave.EnemiesAlive > 0 && EnemyCount > 0 && WaveRushed != true)
+        {
             return;
         }
 
@@ -103,12 +124,11 @@ public class WaveSpawnerTopRight_Main : MonoBehaviour
             this.enabled = false;
         }
 
-        if (countdown <= 0f)
+        if (countdown <= 0f && spawning == false)
         {
             
-
             StartCoroutine(SpawnWave());
-            countdown = timeBetweenWaves;
+
 
             GameObject[] objects = GameObject.FindGameObjectsWithTag("WaveIndicator");
 
@@ -117,6 +137,11 @@ public class WaveSpawnerTopRight_Main : MonoBehaviour
                 Destroy(objects[i]);
             }
             waveIndicatorPlaced = false;
+            
+            countdown = timeBetweenWaves;
+
+            
+
             return;
         }
 
@@ -143,11 +168,15 @@ public class WaveSpawnerTopRight_Main : MonoBehaviour
             }
             waveIndex--;
 
-            countdown -= Time.deltaTime;
+            if (Wave.EnemiesAlive == 0)
+            {
+                countdown -= Time.deltaTime;
 
-            countdown = Mathf.Clamp(countdown, 0f, Mathf.Infinity);
+                countdown = Mathf.Clamp(countdown, 0f, Mathf.Infinity);
 
-            waveCountdownText.text = string.Format("{0:00.00}", countdown);
+                waveCountdownText.text = string.Format("{0:00.00}", countdown);
+
+            }
 
         }
         
@@ -171,8 +200,8 @@ public class WaveSpawnerTopRight_Main : MonoBehaviour
             yield return new WaitForSeconds(1f / wave.rate);
         }
         waveIndex++;
-       
-       
+        spawning = true;
+
 
     }
 
@@ -190,8 +219,6 @@ public class WaveSpawnerTopRight_Main : MonoBehaviour
                 clone.tag = "EnemyTopRight";
                 Wave.EnemiesAlive++;
                 spawnSpacer++;
-                Debug.Log("enemies Alive:" + Wave.EnemiesAlive);
-
                 break;
 
             case 2:
@@ -203,7 +230,6 @@ public class WaveSpawnerTopRight_Main : MonoBehaviour
                 clone.tag = "EnemyTopRight";
                 Wave.EnemiesAlive++;
                 spawnSpacer++;
-                Debug.Log("enemies Alive:" + Wave.EnemiesAlive);
                 break;
             case 3:
                 Vector3 position3 = new Vector3(1, 0, 1);
@@ -214,7 +240,6 @@ public class WaveSpawnerTopRight_Main : MonoBehaviour
                 clone.tag = "EnemyTopRight";
                 Wave.EnemiesAlive++;
                 spawnSpacer++;
-                Debug.Log("enemies Alive:" + Wave.EnemiesAlive);
                 break;
 
             case 4:
@@ -226,7 +251,6 @@ public class WaveSpawnerTopRight_Main : MonoBehaviour
                 clone.tag = "EnemyTopRight";
                 Wave.EnemiesAlive++;
                 spawnSpacer++;
-                Debug.Log("enemies Alive:" + Wave.EnemiesAlive);
                 break;
             case 5:
                 Vector3 position5 = new Vector3(1, 0, 1);
@@ -237,8 +261,6 @@ public class WaveSpawnerTopRight_Main : MonoBehaviour
                 clone.tag = "EnemyTopRight";
                 Wave.EnemiesAlive++;
                 spawnSpacer = 1;
-                Debug.Log("enemies Alive:" + Wave.EnemiesAlive);
-
                 break;
 
 

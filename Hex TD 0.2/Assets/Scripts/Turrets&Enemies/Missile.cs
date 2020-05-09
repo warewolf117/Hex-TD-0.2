@@ -87,7 +87,7 @@ public class Missile : MonoBehaviour
 
             foreach (Collider collider in colliders) //for each object hit by the sphere, if tagged as Enemy then damage.
             {
-                if (collider.tag == "Enemy")
+                if (collider.tag == "EnemyTopLeft" || collider.tag == "EnemyTopRight" || collider.tag == "EnemyLeft" || collider.tag == "EnemyRight" || collider.tag == "EnemyBottomLeft" || collider.tag == "EnemyBottomRight")
                 {
                     Damage(collider.transform);
                 }

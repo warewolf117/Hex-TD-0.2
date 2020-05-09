@@ -19,7 +19,7 @@ public class WaveStarter : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
 
         if (waveStarter == enabled)
         {
@@ -31,18 +31,14 @@ public class WaveStarter : MonoBehaviour
         {
             if (Physics.Raycast(ray, out Hit) && Hit.collider.gameObject == gameObject)
             {
-                Debug.Log("Button Clicked");
-                WaveSpawnerTopRight_Main.startFirstWave++;
-                
+                    WaveSpawnerTopRight_Main.startFirstWave++;
+                    GameObject[] objects = GameObject.FindGameObjectsWithTag("WaveStarter");
 
-                    GameObject[] objects = GameObject.FindGameObjectsWithTag("WaveIndicator");
-                
-                    for (int i=0; i<objects.Length; i++)
+                    for (int i = 0; i < objects.Length; i++)
                     {
-                      Destroy(objects[i]);
+                        Destroy(objects[i]);
                     }
-                
-            }
+                }
         }
         }
     }
