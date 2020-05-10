@@ -4,6 +4,7 @@ using System.Threading;
 using System.Diagnostics;
 using Microsoft.Win32.SafeHandles;
 using System.Collections.Specialized;
+using UnityEngine.UIElements;
 
 public class MobileCameraControlBackup : MonoBehaviour
 {
@@ -12,10 +13,10 @@ public class MobileCameraControlBackup : MonoBehaviour
     private static readonly float RotateSpeed = 0.2f;
 
 
-    private static float BoundsX1 = -6f;
-    private static float BoundsX2 = 6f;
+    private static float BoundsX1 = -1f;
+    private static float BoundsX2 = 0f;
 
-    private static float BoundsY1 = -22.5f;
+    private static float BoundsY1 = -19f;
     private static float BoundsY2 = -2f;
 
     private  float[] BoundsX = new float[] { BoundsX1, BoundsX2 };
@@ -46,6 +47,33 @@ public class MobileCameraControlBackup : MonoBehaviour
 
     void Update()
     {
+        if (CurrentPosition == 0)
+        {
+            BoundsX1 = -1f;
+            BoundsX2 = 0f;
+
+            BoundsY1 = -19f;
+            BoundsY2 = 2f;
+        }
+        if (CurrentPosition == 1)
+        {
+            BoundsX1 = -13f;
+            BoundsX2 = 13f;
+
+            BoundsY1 = -23f;
+            BoundsY2 = 8f;
+        }
+        if (CurrentPosition == 2)
+        {
+            BoundsX1 = -15f;
+            BoundsX2 = 15f;
+
+            BoundsY1 = -29f;
+            BoundsY2 = 15f;
+        }
+
+
+
         BoundsX = new float[] { BoundsX1, BoundsX2 };
         BoundsZ = new float[] { BoundsY1, BoundsY2 };
 
@@ -87,7 +115,7 @@ public class MobileCameraControlBackup : MonoBehaviour
         {
             Vector3 StartPosition = cam.transform.position;
 
-            Vector3 move = new Vector3(-4f, 18f, -6.5f);
+            Vector3 move = new Vector3(0f, 18.5f, -7f);
 
             cam.transform.position = Vector3.Lerp(StartPosition, move, 0.2f);
 
@@ -98,7 +126,7 @@ public class MobileCameraControlBackup : MonoBehaviour
         {
             Vector3 StartPosition = cam.transform.position;
 
-            Vector3 move = new Vector3(-4f, 18f, -6.5f);
+            Vector3 move = new Vector3(0f, 18.5f, -7f);
 
             cam.transform.position = Vector3.Lerp(StartPosition, move, 0.2f);
 
@@ -111,13 +139,13 @@ public class MobileCameraControlBackup : MonoBehaviour
         {
             Vector3 StartPosition = cam.transform.position;
 
-            Vector3 move = new Vector3(-4f, 18f, -6.5f);
+            Vector3 move = new Vector3(0f, 18.5f, -7f);
 
             cam.transform.position = Vector3.Lerp(StartPosition, move, 0.2f);
 
             Quaternion StartRotation = cam.transform.rotation;
 
-            Quaternion rotate = Quaternion.Euler(70f, 30f, 0f);
+            Quaternion rotate = Quaternion.Euler(70f, 0f, 0f);
 
             cam.transform.rotation = Quaternion.Lerp(StartRotation, rotate, 0.2f);
 
@@ -128,7 +156,7 @@ public class MobileCameraControlBackup : MonoBehaviour
         {
             Vector3 StartPosition = cam.transform.position;
 
-            Vector3 move = new Vector3(-4f, 18f, -5.7f);
+            Vector3 move = new Vector3(0f, 18.5f, -7f);
 
             cam.transform.position = Vector3.Lerp(StartPosition, move, 0.2f);
 
@@ -140,13 +168,13 @@ public class MobileCameraControlBackup : MonoBehaviour
         {
              Vector3 StartPosition = cam.transform.position;
 
-             Vector3 move = new Vector3(-4f, 18f, -6.5f);
+             Vector3 move = new Vector3(0f, 18.5f, -7f);
 
              cam.transform.position = Vector3.Lerp(StartPosition, move, 0.2f);
 
              Quaternion StartRotation = cam.transform.rotation;
 
-             Quaternion rotate = Quaternion.Euler(70f, 30f, 0f);
+             Quaternion rotate = Quaternion.Euler(70f, 0f, 0f);
 
              cam.transform.rotation = Quaternion.Lerp(StartRotation, rotate, 0.2f);
 
@@ -164,7 +192,7 @@ public class MobileCameraControlBackup : MonoBehaviour
 
             Quaternion StartRotation = cam.transform.rotation;
 
-            Quaternion rotate1 = Quaternion.Euler(15f, 30f, 0f);
+            Quaternion rotate1 = Quaternion.Euler(15f, 00f, 0f);
 
             cam.transform.rotation = Quaternion.Lerp(StartRotation, rotate1, 0.2f);
 
@@ -177,11 +205,6 @@ public class MobileCameraControlBackup : MonoBehaviour
 
         if (CurrentPosition == 0)
         {
-            BoundsX1 = -9f;
-            BoundsX2 = 9f;
-
-            BoundsY1 = -26.5f;
-            BoundsY2 = 9f;
 
             CurrentPosition = 1;
             zoomingin = true;
@@ -190,12 +213,6 @@ public class MobileCameraControlBackup : MonoBehaviour
 
         if (CurrentPosition == 1)
         {
-
-            BoundsX1 = -15f;
-            BoundsX2 = 15f;
-
-            BoundsY1 = -29f;
-            BoundsY2 = 15f;
 
             CurrentPosition = 2;
             zoomingin = true;

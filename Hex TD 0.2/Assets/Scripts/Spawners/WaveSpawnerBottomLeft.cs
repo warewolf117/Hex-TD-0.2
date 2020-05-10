@@ -53,7 +53,7 @@ public class WaveSpawnerBottomLeft : MonoBehaviour
         if (noEnemiesComing == false)
         {
             waveStarter.SetActive(true);
-            Instantiate(waveStarter, WaveIndicatorPosition.position, Quaternion.Euler(90f, -120f, 30f));
+            Instantiate(waveStarter, WaveIndicatorPosition.position, Quaternion.Euler(90f, -120f, 60f));
 
         }
         waveIndex--;
@@ -94,7 +94,7 @@ public class WaveSpawnerBottomLeft : MonoBehaviour
             if (waveIndicatorPlaced == false && waveIndex > 1 && noEnemiesComing == false)
             {
                 waveIndicator.SetActive(true);
-                Instantiate(waveIndicator, WaveIndicatorPosition.position, Quaternion.Euler(90f, -120f, 30f));
+                Instantiate(waveIndicator, WaveIndicatorPosition.position, Quaternion.Euler(90f, -120f, 60f));
 
                 waveIndicatorPlaced = true;
             }

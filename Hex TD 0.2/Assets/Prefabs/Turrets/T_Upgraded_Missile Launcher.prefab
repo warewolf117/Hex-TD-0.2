@@ -85,7 +85,6 @@ MonoBehaviour:
   damageOverTime: 30
   Slowpct: 0.3
   lineRenderer: {fileID: 0}
-  enemyTag: Enemy
   partToRotate: {fileID: 1536985767836266718}
   turnSpeed: 10
   firePoint: {fileID: 3253807398328822028}
@@ -493,13 +492,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8193861296434135801}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0.2588191, z: 0, w: 0.9659258}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3882431404737479439}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 30, z: 0}
 --- !u!33 &3234315649967947648
 MeshFilter:
   m_ObjectHideFlags: 0

@@ -55,13 +55,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1816936643349609523}
-  m_LocalRotation: {x: 0.000000021855694, y: 0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0.2588191, z: 0, w: 0.9659258}
   m_LocalPosition: {x: -0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6728472287052037573}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 30, z: 0}
 --- !u!33 &4928037353666789706
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -350,14 +350,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   range: 10
-  bulletPrefab: {fileID: 0}
   fireRate: 1
   useLaser: 1
+  useBullet: 0
+  useMissile: 0
   focusBack: 0
   damageOverTime: 30
   Slowpct: 0.3
   lineRenderer: {fileID: 2048290447241327753}
-  enemyTag: Enemy
   partToRotate: {fileID: 4966439953513653330}
   turnSpeed: 10
   firePoint: {fileID: 1692980856274244631}
