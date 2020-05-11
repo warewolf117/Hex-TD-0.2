@@ -11,7 +11,9 @@ public class Node : MonoBehaviour
     [HideInInspector] //Allows to put default turrets in any node
     public GameObject turret;
     [HideInInspector]
-    public TurretBlueprint turretBlueprint;
+    public TurretBlueprintShop turretBlueprintShop;
+    public TurretBlueprintStats turretBlueprintStats;
+
     [HideInInspector]
     public bool isUpgraded = false;
 
@@ -19,6 +21,8 @@ public class Node : MonoBehaviour
     private Color startColor;
 
     public int nodeSector;
+    /*int range;
+    float fireRate;*/
 
     BuildManager buildManager;
 
@@ -56,7 +60,7 @@ public class Node : MonoBehaviour
 
     }
 
-    void BuildTurret(TurretBlueprint blueprint)
+    void BuildTurret(TurretBlueprintShop blueprint)
     {
         if (PlayerStats.money < blueprint.cost)
         {
@@ -71,8 +75,18 @@ public class Node : MonoBehaviour
         Turret Sturret = turret.transform.GetComponent<Turret>();
         Sturret.NodeSectionTargetingShit(nodeSector); //sends nodeSector value to the void function in the turret script
 
+       /* Turret turretRange = turret.transform.GetComponent<Turret>();
+        range = turretRange.range;
 
-        turretBlueprint = blueprint;
+        Turret turretFireRate = turret.transform.GetComponent<Turret>();
+        fireRate = turretFireRate.fireRate;
+
+        NodeUI stats = turret.transform.GetComponent<NodeUI>();
+        stats.TurretStats(range, fireRate);*/
+
+
+
+        turretBlueprintShop = blueprint;
 
         // GameObject effect = (GameObject)Instantiate(buildManager.buildEffect, GetBuildPosition(), Quaternion.identity);
         // Destroy(effect, 2f);
@@ -81,18 +95,29 @@ public class Node : MonoBehaviour
 
     public void UpgradeTurret()
     {
-        if (PlayerStats.money < turretBlueprint.upgradeCost)
+        if (PlayerStats.money < turretBlueprintShop.upgradeCost)
         {
             Debug.Log("Insufficient funds");
             return;
         }
 
-        PlayerStats.money -= turretBlueprint.upgradeCost;
+        PlayerStats.money -= turretBlueprintShop.upgradeCost;
 
         Destroy(turret);
 
-        GameObject _turret = (GameObject)Instantiate(turretBlueprint.upgradedPref, GetBuildPosition(), Quaternion.identity);
+        GameObject _turret = (GameObject)Instantiate(turretBlueprintShop.upgradedPref, GetBuildPosition(), Quaternion.identity);
         turret = _turret;
+        Turret Sturret = turret.transform.GetComponent<Turret>();
+        Sturret.NodeSectionTargetingShit(nodeSector);
+
+        /*Turret turretRange = turret.transform.GetComponent<Turret>();
+        range = turretRange.range;
+
+        Turret turretFireRate = turret.transform.GetComponent<Turret>();
+        fireRate = turretFireRate.fireRate;
+
+        NodeUI stats = turret.transform.GetComponent<NodeUI>();
+        stats.TurretStats(range, fireRate);*/
 
         // GameObject effect = (GameObject)Instantiate(buildManager.buildEffect, GetBuildPosition(), Quaternion.identity);
         // Destroy(effect, 2f);
@@ -103,19 +128,19 @@ public class Node : MonoBehaviour
 
     public void SellTurret()
     {
-        PlayerStats.money += turretBlueprint.GetSellAmount();
+        PlayerStats.money += turretBlueprintShop.GetSellAmount();
         //put sell effect here
         Destroy(turret);
-        turretBlueprint = null;
+        turretBlueprintShop = null;
 
     }
 
     public void SellUpgradedTurret()
     {
-        PlayerStats.money += turretBlueprint.GetUpgradedSellAmount();
+        PlayerStats.money += turretBlueprintShop.GetUpgradedSellAmount();
         //put sell effect here
         Destroy(turret);
-        turretBlueprint = null;
+        turretBlueprintShop = null;
 
     }
 

@@ -14,7 +14,7 @@ public class Turret : MonoBehaviour
 
     [Header("General")]
 
-    public float range = 15f;
+    public int range = 15;
 
     [Header("Use Bullets (default)")]
 
@@ -48,6 +48,7 @@ public class Turret : MonoBehaviour
 
     int turretSector;
 
+
     public Transform partToRotate;
     public float turnSpeed = 10f;
 
@@ -69,6 +70,8 @@ public class Turret : MonoBehaviour
     {
         turretSector = nodeSector;
     }
+
+   
 
     void UpdateTarget()
     {

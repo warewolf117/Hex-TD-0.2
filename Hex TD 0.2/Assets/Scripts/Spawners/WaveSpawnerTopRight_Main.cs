@@ -29,6 +29,8 @@ public class WaveSpawnerTopRight_Main : MonoBehaviour
 
     GameObject clone;
 
+    public LevelEndMenu levelEndMenu;
+
     public Transform WaveIndicatorPosition;
     public GameObject waveStarter;
     public GameObject waveIndicator;
@@ -43,7 +45,7 @@ public class WaveSpawnerTopRight_Main : MonoBehaviour
 
     public Text waveCountdownText;
 
-    public Text levelCleared;
+   // public Text levelCleared;
 
     private int waveIndex = 0;
 
@@ -111,7 +113,8 @@ public class WaveSpawnerTopRight_Main : MonoBehaviour
         if (waveIndex == waves.Length && Wave.EnemiesAlive == 0)
         {
             waveCountdownText.enabled = false;
-            levelCleared.text = "LEVEL CLEARED";
+            levelEndMenu.Victory();
+            //levelCleared.text = "LEVEL CLEARED";
             Debug.Log("Level cleared");
 
             this.enabled = false;

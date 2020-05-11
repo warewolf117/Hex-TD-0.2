@@ -15,14 +15,22 @@ public class NodeUI : MonoBehaviour
     public Text range;
     public Text sellAmmount;
 
-    public TurretBlueprint standartTurret;
-    public TurretBlueprint missileLauncher;
-    public TurretBlueprint laserTurret;
+    /*int turretRange;
+    float turretFireRate;*/
+
+    public TurretBlueprintStats standartTurret;
+    public TurretBlueprintStats missileLauncher;
+    public TurretBlueprintStats laserTurret;
 
     private Node target;
     public Button upgradeButton;
 
 
+   /* public void TurretStats(int _range, float _fireRate)
+    {
+        turretRange = _range;
+        turretFireRate = _fireRate;
+    }*/
 
     public void SetTarget(Node _target)
     {
@@ -30,28 +38,27 @@ public class NodeUI : MonoBehaviour
 
         target = _target;
 
-        fireRate.text = target.turretBlueprint.GetUpgradedFireRate().ToString();
-        damage.text = target.turretBlueprint.GetUpgradedDamage().ToString();
-        range.text = target.turretBlueprint.GetUpgradedRange().ToString();
+        /*fireRate.text = turretFireRate.ToString();
+        range.text = turretRange.ToString();*/
+        fireRate.text = target.turretBlueprintStats.GetUpgradedFireRate().ToString();
+        damage.text = target.turretBlueprintStats.GetUpgradedDamage().ToString();
+        range.text = target.turretBlueprintStats.GetUpgradedRange().ToString();
 
-        sellAmmount.text = "$" + target.turretBlueprint.GetUpgradedSellAmount();
+        sellAmmount.text = "$" + target.turretBlueprintShop.GetUpgradedSellAmount();
 
-
-
-
-        //transform.position = target.GetBuildPosition(); //this uses the node location with the offset
-        // we made before
 
         if (!target.isUpgraded)
         {
-            upgradeCost.text = "$" + target.turretBlueprint.upgradeCost;
+            upgradeCost.text = "$" + target.turretBlueprintShop.upgradeCost;
             upgradeButton.interactable = true;
 
-            fireRate.text = target.turretBlueprint.GetFireRate().ToString();
-            damage.text = target.turretBlueprint.GetDamage().ToString();
-            range.text = target.turretBlueprint.GetRange().ToString();
+            /*fireRate.text = turretFireRate.ToString();
+            range.text = turretRange.ToString();*/
+            fireRate.text = target.turretBlueprintStats.GetFireRate().ToString();
+            damage.text = target.turretBlueprintStats.GetDamage().ToString();
+            range.text = target.turretBlueprintStats.GetRange().ToString();
 
-            sellAmmount.text = "$" + target.turretBlueprint.GetSellAmount();
+            sellAmmount.text = "$" + target.turretBlueprintShop.GetSellAmount();
         }
         else
         {

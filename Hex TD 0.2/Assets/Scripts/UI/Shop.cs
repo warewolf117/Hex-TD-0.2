@@ -2,9 +2,9 @@
 
 public class Shop : MonoBehaviour
 {
-    public TurretBlueprint standartTurret;
-    public TurretBlueprint missileLauncher;
-    public TurretBlueprint laserTurret;
+    public TurretBlueprintShop standartTurret;
+    public TurretBlueprintShop missileLauncher;
+    public TurretBlueprintShop laserTurret;
 
     BuildManager buildManager;
     private void Start()
