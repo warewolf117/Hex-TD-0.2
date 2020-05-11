@@ -10,7 +10,6 @@ public class Health : MonoBehaviour
     public Image healthBar;
     public int worth;
     private bool checkAlive = true;
-    public Turret turret;
     public float TotalDamage = 0;
 
     float laserPopupTimer = 0f;
@@ -127,6 +126,10 @@ public class Health : MonoBehaviour
             Destroy(this.gameObject);
         }
 
+        if (gameObject.tag == "Turret")
+        {
+            Destroy(this.gameObject);
+        }
 
 
 

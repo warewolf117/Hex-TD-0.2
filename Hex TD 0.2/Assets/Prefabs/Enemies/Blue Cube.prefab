@@ -199,8 +199,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e90d44365b9cf6d4a83a8e42b46b5884, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 10
+  damage: 20
   attackSpeed: 2
+  range: 0
   target: {fileID: 6334955249659344108, guid: 440f97069ec8181479dc2063ac0a40c5, type: 3}
 --- !u!114 &4277588789801228932
 MonoBehaviour:
@@ -214,11 +215,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af4c2fc336624c34d8e83d832a0f3455, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  max_health: 100
+  max_health: 50000
   cur_health: 0
   healthBar: {fileID: 646933376975029447}
   worth: 50
-  turret: {fileID: 0}
   TotalDamage: 0
 --- !u!114 &4277588789801228935
 MonoBehaviour:
@@ -234,6 +234,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   navMeshAgent: {fileID: 4277588789801228934}
   target: {fileID: 0}
+  CenterTarget: {fileID: 6334955249659344108, guid: 440f97069ec8181479dc2063ac0a40c5,
+    type: 3}
   startingSpeed: 1
   currentSpeed: 0
 --- !u!195 &4277588789801228934

@@ -32,7 +32,7 @@ Transform:
   m_GameObject: {fileID: 637410317746341828}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -8.57, y: 0.81, z: 11.49}
-  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_LocalScale: {x: 2, y: 2, z: 1.5}
   m_Children:
   - {fileID: 5594101308328158052}
   - {fileID: 6152352126655706675}
@@ -135,6 +135,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   navMeshAgent: {fileID: 637410317746341850}
   target: {fileID: 0}
+  CenterTarget: {fileID: 6334955249659344108, guid: 440f97069ec8181479dc2063ac0a40c5,
+    type: 3}
   startingSpeed: 1
   currentSpeed: 0
 --- !u!114 &637410317746341853
@@ -502,12 +504,12 @@ PrefabInstance:
     - target: {fileID: -4216859302048453862, guid: 191243fcc87a1ab4885c90ff99b3a5d5,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -0.488
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 191243fcc87a1ab4885c90ff99b3a5d5,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.323
+      value: -0.352
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 191243fcc87a1ab4885c90ff99b3a5d5,
         type: 3}
@@ -552,7 +554,7 @@ PrefabInstance:
     - target: {fileID: -4216859302048453862, guid: 191243fcc87a1ab4885c90ff99b3a5d5,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.3
+      value: 0.4
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 191243fcc87a1ab4885c90ff99b3a5d5,
         type: 3}

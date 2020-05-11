@@ -15,6 +15,7 @@ TagManager:
   - EnemyBottomLeft
   - EnemyLeft
   - WaveStarter
+  - Turret
   layers:
   - Default
   - TransparentFX
