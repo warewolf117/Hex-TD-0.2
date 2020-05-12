@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-
+    public GameObject Baudio;
     private Transform target;
 
     public int damage = 30;
@@ -18,7 +18,11 @@ public class Bullet : MonoBehaviour
 
     private bool TargetAquired = false;
 
-    public void Seek(Transform _target)
+
+
+
+
+        public void Seek(Transform _target)
     {
         target = _target;
     }
@@ -52,8 +56,10 @@ public class Bullet : MonoBehaviour
 
         if (dir.magnitude <= distancePerFrame)
         {
-
+            
             HitTarget();
+            AudioPlay audioplay = Baudio.GetComponent<AudioPlay>();
+            audioplay.PlayAudio();
             BulletPooler.Instance.AddToPool(gameObject);
             //Destroy(gameObject);
             TargetAquired = false;
@@ -81,7 +87,6 @@ public class Bullet : MonoBehaviour
             Invoke("Enqueue", 0.3f);
 
             //Destroy(effectIns, 0.2f);
-
             Damage(target);
         }
 

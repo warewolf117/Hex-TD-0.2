@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Missile : MonoBehaviour
 {
-
+    public GameObject Maudio;
     private Transform target;
 
     public int damage = 30;
@@ -53,6 +53,8 @@ public class Missile : MonoBehaviour
         if (dir.magnitude <= distancePerFrame)
         {
 
+            AudioPlay audioplay = Maudio.GetComponent<AudioPlay>();
+            audioplay.PlayAudio();
             HitTarget();
             MissilePooler.Instance.AddToPool(gameObject);
             //Destroy(gameObject);

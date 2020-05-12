@@ -24,7 +24,7 @@ public class MobileCameraControlBackup : MonoBehaviour
 
     private Camera cam;
     public GameObject target;
-    public int CurrentPosition; // 0 = far out, 1=zoomed in hexes. 2=zoomed in lane
+    public static int CurrentPosition; // 0 = far out, 1=zoomed in hexes. 2=zoomed in lane
     private float CurrentFOV;
     public bool zoomingin;
     public bool zoomingout;

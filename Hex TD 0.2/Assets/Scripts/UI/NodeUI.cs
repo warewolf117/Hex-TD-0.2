@@ -7,7 +7,7 @@ public class NodeUI : MonoBehaviour
 
     public GameObject ui;
     public GameObject disableUIButton;
-    private static bool checkUI = false;
+    private bool checkUI = false;
 
     public Text upgradeCost;
     public Text fireRate;
@@ -31,13 +31,6 @@ public class NodeUI : MonoBehaviour
         turretRange = _range;
         turretFireRate = _fireRate;
     }*/
-
-    public void SpawnUITest()
-    {
-        Debug.Log("spawn ui");
-        ui.SetActive(true);
-        checkUI = true;
-    }
 
     public void SetTarget(Node _target)
     {

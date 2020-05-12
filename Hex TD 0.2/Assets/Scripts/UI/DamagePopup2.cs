@@ -25,7 +25,7 @@ public class DamagePopup2 : MonoBehaviour
         float f = damageAmount;
         f = Mathf.Round(f * 1.0f) * 1f;
         GameObject damagePopupTransform = DmgPopUpPooler.Instance.GetFromPool();
-        damagePopupTransform.transform.position = position + Vector3.up * 2;
+        damagePopupTransform.transform.position = position; // + Vector3.up * 2;
         damagePopupTransform.transform.rotation = Quaternion.identity;
 
         //Transform damagePopupTransform = Instantiate(GameAssets.i.pfDamagePopup, position + Vector3.up * 2 , Quaternion.identity);
@@ -42,13 +42,12 @@ public class DamagePopup2 : MonoBehaviour
 
     private const float DISAPPEAR_TIMER_MAX = 0.2f;
 
+    private static int CurrentPos;
 
     private TextMeshPro textMesh;
     private float disappearTimer;
     private Color textColor;
     private Vector3 moveVector;
-
-
 
     private void Awake()
     {
@@ -75,7 +74,7 @@ public class DamagePopup2 : MonoBehaviour
         textMesh.color = turretcolor;
         disappearTimer = DISAPPEAR_TIMER_MAX;
 
-        moveVector = new Vector3(.7f, 1) * 15f;
+        moveVector = new Vector3(-0.7f, 1) * 10f;
 
         sortingOrder++;
         textMesh.sortingOrder = sortingOrder;
@@ -83,9 +82,27 @@ public class DamagePopup2 : MonoBehaviour
 
     private void Update()
     {
+        CurrentPos = MobileCameraControlBackup.CurrentPosition;
+
+       if (CurrentPos == 3)
+        {
+            textMesh.fontSize = 4f;
+        }
+
+       if (CurrentPos == 2)
+        {
+            textMesh.fontSize = 6f;
+        }
+
+       if (CurrentPos == 1)
+        {
+            textMesh.fontSize = 8f;
+        }
+
+
 
         transform.position += (moveVector * Time.deltaTime);
-        moveVector -= moveVector * 8f * Time.deltaTime;
+        moveVector -= moveVector * 7f * Time.deltaTime;
 
         if (disappearTimer > DISAPPEAR_TIMER_MAX * .5f) //first half of the popup lifetime
         {
