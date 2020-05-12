@@ -97,7 +97,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.0000006, y: 1, z: 1.0000006}
+  m_Size: {x: 1.1, y: 1.1, z: 1.1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!195 &637410317746341850
 NavMeshAgent:
@@ -135,6 +135,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   navMeshAgent: {fileID: 637410317746341850}
   target: {fileID: 0}
+  CenterTarget: {fileID: 6334955249659344108, guid: 440f97069ec8181479dc2063ac0a40c5,
+    type: 3}
   startingSpeed: 1
   currentSpeed: 0
 --- !u!114 &637410317746341853
@@ -153,7 +155,6 @@ MonoBehaviour:
   cur_health: 0
   healthBar: {fileID: 896465499385518189}
   worth: 1000
-  turret: {fileID: 0}
   TotalDamage: 0
 --- !u!114 &1773997003952462517
 MonoBehaviour:
@@ -169,6 +170,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 100
   attackSpeed: 0.5
+  range: 0
   target: {fileID: 6334955249659344108, guid: 440f97069ec8181479dc2063ac0a40c5, type: 3}
 --- !u!1 &1094661885124118277
 GameObject:
@@ -386,7 +388,6 @@ MonoBehaviour:
   cur_health: 0
   healthBar: {fileID: 0}
   worth: 0
-  turret: {fileID: 0}
   TotalDamage: 0
 --- !u!1 &8351176066292277878
 GameObject:

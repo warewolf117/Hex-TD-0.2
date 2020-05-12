@@ -273,13 +273,12 @@ GameObject:
   - component: {fileID: 9077747034460219961}
   - component: {fileID: 9035801648814874333}
   - component: {fileID: 9068227832387946421}
-  - component: {fileID: 9035946784147092643}
   - component: {fileID: 9046099113086372749}
   - component: {fileID: 9046099113086372748}
   - component: {fileID: 9046099113086372751}
   - component: {fileID: 9046099113086372750}
   m_Layer: 0
-  m_Name: Purple Cube
+  m_Name: Purple_Cube
   m_TagString: EnemyTopLeft
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -319,7 +318,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 1.1, y: 1.1, z: 1.1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &9068227832387946421
 MeshRenderer:
@@ -360,19 +359,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!65 &9035946784147092643
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9046099113086372737}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &9046099113086372749
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -387,6 +373,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 10
   attackSpeed: 2
+  range: 0
   target: {fileID: 6334955249659344108, guid: 440f97069ec8181479dc2063ac0a40c5, type: 3}
 --- !u!114 &9046099113086372748
 MonoBehaviour:
@@ -404,7 +391,6 @@ MonoBehaviour:
   cur_health: 0
   healthBar: {fileID: 8303955376541260730}
   worth: 50
-  turret: {fileID: 0}
   TotalDamage: 0
 --- !u!114 &9046099113086372751
 MonoBehaviour:
@@ -420,6 +406,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   navMeshAgent: {fileID: 9046099113086372750}
   target: {fileID: 0}
+  CenterTarget: {fileID: 6334955249659344108, guid: 440f97069ec8181479dc2063ac0a40c5,
+    type: 3}
   startingSpeed: 1
   currentSpeed: 0
 --- !u!195 &9046099113086372750
@@ -431,7 +419,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 9046099113086372737}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 0.5
+  m_Radius: 0.6
   m_Speed: 1.5
   m_Acceleration: 8
   avoidancePriority: 50

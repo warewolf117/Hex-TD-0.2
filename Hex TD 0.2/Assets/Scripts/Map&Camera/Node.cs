@@ -49,7 +49,6 @@ public class Node : MonoBehaviour
         if (turret != null)
         {
             buildManager.SelectNode(this); //this prevents from building where theres a turret
-            Debug.Log("Cant build there");
             return;
         }
 

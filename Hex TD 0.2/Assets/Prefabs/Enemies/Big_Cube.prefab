@@ -196,7 +196,6 @@ GameObject:
   m_Component:
   - component: {fileID: 7855303999188464171}
   - component: {fileID: 7855303999188464172}
-  - component: {fileID: 7855303999188464173}
   - component: {fileID: 7855303999188464174}
   - component: {fileID: 7855303999188464175}
   - component: {fileID: 7855303999188464208}
@@ -204,7 +203,7 @@ GameObject:
   - component: {fileID: 7855303999188464210}
   - component: {fileID: 7855303999188464211}
   m_Layer: 0
-  m_Name: Big Cube
+  m_Name: Big_Cube
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -233,19 +232,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7855303999188464212}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!65 &7855303999188464173
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7855303999188464212}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &7855303999188464174
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -296,7 +282,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 1.1, y: 1.1, z: 1.1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &7855303999188464208
 MonoBehaviour:
@@ -312,6 +298,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 30
   attackSpeed: 2
+  range: 0
   target: {fileID: 6334955249659344108, guid: 440f97069ec8181479dc2063ac0a40c5, type: 3}
 --- !u!114 &7855303999188464209
 MonoBehaviour:
@@ -329,7 +316,6 @@ MonoBehaviour:
   cur_health: 0
   healthBar: {fileID: 1903898917455635943}
   worth: 250
-  turret: {fileID: 0}
   TotalDamage: 0
 --- !u!114 &7855303999188464210
 MonoBehaviour:
@@ -345,6 +331,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   navMeshAgent: {fileID: 7855303999188464211}
   target: {fileID: 0}
+  CenterTarget: {fileID: 6334955249659344108, guid: 440f97069ec8181479dc2063ac0a40c5,
+    type: 3}
   startingSpeed: 1
   currentSpeed: 0
 --- !u!195 &7855303999188464211
@@ -356,7 +344,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 7855303999188464212}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 0.5
+  m_Radius: 0.6
   m_Speed: 1.5
   m_Acceleration: 8
   avoidancePriority: 50
