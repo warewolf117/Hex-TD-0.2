@@ -38,6 +38,8 @@ public class WaveSpawnerTopRight_Main : MonoBehaviour
     private bool noEnemiesComing = false;
     public static int startFirstWave = 0;
 
+    public static bool levelFailed;
+
 
     public float timeBetweenWaves = 3f;
     public static float countdown = 1f;
@@ -52,6 +54,8 @@ public class WaveSpawnerTopRight_Main : MonoBehaviour
 
     private void Start()
     {
+        levelFailed = false;
+
         Wave wave = waves[waveIndex];
         waveIndex++;
         if (wave.count == 0)
@@ -90,6 +94,12 @@ public class WaveSpawnerTopRight_Main : MonoBehaviour
 
     void Update()
     {
+        if(levelFailed == true)
+        {
+            LevelEndMenu levelEnd = levelEndMenu.GetComponent<LevelEndMenu>();
+            levelEnd.Defeat();
+            Debug.Log("U lose");
+        }
 
 
         if (startFirstWave <= 0)

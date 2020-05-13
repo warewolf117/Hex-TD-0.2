@@ -32,6 +32,7 @@ public class PauseMenu : MonoBehaviour
 
     public void Retry()
     {
+        Debug.Log("Retrying");
         Time.timeScale = 1f;
         //scenemanager.loadscene() selects the scene to load, in this we load the current scene
         screenFader.FadeTo(SceneManager.GetActiveScene().name);
@@ -40,12 +41,8 @@ public class PauseMenu : MonoBehaviour
 
     public void Exit ()
     {
+        Debug.Log("Exiting");
         Time.timeScale = 1f;
         screenFader.FadeTo(menuSceneName);
-    }
-
-    void Update ()
-    {
-
     }
 }

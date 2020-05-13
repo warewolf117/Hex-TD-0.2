@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using TMPro;
+using UnityEngine;
 using UnityEngine.UI;
 
 public class LevelEndMenu : MonoBehaviour
@@ -6,6 +7,9 @@ public class LevelEndMenu : MonoBehaviour
     public GameObject ui;
     public GameObject nextLevelButton;
     public Text levelClearedFailedText;
+
+    bool endCheck = false;
+    bool defeat = false;
 
     /*public string menuSceneName = "MainMenu";
     ScreenFader screenFader;
@@ -15,14 +19,15 @@ public class LevelEndMenu : MonoBehaviour
 
     public void Victory()
     {
-        Debug.Log("UI goes here");
-        ui.SetActive(true); 
-        levelClearedFailedText.text = "Cleared";
-        nextLevelButton.SetActive(true);
-        if (ui.activeSelf)
+        if(defeat == false)
         {
-            Time.timeScale = 0f;
+            Debug.Log("UI goes here");
+            ui.SetActive(true);
+            levelClearedFailedText.text = "Cleared";
+            nextLevelButton.SetActive(true);
         }
+        
+        
     }
     public void Defeat()
     {
@@ -31,7 +36,13 @@ public class LevelEndMenu : MonoBehaviour
         nextLevelButton.SetActive(false);
         if (ui.activeSelf)
         {
-            Time.timeScale = 0f;
+            if (endCheck == false)
+            {
+                // Time.timeScale = 0f;
+                defeat = true;
+                endCheck = true;
+            }
+            
         }
     }
 }

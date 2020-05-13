@@ -124,11 +124,13 @@ public class Health : MonoBehaviour
         if (gameObject.tag == "Wall")
         {
             Destroy(this.gameObject);
+           
         }
 
         if (gameObject.tag == "Turret")
         {
             Destroy(this.gameObject);
+
         }
 
 

@@ -12,14 +12,19 @@ public class EnemyDamage : MonoBehaviour
 
     public Transform target;
 
+
     private bool CollidedWithTurret = false;
     private bool CollidedWithWall = false;
+    private bool CollidedWithCenter = false;
+
 
     Collision collisionTurret = null;
     Collision collisionWall = null;
+    Collision collisionCenter = null;
 
     GameObject CollisionTurret;
     GameObject CollisionWall;
+    GameObject CollisionCenter;
 
 
 
@@ -35,9 +40,19 @@ public class EnemyDamage : MonoBehaviour
 
         if (collision.transform.tag == "Wall")
         {
+
             CollidedWithWall = true;
             this.collisionWall = collision;
             CollisionWall = collision.transform.gameObject;
+        }
+        if (collision.transform.tag == "Center")
+        {
+
+            CollidedWithCenter = true;
+            this.collisionCenter = collision;
+            CollisionCenter = collision.transform.gameObject;
+            
+
         }
     }
 
@@ -57,6 +72,7 @@ public class EnemyDamage : MonoBehaviour
             CollisionWall = null;
         }
     }
+    
 
     private void Update()
     {
@@ -104,6 +120,15 @@ public class EnemyDamage : MonoBehaviour
                     healthScript.Die();
                 }
             }
+            }
+        }
+        if (CollidedWithCenter)
+        {
+
+            if (CollisionCenter != null)
+            {
+                WaveSpawnerTopRight_Main.levelFailed = true;
+                
             }
         }
     }
