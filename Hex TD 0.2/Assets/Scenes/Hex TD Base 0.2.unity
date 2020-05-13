@@ -606,7 +606,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1105057854}
+      - m_Target: {fileID: 1105057853}
         m_MethodName: Retry
         m_Mode: 1
         m_Arguments:
@@ -1991,7 +1991,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1105057854}
+      - m_Target: {fileID: 1105057853}
         m_MethodName: Retry
         m_Mode: 1
         m_Arguments:
@@ -2716,7 +2716,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Cleared
+  m_Text: 
 --- !u!222 &919247955
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3231,7 +3231,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1050171404}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.000092524}
+  m_LocalPosition: {x: 0, y: 0, z: 0.00015446}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 741423926}
@@ -3243,7 +3243,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 4.159912, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: -387.5398, y: -145.90259}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!95 &1050171406
@@ -3603,7 +3603,6 @@ MonoBehaviour:
   ui: {fileID: 1050171404}
   nextLevelButton: {fileID: 741423925}
   levelClearedFailedText: {fileID: 919247954}
-  menuSceneName: MainMenu
 --- !u!1 &1118957370
 GameObject:
   m_ObjectHideFlags: 0
@@ -5391,7 +5390,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1105057854}
+      - m_Target: {fileID: 1105057853}
         m_MethodName: Exit
         m_Mode: 1
         m_Arguments:
@@ -8139,7 +8138,7 @@ PrefabInstance:
     - target: {fileID: 6289094773443845262, guid: 86e1a00a6f0011e4c80e3108a078dbb8,
         type: 3}
       propertyPath: waves.Array.size
-      value: 8
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6289094773443845262, guid: 86e1a00a6f0011e4c80e3108a078dbb8,
         type: 3}
@@ -8154,7 +8153,7 @@ PrefabInstance:
     - target: {fileID: 6289094773443845262, guid: 86e1a00a6f0011e4c80e3108a078dbb8,
         type: 3}
       propertyPath: waves.Array.data[0].count
-      value: 5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6289094773443845262, guid: 86e1a00a6f0011e4c80e3108a078dbb8,
         type: 3}
@@ -8274,6 +8273,11 @@ PrefabInstance:
       propertyPath: waves.Array.data[7].rate
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 6289094773443845262, guid: 86e1a00a6f0011e4c80e3108a078dbb8,
+        type: 3}
+      propertyPath: levelEndMenu
+      value: 
+      objectReference: {fileID: 1105057849}
     - target: {fileID: 6860653317421313100, guid: 86e1a00a6f0011e4c80e3108a078dbb8,
         type: 3}
       propertyPath: m_LocalPosition.x
