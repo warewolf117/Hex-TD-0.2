@@ -126,6 +126,7 @@ GameObject:
   - component: {fileID: 7884799189241396044}
   - component: {fileID: -1997591656890999413}
   - component: {fileID: -7136364983443124963}
+  - component: {fileID: 1073630241354956121}
   m_Layer: 0
   m_Name: T_Standard_Turret
   m_TagString: Turret
@@ -202,11 +203,11 @@ NavMeshObstacle:
   m_Enabled: 1
   serializedVersion: 3
   m_Shape: 1
-  m_Extents: {x: 0.6, y: 0.6, z: 0.6}
+  m_Extents: {x: 0.5, y: 0.25, z: 0.5}
   m_MoveThreshold: 0.1
   m_Carve: 0
   m_CarveOnlyStationary: 1
-  m_Center: {x: 0, y: 0.5, z: 0}
+  m_Center: {x: 0, y: 0, z: 0}
   m_TimeToStationary: 0.5
 --- !u!65 &7884799189241396044
 BoxCollider:
@@ -333,6 +334,39 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1073630241354956121
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2700326730679675294}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6dd8bd04f7589a439371e32ca420dce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  turret: {fileID: 2700326730679675294}
+  OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 11500000, guid: f35b667509f8721488b58d88d6e9554c, type: 3}
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  turretBlueprintShop:
+    pref: {fileID: 0}
+    cost: 0
+    upgradedPref: {fileID: 0}
+    upgradeCost: 0
+  isUpgraded: 0
 --- !u!1 &6302082511057197691
 GameObject:
   m_ObjectHideFlags: 0

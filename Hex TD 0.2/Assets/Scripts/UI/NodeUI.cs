@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.EventSystems;
 
 public class NodeUI : MonoBehaviour
 {
@@ -22,27 +21,32 @@ public class NodeUI : MonoBehaviour
     public TurretBlueprintStats missileLauncher;
     public TurretBlueprintStats laserTurret;
 
-    private Node target;
+    private TurretUI target;
     public Button upgradeButton;
 
-
-   /* public void TurretStats(int _range, float _fireRate)
+    public void ActivateUI()
     {
-        turretRange = _range;
-        turretFireRate = _fireRate;
-    }*/
+        ui.SetActive(true);
+        checkUI = true;
+    }
 
-    public void SetTarget(Node _target)
+    /* public void TurretStats(int _range, float _fireRate)
+     {
+         turretRange = _range;
+         turretFireRate = _fireRate;
+     }*/
+
+    public void SetTarget(TurretUI _target)
     {
 
 
         target = _target;
 
-        /*fireRate.text = turretFireRate.ToString();
-        range.text = turretRange.ToString();*/
+       /* fireRate.text = turretFireRate.ToString();
+        range.text = turretRange.ToString();
         fireRate.text = target.turretBlueprintStats.GetUpgradedFireRate().ToString();
         damage.text = target.turretBlueprintStats.GetUpgradedDamage().ToString();
-        range.text = target.turretBlueprintStats.GetUpgradedRange().ToString();
+        range.text = target.turretBlueprintStats.GetUpgradedRange().ToString();*/
 
         sellAmmount.text = "$" + target.turretBlueprintShop.GetUpgradedSellAmount();
 
@@ -53,10 +57,10 @@ public class NodeUI : MonoBehaviour
             upgradeButton.interactable = true;
 
             /*fireRate.text = turretFireRate.ToString();
-            range.text = turretRange.ToString();*/
+            range.text = turretRange.ToString();
             fireRate.text = target.turretBlueprintStats.GetFireRate().ToString();
             damage.text = target.turretBlueprintStats.GetDamage().ToString();
-            range.text = target.turretBlueprintStats.GetRange().ToString();
+            range.text = target.turretBlueprintStats.GetRange().ToString();*/
 
             sellAmmount.text = "$" + target.turretBlueprintShop.GetSellAmount();
         }
@@ -65,17 +69,8 @@ public class NodeUI : MonoBehaviour
             upgradeCost.text = "Done";
             upgradeButton.interactable = false;
         }
-
-
-
         ui.SetActive(true);
         checkUI = true;
-        
-        
-            
-        
-        
-
     }
 
     public void Hide()
@@ -98,7 +93,7 @@ public class NodeUI : MonoBehaviour
     public void Upgrade() 
     {
         target.UpgradeTurret();
-        BuildManager.instance.DeselectNode(); //hides menu when upgrade is done
+        BuildManager.instance.DeselectTurret(); //hides menu when upgrade is done
                                               //need to use this function so that node is deselected too instead of just hiding the
                                               //ui which is what the Hide() function does
 
@@ -108,12 +103,12 @@ public class NodeUI : MonoBehaviour
     {
         if (target.isUpgraded)
         {
-            target.SellUpgradedTurret();
+            //target.SellUpgradedTurret();
             BuildManager.instance.DeselectNode();
         }
         else
         {
-            target.SellTurret();
+            //target.SellTurret();
             BuildManager.instance.DeselectNode(); //deselects node after selling turret
         }
         

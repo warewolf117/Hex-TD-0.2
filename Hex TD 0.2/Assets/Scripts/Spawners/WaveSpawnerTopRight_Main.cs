@@ -82,13 +82,13 @@ public class WaveSpawnerTopRight_Main : MonoBehaviour
 
     {
         waverushed = true;
-        Debug.Log("Main Spawner Rushed");
+        
     }
 
     public void WaveStart()
     {
         startFirstWave++;
-        Debug.Log("Wave Started");
+        
 
     }
 
@@ -98,7 +98,7 @@ public class WaveSpawnerTopRight_Main : MonoBehaviour
         {
             LevelEndMenu levelEnd = levelEndMenu.GetComponent<LevelEndMenu>();
             levelEnd.Defeat();
-            Debug.Log("U lose");
+           
         }
 
 
@@ -126,7 +126,7 @@ public class WaveSpawnerTopRight_Main : MonoBehaviour
             LevelEndMenu levelEnd = levelEndMenu.GetComponent<LevelEndMenu>();
             levelEnd.Victory();
             //levelCleared.text = "LEVEL CLEARED";
-            Debug.Log("Level cleared");
+           
 
             this.enabled = false;
         }

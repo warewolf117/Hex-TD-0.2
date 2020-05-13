@@ -25,7 +25,7 @@ public class AudioPlay : MonoBehaviour
         
         if (startplaying == true)
         {
-            Debug.Log("boom");
+            
             Playaudio.PlayOneShot(Playaudio.clip);
             startplaying = false;
         }

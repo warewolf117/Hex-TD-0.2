@@ -33,7 +33,7 @@ public class EnemyDamage : MonoBehaviour
         if(collision.transform.tag == "Turret")
         {
             CollidedWithTurret = true;
-            Debug.Log("Don't touch my banana, boi");
+            
             this.collisionTurret = collision;
             CollisionTurret = collision.transform.gameObject;
         }
@@ -61,7 +61,7 @@ public class EnemyDamage : MonoBehaviour
         if (collision.transform.tag == "Turret")
         {
             CollidedWithTurret = false;
-            Debug.Log("Thanks, boi");
+            
             this.collisionTurret = collision;
             CollisionTurret = null;
         }
@@ -85,7 +85,7 @@ public class EnemyDamage : MonoBehaviour
             {
                 if (damageCountdown <= 0)
                 {
-                    Debug.Log("Damaging Wall");
+                    
                     Health healthScript = collisionWall.transform.gameObject.GetComponent<Health>();
                     healthScript.cur_health -= damage;
 
@@ -107,7 +107,7 @@ public class EnemyDamage : MonoBehaviour
             {
             if (damageCountdown <= 0)
             {
-                Debug.Log("Punching your Banana");
+                
                 Health healthScript = collisionTurret.transform.gameObject.GetComponent<Health>();
                 healthScript.cur_health -= damage;
 

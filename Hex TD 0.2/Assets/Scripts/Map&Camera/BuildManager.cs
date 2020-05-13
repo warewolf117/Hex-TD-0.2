@@ -10,7 +10,7 @@ public class BuildManager : MonoBehaviour
     {
         if (instance!= null)
         {
-            Debug.LogError("More than on buildmanager in scene!");
+           
             return;
         }
         
@@ -25,8 +25,12 @@ public class BuildManager : MonoBehaviour
     public GameObject buildEffect;
 
     private TurretBlueprintShop turretToBuild;
+
     private Node selectedNode;
+    private TurretUI selectedTurret;
+
     public NodeUI nodeUI;
+    
 
     //This function is called a property cus it only allows to get a return value
     public bool CanBuild
@@ -57,13 +61,29 @@ public class BuildManager : MonoBehaviour
         selectedNode = node;
         turretToBuild = null;
 
-        nodeUI.SetTarget(node);
+       // nodeUI.SetTarget(node);
+    }
+    public void SelectTurret(TurretUI turret)
+    {
+        if (selectedTurret == turret)
+        {
+            DeselectNode();
+            return;
+        }
+        selectedTurret = turret;
+        turretToBuild = null;
+
+        // nodeUI.SetTarget(node);
     }
     //Deactivates UI when u click the selected node
     public void DeselectNode()
     {
         selectedNode = null;
-        nodeUI.Hide(); 
+    }
+    public void DeselectTurret()
+    {
+        selectedTurret = null;
+        nodeUI.Hide();
     }
 
     public void SelectTurretToBuild(TurretBlueprintShop turret)

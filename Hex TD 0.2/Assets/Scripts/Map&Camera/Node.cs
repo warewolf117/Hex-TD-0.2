@@ -10,9 +10,12 @@ public class Node : MonoBehaviour
 
     [HideInInspector] //Allows to put default turrets in any node
     public GameObject turret;
+
     [HideInInspector]
     public TurretBlueprintShop turretBlueprintShop;
-    public TurretBlueprintStats turretBlueprintStats;
+
+
+    //public TurretBlueprintStats turretBlueprintStats;
 
     [HideInInspector]
     public bool isUpgraded = false;

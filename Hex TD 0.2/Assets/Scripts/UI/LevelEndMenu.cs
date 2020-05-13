@@ -21,7 +21,7 @@ public class LevelEndMenu : MonoBehaviour
     {
         if(defeat == false)
         {
-            Debug.Log("UI goes here");
+            
             ui.SetActive(true);
             levelClearedFailedText.text = "Cleared";
             nextLevelButton.SetActive(true);
