@@ -18,6 +18,7 @@ TagManager:
   - Turret
   - Center
   - GhostTurret
+  - Node
   layers:
   - Default
   - TransparentFX

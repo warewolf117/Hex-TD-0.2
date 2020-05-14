@@ -31,9 +31,7 @@ public class BuildManager : MonoBehaviour
     public NodeUI nodeUI;
 
     public GameObject Ghost;
-    public Material GhostMat;
     public static bool GhostActive = false;
-
 
     //This function is called a property cus it only allows to get a return value
     public bool CanBuild
