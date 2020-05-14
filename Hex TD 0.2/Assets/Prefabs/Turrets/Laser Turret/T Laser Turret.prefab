@@ -356,17 +356,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   range: 15
   fireRate: 1
-  useLaser: 1
   useBullet: 0
   useMissile: 0
   focusBack: 0
+  useLaser: 1
   damageOverTime: 30
   Slowpct: 0.3
-  lineRenderer: {fileID: 2048290447241327753}
-  partToRotate: {fileID: 4966439953513653330}
   turnSpeed: 10
   firePoint: {fileID: 1692980856274244631}
-  shouldFire: 0
+  partToRotate: {fileID: 4966439953513653330}
+  lineRenderer: {fileID: 2048290447241327753}
+  turretGhost: {fileID: 7726783044121333718, guid: 4a42869f485382f439b27838dc677411,
+    type: 3}
 --- !u!120 &2048290447241327753
 LineRenderer:
   m_ObjectHideFlags: 0

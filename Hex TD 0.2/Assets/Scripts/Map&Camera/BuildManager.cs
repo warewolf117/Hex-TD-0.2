@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.SocialPlatforms.GameCenter;
 
 public class BuildManager : MonoBehaviour
 {
@@ -19,9 +20,7 @@ public class BuildManager : MonoBehaviour
 
 
 
-    public GameObject standardTurretPrefab;
-    public GameObject missileLauncherPrefab;
-
+    
     public GameObject buildEffect;
 
     private TurretBlueprintShop turretToBuild;
@@ -30,7 +29,11 @@ public class BuildManager : MonoBehaviour
     private TurretUI selectedTurret;
 
     public NodeUI nodeUI;
-    
+
+    public GameObject Ghost;
+    public Material GhostMat;
+    public static bool GhostActive = false;
+
 
     //This function is called a property cus it only allows to get a return value
     public bool CanBuild
@@ -88,7 +91,14 @@ public class BuildManager : MonoBehaviour
 
     public void SelectTurretToBuild(TurretBlueprintShop turret)
     {
+        if (GhostActive)
+        {
+            Destroy(Ghost);
+        }
         turretToBuild = turret;
+        Ghost = Instantiate(turretToBuild.pref.GetComponent<Turret>().turretGhost, new Vector3(-0.02f,0.85f,0f), Quaternion.identity) as GameObject;
+        Ghost.AddComponent<UnitGhost>();
+        GhostActive = true;
         DeselectNode();
     }
 

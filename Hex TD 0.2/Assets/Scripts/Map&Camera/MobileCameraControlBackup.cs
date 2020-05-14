@@ -31,7 +31,7 @@ public class MobileCameraControlBackup : MonoBehaviour
     private Vector3 lastPanPosition;
     private int panFingerId; // Touch mode only
 
-
+    public static bool cantPan;
 
 
     void Start()
@@ -274,7 +274,7 @@ public class MobileCameraControlBackup : MonoBehaviour
                 {
                     RotateCamera(Input.GetTouch(0).deltaPosition.x);
 
-                    if (CurrentPosition != 3)
+                    if (CurrentPosition != 3 && cantPan == false)
                     {
                         PanCamera(touch.position);
                     }
@@ -297,7 +297,7 @@ public class MobileCameraControlBackup : MonoBehaviour
         {
             RotateCamera(Input.GetAxis("Mouse X"));
 
-            if (CurrentPosition != 3)
+            if (CurrentPosition != 3 && cantPan == false)
             {
                 PanCamera(Input.mousePosition);
             }

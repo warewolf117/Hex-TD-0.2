@@ -17,48 +17,38 @@ public class Turret : MonoBehaviour
     [Header("General")]
 
     public int range = 15;
-
-    [Header("Use Bullets (default)")]
-
-    //public GameObject bulletPrefab;
     public float fireRate = 1f;
+
+    [Header("Use Bullets")]
+
+    public bool useBullet = false;
+    public bool useMissile = false;
+    public bool focusBack = false;
     private float fireCountdown = 0f;
 
     [Header("Use Laser")]
 
     public bool useLaser = false;
 
-    public bool useBullet = false;
-
-    public bool useMissile = false;
-
-    public bool focusBack = false;
-
     public int damageOverTime = 30;
 
     public float Slowpct = 0.3f;
 
-    public LineRenderer lineRenderer;
+    public float turnSpeed = 10f;
 
     [Header("Unity Setup Fields")]
 
-
     GameObject[] enemies;
-
     string[] allTags;
-
 
     int turretSector;
 
-
-    public Transform partToRotate;
-    public float turnSpeed = 10f;
-
-
     public Transform firePoint;
+    public Transform partToRotate;
+    public LineRenderer lineRenderer;
+    public GameObject turretGhost;
 
 
-    public bool shouldFire;
 
     void Start()
     {
