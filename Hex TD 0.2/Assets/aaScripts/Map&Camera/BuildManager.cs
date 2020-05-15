@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.SocialPlatforms;
 using UnityEngine.SocialPlatforms.GameCenter;
 
 public class BuildManager : MonoBehaviour
@@ -97,6 +98,7 @@ public class BuildManager : MonoBehaviour
         turretToBuild = turret;
         Ghost = Instantiate(turretToBuild.pref.GetComponent<Turret>().turretGhost, new Vector3(-0.02f,0.85f,0f), Quaternion.identity) as GameObject;
         Ghost.AddComponent<UnitGhost>();
+        Ghost.AddComponent<TurretRange>();
         GhostActive = true;
         DeselectNode();
     }

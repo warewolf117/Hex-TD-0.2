@@ -12,7 +12,7 @@ public class LUI_ButtonSound : MonoBehaviour {
 	public Button optionalButton2;
 
 	public float audioPitch;
-private AudioSource source { get { return GetComponent<AudioSource>(); } }
+	private AudioSource source { get { return GetComponent<AudioSource>(); } }
 
 	void Start () {
 		gameObject.AddComponent<AudioSource>();

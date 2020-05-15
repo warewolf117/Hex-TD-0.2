@@ -6,6 +6,7 @@ using Microsoft.Win32.SafeHandles;
 using System.Collections.Specialized;
 using UnityEngine.UIElements;
 
+[RequireComponent(typeof(Button))]
 public class MobileCameraControlBackup : MonoBehaviour
 {
 
@@ -34,7 +35,6 @@ public class MobileCameraControlBackup : MonoBehaviour
 
     public static bool cantPan;
     public static bool gameEnd;
-
 
     void Start()
     {
@@ -168,7 +168,7 @@ public class MobileCameraControlBackup : MonoBehaviour
             return;
         }
 
-        if (CurrentPosition == 2 && zoomingout == true) //Going from Position 2 to Position 1
+        if (CurrentPosition == 2 && zoomingout == true) //Going from Position 3 to Position 2
         {
              Vector3 StartPosition = cam.transform.position;
 
@@ -184,7 +184,6 @@ public class MobileCameraControlBackup : MonoBehaviour
 
              cam.fieldOfView = Mathf.Lerp(cam.fieldOfView, 36.5f, 0.3f);
         }
-
 
         if (CurrentPosition == 3 && zoomingin == true) //Going from Position 2 to Position 3
         {
@@ -211,7 +210,7 @@ public class MobileCameraControlBackup : MonoBehaviour
         {
             CurrentPosition = 1;
             zoomingin = true;
-            zoomTimer = 0.5f;
+            zoomTimer = 0.2f;
             return;
         }
 
@@ -220,7 +219,7 @@ public class MobileCameraControlBackup : MonoBehaviour
 
             CurrentPosition = 2;
             zoomingin = true;
-            zoomTimer = 0.5f;
+            zoomTimer = 0.2f;
             return;
         }
 
@@ -243,7 +242,7 @@ public class MobileCameraControlBackup : MonoBehaviour
         {
             CurrentPosition = 0;
             zoomingout = true;
-            zoomTimer = 0.5f;
+            zoomTimer = 0.2f;
             return;
         }
 
@@ -251,7 +250,7 @@ public class MobileCameraControlBackup : MonoBehaviour
         {
             CurrentPosition = 1;
             zoomingout = true;
-            zoomTimer = 0.5f;
+            zoomTimer = 0.2f;
             return;
 
         }
@@ -260,7 +259,7 @@ public class MobileCameraControlBackup : MonoBehaviour
         {
             CurrentPosition = 2;
             zoomingout = true;
-            zoomTimer = 0.5f;
+            zoomTimer = 0.2f;
             return;
 
         }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using UnityEngine.SocialPlatforms;
 
 public class Turret : MonoBehaviour
 {
@@ -16,7 +17,8 @@ public class Turret : MonoBehaviour
 
     [Header("General")]
 
-    public int range = 15;
+    public float range = 15;
+    public static float rangeRender;
     public float fireRate = 1f;
 
     [Header("Use Bullets")]
@@ -52,6 +54,8 @@ public class Turret : MonoBehaviour
 
     void Start()
     {
+
+        rangeRender = range;
         audio = GetComponent<AudioSource>();
         bulletPooler = BulletPooler.Instance;
         missilePooler = MissilePooler.Instance;
@@ -68,6 +72,8 @@ public class Turret : MonoBehaviour
 
     void UpdateTarget()
     {
+        if (gameObject.tag == "GhostTurret")
+            return;
 
         if (turretSector == 1)
         {
