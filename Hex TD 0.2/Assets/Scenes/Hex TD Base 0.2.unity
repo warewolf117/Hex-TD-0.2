@@ -336,6 +336,25 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 1420058144}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &178971757 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7117491430607506597, guid: 981779e478cb8ba459988c6efa96add0,
+    type: 3}
+  m_PrefabInstance: {fileID: 6210999220170211343}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &178971764
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 178971757}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.1, y: 0.1, z: 0.1}
+  m_Center: {x: 0, y: 0, z: 1}
 --- !u!1 &228976489
 GameObject:
   m_ObjectHideFlags: 0
@@ -6643,7 +6662,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 38346337}
-        m_MethodName: DeactivateButton
+        m_MethodName: Hide
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -6654,7 +6673,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 38346337}
-        m_MethodName: Hide
+        m_MethodName: DeactivateButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -7715,6 +7734,31 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3261015322729662174, guid: 72d07b567416894498f1692f9328aa8d,
+        type: 3}
+      propertyPath: m_Center.y
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3261015322826997176, guid: 72d07b567416894498f1692f9328aa8d,
+        type: 3}
+      propertyPath: m_Center.y
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3261015323255057679, guid: 72d07b567416894498f1692f9328aa8d,
+        type: 3}
+      propertyPath: m_Center.y
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3261015323262188004, guid: 72d07b567416894498f1692f9328aa8d,
+        type: 3}
+      propertyPath: m_Center.y
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3261015323442065371, guid: 72d07b567416894498f1692f9328aa8d,
+        type: 3}
+      propertyPath: m_Center.y
+      value: -1
+      objectReference: {fileID: 0}
     - target: {fileID: 3261015323906330884, guid: 72d07b567416894498f1692f9328aa8d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -7774,6 +7818,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Walls
+      objectReference: {fileID: 0}
+    - target: {fileID: 3261015324454611656, guid: 72d07b567416894498f1692f9328aa8d,
+        type: 3}
+      propertyPath: m_Center.y
+      value: -1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 72d07b567416894498f1692f9328aa8d, type: 3}
@@ -8457,6 +8506,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3368339556945377562, guid: 981779e478cb8ba459988c6efa96add0,
+        type: 3}
+      propertyPath: m_Center.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3368339556945377562, guid: 981779e478cb8ba459988c6efa96add0,
+        type: 3}
+      propertyPath: m_Center.z
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3368339556945377562, guid: 981779e478cb8ba459988c6efa96add0,
+        type: 3}
+      propertyPath: m_Center.x
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 981779e478cb8ba459988c6efa96add0, type: 3}
 --- !u!1001 &6289094773435717758
@@ -8835,29 +8899,6 @@ Transform:
   m_Father: {fileID: 5006512735257292380}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6783547438818224534
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7899150419145188353}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 803b39a54390cbe42b5ff92d43162920, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hoverColor: {r: 0.6127626, g: 0.92780167, b: 0.9622642, a: 0}
-  notEnoughMoneyColor: {r: 1, g: 0, b: 0, a: 0}
-  positionOffset: {x: 0, y: 0.225, z: 0}
-  turret: {fileID: 0}
-  turretBlueprintShop:
-    pref: {fileID: 0}
-    cost: 0
-    upgradedPref: {fileID: 0}
-    upgradeCost: 0
-  isUpgraded: 0
-  nodeSector: 9
 --- !u!65 &7067188608776551428
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -8944,7 +8985,6 @@ GameObject:
   - component: {fileID: 2783000353394600996}
   - component: {fileID: 8476827250444259549}
   - component: {fileID: 2215355822999876865}
-  - component: {fileID: 6783547438818224534}
   m_Layer: 0
   m_Name: Walkable area
   m_TagString: Untagged

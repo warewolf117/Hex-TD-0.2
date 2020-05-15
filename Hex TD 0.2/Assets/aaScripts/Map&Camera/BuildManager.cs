@@ -27,7 +27,6 @@ public class BuildManager : MonoBehaviour
     private TurretBlueprintShop turretToBuild;
 
     private Node selectedNode;
-    private TurretUI selectedTurret;
 
     public NodeUI nodeUI;
 
@@ -55,40 +54,24 @@ public class BuildManager : MonoBehaviour
     //the following lines till line 71 is so that nodes and turrets cant be selected at the same time  
     public void SelectNode (Node node)
     {
-        if(selectedNode == node)
+      /*  if(selectedNode == node)
         {
             DeselectNode();
             return;
-        }
+        }*/
         selectedNode = node;
 
         turretToBuild = null;
 
-       // nodeUI.SetTarget(node);
+        nodeUI.SetTarget(node);
     }
-    public void SelectTurret(TurretUI turret)
-    {
-        if (selectedTurret == turret)
-        {
-            DeselectNode();
-            return;
-        }
-        selectedTurret = turret;
-        turretToBuild = null;
 
-        // nodeUI.SetTarget(node);
-    }
     //Deactivates UI when u click the selected node
     public void DeselectNode()
     {
         selectedNode = null;
-    }
-    public void DeselectTurret()
-    {
-        selectedTurret = null;
         nodeUI.Hide();
     }
-
     public void SelectTurretToBuild(TurretBlueprintShop turret)
     {
         if (GhostActive)

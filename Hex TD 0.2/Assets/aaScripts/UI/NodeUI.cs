@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public class NodeUI : MonoBehaviour
 {
@@ -14,54 +15,37 @@ public class NodeUI : MonoBehaviour
     public Text range;
     public Text sellAmmount;
 
-    /*int turretRange;
-    float turretFireRate;*/
+    public TurretBlueprintShop standartTurret;
+    public TurretBlueprintShop missileLauncher;
+    public TurretBlueprintShop laserTurret;
 
-    public TurretBlueprintStats standartTurret;
-    public TurretBlueprintStats missileLauncher;
-    public TurretBlueprintStats laserTurret;
-
-    private TurretUI target;
+    private Node target;
     public Button upgradeButton;
 
-    public void ActivateUI()
+
+
+    public void SetTarget(Node _target)
     {
-        ui.SetActive(true);
-        checkUI = true;
-    }
-
-    /* public void TurretStats(int _range, float _fireRate)
-     {
-         turretRange = _range;
-         turretFireRate = _fireRate;
-     }*/
-
-    public void SetTarget(TurretUI _target)
-    {
-
-
         target = _target;
-
-       /* fireRate.text = turretFireRate.ToString();
-        range.text = turretRange.ToString();
-        fireRate.text = target.turretBlueprintStats.GetUpgradedFireRate().ToString();
-        damage.text = target.turretBlueprintStats.GetUpgradedDamage().ToString();
-        range.text = target.turretBlueprintStats.GetUpgradedRange().ToString();*/
-
+        /*
+        fireRate.text = target.turretBlueprintShop.GetUpgradedFireRate().ToString();
+        damage.text = target.turretBlueprintShop.GetUpgradedDamage().ToString();
+        range.text = target.turretBlueprintShop.GetUpgradedRange().ToString();
+        */
         sellAmmount.text = "$" + target.turretBlueprintShop.GetUpgradedSellAmount();
 
+        //transform.position = target.GetBuildPosition(); //this uses the node location with the offset
+        // we made before
 
         if (!target.isUpgraded)
         {
             upgradeCost.text = "$" + target.turretBlueprintShop.upgradeCost;
             upgradeButton.interactable = true;
-
-            /*fireRate.text = turretFireRate.ToString();
-            range.text = turretRange.ToString();
-            fireRate.text = target.turretBlueprintStats.GetFireRate().ToString();
-            damage.text = target.turretBlueprintStats.GetDamage().ToString();
-            range.text = target.turretBlueprintStats.GetRange().ToString();*/
-
+            /*
+            fireRate.text = target.turretBlueprintShop.GetFireRate().ToString();
+            damage.text = target.turretBlueprintShop.GetDamage().ToString();
+            range.text = target.turretBlueprintShop.GetRange().ToString();
+            */
             sellAmmount.text = "$" + target.turretBlueprintShop.GetSellAmount();
         }
         else
@@ -76,7 +60,7 @@ public class NodeUI : MonoBehaviour
     public void Hide()
     {
         ui.SetActive(false);
-              
+
     }
 
     public void DeactivateButton()
@@ -86,33 +70,28 @@ public class NodeUI : MonoBehaviour
             disableUIButton.SetActive(false);
             checkUI = false;
         }
-            
     }
 
-
-    public void Upgrade() 
+    public void Upgrade()
     {
         target.UpgradeTurret();
-        BuildManager.instance.DeselectTurret(); //hides menu when upgrade is done
+        BuildManager.instance.DeselectNode(); //hides menu when upgrade is done
                                               //need to use this function so that node is deselected too instead of just hiding the
                                               //ui which is what the Hide() function does
-
     }
 
     public void Sell()
     {
         if (target.isUpgraded)
         {
-            //target.SellUpgradedTurret();
+            target.SellUpgradedTurret();
             BuildManager.instance.DeselectNode();
         }
         else
         {
-            //target.SellTurret();
+            target.SellTurret();
             BuildManager.instance.DeselectNode(); //deselects node after selling turret
         }
-        
-        
     }
     public void Update()
     {
@@ -120,7 +99,7 @@ public class NodeUI : MonoBehaviour
         {
             disableUIButton.SetActive(true);
         }
-        
+
     }
 
 }
