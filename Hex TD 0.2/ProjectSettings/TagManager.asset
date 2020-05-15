@@ -19,6 +19,7 @@ TagManager:
   - Center
   - GhostTurret
   - Node
+  - UIButtons
   layers:
   - Default
   - TransparentFX

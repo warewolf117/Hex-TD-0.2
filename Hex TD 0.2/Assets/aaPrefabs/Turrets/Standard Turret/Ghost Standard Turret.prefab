@@ -158,8 +158,8 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0.5, z: 0}
+  m_Radius: 1
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!120 &6702841748016284572
 LineRenderer:
   m_ObjectHideFlags: 0
@@ -178,7 +178,7 @@ LineRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a73348317dce5194fbec256117f69a1b, type: 2}
+  - {fileID: 2100000, guid: 15a76d443ec46274c9e0cfbe85663b7d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

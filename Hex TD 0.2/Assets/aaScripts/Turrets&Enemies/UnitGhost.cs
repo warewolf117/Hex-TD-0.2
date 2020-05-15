@@ -10,15 +10,22 @@ public class UnitGhost : MonoBehaviour
 
     public GameObject Ghost;
     public static bool dragGhost;
-    Color OriginalColor = new Color(0, 0, 1, 0.75f);
     public static Material BlueTransparent;
+    public static Material PurpleTransparent;
+    public static Material GreenTransparent;
 
     Collider m_collider;
 
     void Start()
     {
         BlueTransparent = Resources.Load("BlueTransparent", typeof(Material)) as Material;
-        BlueTransparent.color = OriginalColor;
+        PurpleTransparent = Resources.Load("PurpleTransparent", typeof(Material)) as Material;
+        GreenTransparent = Resources.Load("GreenTransparent", typeof(Material)) as Material;
+
+        BlueTransparent.color = new Color(0, 0, 1, 0.75f);
+        PurpleTransparent.color = new Color(1, 0, 1, 0.75f);
+        GreenTransparent.color = new Color(0, 1, 0, 0.75f);
+
         Ghost = this.gameObject;
         m_collider = GetComponent<Collider>();
     }
@@ -28,13 +35,17 @@ public class UnitGhost : MonoBehaviour
         if (other.tag != "Center")
         {
             BlueTransparent.color = new Color(1, 0, 0, 0.75f);
+            PurpleTransparent.color = new Color(1, 0, 0, 0.75f);
+            GreenTransparent.color = new Color(1, 0, 0, 0.75f);
         }
 
     }
 
     private void OnTriggerExit(Collider other)
     {
-        BlueTransparent.color = OriginalColor;
+        BlueTransparent.color = new Color(0, 0, 1, 0.75f);
+        PurpleTransparent.color = new Color(1, 0, 1, 0.75f);
+        GreenTransparent.color = new Color(0, 1, 0, 0.75f);
     }
 
 
@@ -52,6 +63,15 @@ public class UnitGhost : MonoBehaviour
                 if (Physics.Raycast(ray, out Hit) && Hit.collider.gameObject == gameObject)
                 {
                     dragGhost = true;                   
+                }
+                else
+                {
+                    if (Physics.Raycast(ray, out Hit) && Hit.collider.tag != "UIButtons")
+                    {
+                        Destroy(this.gameObject);
+                        BuildManager.GhostActive = false;
+                    }
+                   
                 }
             }
         }
