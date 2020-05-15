@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Node : MonoBehaviour
 {
+    private AudioSource dropAudio;
+
     public Color hoverColor;
     public Color notEnoughMoneyColor;
     public Vector3 positionOffset;
@@ -31,7 +33,7 @@ public class Node : MonoBehaviour
 
     void Start()
     {
-
+        dropAudio = GetComponent<AudioSource>();
         rend = GetComponent<Renderer>();
         startColor = rend.material.color;
 
@@ -147,9 +149,8 @@ public class Node : MonoBehaviour
         {
             if (!buildManager.CanBuild)
                 return;
-
+            dropAudio.PlayOneShot(dropAudio.clip);
             BuildTurret(buildManager.GetTurretToBuild());
-            Debug.Log("Build Turret!");
         }
     }
     void OnMouseEnter()

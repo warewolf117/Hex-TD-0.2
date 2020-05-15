@@ -19,7 +19,10 @@ public class WaveStarter : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        if (WaveSpawnerTopRight_Main.fadeIn == true)
+        {
+            return;
+        }
 
         if (waveStarter == enabled)
         {

@@ -7,6 +7,7 @@ using UnityEngine;
 
 public class UnitGhost : MonoBehaviour
 {
+
     public GameObject Ghost;
     public static bool dragGhost;
     Color OriginalColor = new Color(0, 0, 1, 0.75f);
@@ -20,8 +21,6 @@ public class UnitGhost : MonoBehaviour
         BlueTransparent.color = OriginalColor;
         Ghost = this.gameObject;
         m_collider = GetComponent<Collider>();
-
-
     }
 
     private void OnTriggerEnter(Collider other)
@@ -72,8 +71,6 @@ public class UnitGhost : MonoBehaviour
 
                 m_collider.enabled = false;
 
-                Debug.Log("Collider.enabled =" + m_collider.enabled);
-
                 float distance; // the distance from the ray origin to the ray intersection of the plane
                 if (plane.Raycast(ray, out distance))
                 {
@@ -82,7 +79,7 @@ public class UnitGhost : MonoBehaviour
             }
         }
         else
-        {          
+        {
             transform.position = new Vector3(-0.02f, 0.85f, 0f);
             m_collider.enabled = true;
             MobileCameraControlBackup.cantPan = false;

@@ -19,10 +19,7 @@ public class Bullet : MonoBehaviour
     private bool TargetAquired = false;
 
 
-
-
-
-        public void Seek(Transform _target)
+    public void Seek(Transform _target)
     {
         target = _target;
     }
@@ -58,10 +55,9 @@ public class Bullet : MonoBehaviour
         {
             
             HitTarget();
-            AudioPlay audioplay = Baudio.GetComponent<AudioPlay>();
+            AudioPlay1 audioplay = Baudio.GetComponent<AudioPlay1>();
             audioplay.PlayAudio();
             BulletPooler.Instance.AddToPool(gameObject);
-            //Destroy(gameObject);
             TargetAquired = false;
             return;
 

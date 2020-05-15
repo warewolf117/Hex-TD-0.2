@@ -27,7 +27,12 @@ public class ScreenFader : MonoBehaviour
             t -= Time.deltaTime * 1f;
             float a = curve.Evaluate(t); //controls the curve
             Image.color = new Color(0f, 0f, 0f, a); // this modifies the alpha value
+            WaveSpawnerTopRight_Main.fadeIn = true;
             yield return 0; //skips to the next frame
+        }
+        if(t <= 0)
+        {
+            WaveSpawnerTopRight_Main.fadeIn = false;
         }
         Wave.EnemiesAlive = 0;
         WaveSpawnerTopRight_Main.EnemyCount = 0;

@@ -39,6 +39,7 @@ public class WaveSpawnerTopRight_Main : MonoBehaviour
     public static int startFirstWave = 0;
 
     public static bool levelFailed;
+    public static bool fadeIn;
 
 
     public float timeBetweenWaves = 3f;
@@ -101,6 +102,10 @@ public class WaveSpawnerTopRight_Main : MonoBehaviour
            
         }
 
+        if (fadeIn == true)
+        {
+            return;
+        }
 
         if (startFirstWave <= 0)
         {
