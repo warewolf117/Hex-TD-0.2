@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using JetBrains.Annotations;
+using System.Collections;
 using System.Collections.Generic;
 using System.Threading;
 using UnityEditor;
@@ -7,15 +8,20 @@ using UnityEngine;
 public class UnitGhost : MonoBehaviour
 {
     public GameObject Ghost;
-    private bool dragGhost;
+    public static bool dragGhost;
     Color OriginalColor = new Color(0, 0, 1, 0.75f);
     public static Material BlueTransparent;
+
+    Collider m_collider;
 
     void Start()
     {
         BlueTransparent = Resources.Load("BlueTransparent", typeof(Material)) as Material;
         BlueTransparent.color = OriginalColor;
         Ghost = this.gameObject;
+        m_collider = GetComponent<Collider>();
+
+
     }
 
     private void OnTriggerEnter(Collider other)
@@ -31,6 +37,7 @@ public class UnitGhost : MonoBehaviour
     {
         BlueTransparent.color = OriginalColor;
     }
+
 
     void Update()
     {
@@ -63,6 +70,10 @@ public class UnitGhost : MonoBehaviour
 
                 Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
+                m_collider.enabled = false;
+
+                Debug.Log("Collider.enabled =" + m_collider.enabled);
+
                 float distance; // the distance from the ray origin to the ray intersection of the plane
                 if (plane.Raycast(ray, out distance))
                 {
@@ -71,10 +82,11 @@ public class UnitGhost : MonoBehaviour
             }
         }
         else
-        {
-            dragGhost = false;
+        {          
             transform.position = new Vector3(-0.02f, 0.85f, 0f);
+            m_collider.enabled = true;
             MobileCameraControlBackup.cantPan = false;
+            dragGhost = false;
         }
 
         if (Input.GetMouseButtonUp(1))
@@ -85,4 +97,6 @@ public class UnitGhost : MonoBehaviour
         }
      
     }
+
+
 }

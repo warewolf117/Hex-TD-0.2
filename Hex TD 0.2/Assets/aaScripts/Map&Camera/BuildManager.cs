@@ -60,6 +60,7 @@ public class BuildManager : MonoBehaviour
             return;
         }
         selectedNode = node;
+
         turretToBuild = null;
 
        // nodeUI.SetTarget(node);

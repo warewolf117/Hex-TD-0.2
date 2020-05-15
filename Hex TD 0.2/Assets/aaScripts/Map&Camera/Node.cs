@@ -55,11 +55,6 @@ public class Node : MonoBehaviour
             return;
         }
 
-        if (!buildManager.CanBuild)
-            return;
-
-        BuildTurret(buildManager.GetTurretToBuild());
-
     }
 
     void BuildTurret(TurretBlueprintShop blueprint)
@@ -146,7 +141,17 @@ public class Node : MonoBehaviour
 
     }
 
+    private void OnMouseOver()
+    {
+        if (Input.GetMouseButtonUp(0) && UnitGhost.dragGhost == true)
+        {
+            if (!buildManager.CanBuild)
+                return;
 
+            BuildTurret(buildManager.GetTurretToBuild());
+            Debug.Log("Build Turret!");
+        }
+    }
     void OnMouseEnter()
     {
         if (EventSystem.current.IsPointerOverGameObject())
@@ -167,8 +172,6 @@ public class Node : MonoBehaviour
             }
 
         }
-
-
 
     }
 
