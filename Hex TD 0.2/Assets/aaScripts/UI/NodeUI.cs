@@ -22,16 +22,24 @@ public class NodeUI : MonoBehaviour
     private Node target;
     public Button upgradeButton;
 
+   // public static int turretRange;
+   // public static float turretFireRate;
 
+
+   /* public void TurretStats(int _range, float _fireRate)
+    {
+        turretRange = _range;
+        turretFireRate = _fireRate;
+    }*/
 
     public void SetTarget(Node _target)
     {
         target = _target;
-        /*
-        fireRate.text = target.turretBlueprintShop.GetUpgradedFireRate().ToString();
-        damage.text = target.turretBlueprintShop.GetUpgradedDamage().ToString();
-        range.text = target.turretBlueprintShop.GetUpgradedRange().ToString();
-        */
+        
+       /* fireRate.text = target.turretBlueprintStats.GetUpgradedFireRate().ToString();
+        damage.text = target.turretBlueprintStats.GetUpgradedDamage().ToString();
+        range.text = target.turretBlueprintStats.GetUpgradedRange().ToString();*/
+        
         sellAmmount.text = "$" + target.turretBlueprintShop.GetUpgradedSellAmount();
 
         //transform.position = target.GetBuildPosition(); //this uses the node location with the offset
@@ -41,11 +49,11 @@ public class NodeUI : MonoBehaviour
         {
             upgradeCost.text = "$" + target.turretBlueprintShop.upgradeCost;
             upgradeButton.interactable = true;
-            /*
-            fireRate.text = target.turretBlueprintShop.GetFireRate().ToString();
-            damage.text = target.turretBlueprintShop.GetDamage().ToString();
-            range.text = target.turretBlueprintShop.GetRange().ToString();
-            */
+            
+            /*fireRate.text = target.turretBlueprintStats.GetFireRate().ToString();
+            damage.text = target.turretBlueprintStats.GetDamage().ToString();
+            range.text = target.turretBlueprintStats.GetRange().ToString();*/
+            
             sellAmmount.text = "$" + target.turretBlueprintShop.GetSellAmount();
         }
         else
@@ -78,6 +86,7 @@ public class NodeUI : MonoBehaviour
         BuildManager.instance.DeselectNode(); //hides menu when upgrade is done
                                               //need to use this function so that node is deselected too instead of just hiding the
                                               //ui which is what the Hide() function does
+        DeactivateButton();
     }
 
     public void Sell()
@@ -92,6 +101,7 @@ public class NodeUI : MonoBehaviour
             target.SellTurret();
             BuildManager.instance.DeselectNode(); //deselects node after selling turret
         }
+        DeactivateButton();
     }
     public void Update()
     {

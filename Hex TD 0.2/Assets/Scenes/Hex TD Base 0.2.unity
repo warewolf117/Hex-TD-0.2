@@ -237,7 +237,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &121417939
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5177,6 +5177,15 @@ MonoBehaviour:
     cost: 0
     upgradedPref: {fileID: 0}
     upgradeCost: 0
+  turretBlueprintStats:
+    pref: {fileID: 0}
+    range: 0
+    damage: 0
+    fireRate: 0
+    upgradedPref: {fileID: 0}
+    upgradedRange: 0
+    upgradedDamage: 0
+    upgradedFireRate: 0
   isUpgraded: 0
   nodeSector: 3
 --- !u!64 &1490344920
@@ -8135,6 +8144,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1889212719}
     m_Modifications:
+    - target: {fileID: 4185465770206930084, guid: be53671ceb65cbf49bcc8c30e761ae75,
+        type: 3}
+      propertyPath: m_Text
+      value: '- $100'
+      objectReference: {fileID: 0}
+    - target: {fileID: 4185465770206930086, guid: be53671ceb65cbf49bcc8c30e761ae75,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -2.074998
+      objectReference: {fileID: 0}
+    - target: {fileID: 4185465770206930086, guid: be53671ceb65cbf49bcc8c30e761ae75,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: -14.150003
+      objectReference: {fileID: 0}
     - target: {fileID: 4185465770859080721, guid: be53671ceb65cbf49bcc8c30e761ae75,
         type: 3}
       propertyPath: disableUIButton

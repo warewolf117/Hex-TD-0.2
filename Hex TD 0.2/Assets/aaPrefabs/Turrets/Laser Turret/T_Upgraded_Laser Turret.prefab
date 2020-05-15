@@ -408,8 +408,8 @@ GameObject:
   - component: {fileID: 2048290447241327753}
   - component: {fileID: 5920712333330781626}
   - component: {fileID: 4678817481164294287}
-  - component: {fileID: 3851666081217267172}
   - component: {fileID: -7552102420278382102}
+  - component: {fileID: 3851666081217267172}
   - component: {fileID: 8311585620522251864}
   m_Layer: 0
   m_Name: T_Upgraded_Laser Turret
@@ -608,19 +608,6 @@ MonoBehaviour:
   healthBar: {fileID: 0}
   worth: 0
   TotalDamage: 0
---- !u!65 &3851666081217267172
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7726783044121333718}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1.4, y: 1.4, z: 1.4}
-  m_Center: {x: 0, y: 0.5, z: 0}
 --- !u!208 &-7552102420278382102
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -635,8 +622,21 @@ NavMeshObstacle:
   m_MoveThreshold: 0.1
   m_Carve: 0
   m_CarveOnlyStationary: 1
-  m_Center: {x: 8.68, y: -5.5000005, z: 1.7990001}
+  m_Center: {x: 0, y: 0.5, z: 0}
   m_TimeToStationary: 0.5
+--- !u!65 &3851666081217267172
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7726783044121333718}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.4, y: 1.4, z: 1.4}
+  m_Center: {x: 0, y: -1, z: 0}
 --- !u!82 &8311585620522251864
 AudioSource:
   m_ObjectHideFlags: 0

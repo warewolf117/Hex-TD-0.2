@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 [System.Serializable] //makes the variables in this script visible in inspector
 //needed so that data can be input from inspector in the shop script

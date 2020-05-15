@@ -16,6 +16,9 @@ public class Node : MonoBehaviour
     [HideInInspector]
     public TurretBlueprintShop turretBlueprintShop;
 
+    [HideInInspector]
+    public TurretBlueprintStats turretBlueprintStats;
+
 
     //public TurretBlueprintStats turretBlueprintStats;
 
@@ -26,8 +29,9 @@ public class Node : MonoBehaviour
     private Color startColor;
 
     public int nodeSector;
-    /*int range;
-    float fireRate;*/
+
+    int range;
+    float fireRate;
 
     BuildManager buildManager;
 

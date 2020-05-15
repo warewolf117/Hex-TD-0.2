@@ -17,7 +17,7 @@ public class Turret : MonoBehaviour
 
     [Header("General")]
 
-    public float range = 15;
+    public int range = 15;
     public static float rangeRender;
     public float fireRate = 1f;
 

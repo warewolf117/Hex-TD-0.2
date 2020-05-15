@@ -347,27 +347,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6dd8bd04f7589a439371e32ca420dce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  turret: {fileID: 2700326730679675294}
-  OnClick:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 11500000, guid: f35b667509f8721488b58d88d6e9554c, type: 3}
-        m_MethodName: 
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  turretBlueprintShop:
-    pref: {fileID: 0}
-    cost: 0
-    upgradedPref: {fileID: 0}
-    upgradeCost: 0
-  isUpgraded: 0
 --- !u!1 &6302082511057197691
 GameObject:
   m_ObjectHideFlags: 0
