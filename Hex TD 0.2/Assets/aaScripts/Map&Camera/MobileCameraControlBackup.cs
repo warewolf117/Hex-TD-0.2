@@ -30,8 +30,10 @@ public class MobileCameraControlBackup : MonoBehaviour
     public bool zoomingout;
     private Vector3 lastPanPosition;
     private int panFingerId; // Touch mode only
+    private float zoomTimer;
 
     public static bool cantPan;
+    public static bool gameEnd;
 
 
     void Start()
@@ -47,6 +49,8 @@ public class MobileCameraControlBackup : MonoBehaviour
 
     void Update()
     {
+        zoomTimer -= Time.deltaTime;
+
         if (CurrentPosition == 0)
         {
             BoundsX1 = -1f;
@@ -117,9 +121,9 @@ public class MobileCameraControlBackup : MonoBehaviour
 
             Vector3 move = new Vector3(0f, 18.5f, -7f);
 
-            cam.transform.position = Vector3.Lerp(StartPosition, move, 0.2f);
+            cam.transform.position = Vector3.Lerp(StartPosition, move, 0.3f);
 
-            cam.fieldOfView = Mathf.Lerp(cam.fieldOfView, 80.5f, 0.2f);
+            cam.fieldOfView = Mathf.Lerp(cam.fieldOfView, 80.5f, 0.3f);
         }
 
         if (CurrentPosition == 1 && zoomingin == true) //Going from Position 0 to Position 1
@@ -128,9 +132,9 @@ public class MobileCameraControlBackup : MonoBehaviour
 
             Vector3 move = new Vector3(0f, 18.5f, -7f);
 
-            cam.transform.position = Vector3.Lerp(StartPosition, move, 0.2f);
+            cam.transform.position = Vector3.Lerp(StartPosition, move, 0.3f);
 
-            cam.fieldOfView = Mathf.Lerp(cam.fieldOfView, 55.2f, 0.2f);
+            cam.fieldOfView = Mathf.Lerp(cam.fieldOfView, 55.2f, 0.3f);
 
             return;
         }
@@ -141,15 +145,15 @@ public class MobileCameraControlBackup : MonoBehaviour
 
             Vector3 move = new Vector3(0f, 18.5f, -7f);
 
-            cam.transform.position = Vector3.Lerp(StartPosition, move, 0.2f);
+            cam.transform.position = Vector3.Lerp(StartPosition, move, 0.3f);
 
             Quaternion StartRotation = cam.transform.rotation;
 
             Quaternion rotate = Quaternion.Euler(70f, 0f, 0f);
 
-            cam.transform.rotation = Quaternion.Lerp(StartRotation, rotate, 0.2f);
+            cam.transform.rotation = Quaternion.Lerp(StartRotation, rotate, 0.3f);
 
-            cam.fieldOfView = Mathf.Lerp(cam.fieldOfView, 55.2f, 0.2f);
+            cam.fieldOfView = Mathf.Lerp(cam.fieldOfView, 55.2f, 0.3f);
         }
 
         if (CurrentPosition == 2 && zoomingin == true) //Going from Position 1 to Position 2
@@ -158,9 +162,9 @@ public class MobileCameraControlBackup : MonoBehaviour
 
             Vector3 move = new Vector3(0f, 18.5f, -7f);
 
-            cam.transform.position = Vector3.Lerp(StartPosition, move, 0.2f);
+            cam.transform.position = Vector3.Lerp(StartPosition, move, 0.3f);
 
-            cam.fieldOfView = Mathf.Lerp(cam.fieldOfView, 36.5f, 0.2f);
+            cam.fieldOfView = Mathf.Lerp(cam.fieldOfView, 36.5f, 0.3f);
             return;
         }
 
@@ -170,15 +174,15 @@ public class MobileCameraControlBackup : MonoBehaviour
 
              Vector3 move = new Vector3(0f, 18.5f, -7f);
 
-             cam.transform.position = Vector3.Lerp(StartPosition, move, 0.2f);
+             cam.transform.position = Vector3.Lerp(StartPosition, move, 0.3f);
 
              Quaternion StartRotation = cam.transform.rotation;
 
              Quaternion rotate = Quaternion.Euler(70f, 0f, 0f);
 
-             cam.transform.rotation = Quaternion.Lerp(StartRotation, rotate, 0.2f);
+             cam.transform.rotation = Quaternion.Lerp(StartRotation, rotate, 0.3f);
 
-             cam.fieldOfView = Mathf.Lerp(cam.fieldOfView, 36.5f, 0.2f);
+             cam.fieldOfView = Mathf.Lerp(cam.fieldOfView, 36.5f, 0.3f);
         }
 
 
@@ -188,42 +192,44 @@ public class MobileCameraControlBackup : MonoBehaviour
 
             Vector3 move1 = new Vector3(0f, 3f, 0f);
 
-            cam.transform.position = Vector3.Lerp(StartPosition, move1, 0.2f);
+            cam.transform.position = Vector3.Lerp(StartPosition, move1, 0.3f);
 
             Quaternion StartRotation = cam.transform.rotation;
 
-            Quaternion rotate1 = Quaternion.Euler(15f, 00f, 0f);
+            Quaternion rotate1 = Quaternion.Euler(15f, 0f, 0f);
 
-            cam.transform.rotation = Quaternion.Lerp(StartRotation, rotate1, 0.2f);
+            cam.transform.rotation = Quaternion.Lerp(StartRotation, rotate1, 0.3f);
 
-            cam.fieldOfView = Mathf.Lerp(cam.fieldOfView, 80.5f, 0.2f);
+            cam.fieldOfView = Mathf.Lerp(cam.fieldOfView, 80.5f, 0.3f);
         }
     }
 
     public void ZoomIn()
     {    
-
-        if (CurrentPosition == 0)
+        
+        if (CurrentPosition == 0 && zoomTimer <= 0)
         {
-
             CurrentPosition = 1;
             zoomingin = true;
+            zoomTimer = 0.5f;
             return;
         }
 
-        if (CurrentPosition == 1)
+        if (CurrentPosition == 1 && zoomTimer <= 0)
         {
 
             CurrentPosition = 2;
             zoomingin = true;
+            zoomTimer = 0.5f;
             return;
         }
 
 
-        if (CurrentPosition == 2)
+        if (CurrentPosition == 2 && zoomTimer <= 0)
         {
             CurrentPosition = 3;
             zoomingin = true;
+            zoomTimer = 0.5f;
             return;
         }
 
@@ -233,25 +239,28 @@ public class MobileCameraControlBackup : MonoBehaviour
     public void ZoomOut()
     {
 
-        if (CurrentPosition == 1)
+        if (CurrentPosition == 1 && zoomTimer <= 0)
         {
             CurrentPosition = 0;
             zoomingout = true;
+            zoomTimer = 0.5f;
             return;
         }
 
-        if (CurrentPosition == 2)
+        if (CurrentPosition == 2 && zoomTimer <= 0)
         {
             CurrentPosition = 1;
             zoomingout = true;
+            zoomTimer = 0.5f;
             return;
 
         }
 
-        if (CurrentPosition == 3)
+        if (CurrentPosition == 3 && zoomTimer <= 0)
         {
             CurrentPosition = 2;
             zoomingout = true;
+            zoomTimer = 0.5f;
             return;
 
         }
@@ -274,8 +283,8 @@ public class MobileCameraControlBackup : MonoBehaviour
                 {
                     RotateCamera(Input.GetTouch(0).deltaPosition.x);
 
-                    if (CurrentPosition != 3 && cantPan == false)
-                    {
+                    if (CurrentPosition != 3 && !cantPan && !gameEnd)
+                    {                          
                         PanCamera(touch.position);
                     }
                     
@@ -297,8 +306,8 @@ public class MobileCameraControlBackup : MonoBehaviour
         {
             RotateCamera(Input.GetAxis("Mouse X"));
 
-            if (CurrentPosition != 3 && cantPan == false)
-            {
+            if (CurrentPosition != 3 && !cantPan && !gameEnd)
+            {                 
                 PanCamera(Input.mousePosition);
             }
             
@@ -323,6 +332,7 @@ public class MobileCameraControlBackup : MonoBehaviour
 
     void PanCamera(Vector3 newPanPosition)
     {
+
         // Determine how much to move the camera
         Vector3 offset = cam.ScreenToViewportPoint(lastPanPosition - newPanPosition);
         Vector3 move = new Vector3(offset.x * PanSpeed, 0, offset.y * PanSpeed);

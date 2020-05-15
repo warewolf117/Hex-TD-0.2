@@ -34,6 +34,7 @@ public class ScreenFader : MonoBehaviour
         {
             WaveSpawnerTopRight_Main.fadeIn = false;
         }
+        MobileCameraControlBackup.gameEnd = false;
         Wave.EnemiesAlive = 0;
         WaveSpawnerTopRight_Main.EnemyCount = 0;
         WaveSpawnerTopRight_Main.countdown = 4f;

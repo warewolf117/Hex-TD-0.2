@@ -19,9 +19,10 @@ public class LevelEndMenu : MonoBehaviour
 
     public void Victory()
     {
-        if(defeat == false)
+        MobileCameraControlBackup.gameEnd = true;
+
+        if (defeat == false)
         {
-            
             ui.SetActive(true);
             levelClearedFailedText.text = "Cleared";
             nextLevelButton.SetActive(true);
@@ -31,6 +32,7 @@ public class LevelEndMenu : MonoBehaviour
     }
     public void Defeat()
     {
+        MobileCameraControlBackup.gameEnd = true;
         ui.SetActive(true);
         levelClearedFailedText.text = "Failed";
         nextLevelButton.SetActive(false);
@@ -45,4 +47,5 @@ public class LevelEndMenu : MonoBehaviour
             
         }
     }
+
 }

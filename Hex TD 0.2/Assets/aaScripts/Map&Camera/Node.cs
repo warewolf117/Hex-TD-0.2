@@ -161,15 +161,22 @@ public class Node : MonoBehaviour
         if (!buildManager.CanBuild)
             return;
 
+        if (!UnitGhost.dragGhost)
+            return;
+
         if (buildManager.HasMoney && turret == null)
         {
             rend.material.color = hoverColor;
+            dropAudio.pitch = 1f;
+            dropAudio.volume = 0.6f;
         }
         else
         {
             if (turret == null)
             {
                 rend.material.color = notEnoughMoneyColor;
+                dropAudio.pitch = 0.5f;
+                dropAudio.volume = 0.9f;
             }
 
         }
