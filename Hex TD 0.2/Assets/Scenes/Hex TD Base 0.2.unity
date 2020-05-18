@@ -1403,6 +1403,81 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 503798917}
   m_CullTransparentMesh: 0
+--- !u!1 &513680269
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 513680270}
+  - component: {fileID: 513680272}
+  - component: {fileID: 513680271}
+  m_Layer: 5
+  m_Name: SelectTurret
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &513680270
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 513680269}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.27, y: 0.13, z: 1}
+  m_Children:
+  - {fileID: 1974160525}
+  m_Father: {fileID: 903406028}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 1384, y: -546}
+  m_SizeDelta: {x: 2441.8892, y: 2247.3633}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &513680271
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 513680269}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.67058825}
+  m_RaycastTarget: 1
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300078, guid: 76bdad1258c27a64fa6bff9c813759cb, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &513680272
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 513680269}
+  m_CullTransparentMesh: 0
 --- !u!1 &520714227
 GameObject:
   m_ObjectHideFlags: 0
@@ -2082,6 +2157,84 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 687533270}
   m_CullTransparentMesh: 0
+--- !u!1 &708683631
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 708683632}
+  - component: {fileID: 708683634}
+  - component: {fileID: 708683633}
+  m_Layer: 5
+  m_Name: DragAndDropText
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &708683632
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 708683631}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0.0020872}
+  m_LocalScale: {x: 3, y: 3, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1330809242}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0.00012207031, y: -0.00048828125}
+  m_SizeDelta: {x: -1627.9114, y: -1498.2487}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &708683633
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 708683631}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_RaycastTarget: 1
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 117
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 0
+    m_MaxSize: 300
+    m_Alignment: 4
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: Drag and drop the turret on a hexagon to build it
+--- !u!222 &708683634
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 708683631}
+  m_CullTransparentMesh: 0
 --- !u!1 &741423925
 GameObject:
   m_ObjectHideFlags: 0
@@ -2482,6 +2635,7 @@ MonoBehaviour:
     upgradedPref: {fileID: 7726783044121333718, guid: 58bcb7f1454542b46a05ffb479c1dbc3,
       type: 3}
     upgradeCost: 400
+  selectTurretTooltip: {fileID: 513680269}
 --- !u!65 &811001054
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3050,6 +3204,133 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!1 &903406023
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 903406028}
+  - component: {fileID: 903406027}
+  - component: {fileID: 903406026}
+  - component: {fileID: 903406025}
+  - component: {fileID: 903406024}
+  m_Layer: 5
+  m_Name: TooltipCanvas
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 4294967295
+  m_IsActive: 1
+--- !u!114 &903406024
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 903406023}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30649d3a9faa99c48a7b1166b86bf2a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Padding:
+    m_Left: 0
+    m_Right: 0
+    m_Top: 0
+    m_Bottom: 0
+  m_ChildAlignment: 0
+  m_Spacing: 4800
+  m_ChildForceExpandWidth: 0
+  m_ChildForceExpandHeight: 0
+  m_ChildControlWidth: 0
+  m_ChildControlHeight: 0
+  m_ChildScaleWidth: 0
+  m_ChildScaleHeight: 0
+--- !u!114 &903406025
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 903406023}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IgnoreReversedGraphics: 1
+  m_BlockingObjects: 0
+  m_BlockingMask:
+    serializedVersion: 2
+    m_Bits: 0
+--- !u!114 &903406026
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 903406023}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_UiScaleMode: 0
+  m_ReferencePixelsPerUnit: 100
+  m_ScaleFactor: 0.3
+  m_ReferenceResolution: {x: 800, y: 600}
+  m_ScreenMatchMode: 0
+  m_MatchWidthOrHeight: 0
+  m_PhysicalUnit: 3
+  m_FallbackScreenDPI: 96
+  m_DefaultSpriteDPI: 96
+  m_DynamicPixelsPerUnit: 1
+--- !u!223 &903406027
+Canvas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 903406023}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_RenderMode: 1
+  m_Camera: {fileID: 963194227}
+  m_PlaneDistance: 1
+  m_PixelPerfect: 0
+  m_ReceivesEvents: 1
+  m_OverrideSorting: 0
+  m_OverridePixelPerfect: 0
+  m_SortingBucketNormalizedSize: 0
+  m_AdditionalShaderChannelsFlag: 0
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+  m_TargetDisplay: 0
+--- !u!224 &903406028
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 903406023}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0, y: 0, z: 0}
+  m_Children:
+  - {fileID: 513680270}
+  - {fileID: 1330809242}
+  - {fileID: 1668233739}
+  m_Father: {fileID: 0}
+  m_RootOrder: 12
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0, y: 0}
 --- !u!1 &919247952
 GameObject:
   m_ObjectHideFlags: 0
@@ -4073,6 +4354,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 724135bd9b4501e43969e80a0edc15a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dragAndDropTooltip: {fileID: 1330809241}
+  upgradeTooltip: {fileID: 1668233736}
   buildEffect: {fileID: 716961809510840430, guid: ef596d46178e68d4eaca1ac68fc31405,
     type: 3}
   nodeUI: {fileID: 38346337}
@@ -4590,6 +4873,81 @@ MonoBehaviour:
   m_ChildControlHeight: 0
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
+--- !u!1 &1330809241
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1330809242}
+  - component: {fileID: 1330809244}
+  - component: {fileID: 1330809243}
+  m_Layer: 5
+  m_Name: DragAndDrop
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &1330809242
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1330809241}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0.0011721}
+  m_LocalScale: {x: 0.27, y: 0.13, z: 1}
+  m_Children:
+  - {fileID: 708683632}
+  m_Father: {fileID: 903406028}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0.0000000015445, y: 750}
+  m_SizeDelta: {x: 2441.8892, y: 2247.3633}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1330809243
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1330809241}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.67058825}
+  m_RaycastTarget: 1
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300078, guid: 76bdad1258c27a64fa6bff9c813759cb, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1330809244
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1330809241}
+  m_CullTransparentMesh: 0
 --- !u!1 &1410104573
 GameObject:
   m_ObjectHideFlags: 0
@@ -4904,6 +5262,84 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: be3f248cfa2009643bb6d0ba83951d51, type: 3}
+--- !u!1 &1462802777
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1462802778}
+  - component: {fileID: 1462802780}
+  - component: {fileID: 1462802779}
+  m_Layer: 5
+  m_Name: UpgradeTooltipText
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1462802778
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1462802777}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0.063715}
+  m_LocalScale: {x: 3, y: 3, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1668233739}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0.00012207031, y: 0.0053710938}
+  m_SizeDelta: {x: -1627.9114, y: -1498.2487}
+  m_Pivot: {x: 0.5, y: 0.49999985}
+--- !u!114 &1462802779
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1462802777}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_RaycastTarget: 1
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 117
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 0
+    m_MaxSize: 300
+    m_Alignment: 4
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: Sell or upgrade your turret here
+--- !u!222 &1462802780
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1462802777}
+  m_CullTransparentMesh: 0
 --- !u!1 &1485652211
 GameObject:
   m_ObjectHideFlags: 0
@@ -5083,6 +5519,7 @@ MonoBehaviour:
   nodeSector: 3
   child: {fileID: 0}
   child2: {fileID: 0}
+  dragAndDropText: {fileID: 708683633}
 --- !u!64 &1490344920
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -5136,6 +5573,81 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 4711208715938537054, guid: d96cba918950b934b9daa0174d035117, type: 3}
+--- !u!1 &1668233736
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1668233739}
+  - component: {fileID: 1668233738}
+  - component: {fileID: 1668233737}
+  m_Layer: 5
+  m_Name: UpgradeTooltip
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!114 &1668233737
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1668233736}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.67058825}
+  m_RaycastTarget: 1
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300078, guid: 76bdad1258c27a64fa6bff9c813759cb, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1668233738
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1668233736}
+  m_CullTransparentMesh: 0
+--- !u!224 &1668233739
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1668233736}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -0}
+  m_LocalScale: {x: 0.27, y: 0.13, z: 1}
+  m_Children:
+  - {fileID: 1462802778}
+  m_Father: {fileID: 903406028}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 1610, y: 586}
+  m_SizeDelta: {x: 2441.8892, y: 2247.3633}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1001 &1680710134
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6043,6 +6555,84 @@ MonoBehaviour:
   m_ChildControlHeight: 0
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
+--- !u!1 &1974160524
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1974160525}
+  - component: {fileID: 1974160527}
+  - component: {fileID: 1974160526}
+  m_Layer: 5
+  m_Name: SelectTurretText
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1974160525
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1974160524}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0.0020872}
+  m_LocalScale: {x: 3, y: 3, z: 1}
+  m_Children: []
+  m_Father: {fileID: 513680270}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0.00012207031, y: -0.00048828125}
+  m_SizeDelta: {x: -1627.9114, y: -1498.2487}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1974160526
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1974160524}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_RaycastTarget: 1
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 117
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 0
+    m_MaxSize: 300
+    m_Alignment: 4
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: TAP a turret icon to select a turret to build
+--- !u!222 &1974160527
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1974160524}
+  m_CullTransparentMesh: 0
 --- !u!1 &1994524846
 GameObject:
   m_ObjectHideFlags: 0
@@ -7898,6 +8488,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1889212719}
     m_Modifications:
+    - target: {fileID: 4185465770859080721, guid: be53671ceb65cbf49bcc8c30e761ae75,
+        type: 3}
+      propertyPath: dragAndDropTooltip
+      value: 
+      objectReference: {fileID: 1330809241}
+    - target: {fileID: 4185465770859080721, guid: be53671ceb65cbf49bcc8c30e761ae75,
+        type: 3}
+      propertyPath: upgradeTooltip
+      value: 
+      objectReference: {fileID: 1668233736}
     - target: {fileID: 4185465770859080722, guid: be53671ceb65cbf49bcc8c30e761ae75,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -8279,6 +8879,356 @@ PrefabInstance:
       propertyPath: m_Center.x
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5871853605982636433, guid: 981779e478cb8ba459988c6efa96add0,
+        type: 3}
+      propertyPath: turretCreateTooltip
+      value: 
+      objectReference: {fileID: 1330809241}
+    - target: {fileID: 5871853605982636433, guid: 981779e478cb8ba459988c6efa96add0,
+        type: 3}
+      propertyPath: dragAndDropText
+      value: 
+      objectReference: {fileID: 708683633}
+    - target: {fileID: 5871853605995971331, guid: 981779e478cb8ba459988c6efa96add0,
+        type: 3}
+      propertyPath: turretCreateTooltip
+      value: 
+      objectReference: {fileID: 1330809241}
+    - target: {fileID: 5871853605995971331, guid: 981779e478cb8ba459988c6efa96add0,
+        type: 3}
+      propertyPath: dragAndDropText
+      value: 
+      objectReference: {fileID: 708683633}
+    - target: {fileID: 5871853606111286867, guid: 981779e478cb8ba459988c6efa96add0,
+        type: 3}
+      propertyPath: turretCreateTooltip
+      value: 
+      objectReference: {fileID: 1330809241}
+    - target: {fileID: 5871853606111286867, guid: 981779e478cb8ba459988c6efa96add0,
+        type: 3}
+      propertyPath: dragAndDropText
+      value: 
+      objectReference: {fileID: 708683633}
+    - target: {fileID: 5871853606184924571, guid: 981779e478cb8ba459988c6efa96add0,
+        type: 3}
+      propertyPath: turretCreateTooltip
+      value: 
+      objectReference: {fileID: 1330809241}
+    - target: {fileID: 5871853606184924571, guid: 981779e478cb8ba459988c6efa96add0,
+        type: 3}
+      propertyPath: dragAndDropText
+      value: 
+      objectReference: {fileID: 708683633}
+    - target: {fileID: 5871853606224928001, guid: 981779e478cb8ba459988c6efa96add0,
+        type: 3}
+      propertyPath: turretCreateTooltip
+      value: 
+      objectReference: {fileID: 1330809241}
+    - target: {fileID: 5871853606224928001, guid: 981779e478cb8ba459988c6efa96add0,
+        type: 3}
+      propertyPath: dragAndDropText
+      value: 
+      objectReference: {fileID: 708683633}
+    - target: {fileID: 5871853606303092732, guid: 981779e478cb8ba459988c6efa96add0,
+        type: 3}
+      propertyPath: turretCreateTooltip
+      value: 
+      objectReference: {fileID: 1330809241}
+    - target: {fileID: 5871853606303092732, guid: 981779e478cb8ba459988c6efa96add0,
+        type: 3}
+      propertyPath: dragAndDropText
+      value: 
+      objectReference: {fileID: 708683633}
+    - target: {fileID: 5871853606361738664, guid: 981779e478cb8ba459988c6efa96add0,
+        type: 3}
+      propertyPath: turretCreateTooltip
+      value: 
+      objectReference: {fileID: 1330809241}
+    - target: {fileID: 5871853606361738664, guid: 981779e478cb8ba459988c6efa96add0,
+        type: 3}
+      propertyPath: dragAndDropText
+      value: 
+      objectReference: {fileID: 708683633}
+    - target: {fileID: 5871853606368023300, guid: 981779e478cb8ba459988c6efa96add0,
+        type: 3}
+      propertyPath: turretCreateTooltip
+      value: 
+      objectReference: {fileID: 1330809241}
+    - target: {fileID: 5871853606368023300, guid: 981779e478cb8ba459988c6efa96add0,
+        type: 3}
+      propertyPath: dragAndDropText
+      value: 
+      objectReference: {fileID: 708683633}
+    - target: {fileID: 5871853606392105750, guid: 981779e478cb8ba459988c6efa96add0,
+        type: 3}
+      propertyPath: turretCreateTooltip
+      value: 
+      objectReference: {fileID: 1330809241}
+    - target: {fileID: 5871853606392105750, guid: 981779e478cb8ba459988c6efa96add0,
+        type: 3}
+      propertyPath: dragAndDropText
+      value: 
+      objectReference: {fileID: 708683633}
+    - target: {fileID: 5871853606657973781, guid: 981779e478cb8ba459988c6efa96add0,
+        type: 3}
+      propertyPath: turretCreateTooltip
+      value: 
+      objectReference: {fileID: 1330809241}
+    - target: {fileID: 5871853606657973781, guid: 981779e478cb8ba459988c6efa96add0,
+        type: 3}
+      propertyPath: dragAndDropText
+      value: 
+      objectReference: {fileID: 708683633}
+    - target: {fileID: 5871853606679271353, guid: 981779e478cb8ba459988c6efa96add0,
+        type: 3}
+      propertyPath: turretCreateTooltip
+      value: 
+      objectReference: {fileID: 1330809241}
+    - target: {fileID: 5871853606679271353, guid: 981779e478cb8ba459988c6efa96add0,
+        type: 3}
+      propertyPath: dragAndDropText
+      value: 
+      objectReference: {fileID: 708683633}
+    - target: {fileID: 5871853606690762315, guid: 981779e478cb8ba459988c6efa96add0,
+        type: 3}
+      propertyPath: turretCreateTooltip
+      value: 
+      objectReference: {fileID: 1330809241}
+    - target: {fileID: 5871853606690762315, guid: 981779e478cb8ba459988c6efa96add0,
+        type: 3}
+      propertyPath: dragAndDropText
+      value: 
+      objectReference: {fileID: 708683633}
+    - target: {fileID: 5871853606742863746, guid: 981779e478cb8ba459988c6efa96add0,
+        type: 3}
+      propertyPath: turretCreateTooltip
+      value: 
+      objectReference: {fileID: 1330809241}
+    - target: {fileID: 5871853606742863746, guid: 981779e478cb8ba459988c6efa96add0,
+        type: 3}
+      propertyPath: dragAndDropText
+      value: 
+      objectReference: {fileID: 708683633}
+    - target: {fileID: 5871853606743571003, guid: 981779e478cb8ba459988c6efa96add0,
+        type: 3}
+      propertyPath: turretCreateTooltip
+      value: 
+      objectReference: {fileID: 1330809241}
+    - target: {fileID: 5871853606743571003, guid: 981779e478cb8ba459988c6efa96add0,
+        type: 3}
+      propertyPath: dragAndDropText
+      value: 
+      objectReference: {fileID: 708683633}
+    - target: {fileID: 5871853606770074579, guid: 981779e478cb8ba459988c6efa96add0,
+        type: 3}
+      propertyPath: turretCreateTooltip
+      value: 
+      objectReference: {fileID: 1330809241}
+    - target: {fileID: 5871853606770074579, guid: 981779e478cb8ba459988c6efa96add0,
+        type: 3}
+      propertyPath: dragAndDropText
+      value: 
+      objectReference: {fileID: 708683633}
+    - target: {fileID: 5871853607015255667, guid: 981779e478cb8ba459988c6efa96add0,
+        type: 3}
+      propertyPath: turretCreateTooltip
+      value: 
+      objectReference: {fileID: 1330809241}
+    - target: {fileID: 5871853607015255667, guid: 981779e478cb8ba459988c6efa96add0,
+        type: 3}
+      propertyPath: dragAndDropText
+      value: 
+      objectReference: {fileID: 708683633}
+    - target: {fileID: 5871853607054441082, guid: 981779e478cb8ba459988c6efa96add0,
+        type: 3}
+      propertyPath: turretCreateTooltip
+      value: 
+      objectReference: {fileID: 1330809241}
+    - target: {fileID: 5871853607054441082, guid: 981779e478cb8ba459988c6efa96add0,
+        type: 3}
+      propertyPath: dragAndDropText
+      value: 
+      objectReference: {fileID: 708683633}
+    - target: {fileID: 5871853607114735059, guid: 981779e478cb8ba459988c6efa96add0,
+        type: 3}
+      propertyPath: turretCreateTooltip
+      value: 
+      objectReference: {fileID: 1330809241}
+    - target: {fileID: 5871853607114735059, guid: 981779e478cb8ba459988c6efa96add0,
+        type: 3}
+      propertyPath: dragAndDropText
+      value: 
+      objectReference: {fileID: 708683633}
+    - target: {fileID: 5871853607158691700, guid: 981779e478cb8ba459988c6efa96add0,
+        type: 3}
+      propertyPath: turretCreateTooltip
+      value: 
+      objectReference: {fileID: 1330809241}
+    - target: {fileID: 5871853607158691700, guid: 981779e478cb8ba459988c6efa96add0,
+        type: 3}
+      propertyPath: dragAndDropText
+      value: 
+      objectReference: {fileID: 708683633}
+    - target: {fileID: 5871853607171143611, guid: 981779e478cb8ba459988c6efa96add0,
+        type: 3}
+      propertyPath: turretCreateTooltip
+      value: 
+      objectReference: {fileID: 1330809241}
+    - target: {fileID: 5871853607171143611, guid: 981779e478cb8ba459988c6efa96add0,
+        type: 3}
+      propertyPath: dragAndDropText
+      value: 
+      objectReference: {fileID: 708683633}
+    - target: {fileID: 5871853607218564272, guid: 981779e478cb8ba459988c6efa96add0,
+        type: 3}
+      propertyPath: turretCreateTooltip
+      value: 
+      objectReference: {fileID: 1330809241}
+    - target: {fileID: 5871853607218564272, guid: 981779e478cb8ba459988c6efa96add0,
+        type: 3}
+      propertyPath: dragAndDropText
+      value: 
+      objectReference: {fileID: 708683633}
+    - target: {fileID: 5871853607271476202, guid: 981779e478cb8ba459988c6efa96add0,
+        type: 3}
+      propertyPath: turretCreateTooltip
+      value: 
+      objectReference: {fileID: 1330809241}
+    - target: {fileID: 5871853607271476202, guid: 981779e478cb8ba459988c6efa96add0,
+        type: 3}
+      propertyPath: dragAndDropText
+      value: 
+      objectReference: {fileID: 708683633}
+    - target: {fileID: 5871853607363482456, guid: 981779e478cb8ba459988c6efa96add0,
+        type: 3}
+      propertyPath: turretCreateTooltip
+      value: 
+      objectReference: {fileID: 1330809241}
+    - target: {fileID: 5871853607363482456, guid: 981779e478cb8ba459988c6efa96add0,
+        type: 3}
+      propertyPath: dragAndDropText
+      value: 
+      objectReference: {fileID: 708683633}
+    - target: {fileID: 5871853607448211216, guid: 981779e478cb8ba459988c6efa96add0,
+        type: 3}
+      propertyPath: turretCreateTooltip
+      value: 
+      objectReference: {fileID: 1330809241}
+    - target: {fileID: 5871853607448211216, guid: 981779e478cb8ba459988c6efa96add0,
+        type: 3}
+      propertyPath: dragAndDropText
+      value: 
+      objectReference: {fileID: 708683633}
+    - target: {fileID: 5871853607528982700, guid: 981779e478cb8ba459988c6efa96add0,
+        type: 3}
+      propertyPath: turretCreateTooltip
+      value: 
+      objectReference: {fileID: 1330809241}
+    - target: {fileID: 5871853607528982700, guid: 981779e478cb8ba459988c6efa96add0,
+        type: 3}
+      propertyPath: dragAndDropText
+      value: 
+      objectReference: {fileID: 708683633}
+    - target: {fileID: 5871853607542906374, guid: 981779e478cb8ba459988c6efa96add0,
+        type: 3}
+      propertyPath: turretCreateTooltip
+      value: 
+      objectReference: {fileID: 1330809241}
+    - target: {fileID: 5871853607542906374, guid: 981779e478cb8ba459988c6efa96add0,
+        type: 3}
+      propertyPath: dragAndDropText
+      value: 
+      objectReference: {fileID: 708683633}
+    - target: {fileID: 5871853607580420066, guid: 981779e478cb8ba459988c6efa96add0,
+        type: 3}
+      propertyPath: turretCreateTooltip
+      value: 
+      objectReference: {fileID: 1330809241}
+    - target: {fileID: 5871853607580420066, guid: 981779e478cb8ba459988c6efa96add0,
+        type: 3}
+      propertyPath: dragAndDropText
+      value: 
+      objectReference: {fileID: 708683633}
+    - target: {fileID: 5871853607776101460, guid: 981779e478cb8ba459988c6efa96add0,
+        type: 3}
+      propertyPath: turretCreateTooltip
+      value: 
+      objectReference: {fileID: 1330809241}
+    - target: {fileID: 5871853607776101460, guid: 981779e478cb8ba459988c6efa96add0,
+        type: 3}
+      propertyPath: dragAndDropText
+      value: 
+      objectReference: {fileID: 708683633}
+    - target: {fileID: 5871853607807799793, guid: 981779e478cb8ba459988c6efa96add0,
+        type: 3}
+      propertyPath: turretCreateTooltip
+      value: 
+      objectReference: {fileID: 1330809241}
+    - target: {fileID: 5871853607807799793, guid: 981779e478cb8ba459988c6efa96add0,
+        type: 3}
+      propertyPath: dragAndDropText
+      value: 
+      objectReference: {fileID: 708683633}
+    - target: {fileID: 5871853607882718644, guid: 981779e478cb8ba459988c6efa96add0,
+        type: 3}
+      propertyPath: turretCreateTooltip
+      value: 
+      objectReference: {fileID: 1330809241}
+    - target: {fileID: 5871853607882718644, guid: 981779e478cb8ba459988c6efa96add0,
+        type: 3}
+      propertyPath: dragAndDropText
+      value: 
+      objectReference: {fileID: 708683633}
+    - target: {fileID: 5871853607892036916, guid: 981779e478cb8ba459988c6efa96add0,
+        type: 3}
+      propertyPath: turretCreateTooltip
+      value: 
+      objectReference: {fileID: 1330809241}
+    - target: {fileID: 5871853607892036916, guid: 981779e478cb8ba459988c6efa96add0,
+        type: 3}
+      propertyPath: dragAndDropText
+      value: 
+      objectReference: {fileID: 708683633}
+    - target: {fileID: 5871853607916060937, guid: 981779e478cb8ba459988c6efa96add0,
+        type: 3}
+      propertyPath: turretCreateTooltip
+      value: 
+      objectReference: {fileID: 1330809241}
+    - target: {fileID: 5871853607916060937, guid: 981779e478cb8ba459988c6efa96add0,
+        type: 3}
+      propertyPath: dragAndDropText
+      value: 
+      objectReference: {fileID: 708683633}
+    - target: {fileID: 5871853607922224209, guid: 981779e478cb8ba459988c6efa96add0,
+        type: 3}
+      propertyPath: turretCreateTooltip
+      value: 
+      objectReference: {fileID: 1330809241}
+    - target: {fileID: 5871853607922224209, guid: 981779e478cb8ba459988c6efa96add0,
+        type: 3}
+      propertyPath: dragAndDropText
+      value: 
+      objectReference: {fileID: 708683633}
+    - target: {fileID: 5871853607942144306, guid: 981779e478cb8ba459988c6efa96add0,
+        type: 3}
+      propertyPath: turretCreateTooltip
+      value: 
+      objectReference: {fileID: 1330809241}
+    - target: {fileID: 5871853607942144306, guid: 981779e478cb8ba459988c6efa96add0,
+        type: 3}
+      propertyPath: dragAndDropText
+      value: 
+      objectReference: {fileID: 708683633}
+    - target: {fileID: 5871853607998825626, guid: 981779e478cb8ba459988c6efa96add0,
+        type: 3}
+      propertyPath: turretCreateTooltip
+      value: 
+      objectReference: {fileID: 1330809241}
+    - target: {fileID: 5871853607998825626, guid: 981779e478cb8ba459988c6efa96add0,
+        type: 3}
+      propertyPath: dragAndDropText
+      value: 
+      objectReference: {fileID: 708683633}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 981779e478cb8ba459988c6efa96add0, type: 3}
 --- !u!1001 &6289094773435717758

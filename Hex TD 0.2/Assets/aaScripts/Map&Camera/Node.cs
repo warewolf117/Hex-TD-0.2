@@ -1,5 +1,6 @@
 ﻿using UnityEngine.EventSystems;
 using UnityEngine;
+using UnityEngine.UI;
 
 
 public class Node : MonoBehaviour
@@ -39,8 +40,10 @@ public class Node : MonoBehaviour
     public GameObject child2;
 
     private float radius = 1.0f;
-    private new Color originalColor;
-    private new Color originalColorE;
+    private Color originalColor;
+    private Color originalColorE;
+
+    public Text dragAndDropText;
 
     // NodeUI nodeUI;
 
@@ -99,27 +102,13 @@ public void RemoveRange()
         PlayerStats.money -= blueprint.cost;
 
         GameObject _turret = (GameObject)Instantiate(blueprint.pref, GetBuildPosition(), Quaternion.identity);
+        dragAndDropText.text = "Tap on the turret to see its info";
         turret = _turret;
         Turret Sturret = turret.transform.GetComponent<Turret>();
         Sturret.NodeSectionTargetingShit(nodeSector); //sends nodeSector value to the void function in the turret script
-         
-
-       /* Turret turretRange = turret.transform.GetComponent<Turret>();
-        range = turretRange.range;
-
-        Turret turretFireRate = turret.transform.GetComponent<Turret>();
-        fireRate = turretFireRate.fireRate;
-
-        NodeUI stats = turret.transform.GetComponent<NodeUI>();
-        stats.TurretStats(range, fireRate);*/
-
-
 
         turretBlueprintShop = blueprint;
 
-        // GameObject effect = (GameObject)Instantiate(buildManager.buildEffect, GetBuildPosition(), Quaternion.identity);
-        // Destroy(effect, 2f);
-        //print display saying turret built, and money left
     }
 
     void SendStatsToUI(GameObject turretS)
@@ -165,14 +154,6 @@ public void RemoveRange()
         Sturret.NodeSectionTargetingShit(nodeSector);
         SendStatsToUI(turret);
         nodeUI.GetComponent<NodeUI>().Stats();
-        /*Turret turretRange = turret.transform.GetComponent<Turret>();
-        range = turretRange.range;
-
-        Turret turretFireRate = turret.transform.GetComponent<Turret>();
-        fireRate = turretFireRate.fireRate;
-
-        NodeUI stats = turret.transform.GetComponent<NodeUI>();
-        stats.TurretStats(range, fireRate);*/
 
         // GameObject effect = (GameObject)Instantiate(buildManager.buildEffect, GetBuildPosition(), Quaternion.identity);
         // Destroy(effect, 2f);

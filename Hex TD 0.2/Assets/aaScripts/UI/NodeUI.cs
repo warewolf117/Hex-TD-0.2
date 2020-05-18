@@ -25,6 +25,10 @@ public class NodeUI : MonoBehaviour
     private Node target;
     public Button upgradeButton;
 
+    public GameObject dragAndDropTooltip;
+    public GameObject upgradeTooltip;
+
+    bool tutorialCounter = false;
 
     public void Stats()
     {
@@ -64,6 +68,13 @@ public class NodeUI : MonoBehaviour
             upgradeButton.interactable = false;
         }
         ui.SetActive(true);
+        //Destroy(dragAndDropTooltip);
+        dragAndDropTooltip.SetActive(false);
+        if (tutorialCounter == false)
+        {
+            upgradeTooltip.SetActive(true);
+        }
+        
         //checkUI = true;
     }
 
@@ -84,8 +95,9 @@ public class NodeUI : MonoBehaviour
 
     public void Upgrade()
     {
-        target.UpgradeTurret(this.gameObject); 
-
+        target.UpgradeTurret(this.gameObject);
+        upgradeTooltip.SetActive(false);
+        tutorialCounter = true;
     }
 
     public void Sell()
@@ -103,6 +115,8 @@ public class NodeUI : MonoBehaviour
             BuildManager.instance.DeselectNode(); //deselects node after selling turret
         }
         Hide();
+        upgradeTooltip.SetActive(false);
+        tutorialCounter = true;
     }
     public void Update()
     {
@@ -118,6 +132,7 @@ public class NodeUI : MonoBehaviour
                     if (Physics.Raycast(ray, out Hit) && Hit.collider.tag != "ActiveNode" && Hit.collider.tag != "UIButtons")
                     {
                          BuildManager.instance.DeselectNode();
+                         
                     }
 
                 

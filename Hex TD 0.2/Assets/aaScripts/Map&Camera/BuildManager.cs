@@ -5,6 +5,9 @@ public class BuildManager : MonoBehaviour
     
 
     public static BuildManager instance; //stores a reference to itself to limit instances to 1
+    public GameObject dragAndDropTooltip;
+    public GameObject upgradeTooltip;
+    bool tutorialCounter = false;
 
     private void Awake()
     {
@@ -75,6 +78,7 @@ public class BuildManager : MonoBehaviour
         selectedNode.RemoveRange();
         selectedNode = null;
         nodeUI.Hide();
+            upgradeTooltip.SetActive(false);
         }
     }
     public void SelectTurretToBuild(TurretBlueprintShop turret)
@@ -85,6 +89,11 @@ public class BuildManager : MonoBehaviour
         }
         turretToBuild = turret;
         Ghost = Instantiate(turretToBuild.pref.GetComponent<Turret>().turretGhost, new Vector3(-0.02f,0.85f,0f), Quaternion.identity) as GameObject;
+        if (tutorialCounter == false)
+        {
+            dragAndDropTooltip.SetActive(true);
+            tutorialCounter = true;
+        } 
         Ghost.AddComponent<UnitGhost>();
         Ghost.AddComponent<TurretRange>();
         GhostActive = true;
