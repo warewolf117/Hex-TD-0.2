@@ -1,13 +1,12 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.EventSystems;
 
 public class NodeUI : MonoBehaviour
 {
 
     public GameObject ui;
-    public GameObject disableUIButton;
-    private bool checkUI = false;
+   // public GameObject disableUIButton;
+   // private bool checkUI = false;
 
     public Text upgradeCost;
     public Text fireRate;
@@ -22,23 +21,12 @@ public class NodeUI : MonoBehaviour
     private Node target;
     public Button upgradeButton;
 
-   // public static int turretRange;
-   // public static float turretFireRate;
-
-
-   /* public void TurretStats(int _range, float _fireRate)
-    {
-        turretRange = _range;
-        turretFireRate = _fireRate;
-    }*/
 
     public void SetTarget(Node _target)
     {
         target = _target;
         
-       /* fireRate.text = target.turretBlueprintStats.GetUpgradedFireRate().ToString();
-        damage.text = target.turretBlueprintStats.GetUpgradedDamage().ToString();
-        range.text = target.turretBlueprintStats.GetUpgradedRange().ToString();*/
+
         
         sellAmmount.text = "$" + target.turretBlueprintShop.GetUpgradedSellAmount();
 
@@ -50,9 +38,6 @@ public class NodeUI : MonoBehaviour
             upgradeCost.text = "$" + target.turretBlueprintShop.upgradeCost;
             upgradeButton.interactable = true;
             
-            /*fireRate.text = target.turretBlueprintStats.GetFireRate().ToString();
-            damage.text = target.turretBlueprintStats.GetDamage().ToString();
-            range.text = target.turretBlueprintStats.GetRange().ToString();*/
             
             sellAmmount.text = "$" + target.turretBlueprintShop.GetSellAmount();
         }
@@ -62,7 +47,7 @@ public class NodeUI : MonoBehaviour
             upgradeButton.interactable = false;
         }
         ui.SetActive(true);
-        checkUI = true;
+        //checkUI = true;
     }
 
     public void Hide()
@@ -71,14 +56,14 @@ public class NodeUI : MonoBehaviour
 
     }
 
-    public void DeactivateButton()
+   /* public void DeactivateButton()
     {
         if (checkUI)
         {
             disableUIButton.SetActive(false);
             checkUI = false;
         }
-    }
+    }*/
 
     public void Upgrade()
     {
@@ -86,7 +71,8 @@ public class NodeUI : MonoBehaviour
         BuildManager.instance.DeselectNode(); //hides menu when upgrade is done
                                               //need to use this function so that node is deselected too instead of just hiding the
                                               //ui which is what the Hide() function does
-        DeactivateButton();
+       // Hide();
+       // DeactivateButton();
     }
 
     public void Sell()
@@ -101,15 +87,35 @@ public class NodeUI : MonoBehaviour
             target.SellTurret();
             BuildManager.instance.DeselectNode(); //deselects node after selling turret
         }
-        DeactivateButton();
+        // DeactivateButton();
+        Hide();
     }
     public void Update()
     {
-        if (ui.activeSelf)
+        /*if (ui.activeSelf)
         {
             disableUIButton.SetActive(true);
+        }*/
+
+        if (ui == enabled)
+        {
+
+            var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            RaycastHit Hit;
+
+            if (Input.GetMouseButtonDown(0))
+            {
+               
+                    if (Physics.Raycast(ray, out Hit) && Hit.collider.tag != "ActiveNode" && Hit.collider.tag != "UIButtons")
+                    {
+                    Hide();
+                    }
+
+                
+            }
         }
 
     }
+    
 
-}
+    }

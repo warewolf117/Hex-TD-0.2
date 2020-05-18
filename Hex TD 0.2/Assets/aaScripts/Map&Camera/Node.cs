@@ -17,7 +17,7 @@ public class Node : MonoBehaviour
     public TurretBlueprintShop turretBlueprintShop;
 
     [HideInInspector]
-    public TurretBlueprintStats turretBlueprintStats;
+    public TurretStats turretStats;
 
 
     //public TurretBlueprintStats turretBlueprintStats;
@@ -58,10 +58,12 @@ public class Node : MonoBehaviour
         if (turret != null)
         {
             buildManager.SelectNode(this); //this prevents from building where theres a turret
+            this.tag = "ActiveNode";
             return;
         }
 
     }
+
 
     void BuildTurret(TurretBlueprintShop blueprint)
     {
@@ -77,6 +79,7 @@ public class Node : MonoBehaviour
         turret = _turret;
         Turret Sturret = turret.transform.GetComponent<Turret>();
         Sturret.NodeSectionTargetingShit(nodeSector); //sends nodeSector value to the void function in the turret script
+         
 
        /* Turret turretRange = turret.transform.GetComponent<Turret>();
         range = turretRange.range;
