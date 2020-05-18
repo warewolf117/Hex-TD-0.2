@@ -25,8 +25,8 @@ public class NodeUI : MonoBehaviour
     public void SetTarget(Node _target)
     {
         target = _target;
-        
 
+        //fireRate.text = target.turretStats.fireRate.ToString();
         
         sellAmmount.text = "$" + target.turretBlueprintShop.GetUpgradedSellAmount();
 
@@ -87,16 +87,10 @@ public class NodeUI : MonoBehaviour
             target.SellTurret();
             BuildManager.instance.DeselectNode(); //deselects node after selling turret
         }
-        // DeactivateButton();
         Hide();
     }
     public void Update()
     {
-        /*if (ui.activeSelf)
-        {
-            disableUIButton.SetActive(true);
-        }*/
-
         if (ui == enabled)
         {
 

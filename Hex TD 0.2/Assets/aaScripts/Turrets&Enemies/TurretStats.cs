@@ -8,7 +8,7 @@ public class TurretStats : MonoBehaviour
     public float fireRate;
     Node node;
 
-    public void SetTurret()
+    public void Start()
     {
         pref = node.turret;
     }

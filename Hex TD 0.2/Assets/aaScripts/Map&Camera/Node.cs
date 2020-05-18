@@ -16,9 +16,9 @@ public class Node : MonoBehaviour
     [HideInInspector]
     public TurretBlueprintShop turretBlueprintShop;
 
-    [HideInInspector]
-    public TurretStats turretStats;
 
+    [HideInInspector]
+    public Turret turretStats;
 
     //public TurretBlueprintStats turretBlueprintStats;
 
@@ -59,6 +59,8 @@ public class Node : MonoBehaviour
         {
             buildManager.SelectNode(this); //this prevents from building where theres a turret
             this.tag = "ActiveNode";
+            this.range = turretStats.range;
+            this.fireRate = turretStats.fireRate;
             return;
         }
 

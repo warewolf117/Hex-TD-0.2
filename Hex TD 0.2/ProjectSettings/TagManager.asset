@@ -20,6 +20,7 @@ TagManager:
   - GhostTurret
   - Node
   - UIButtons
+  - ActiveNode
   layers:
   - Default
   - TransparentFX
