@@ -55,20 +55,27 @@ public class BuildManager : MonoBehaviour
 
         if(selectedNode != node)
         {
-
+            DeselectNode();
         }
+
         selectedNode = node;
 
         turretToBuild = null;
-
         nodeUI.SetTarget(node);
+
+
+
     }
 
     //Deactivates UI when u click the selected node
     public void DeselectNode()
     {
+        if (selectedNode != null)
+        {
+        selectedNode.RemoveRange();
         selectedNode = null;
         nodeUI.Hide();
+        }
     }
     public void SelectTurretToBuild(TurretBlueprintShop turret)
     {

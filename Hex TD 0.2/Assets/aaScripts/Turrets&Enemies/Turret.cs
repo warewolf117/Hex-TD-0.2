@@ -18,8 +18,12 @@ public class Turret : MonoBehaviour
     [Header("General")]
 
     public int range = 15;
-    public static float rangeRender;
     public float fireRate = 1f;
+    public int bulletDamage;
+
+    public static float rangeRender; 
+    public float healthStatic;
+    public int impactDamageStatic;
 
     [Header("Use Bullets")]
 
@@ -32,7 +36,7 @@ public class Turret : MonoBehaviour
 
     public bool useLaser = false;
 
-    public int damageOverTime = 30;
+    public int LaserDamage;
 
     public float Slowpct = 0.3f;
 
@@ -56,6 +60,23 @@ public class Turret : MonoBehaviour
     {
 
         rangeRender = range;
+      //  healthStatic = this.GetComponent<Health>().max_health;
+
+        if (useLaser == true)
+        {
+            impactDamageStatic = LaserDamage;
+        }
+        else
+        {
+            impactDamageStatic = bulletDamage;
+        }
+
+    //   if (useLaser == true)
+    //    {
+    //        impactDamageStatic = bulletDamage;
+    //    }
+
+
         audio = GetComponent<AudioSource>();
         bulletPooler = BulletPooler.Instance;
         missilePooler = MissilePooler.Instance;
@@ -250,7 +271,7 @@ public class Turret : MonoBehaviour
     void Laser()
 
     {
-        targetEnemy.takeDamageLaser(damageOverTime * Time.deltaTime);
+        targetEnemy.takeDamageLaser(LaserDamage * Time.deltaTime);
         audio.Play();
         targetEnemyM.Slow(Slowpct);
 
@@ -282,6 +303,7 @@ public class Turret : MonoBehaviour
             bulletGO.transform.position = firePoint.position;
             bulletGO.transform.rotation = firePoint.rotation;
             Bullet bullet = bulletGO.GetComponent<Bullet>();
+            bullet.damage = bulletDamage;
 
 
             if (bullet != null)

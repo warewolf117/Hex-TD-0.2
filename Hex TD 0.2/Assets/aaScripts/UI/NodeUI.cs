@@ -14,6 +14,10 @@ public class NodeUI : MonoBehaviour
     public Text range;
     public Text sellAmmount;
 
+    public static float fireRateValue;
+    public static int damageValue;
+    public static int rangeValue;
+
     public TurretBlueprintShop standartTurret;
     public TurretBlueprintShop missileLauncher;
     public TurretBlueprintShop laserTurret;
@@ -22,12 +26,25 @@ public class NodeUI : MonoBehaviour
     public Button upgradeButton;
 
 
+    public void Stats()
+    {
+        fireRate.text = fireRateValue.ToString();
+
+        damage.text = damageValue.ToString();
+
+        range.text = rangeValue.ToString();
+
+    }
+
+
     public void SetTarget(Node _target)
     {
         target = _target;
 
+        Stats();
+
         //fireRate.text = target.turretStats.fireRate.ToString();
-        
+
         sellAmmount.text = "$" + target.turretBlueprintShop.GetUpgradedSellAmount();
 
         //transform.position = target.GetBuildPosition(); //this uses the node location with the offset
@@ -67,12 +84,8 @@ public class NodeUI : MonoBehaviour
 
     public void Upgrade()
     {
-        target.UpgradeTurret();
-        BuildManager.instance.DeselectNode(); //hides menu when upgrade is done
-                                              //need to use this function so that node is deselected too instead of just hiding the
-                                              //ui which is what the Hide() function does
-       // Hide();
-       // DeactivateButton();
+        target.UpgradeTurret(this.gameObject); 
+
     }
 
     public void Sell()
@@ -80,11 +93,13 @@ public class NodeUI : MonoBehaviour
         if (target.isUpgraded)
         {
             target.SellUpgradedTurret();
+            target.tag = "Node";
             BuildManager.instance.DeselectNode();
         }
         else
         {
             target.SellTurret();
+            target.tag = "Node";
             BuildManager.instance.DeselectNode(); //deselects node after selling turret
         }
         Hide();
@@ -102,7 +117,7 @@ public class NodeUI : MonoBehaviour
                
                     if (Physics.Raycast(ray, out Hit) && Hit.collider.tag != "ActiveNode" && Hit.collider.tag != "UIButtons")
                     {
-                    Hide();
+                         BuildManager.instance.DeselectNode();
                     }
 
                 

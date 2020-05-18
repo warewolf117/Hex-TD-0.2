@@ -7,7 +7,7 @@ public class Missile : MonoBehaviour
     public GameObject Maudio;
     private Transform target;
 
-    public int damage = 30;
+    public int damage;
     public float speed = 70f;
     public float SplashRadius = 0f;
     public GameObject impactEffect;
@@ -68,7 +68,7 @@ public class Missile : MonoBehaviour
 
     void HitTarget()
     {
-        damage = Random.Range(damage - (damage / 7), damage + (damage / 6));
+        damage = Random.Range(damage - (damage / 10), damage + (damage / 10));
 
 
         if (SplashRadius > 0f)

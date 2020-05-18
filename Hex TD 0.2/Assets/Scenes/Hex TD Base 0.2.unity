@@ -207,7 +207,7 @@ MonoBehaviour:
     type: 3}
   m_PrefabInstance: {fileID: 4185465770829263472}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 240896199}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e0dfcafdb2490f04aba5c2ef1d374504, type: 3}
@@ -410,25 +410,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
---- !u!1 &240896199 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4185465770859080751, guid: be53671ceb65cbf49bcc8c30e761ae75,
-    type: 3}
-  m_PrefabInstance: {fileID: 4185465770829263472}
-  m_PrefabAsset: {fileID: 0}
---- !u!65 &240896201
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 240896199}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 3.41, y: 4.16, z: 1}
-  m_Center: {x: -0.13, y: 3.55, z: 0}
 --- !u!1 &245822681
 GameObject:
   m_ObjectHideFlags: 0
@@ -5100,6 +5081,8 @@ MonoBehaviour:
   turretStats: {fileID: 0}
   isUpgraded: 0
   nodeSector: 3
+  child: {fileID: 0}
+  child2: {fileID: 0}
 --- !u!64 &1490344920
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -7915,36 +7898,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1889212719}
     m_Modifications:
-    - target: {fileID: 4185465769445363148, guid: be53671ceb65cbf49bcc8c30e761ae75,
-        type: 3}
-      propertyPath: m_TagString
-      value: UIButtons
-      objectReference: {fileID: 0}
-    - target: {fileID: 4185465769500831696, guid: be53671ceb65cbf49bcc8c30e761ae75,
-        type: 3}
-      propertyPath: m_TagString
-      value: UIButtons
-      objectReference: {fileID: 0}
-    - target: {fileID: 4185465770206930084, guid: be53671ceb65cbf49bcc8c30e761ae75,
-        type: 3}
-      propertyPath: m_Text
-      value: '- $100'
-      objectReference: {fileID: 0}
-    - target: {fileID: 4185465770206930086, guid: be53671ceb65cbf49bcc8c30e761ae75,
-        type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -2.074998
-      objectReference: {fileID: 0}
-    - target: {fileID: 4185465770206930086, guid: be53671ceb65cbf49bcc8c30e761ae75,
-        type: 3}
-      propertyPath: m_SizeDelta.y
-      value: -14.150003
-      objectReference: {fileID: 0}
-    - target: {fileID: 4185465770859080721, guid: be53671ceb65cbf49bcc8c30e761ae75,
-        type: 3}
-      propertyPath: disableUIButton
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 4185465770859080722, guid: be53671ceb65cbf49bcc8c30e761ae75,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -8059,11 +8012,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4185465770859080751, guid: be53671ceb65cbf49bcc8c30e761ae75,
-        type: 3}
-      propertyPath: m_TagString
-      value: UIButtons
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: be53671ceb65cbf49bcc8c30e761ae75, type: 3}

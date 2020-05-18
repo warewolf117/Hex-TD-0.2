@@ -35,6 +35,15 @@ public class Node : MonoBehaviour
 
     BuildManager buildManager;
 
+    public GameObject child;
+    public GameObject child2;
+
+    private float radius = 1.0f;
+    private new Color originalColor;
+    private new Color originalColorE;
+
+    // NodeUI nodeUI;
+
     void Start()
     {
         dropAudio = GetComponent<AudioSource>();
@@ -57,15 +66,27 @@ public class Node : MonoBehaviour
 
         if (turret != null)
         {
+            SendStatsToUI(turret);
             buildManager.SelectNode(this); //this prevents from building where theres a turret
             this.tag = "ActiveNode";
-            this.range = turretStats.range;
-            this.fireRate = turretStats.fireRate;
+
+
+
+            // Turret.healthStatic.ToString();
+
+
+            // this.range = turretStats.range;
+            // this.fireRate = turretStats.fireRate;
             return;
         }
 
+}
+public void RemoveRange()
+    {
+        child.transform.localScale = (new Vector3(0, 0, 0));
+        child2.transform.GetComponent<MeshRenderer>().material.SetColor("_EmissionColor", originalColorE);
+        child2.transform.GetComponent<MeshRenderer>().material.color = originalColor;
     }
-
 
     void BuildTurret(TurretBlueprintShop blueprint)
     {
@@ -101,7 +122,32 @@ public class Node : MonoBehaviour
         //print display saying turret built, and money left
     }
 
-    public void UpgradeTurret()
+    void SendStatsToUI(GameObject turretS)
+    {
+        Turret currentTurret = turretS.GetComponent<Turret>();
+        child = turretS.transform.GetChild(0).gameObject;
+        child2 = turretS.transform.GetChild(1).gameObject;
+        originalColorE = child2.transform.GetComponent<MeshRenderer>().material.GetColor("_EmissionColor");
+        child2.transform.GetComponent<MeshRenderer>().material.SetColor("_EmissionColor", new Color(1f, 1f, 1f));
+        originalColor = child2.transform.GetComponent<MeshRenderer>().material.color;
+        child2.transform.GetComponent<MeshRenderer>().material.color = new Color(1, 1, 1, 1);
+        radius = currentTurret.range;
+        child.transform.localScale = (new Vector3(radius * 2, radius * 2, radius * 2));
+        NodeUI.fireRateValue = currentTurret.fireRate;
+        NodeUI.rangeValue = currentTurret.range;
+
+        if (!currentTurret.useLaser)
+        {
+            NodeUI.damageValue = currentTurret.bulletDamage;
+        }
+        else
+        {
+            NodeUI.damageValue = currentTurret.LaserDamage;
+        }
+
+    }
+
+    public void UpgradeTurret(GameObject nodeUI)
     {
         if (PlayerStats.money < turretBlueprintShop.upgradeCost)
         {
@@ -117,7 +163,8 @@ public class Node : MonoBehaviour
         turret = _turret;
         Turret Sturret = turret.transform.GetComponent<Turret>();
         Sturret.NodeSectionTargetingShit(nodeSector);
-
+        SendStatsToUI(turret);
+        nodeUI.GetComponent<NodeUI>().Stats();
         /*Turret turretRange = turret.transform.GetComponent<Turret>();
         range = turretRange.range;
 
@@ -148,6 +195,7 @@ public class Node : MonoBehaviour
         PlayerStats.money += turretBlueprintShop.GetUpgradedSellAmount();
         //put sell effect here
         Destroy(turret);
+        isUpgraded = false;
         turretBlueprintShop = null;
 
     }
