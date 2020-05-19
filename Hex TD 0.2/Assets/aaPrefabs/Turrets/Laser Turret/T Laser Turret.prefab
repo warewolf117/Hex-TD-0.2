@@ -445,7 +445,7 @@ MonoBehaviour:
   useMissile: 0
   focusBack: 0
   useLaser: 1
-  LaserDamage: 0
+  LaserDamage: 30
   Slowpct: 0.3
   turnSpeed: 10
   firePoint: {fileID: 1692980856274244631}

@@ -183,18 +183,26 @@ public void RemoveRange()
 
     private void OnMouseOver()
     {
-        if (Input.GetMouseButtonUp(0) && UnitGhost.dragGhost == true)
+        if (Input.GetMouseButtonUp(0) && UnitGhost.dragGhost == true && rend.CompareTag("Node"))
         {
             if (!buildManager.CanBuild)
                 return;
             dropAudio.PlayOneShot(dropAudio.clip);
             BuildTurret(buildManager.GetTurretToBuild());
+            this.tag = "ActiveNode";
+
         }
     }
     void OnMouseEnter()
     {
         if (EventSystem.current.IsPointerOverGameObject())
             return;
+
+        if (this.CompareTag("ActiveNode"))
+        {
+            UnitGhost.RedGhost();
+            return;
+        }
 
         if (!buildManager.CanBuild)
             return;
@@ -204,6 +212,7 @@ public void RemoveRange()
 
         if (buildManager.HasMoney && turret == null)
         {
+            UnitGhost.NormalGhost();
             rend.material.color = hoverColor;
             dropAudio.pitch = 1f;
             dropAudio.volume = 0.6f;
@@ -212,6 +221,7 @@ public void RemoveRange()
         {
             if (turret == null)
             {
+                UnitGhost.RedGhost();
                 rend.material.color = notEnoughMoneyColor;
                 dropAudio.pitch = 0.5f;
                 dropAudio.volume = 0.9f;

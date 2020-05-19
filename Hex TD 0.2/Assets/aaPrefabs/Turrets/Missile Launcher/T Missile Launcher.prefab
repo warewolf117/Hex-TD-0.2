@@ -84,7 +84,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   range: 10
   fireRate: 0.2
-  bulletDamage: 0
+  bulletDamage: 30
   healthStatic: 0
   impactDamageStatic: 0
   useBullet: 0

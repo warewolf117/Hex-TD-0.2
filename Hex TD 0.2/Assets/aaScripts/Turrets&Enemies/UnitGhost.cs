@@ -22,32 +22,28 @@ public class UnitGhost : MonoBehaviour
         PurpleTransparent = Resources.Load("PurpleTransparent", typeof(Material)) as Material;
         GreenTransparent = Resources.Load("GreenTransparent", typeof(Material)) as Material;
 
-        BlueTransparent.color = new Color(0, 0, 1, 0.75f);
-        PurpleTransparent.color = new Color(1, 0, 1, 0.75f);
+        BlueTransparent.color = new Color(0, 0.65f, 1, 0.75f);
+        PurpleTransparent.color = new Color(1, 0.38f, 1, 0.75f);
         GreenTransparent.color = new Color(0, 1, 0, 0.75f);
 
         Ghost = this.gameObject;
         m_collider = GetComponent<Collider>();
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.tag != "Center")
-        {
-            BlueTransparent.color = new Color(1, 0, 0, 0.75f);
-            PurpleTransparent.color = new Color(1, 0, 0, 0.75f);
-            GreenTransparent.color = new Color(1, 0, 0, 0.75f);
-        }
 
+    public static void RedGhost()
+    {
+        BlueTransparent.color = new Color(1, 0, 0, 0.75f);
+        PurpleTransparent.color = new Color(1, 0, 0, 0.75f);
+        GreenTransparent.color = new Color(1, 0, 0, 0.75f);
     }
 
-    private void OnTriggerExit(Collider other)
+    public static void NormalGhost()
     {
-        BlueTransparent.color = new Color(0, 0, 1, 0.75f);
-        PurpleTransparent.color = new Color(1, 0, 1, 0.75f);
+        BlueTransparent.color = new Color(0, 0.65f, 1, 0.75f);
+        PurpleTransparent.color = new Color(1, 0.38f, 1, 0.75f);
         GreenTransparent.color = new Color(0, 1, 0, 0.75f);
     }
-
 
     void Update()
     {
@@ -100,6 +96,7 @@ public class UnitGhost : MonoBehaviour
         }
         else
         {
+            NormalGhost();
             transform.position = new Vector3(-0.02f, 0.85f, 0f);
             m_collider.enabled = true;
             MobileCameraControlBackup.cantPan = false;
