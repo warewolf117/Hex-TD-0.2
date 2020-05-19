@@ -96,7 +96,7 @@ public class NodeUI : MonoBehaviour
     public void Upgrade()
     {
         target.UpgradeTurret(this.gameObject);
-        upgradeTooltip.SetActive(false);
+        upgradeTooltip.transform.localScale = new Vector3(0, 0, 0);
         tutorialCounter = true;
     }
 
@@ -115,7 +115,6 @@ public class NodeUI : MonoBehaviour
             BuildManager.instance.DeselectNode(); //deselects node after selling turret
         }
         Hide();
-        upgradeTooltip.SetActive(false);
         tutorialCounter = true;
     }
     public void Update()

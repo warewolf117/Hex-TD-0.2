@@ -37,6 +37,7 @@ public class WaveSpawnerTopRight_Main : MonoBehaviour
     private bool waveIndicatorPlaced = false;
     private bool noEnemiesComing = false;
     public static int startFirstWave = 0;
+    private bool waveStarterPlaced;
 
     public static bool levelFailed;
     public static bool fadeIn;
@@ -52,30 +53,11 @@ public class WaveSpawnerTopRight_Main : MonoBehaviour
 
     private int waveIndex = 0;
 
+    public static bool tutorialOn = true;
 
     private void Start()
     {
         levelFailed = false;
-
-        Wave wave = waves[waveIndex];
-        waveIndex++;
-        if (wave.count == 0)
-        {
-            noEnemiesComing = true;
-
-        }
-        else
-        {
-            noEnemiesComing = false;
-        }
-
-        if (noEnemiesComing == false)
-        {
-            waveStarter.SetActive(true);
-            Instantiate(waveStarter, WaveIndicatorPosition.position, Quaternion.Euler(90f, 30f, 30f));
-
-        }
-        waveIndex--;
 
     }
 
@@ -89,8 +71,6 @@ public class WaveSpawnerTopRight_Main : MonoBehaviour
     public void WaveStart()
     {
         startFirstWave++;
-        
-
     }
 
     void Update()
@@ -106,6 +86,36 @@ public class WaveSpawnerTopRight_Main : MonoBehaviour
         {
             return;
         }
+
+
+        if (tutorialOn)
+            return;
+
+        if (startFirstWave <= 0 && !waveStarterPlaced)
+        {
+            Wave wave = waves[waveIndex];
+            waveIndex++;
+            if (wave.count == 0)
+            {
+                noEnemiesComing = true;
+
+            }
+            else
+            {
+                noEnemiesComing = false;
+            }
+
+            if (noEnemiesComing == false)
+            {
+                waveStarter.SetActive(true);
+                Instantiate(waveStarter, WaveIndicatorPosition.position, Quaternion.Euler(90f, 30f, 30f));
+                waveStarterPlaced = true;
+
+
+            }
+            waveIndex--;
+        }
+
 
         if (startFirstWave <= 0)
         {

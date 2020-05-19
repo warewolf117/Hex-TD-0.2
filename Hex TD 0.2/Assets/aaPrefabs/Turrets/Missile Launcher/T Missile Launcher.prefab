@@ -89,7 +89,7 @@ MonoBehaviour:
   impactDamageStatic: 0
   useBullet: 0
   useMissile: 1
-  focusBack: 1
+  focusBack: 0
   useLaser: 0
   LaserDamage: 0
   Slowpct: 0.3

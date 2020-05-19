@@ -1,7 +1,7 @@
 ﻿using UnityEngine.EventSystems;
 using UnityEngine;
 using UnityEngine.UI;
-
+using System.Linq.Expressions;
 
 public class Node : MonoBehaviour
 {
@@ -44,6 +44,18 @@ public class Node : MonoBehaviour
     private Color originalColorE;
 
     public Text dragAndDropText;
+    public static bool tutorialNodes;
+    public static bool hexTutorialDone = false;
+
+    private float innerHexTutorialTimer;
+    private float outerHexTutorialTimer;
+    private bool outerHexTutorial;
+    private bool timerRunning;
+
+    private GameObject outerHex1;
+    private GameObject outerHex2;
+    private Color originalColorHex;
+
 
     // NodeUI nodeUI;
 
@@ -67,6 +79,10 @@ public class Node : MonoBehaviour
         if (EventSystem.current.IsPointerOverGameObject())
             return;
 
+        if (!hexTutorialDone)
+            return;
+
+
         if (turret != null)
         {
             SendStatsToUI(turret);
@@ -84,13 +100,105 @@ public class Node : MonoBehaviour
         }
 
 }
-public void RemoveRange()
+    public void RemoveRange()
     {
         child.transform.localScale = (new Vector3(0, 0, 0));
         child2.transform.GetComponent<MeshRenderer>().material.SetColor("_EmissionColor", originalColorE);
         child2.transform.GetComponent<MeshRenderer>().material.color = originalColor;
     }
 
+    private void Update()
+    {
+        if (hexTutorialDone)
+
+            return;
+
+        if (tutorialNodes)
+        {
+            innerHexTutorialTimer -= Time.deltaTime;
+            outerHexTutorialTimer -= Time.deltaTime;
+
+            if (innerHexTutorialTimer <= 0 && !outerHexTutorial)
+            {
+                innerHexTutorialTimer = 6f;
+                dragAndDropText.text = "TURRETS PLACED HERE WILL ONLY ATTACK THIS LANE";
+                GameObject.Find("TutorialPointer").transform.localScale = new Vector3(0.3f, 0.3f, 0.3f);
+                BuildManager.tutorialGhost = true;
+            }
+
+            if (innerHexTutorialTimer > 0)
+            {
+                outerHexTutorial = true;
+            }
+
+            if (outerHexTutorialTimer <= 0 && timerRunning == true)
+            {
+                GameObject[] hexes = GameObject.FindGameObjectsWithTag("Node");
+
+                foreach (GameObject hex in hexes)
+                {
+                    hex.GetComponent<MeshRenderer>().material.SetFloat("_Metallic", 0.3f);
+                    hex.transform.localScale = new Vector3(1, 1, 0.5f);
+                }
+
+                outerHex1.GetComponent<MeshRenderer>().material.SetColor("_EmissionColor", new Color(0.1933962f, 0.1933962f, 0.1933962f));
+                outerHex2.GetComponent<MeshRenderer>().material.SetColor("_EmissionColor", new Color(0.1933962f, 0.1933962f, 0.1933962f));
+
+                outerHex1.GetComponent<MeshRenderer>().material.color = new Color(0, 0.517309f, 0.5660378f, 1);
+                outerHex2.GetComponent<MeshRenderer>().material.color = new Color(0, 0.517309f, 0.5660378f, 1);
+
+                GameObject.Find("TutorialPointer").SetActive(false);
+                GameObject.Find("TutorialPointer2").SetActive(false);
+
+
+                dragAndDropText.text = "CLICK A TURRET TO VIEW ITS STATS";
+
+                BuildManager.tutorialGhost = false;
+                hexTutorialDone = true;
+                return;
+
+            }
+
+            if (outerHexTutorial && innerHexTutorialTimer <= 0 && outerHexTutorialTimer <= 0 && timerRunning == false)
+            {
+
+                BuildManager.outerHexTutorial = true;
+                dragAndDropText.text = "TURRETS PLACED HERE WILL ATTACK BOTH LANES";
+                GameObject.Find("TutorialPointer2").transform.localScale = new Vector3(0.5f, 0.3f, 0.3f);
+                GameObject.Find("TutorialPointer").transform.localScale = new Vector3(0.5f, 0.3f, 0.3f);
+                GameObject.Find("TutorialPointer").transform.localPosition = new Vector3(0.1157f, 0.3979f, 0f);
+
+                outerHex1 = GameObject.Find("Hex Tile TopVertex1");
+                outerHex2 = GameObject.Find("Hex Tile TopVertex2");
+
+                GameObject[] hexes = GameObject.FindGameObjectsWithTag("Node");
+
+                foreach (GameObject hex in hexes)
+                {
+                    hex.GetComponent<MeshRenderer>().material.SetFloat("_Metallic", 1);
+                    hex.transform.localScale = new Vector3(0, 0, 0);
+                }
+
+                outerHex1.transform.localScale = new Vector3(1, 1, 0.5f);
+                outerHex2.transform.localScale = new Vector3(1, 1, 0.5f);
+
+                outerHex1.GetComponent<MeshRenderer>().material.SetFloat("_Metallic", 0.3f);
+                outerHex2.GetComponent<MeshRenderer>().material.SetFloat("_Metallic", 0.3f);
+
+                originalColorHex = outerHex1.GetComponent<MeshRenderer>().material.GetColor("_EmissionColor");
+
+                outerHex1.GetComponent<MeshRenderer>().material.SetColor("_EmissionColor", new Color(1, 1, 1));
+                outerHex2.GetComponent<MeshRenderer>().material.SetColor("_EmissionColor", new Color(1, 1, 1));
+
+                outerHex1.GetComponent<MeshRenderer>().material.color = new Color(1, 1, 1, 1);
+                outerHex2.GetComponent<MeshRenderer>().material.color = new Color(1, 1, 1, 1);
+
+                outerHexTutorialTimer = 6f;
+                timerRunning = true;
+            }
+        }
+
+    }
     void BuildTurret(TurretBlueprintShop blueprint)
     {
         if (PlayerStats.money < blueprint.cost)
@@ -102,7 +210,9 @@ public void RemoveRange()
         PlayerStats.money -= blueprint.cost;
 
         GameObject _turret = (GameObject)Instantiate(blueprint.pref, GetBuildPosition(), Quaternion.identity);
-        dragAndDropText.text = "Tap on the turret to see its info";
+
+        tutorialNodes = true;
+    
         turret = _turret;
         Turret Sturret = turret.transform.GetComponent<Turret>();
         Sturret.NodeSectionTargetingShit(nodeSector); //sends nodeSector value to the void function in the turret script
@@ -187,8 +297,11 @@ public void RemoveRange()
         {
             if (!buildManager.CanBuild)
                 return;
+
             dropAudio.PlayOneShot(dropAudio.clip);
             BuildTurret(buildManager.GetTurretToBuild());
+
+            if (buildManager.HasMoney)
             this.tag = "ActiveNode";
 
         }

@@ -24,6 +24,7 @@ public class WaveSpawnerLeft : MonoBehaviour
     private int spawnSpacer = 1;
 
     public static bool waverushed;
+    private bool waveStarterPlaced;
 
     GameObject clone;
 
@@ -35,30 +36,6 @@ public class WaveSpawnerLeft : MonoBehaviour
 
     private int waveIndex = 0;
 
-    private void Start()
-    {
-        Wave wave = waves[waveIndex];
-        waveIndex++;
-        if (wave.count == 0)
-        {
-            noEnemiesComing = true;
-
-        }
-        else
-        {
-            noEnemiesComing = false;
-        }
-
-        if (noEnemiesComing == false)
-        {
-            waveStarter.SetActive(true);
-            Instantiate(waveStarter, WaveIndicatorPosition.position, Quaternion.Euler(90f, -90f, 30f));
-
-        }
-        waveIndex--;
-
-
-    }
     public void WaveRushed()
 
     {
@@ -67,6 +44,31 @@ public class WaveSpawnerLeft : MonoBehaviour
     }
     void Update()
     {
+        if (WaveSpawnerTopRight_Main.startFirstWave <= 0 && !waveStarterPlaced)
+        {
+            Wave wave = waves[waveIndex];
+            waveIndex++;
+            if (wave.count == 0)
+            {
+                noEnemiesComing = true;
+
+            }
+            else
+            {
+                noEnemiesComing = false;
+            }
+
+            if (noEnemiesComing == false)
+            {
+                waveStarter.SetActive(true);
+                Instantiate(waveStarter, WaveIndicatorPosition.position, Quaternion.Euler(90f, -90f, 30f));
+                waveStarterPlaced = true;
+
+            }
+            waveIndex--;
+
+        }
+
 
         if (WaveSpawnerTopRight_Main.countdown <= 0f || waverushed == true)
         {

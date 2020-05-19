@@ -47,6 +47,15 @@ public class UnitGhost : MonoBehaviour
 
     void Update()
     {
+        if (BuildManager.tutorialGhost)
+        {
+            Destroy(this.gameObject);
+            BuildManager.GhostActive = false;
+            dragGhost = false;
+            MobileCameraControlBackup.cantPan = false;
+            return;
+        }
+
 
         if (Ghost == enabled)
         {
