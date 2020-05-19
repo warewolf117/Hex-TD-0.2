@@ -14,6 +14,7 @@ public class Health : MonoBehaviour
 
     float laserPopupTimer = 0f;
 
+    public static bool gameOver = false;
 
     void Start()
     {
@@ -25,8 +26,11 @@ public class Health : MonoBehaviour
     public void takeDamage(float amount)
     {
 
+        if(!gameOver)
+        {
+            DamagePopup2.Create(gameObject.transform.position, amount);
+        }
 
-        DamagePopup2.Create(gameObject.transform.position, amount);
 
 
         cur_health -= amount;
@@ -66,8 +70,13 @@ public class Health : MonoBehaviour
 
         if (laserPopupTimer <= 0f)
         {
-            DamagePopup2.CreateLaser(gameObject.transform.position, f);
-            laserPopupTimer = 0.15f;
+            if (!gameOver)
+            {
+                DamagePopup2.CreateLaser(gameObject.transform.position, f);
+                laserPopupTimer = 0.15f;
+            }
+
+
         }
 
 

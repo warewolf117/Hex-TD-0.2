@@ -45,6 +45,9 @@ public class WaveSpawnerBottomLeft : MonoBehaviour
     }
     void Update()
     {
+        if (WaveSpawnerTopRight_Main.tutorialOn == true)
+            return;
+
         if (WaveSpawnerTopRight_Main.startFirstWave <= 0 && !waveStarterPlaced)
         {
             Wave wave = waves[waveIndex];

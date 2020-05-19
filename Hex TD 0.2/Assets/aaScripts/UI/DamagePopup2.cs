@@ -5,6 +5,7 @@ using TMPro;
 
 public class DamagePopup2 : MonoBehaviour
 {
+    public static bool gameOver;
 
     public static DamagePopup2 Create(Vector3 position, float damageAmount)
     {

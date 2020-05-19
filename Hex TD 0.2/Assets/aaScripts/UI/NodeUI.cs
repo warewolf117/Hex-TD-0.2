@@ -28,7 +28,7 @@ public class NodeUI : MonoBehaviour
     public GameObject dragAndDropTooltip;
     public GameObject upgradeTooltip;
 
-    bool tutorialCounter = false;
+    public bool tutorialCounter = false;
 
     public void Stats()
     {

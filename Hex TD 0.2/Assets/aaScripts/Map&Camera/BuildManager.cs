@@ -1,4 +1,5 @@
 ﻿using System.Runtime.InteropServices;
+using UnityEditor;
 using UnityEngine;
 
 public class BuildManager : MonoBehaviour
@@ -9,6 +10,8 @@ public class BuildManager : MonoBehaviour
     public GameObject dragAndDropTooltip;
     public GameObject upgradeTooltip;
     public GameObject waveStarterTooltip;
+    public GameObject selectTurretTooltip;
+    public GameObject skipTutorialButton;
 
 
     private GameObject innerHex1;
@@ -17,6 +20,7 @@ public class BuildManager : MonoBehaviour
     private GameObject innerHex4;
     public static bool outerHexTutorial = false;
     private bool waveStarterTutorialDone = false;
+    public static bool skipTutorial = false;
 
     public static bool tutorialGhost = false;
 
@@ -118,9 +122,24 @@ public class BuildManager : MonoBehaviour
         DeselectNode();
     }
 
+
+    public  void SkipTutorial()
+    {
+        skipTutorial = true;
+        WaveSpawnerTopRight_Main.tutorialOn = false;
+        upgradeTooltip.SetActive(false);
+        dragAndDropTooltip.SetActive(false);
+        waveStarterTooltip.SetActive(false);
+        selectTurretTooltip.SetActive(false);
+        tutorialGhost = false;
+        Node.hexTutorialDone = true;
+        nodeUI.tutorialCounter = true;
+        skipTutorialButton.SetActive(false);
+    }
+
     private void Update()
     {
-        if (waveStarterTutorialDone)
+        if (waveStarterTutorialDone || skipTutorial)
             return;
 
         if (!WaveSpawnerTopRight_Main.tutorialOn)

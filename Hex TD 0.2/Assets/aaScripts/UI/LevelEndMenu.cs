@@ -20,7 +20,7 @@ public class LevelEndMenu : MonoBehaviour
     public void Victory()
     {
         MobileCameraControlBackup.gameEnd = true;
-
+        Health.gameOver = true;
         if (defeat == false)
         {
             ui.SetActive(true);
@@ -33,6 +33,7 @@ public class LevelEndMenu : MonoBehaviour
     public void Defeat()
     {
         MobileCameraControlBackup.gameEnd = true;
+        Health.gameOver = true;
         ui.SetActive(true);
         levelClearedFailedText.text = "Failed";
         nextLevelButton.SetActive(false);
