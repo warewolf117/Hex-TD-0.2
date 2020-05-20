@@ -56,6 +56,9 @@ public class Node : MonoBehaviour
     private GameObject outerHex2;
     private Color originalColorHex;
 
+    static readonly int materialEmissionColor = Shader.PropertyToID("_EmissionColor");
+    static readonly int materialMetallicColor = Shader.PropertyToID("_Metallic");
+
 
     // NodeUI nodeUI;
 
@@ -103,7 +106,7 @@ public class Node : MonoBehaviour
     public void RemoveRange()
     {
         child.transform.localScale = (new Vector3(0, 0, 0));
-        child2.transform.GetComponent<MeshRenderer>().material.SetColor("_EmissionColor", originalColorE);
+        child2.transform.GetComponent<MeshRenderer>().material.SetColor(materialEmissionColor, originalColorE);
         child2.transform.GetComponent<MeshRenderer>().material.color = originalColor;
     }
 
@@ -137,12 +140,12 @@ public class Node : MonoBehaviour
 
                 foreach (GameObject hex in hexes)
                 {
-                    hex.GetComponent<MeshRenderer>().material.SetFloat("_Metallic", 0.3f);
+                    hex.GetComponent<MeshRenderer>().material.SetFloat(materialMetallicColor, 0.3f);
                     hex.transform.localScale = new Vector3(1, 1, 0.5f);
                 }
 
-                outerHex1.GetComponent<MeshRenderer>().material.SetColor("_EmissionColor", new Color(0.1933962f, 0.1933962f, 0.1933962f));
-                outerHex2.GetComponent<MeshRenderer>().material.SetColor("_EmissionColor", new Color(0.1933962f, 0.1933962f, 0.1933962f));
+                outerHex1.GetComponent<MeshRenderer>().material.SetColor(materialEmissionColor, new Color(0.1933962f, 0.1933962f, 0.1933962f));
+                outerHex2.GetComponent<MeshRenderer>().material.SetColor(materialEmissionColor, new Color(0.1933962f, 0.1933962f, 0.1933962f));
 
                 outerHex1.GetComponent<MeshRenderer>().material.color = new Color(0, 0.517309f, 0.5660378f, 1);
                 outerHex2.GetComponent<MeshRenderer>().material.color = new Color(0, 0.517309f, 0.5660378f, 1);
@@ -175,20 +178,20 @@ public class Node : MonoBehaviour
 
                 foreach (GameObject hex in hexes)
                 {
-                    hex.GetComponent<MeshRenderer>().material.SetFloat("_Metallic", 1);
+                    hex.GetComponent<MeshRenderer>().material.SetFloat(materialMetallicColor, 1);
                     hex.transform.localScale = new Vector3(0, 0, 0);
                 }
 
                 outerHex1.transform.localScale = new Vector3(1, 1, 0.5f);
                 outerHex2.transform.localScale = new Vector3(1, 1, 0.5f);
 
-                outerHex1.GetComponent<MeshRenderer>().material.SetFloat("_Metallic", 0.3f);
-                outerHex2.GetComponent<MeshRenderer>().material.SetFloat("_Metallic", 0.3f);
+                outerHex1.GetComponent<MeshRenderer>().material.SetFloat(materialMetallicColor, 0.3f);
+                outerHex2.GetComponent<MeshRenderer>().material.SetFloat(materialMetallicColor, 0.3f);
 
-                originalColorHex = outerHex1.GetComponent<MeshRenderer>().material.GetColor("_EmissionColor");
+                originalColorHex = outerHex1.GetComponent<MeshRenderer>().material.GetColor(materialEmissionColor);
 
-                outerHex1.GetComponent<MeshRenderer>().material.SetColor("_EmissionColor", new Color(1, 1, 1));
-                outerHex2.GetComponent<MeshRenderer>().material.SetColor("_EmissionColor", new Color(1, 1, 1));
+                outerHex1.GetComponent<MeshRenderer>().material.SetColor(materialEmissionColor, new Color(1, 1, 1));
+                outerHex2.GetComponent<MeshRenderer>().material.SetColor(materialEmissionColor, new Color(1, 1, 1));
 
                 outerHex1.GetComponent<MeshRenderer>().material.color = new Color(1, 1, 1, 1);
                 outerHex2.GetComponent<MeshRenderer>().material.color = new Color(1, 1, 1, 1);
@@ -226,8 +229,8 @@ public class Node : MonoBehaviour
         Turret currentTurret = turretS.GetComponent<Turret>();
         child = turretS.transform.GetChild(0).gameObject;
         child2 = turretS.transform.GetChild(1).gameObject;
-        originalColorE = child2.transform.GetComponent<MeshRenderer>().material.GetColor("_EmissionColor");
-        child2.transform.GetComponent<MeshRenderer>().material.SetColor("_EmissionColor", new Color(1f, 1f, 1f));
+        originalColorE = child2.transform.GetComponent<MeshRenderer>().material.GetColor(materialEmissionColor);
+        child2.transform.GetComponent<MeshRenderer>().material.SetColor(materialEmissionColor, new Color(1f, 1f, 1f));
         originalColor = child2.transform.GetComponent<MeshRenderer>().material.color;
         child2.transform.GetComponent<MeshRenderer>().material.color = new Color(1, 1, 1, 1);
         radius = currentTurret.range;

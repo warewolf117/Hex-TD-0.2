@@ -11,6 +11,7 @@ public class UnitGhost : MonoBehaviour
     public GameObject Ghost;
     public static bool dragGhost;
     public static Material BlueTransparent;
+    static readonly int materialColor = Shader.PropertyToID("_Color");
     public static Material PurpleTransparent;
     public static Material GreenTransparent;
 
@@ -22,9 +23,14 @@ public class UnitGhost : MonoBehaviour
         PurpleTransparent = Resources.Load("PurpleTransparent", typeof(Material)) as Material;
         GreenTransparent = Resources.Load("GreenTransparent", typeof(Material)) as Material;
 
-        BlueTransparent.color = new Color(0, 0.65f, 1, 0.75f);
-        PurpleTransparent.color = new Color(1, 0.38f, 1, 0.75f);
-        GreenTransparent.color = new Color(0, 1, 0, 0.75f);
+       // BlueTransparent.color = new Color(0, 0.65f, 1, 0.75f);
+        BlueTransparent.SetColor(materialColor, new Color(0, 0.65f, 1, 0.75f));
+
+       // PurpleTransparent.color = new Color(1, 0.38f, 1, 0.75f);
+        PurpleTransparent.SetColor(materialColor, new Color(1, 0.38f, 1, 0.75f));
+
+        //GreenTransparent.color = new Color(0, 1, 0, 0.75f);
+        GreenTransparent.SetColor(materialColor, new Color(0, 1, 0, 0.75f));
 
         Ghost = this.gameObject;
         m_collider = GetComponent<Collider>();
@@ -33,16 +39,26 @@ public class UnitGhost : MonoBehaviour
 
     public static void RedGhost()
     {
-        BlueTransparent.color = new Color(1, 0, 0, 0.75f);
-        PurpleTransparent.color = new Color(1, 0, 0, 0.75f);
-        GreenTransparent.color = new Color(1, 0, 0, 0.75f);
+        //BlueTransparent.color = new Color(1, 0, 0, 0.75f);
+        BlueTransparent.SetColor(materialColor, new Color(1, 0, 0, 0.75f));
+
+        //PurpleTransparent.color = new Color(1, 0, 0, 0.75f);
+        PurpleTransparent.SetColor(materialColor, new Color(1, 0, 0, 0.75f));
+
+        //GreenTransparent.color = new Color(1, 0, 0, 0.75f);
+        GreenTransparent.SetColor(materialColor, new Color(1, 0, 0, 0.75f));
     }
 
     public static void NormalGhost()
     {
-        BlueTransparent.color = new Color(0, 0.65f, 1, 0.75f);
-        PurpleTransparent.color = new Color(1, 0.38f, 1, 0.75f);
-        GreenTransparent.color = new Color(0, 1, 0, 0.75f);
+       // BlueTransparent.color = new Color(0, 0.65f, 1, 0.75f);
+        BlueTransparent.SetColor(materialColor, new Color(0, 0.65f, 1, 0.75f));
+
+       // PurpleTransparent.color = new Color(1, 0.38f, 1, 0.75f);
+        PurpleTransparent.SetColor(materialColor, new Color(1, 0.38f, 1, 0.75f));
+
+       // GreenTransparent.color = new Color(0, 1, 0, 0.75f);
+        GreenTransparent.SetColor(materialColor, new Color(0, 1, 0, 0.75f));
     }
 
     void Update()

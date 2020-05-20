@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEditor;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class ColorCycler : MonoBehaviour
 {
@@ -16,22 +12,17 @@ public class ColorCycler : MonoBehaviour
 
     Renderer rend;
 
+    static readonly int materialColor = Shader.PropertyToID("_EmissionColor");
+
     private void Start()
     {
         rend = GetComponent<Renderer>();
-
-
-
     }
-
-
-
-
 
     private void Update()
     {
         color = new Color(R, G, B, 2);
-        rend.material.SetColor("_EmissionColor", color);
+        rend.material.SetColor(materialColor, color);
 
         if (R == min && G < max && B == min)
         {
