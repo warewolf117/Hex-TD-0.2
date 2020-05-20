@@ -36,6 +36,8 @@ public class MobileCameraControlBackup : MonoBehaviour
     public static bool cantPan;
     public static bool gameEnd;
 
+    private bool isTouch;
+
     void Start()
     {
         CurrentPosition = 0;
@@ -45,10 +47,29 @@ public class MobileCameraControlBackup : MonoBehaviour
     void Awake()
     {
         cam = GetComponent<Camera>();
+
+        if (Input.touchSupported && Application.platform != RuntimePlatform.WebGLPlayer)
+        {
+            isTouch = true;
+        }
+        else
+        {
+            isTouch = false;
+        }
     }
 
     void Update()
     {
+        if (isTouch == true)
+        {
+
+            HandleTouch();
+        }
+        else
+        {
+            HandleMouse();
+        }
+
         zoomTimer -= Time.deltaTime;
 
         if (CurrentPosition == 0)
@@ -76,20 +97,10 @@ public class MobileCameraControlBackup : MonoBehaviour
             BoundsY2 = 15f;
         }
 
-
-
         BoundsX = new float[] { BoundsX1, BoundsX2 };
         BoundsZ = new float[] { BoundsY1, BoundsY2 };
 
-    CurrentFOV = cam.fieldOfView;
-        if (Input.touchSupported && Application.platform != RuntimePlatform.WebGLPlayer)
-        {
-            HandleTouch();
-        }
-        else
-        {
-            HandleMouse();
-        }
+        CurrentFOV = cam.fieldOfView;
 
         if (CurrentPosition == 0 && CurrentFOV >= 80f)
         {
@@ -308,10 +319,8 @@ public class MobileCameraControlBackup : MonoBehaviour
             if (CurrentPosition != 3 && !cantPan && !gameEnd)
             {                 
                 PanCamera(Input.mousePosition);
-            }
-            
+            }    
         }
-
     }
 
     void RotateCamera(float newPanPosition)

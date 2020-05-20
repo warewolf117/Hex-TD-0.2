@@ -8980,6 +8980,36 @@ PrefabInstance:
       propertyPath: m_Center.y
       value: -1
       objectReference: {fileID: 0}
+    - target: {fileID: 5618334805576600752, guid: 72d07b567416894498f1692f9328aa8d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5618334805686168215, guid: 72d07b567416894498f1692f9328aa8d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5618334805713240506, guid: 72d07b567416894498f1692f9328aa8d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5618334806145369737, guid: 72d07b567416894498f1692f9328aa8d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5618334806161003928, guid: 72d07b567416894498f1692f9328aa8d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5618334806607052809, guid: 72d07b567416894498f1692f9328aa8d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 72d07b567416894498f1692f9328aa8d, type: 3}
 --- !u!222 &3608936779995607488
