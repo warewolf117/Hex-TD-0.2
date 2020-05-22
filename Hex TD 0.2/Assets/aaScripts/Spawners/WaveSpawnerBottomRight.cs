@@ -39,7 +39,7 @@ public class WaveSpawnerBottomRight : MonoBehaviour
     public void WaveRushed()
 
     {
-        Debug.Log("Bottom Right Spawner Rushed");
+        //Debug.Log("Bottom Right Spawner Rushed");
         waverushed = true;
     }
     void Update()

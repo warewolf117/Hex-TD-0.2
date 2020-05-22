@@ -158,7 +158,7 @@ public class BuildManager : MonoBehaviour
 
         if (outerHexTutorial)
         {
-            Debug.Log("return to original color");
+            //Debug.Log("return to original color");
             innerHex1.GetComponent<MeshRenderer>().material.SetColor("_EmissionColor", new Color(0.1698113f, 0.1698113f, 0.1698113f));
             innerHex2.GetComponent<MeshRenderer>().material.SetColor("_EmissionColor", new Color(0.1698113f, 0.1698113f, 0.1698113f));
             innerHex3.GetComponent<MeshRenderer>().material.SetColor("_EmissionColor", new Color(0.1698113f, 0.1698113f, 0.1698113f));

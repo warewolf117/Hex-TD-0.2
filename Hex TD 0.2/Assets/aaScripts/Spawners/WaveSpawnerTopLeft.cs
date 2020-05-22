@@ -39,7 +39,7 @@ public class WaveSpawnerTopLeft : MonoBehaviour
     public void WaveRushed()
 
     {
-        Debug.Log("Top Left Spawner Rushed");
+        //Debug.Log("Top Left Spawner Rushed");
         waverushed = true;
     }
 
@@ -125,7 +125,7 @@ public class WaveSpawnerTopLeft : MonoBehaviour
         }
 
         waveIndex++;
-        Debug.Log("TL Wave =" + waveIndex);
+        //Debug.Log("TL Wave =" + waveIndex);
     }
 
     void SpawnEnemy(GameObject enemy)

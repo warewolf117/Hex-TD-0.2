@@ -253,7 +253,7 @@ public class Node : MonoBehaviour
     {
         if (PlayerStats.money < turretBlueprintShop.upgradeCost)
         {
-            Debug.Log("Insufficient funds");
+           // Debug.Log("Insufficient funds");
             return;
         }
 

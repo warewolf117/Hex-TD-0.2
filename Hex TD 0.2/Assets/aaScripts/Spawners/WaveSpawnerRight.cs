@@ -40,7 +40,7 @@ public class WaveSpawnerRight : MonoBehaviour
 
     {
         waverushed = true;
-        Debug.Log("Right Spawner Rushed");
+        //Debug.Log("Right Spawner Rushed");
     }
 
     void Update()

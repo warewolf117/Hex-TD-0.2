@@ -5,16 +5,19 @@ using UnityEngine;
 public class LookCamera : MonoBehaviour
 {
     private Transform target;
+    Camera mainCamera;
     // Start is called before the first frame update
     void Start()
     {
-        target = Camera.main.transform;  
+        mainCamera = Camera.main;
+        //target = Camera.main.transform;  
     }
 
     // Update is called once per frame
     void Update()
     {
-        transform.LookAt(target);
+        Vector3 pos = mainCamera.transform.position;
+        transform.LookAt(pos);
         transform.forward = -transform.forward;
     }
 }

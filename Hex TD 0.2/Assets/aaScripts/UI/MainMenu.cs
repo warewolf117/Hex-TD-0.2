@@ -12,13 +12,13 @@ public class MainMenu : MonoBehaviour
 
     public void Play()
     {
-        Debug.Log("Loading Level");
+        //Debug.Log("Loading Level");
         screenFader.FadeTo(levelToLoad);
     }
 
     public void Quit()
     {
-        Debug.Log("Exiting");
+        //Debug.Log("Exiting");
         Application.Quit();
     }
 }
