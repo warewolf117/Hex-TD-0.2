@@ -100,57 +100,57 @@ public class Turret : MonoBehaviour
         {
             enemies = GameObject.FindGameObjectsWithTag("EnemyTopLeft");
         }
-        if (turretSector == 2)
+        else if (turretSector == 2)
         {
             var enemy1 = GameObject.FindGameObjectsWithTag("EnemyTopLeft");
             var enemy2 = GameObject.FindGameObjectsWithTag("EnemyTopRight");
             enemies = enemy1.Concat(enemy2).ToArray();
         }
-        if (turretSector == 3)
+        else if (turretSector == 3)
         {
             enemies = GameObject.FindGameObjectsWithTag("EnemyTopRight");
         }
-        if (turretSector == 4)
+        else if (turretSector == 4)
         {
             var enemy1 = GameObject.FindGameObjectsWithTag("EnemyTopRight");
             var enemy2 = GameObject.FindGameObjectsWithTag("EnemyRight");
             enemies = enemy1.Concat(enemy2).ToArray();
         }
-        if (turretSector == 5)
+        else if (turretSector == 5)
         {
             enemies = GameObject.FindGameObjectsWithTag("EnemyRight");
         }
-        if (turretSector == 6)
+        else if (turretSector == 6)
         {
             var enemy1 = GameObject.FindGameObjectsWithTag("EnemyBottomRight");
             var enemy2 = GameObject.FindGameObjectsWithTag("EnemyRight");
             enemies = enemy1.Concat(enemy2).ToArray();
         }
-        if (turretSector == 7)
+        else if (turretSector == 7)
         {
             enemies = GameObject.FindGameObjectsWithTag("EnemyBottomRight");
         }
-        if (turretSector == 8)
+        else if (turretSector == 8)
         {
             var enemy1 = GameObject.FindGameObjectsWithTag("EnemyBottomRight");
             var enemy2 = GameObject.FindGameObjectsWithTag("EnemyBottomLeft");
             enemies = enemy1.Concat(enemy2).ToArray();
         }
-        if (turretSector == 9)
+        else if (turretSector == 9)
         {
             enemies = GameObject.FindGameObjectsWithTag("EnemyBottomLeft");
         }
-        if (turretSector == 10)
+        else if (turretSector == 10)
         {
             var enemy1 = GameObject.FindGameObjectsWithTag("EnemyBottomLeft");
             var enemy2 = GameObject.FindGameObjectsWithTag("EnemyLeft");
             enemies = enemy1.Concat(enemy2).ToArray();
         }
-        if (turretSector == 11)
+        else if (turretSector == 11)
         {
             enemies = GameObject.FindGameObjectsWithTag("EnemyLeft");
         }
-        if (turretSector == 12)
+        else if (turretSector == 12)
         {
             var enemy1 = GameObject.FindGameObjectsWithTag("EnemyLeft");
             var enemy2 = GameObject.FindGameObjectsWithTag("EnemyTopLeft");
@@ -238,7 +238,6 @@ public class Turret : MonoBehaviour
             return; //no target, return and do nothing 
         }
 
-
         LockOnTarget();
 
         if (useLaser)
@@ -255,8 +254,6 @@ public class Turret : MonoBehaviour
 
             fireCountdown -= Time.deltaTime;
         }
-
-
     }
 
     void LockOnTarget()
@@ -278,20 +275,10 @@ public class Turret : MonoBehaviour
         if (!lineRenderer.enabled)
         {
             lineRenderer.enabled = true;
-
-
         }
-
-
 
         lineRenderer.SetPosition(0, firePoint.position);
         lineRenderer.SetPosition(1, target.position);
-
-
-
-
-
-
     }
 
     void Shoot()
@@ -305,18 +292,17 @@ public class Turret : MonoBehaviour
             Bullet bullet = bulletGO.GetComponent<Bullet>();
             bullet.damage = bulletDamage;
 
-
             if (bullet != null)
                 bullet.Seek(target);
         }
-        if (useMissile)
+        else if (useMissile)
         {
             GameObject missileGO = MissilePooler.Instance.GetFromPool();
             Maudio.PlayOneShot(Maudio.clip);
             missileGO.transform.position = firePoint.position;
             missileGO.transform.rotation = firePoint.rotation;
             Missile missile = missileGO.GetComponent<Missile>();
-
+            missile.damage = bulletDamage;
 
             if (missile != null)
                 missile.Seek1(target);
