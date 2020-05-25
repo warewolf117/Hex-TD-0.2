@@ -26,6 +26,8 @@ public class BuildManager : MonoBehaviour
 
     bool tutorialCounter = false;
 
+    static readonly int materialEmissionColor = Shader.PropertyToID("_EmissionColor");
+    static readonly int materialMetallicColor = Shader.PropertyToID("_Metallic");
 
     private void Awake()
     {
@@ -158,10 +160,10 @@ public class BuildManager : MonoBehaviour
 
         if (outerHexTutorial)
         {
-            innerHex1.GetComponent<MeshRenderer>().material.SetColor("_EmissionColor", new Color(0.1698113f, 0.1698113f, 0.1698113f));
-            innerHex2.GetComponent<MeshRenderer>().material.SetColor("_EmissionColor", new Color(0.1698113f, 0.1698113f, 0.1698113f));
-            innerHex3.GetComponent<MeshRenderer>().material.SetColor("_EmissionColor", new Color(0.1698113f, 0.1698113f, 0.1698113f));
-            innerHex4.GetComponent<MeshRenderer>().material.SetColor("_EmissionColor", new Color(0.1698113f, 0.1698113f, 0.1698113f));
+            innerHex1.GetComponent<MeshRenderer>().material.SetColor(materialEmissionColor, new Color(0.1698113f, 0.1698113f, 0.1698113f));
+            innerHex2.GetComponent<MeshRenderer>().material.SetColor(materialEmissionColor, new Color(0.1698113f, 0.1698113f, 0.1698113f));
+            innerHex3.GetComponent<MeshRenderer>().material.SetColor(materialEmissionColor, new Color(0.1698113f, 0.1698113f, 0.1698113f));
+            innerHex4.GetComponent<MeshRenderer>().material.SetColor(materialEmissionColor, new Color(0.1698113f, 0.1698113f, 0.1698113f));
         }
 
         if (tutorialCounter && !Node.tutorialNodes && !outerHexTutorial)
@@ -176,7 +178,7 @@ public class BuildManager : MonoBehaviour
 
             foreach (GameObject hex in hexes)
             {
-                hex.GetComponent<MeshRenderer>().material.SetFloat("_Metallic", 1);
+                hex.GetComponent<MeshRenderer>().material.SetFloat(materialMetallicColor, 1);
                 hex.transform.localScale = new Vector3(0, 0, 0);
             }
 
@@ -185,15 +187,15 @@ public class BuildManager : MonoBehaviour
             innerHex3.transform.localScale = new Vector3(1, 1, 0.5f);
             innerHex4.transform.localScale = new Vector3(1, 1, 0.5f);
 
-            innerHex1.GetComponent<MeshRenderer>().material.SetFloat("_Metallic", 0.3f);
-            innerHex2.GetComponent<MeshRenderer>().material.SetFloat("_Metallic", 0.3f);
-            innerHex3.GetComponent<MeshRenderer>().material.SetFloat("_Metallic", 0.3f);
-            innerHex4.GetComponent<MeshRenderer>().material.SetFloat("_Metallic", 0.3f);
+            innerHex1.GetComponent<MeshRenderer>().material.SetFloat(materialMetallicColor, 0.3f);
+            innerHex2.GetComponent<MeshRenderer>().material.SetFloat(materialMetallicColor, 0.3f);
+            innerHex3.GetComponent<MeshRenderer>().material.SetFloat(materialMetallicColor, 0.3f);
+            innerHex4.GetComponent<MeshRenderer>().material.SetFloat(materialMetallicColor, 0.3f);
 
-            innerHex1.GetComponent<MeshRenderer>().material.SetColor("_EmissionColor", new Color(1, 1, 1));
-            innerHex2.GetComponent<MeshRenderer>().material.SetColor("_EmissionColor", new Color(1, 1, 1));
-            innerHex3.GetComponent<MeshRenderer>().material.SetColor("_EmissionColor", new Color(1, 1, 1));
-            innerHex4.GetComponent<MeshRenderer>().material.SetColor("_EmissionColor", new Color(1, 1, 1));
+            innerHex1.GetComponent<MeshRenderer>().material.SetColor(materialEmissionColor, new Color(1, 1, 1));
+            innerHex2.GetComponent<MeshRenderer>().material.SetColor(materialEmissionColor, new Color(1, 1, 1));
+            innerHex3.GetComponent<MeshRenderer>().material.SetColor(materialEmissionColor, new Color(1, 1, 1));
+            innerHex4.GetComponent<MeshRenderer>().material.SetColor(materialEmissionColor, new Color(1, 1, 1));
 
         }
 

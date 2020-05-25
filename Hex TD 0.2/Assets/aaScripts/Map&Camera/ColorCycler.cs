@@ -17,6 +17,7 @@ public class ColorCycler : MonoBehaviour
     private void Start()
     {
         rend = GetComponent<Renderer>();
+
     }
 
     private void Update()
