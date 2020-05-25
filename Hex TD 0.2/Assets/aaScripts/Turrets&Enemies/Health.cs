@@ -119,14 +119,8 @@ public class Health : MonoBehaviour
         {
             Destroy(this.gameObject);
             PlayerStats.money += worth;
-            Spawner.enemiesLeft--;
             Wave.EnemiesAlive--;
             WaveSpawnerTopRight_Main.EnemyCount--;
-
-            // Debug.Log("enemies Alive:" + Wave.EnemiesAlive);
-            //  Debug.Log("enemy count:" + WaveSpawner.EnemyCount);
-
-            //  Debug.Log("ENEMY KILLED");
         }
 
 

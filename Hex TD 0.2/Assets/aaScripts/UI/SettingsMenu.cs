@@ -6,7 +6,6 @@ public class SettingsMenu : MonoBehaviour
 {
     public void SetVolume (float volume)
     {
-        Debug.Log(volume);
         AudioListener.volume = volume;
     }
 

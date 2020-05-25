@@ -49,8 +49,6 @@ public class WaveSpawnerTopRight_Main : MonoBehaviour
 
     public Text waveCountdownText;
 
-   // public Text levelCleared;
-
     private int waveIndex = 0;
 
     public static bool tutorialOn = true;
@@ -140,9 +138,7 @@ public class WaveSpawnerTopRight_Main : MonoBehaviour
             waveCountdownText.enabled = false;
             LevelEndMenu levelEnd = levelEndMenu.GetComponent<LevelEndMenu>();
             levelEnd.Victory();
-            //levelCleared.text = "LEVEL CLEARED";
            
-
             this.enabled = false;
         }
 
@@ -208,9 +204,6 @@ public class WaveSpawnerTopRight_Main : MonoBehaviour
         Wave wave = waves[waveIndex];
 
         EnemyCount = wave.count;
-        // EnemiesAlive = 0;
-
-        //Debug.Log("enemy count:" + EnemyCount);
 
         for (int i = 0; i < wave.count; i++)
         {
@@ -225,7 +218,6 @@ public class WaveSpawnerTopRight_Main : MonoBehaviour
 
     void SpawnEnemy(GameObject enemy)
     {
-        // Debug.Log("spawn position: " + spawnSpacer);
         switch (spawnSpacer)
         {
             case 1:

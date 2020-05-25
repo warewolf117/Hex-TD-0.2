@@ -206,7 +206,6 @@ public class Node : MonoBehaviour
     {
         if (PlayerStats.money < blueprint.cost)
         {
-            Debug.Log("Insufficient funds");
             return; //add not enough money feature display
         }
 
@@ -253,7 +252,6 @@ public class Node : MonoBehaviour
     {
         if (PlayerStats.money < turretBlueprintShop.upgradeCost)
         {
-           // Debug.Log("Insufficient funds");
             return;
         }
 

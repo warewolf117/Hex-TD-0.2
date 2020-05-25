@@ -39,7 +39,6 @@ public class WaveSpawnerLeft : MonoBehaviour
     public void WaveRushed()
 
     {
-        //Debug.Log("Left Spawner Rushed");
         waverushed = true;
     }
     void Update()
@@ -115,9 +114,6 @@ public class WaveSpawnerLeft : MonoBehaviour
         Wave wave = waves[waveIndex];
 
         EnemyCount = wave.count;
-        // EnemiesAlive = 0;
-
-        //Debug.Log("enemy count:" + EnemyCount);
 
         for (int i = 0; i < wave.count; i++)
         {
@@ -126,12 +122,10 @@ public class WaveSpawnerLeft : MonoBehaviour
         }
 
         waveIndex++;
-        // Debug.Log("Wave =" + waveIndex);
     }
 
     void SpawnEnemy(GameObject enemy)
     {
-        // Debug.Log("spawn position: " + spawnSpacer);
         switch (spawnSpacer)
         {
             case 1:
