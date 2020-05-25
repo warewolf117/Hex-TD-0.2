@@ -6,7 +6,7 @@ using UnityEngine.SocialPlatforms;
 
 public class Turret : MonoBehaviour
 {
-    private new AudioSource audio; 
+    private AudioSource Maudio; 
     private Transform target;
     private Health targetEnemy;
     private BasicMovement targetEnemyM;
@@ -77,7 +77,7 @@ public class Turret : MonoBehaviour
     //    }
 
 
-        audio = GetComponent<AudioSource>();
+        Maudio = GetComponent<AudioSource>();
         bulletPooler = BulletPooler.Instance;
         missilePooler = MissilePooler.Instance;
         InvokeRepeating("UpdateTarget", 0f, 0.5f);  //Calls Update target twice per second (to avoid it looking for a new target too fast)
@@ -226,7 +226,7 @@ public class Turret : MonoBehaviour
         {
             if (useLaser)
             {
-                audio.Stop();
+                Maudio.Stop();
                 if (lineRenderer.enabled)
                 {
                     lineRenderer.enabled = false;
@@ -272,7 +272,7 @@ public class Turret : MonoBehaviour
 
     {
         targetEnemy.takeDamageLaser(LaserDamage * Time.deltaTime);
-        audio.Play();
+        Maudio.Play();
         targetEnemyM.Slow(Slowpct);
 
         if (!lineRenderer.enabled)
@@ -299,7 +299,7 @@ public class Turret : MonoBehaviour
         if (useBullet)
         {
             GameObject bulletGO = BulletPooler.Instance.GetFromPool();
-            audio.PlayOneShot(audio.clip);
+            Maudio.PlayOneShot(Maudio.clip);
             bulletGO.transform.position = firePoint.position;
             bulletGO.transform.rotation = firePoint.rotation;
             Bullet bullet = bulletGO.GetComponent<Bullet>();
@@ -312,7 +312,7 @@ public class Turret : MonoBehaviour
         if (useMissile)
         {
             GameObject missileGO = MissilePooler.Instance.GetFromPool();
-            audio.PlayOneShot(audio.clip);
+            Maudio.PlayOneShot(Maudio.clip);
             missileGO.transform.position = firePoint.position;
             missileGO.transform.rotation = firePoint.rotation;
             Missile missile = missileGO.GetComponent<Missile>();
