@@ -1500,7 +1500,7 @@ MonoBehaviour:
     value: 1
   intensity:
     overrideState: 1
-    value: 7
+    value: 6.28
   threshold:
     overrideState: 1
     value: 1.01
@@ -1520,14 +1520,14 @@ MonoBehaviour:
     overrideState: 1
     value: {r: 0.52429694, g: 0.78946614, b: 0.8113208, a: 1}
   fastMode:
-    overrideState: 0
-    value: 0
+    overrideState: 1
+    value: 1
   dirtTexture:
-    overrideState: 0
+    overrideState: 1
     value: {fileID: 0}
     defaultState: 1
   dirtIntensity:
-    overrideState: 0
+    overrideState: 1
     value: 0
 --- !u!114 &114680389807130378
 MonoBehaviour:
