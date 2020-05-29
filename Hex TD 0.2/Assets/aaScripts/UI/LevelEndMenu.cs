@@ -8,6 +8,8 @@ public class LevelEndMenu : MonoBehaviour
     public GameObject nextLevelButton;
     public Text levelClearedFailedText;
 
+    public GameObject SaveMoney;
+
     bool endCheck = false;
     bool defeat = false;
 

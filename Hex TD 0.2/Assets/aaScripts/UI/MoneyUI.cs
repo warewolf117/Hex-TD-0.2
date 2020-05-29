@@ -9,7 +9,6 @@ public class MoneyUI : MonoBehaviour
     int money;
     int previousMoney = 0;
 
-    // Update is called once per frame
     void Update()
     {
         money = PlayerStats.money;

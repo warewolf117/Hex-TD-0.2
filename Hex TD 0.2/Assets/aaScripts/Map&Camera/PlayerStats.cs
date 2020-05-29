@@ -13,4 +13,16 @@ public class PlayerStats : MonoBehaviour
         money = startMoney;
         Rounds = 0;
     }
+
+    public void SaveMoney()
+    {
+        SaveSystem.SavePlayerStats(this);
+    }
+
+    public void LoadMoney()
+    {
+        SaveData data = SaveSystem.LoadData();
+
+        money = data.money;
+    }
 }
