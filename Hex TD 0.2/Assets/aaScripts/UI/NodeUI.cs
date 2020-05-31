@@ -25,9 +25,6 @@ public class NodeUI : MonoBehaviour
     private Node target;
     public Button upgradeButton;
 
-    public GameObject dragAndDropTooltip;
-    public GameObject upgradeTooltip;
-
     public bool tutorialCounter = false;
 
     public void Stats()
@@ -68,13 +65,8 @@ public class NodeUI : MonoBehaviour
             upgradeButton.interactable = false;
         }
         ui.SetActive(true);
-        //Destroy(dragAndDropTooltip);
-        dragAndDropTooltip.SetActive(false);
-        if (tutorialCounter == false)
-        {
-            upgradeTooltip.SetActive(true);
-        }
-        
+
+
         //checkUI = true;
     }
 
@@ -96,7 +88,6 @@ public class NodeUI : MonoBehaviour
     public void Upgrade()
     {
         target.UpgradeTurret(this.gameObject);
-        upgradeTooltip.transform.localScale = new Vector3(0, 0, 0);
         tutorialCounter = true;
     }
 

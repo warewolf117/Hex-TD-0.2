@@ -6,8 +6,7 @@ public class Shop : MonoBehaviour
     public TurretBlueprintShop missileLauncher;
     public TurretBlueprintShop laserTurret;
 
-    public GameObject selectTurretTooltip;
-    public GameObject skipTutorialButton;
+    public static bool turretBought = false;
 
     BuildManager buildManager;
     private void Start()
@@ -18,21 +17,18 @@ public class Shop : MonoBehaviour
     public void SelectStandardTurret ()
     {
         buildManager.SelectTurretToBuild(standartTurret);
-        selectTurretTooltip.SetActive(false);
-        skipTutorialButton.SetActive(false);
+        turretBought = true;
     }
 
     public void SelectMissileLauncher ()
     {
         buildManager.SelectTurretToBuild(missileLauncher);
-        selectTurretTooltip.SetActive(false);
-        skipTutorialButton.SetActive(false);
+        turretBought = true;
     }
 
     public void SelectLaserTurret()
     {
         buildManager.SelectTurretToBuild(laserTurret);
-        selectTurretTooltip.SetActive(false);
-        skipTutorialButton.SetActive(false);
+        turretBought = true;
     }
 }

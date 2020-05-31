@@ -43,23 +43,7 @@ public class Node : MonoBehaviour
     private Color originalColor;
     private Color originalColorE;
 
-    public Text dragAndDropText;
-    public static bool tutorialNodes;
-    public static bool hexTutorialDone = false;
-
-    private float innerHexTutorialTimer;
-    private float outerHexTutorialTimer;
-    private bool outerHexTutorial;
-    private bool timerRunning;
-
-    private GameObject outerHex1;
-    private GameObject outerHex2;
-    private Color originalColorHex;
-
     static readonly int materialEmissionColor = Shader.PropertyToID("_EmissionColor");
-    static readonly int materialMetallicColor = Shader.PropertyToID("_Metallic");
-
-
     // NodeUI nodeUI;
 
     void Start()
@@ -69,7 +53,6 @@ public class Node : MonoBehaviour
         startColor = rend.material.color;
 
         buildManager = BuildManager.instance;
-
     }
 
     public Vector3 GetBuildPosition()
@@ -82,9 +65,8 @@ public class Node : MonoBehaviour
         if (EventSystem.current.IsPointerOverGameObject())
             return;
 
-        if (!hexTutorialDone)
+        if (!Tutorial.hexTutorialDone)
             return;
-
 
         if (turret != null)
         {
@@ -101,7 +83,6 @@ public class Node : MonoBehaviour
             // this.fireRate = turretStats.fireRate;
             return;
         }
-
 }
     public void RemoveRange()
     {
@@ -112,96 +93,10 @@ public class Node : MonoBehaviour
 
     private void Update()
     {
-        if (hexTutorialDone)
-
-            return;
-
-        if (tutorialNodes)
-        {
-            innerHexTutorialTimer -= Time.deltaTime;
-            outerHexTutorialTimer -= Time.deltaTime;
-
-            if (innerHexTutorialTimer <= 0 && !outerHexTutorial)
-            {
-                innerHexTutorialTimer = 6f;
-                dragAndDropText.text = "TURRETS PLACED HERE WILL ONLY ATTACK THIS LANE";
-                GameObject.Find("TutorialPointer").transform.localScale = new Vector3(0.3f, 0.3f, 0.3f);
-                BuildManager.tutorialGhost = true;
-            }
-
-            if (innerHexTutorialTimer > 0)
-            {
-                outerHexTutorial = true;
-            }
-
-            if (outerHexTutorialTimer <= 0 && timerRunning == true)
-            {
-                GameObject[] hexes = GameObject.FindGameObjectsWithTag("Node");
-
-                foreach (GameObject hex in hexes)
-                {
-                    hex.GetComponent<MeshRenderer>().material.SetFloat(materialMetallicColor, 0.3f);
-                    hex.transform.localScale = new Vector3(1, 1, 0.5f);
-                }
-
-                outerHex1.GetComponent<MeshRenderer>().material.SetColor(materialEmissionColor, new Color(0.1933962f, 0.1933962f, 0.1933962f));
-                outerHex2.GetComponent<MeshRenderer>().material.SetColor(materialEmissionColor, new Color(0.1933962f, 0.1933962f, 0.1933962f));
-
-                outerHex1.GetComponent<MeshRenderer>().material.color = new Color(0, 0.517309f, 0.5660378f, 1);
-                outerHex2.GetComponent<MeshRenderer>().material.color = new Color(0, 0.517309f, 0.5660378f, 1);
-
-                GameObject.Find("TutorialPointer").SetActive(false);
-                GameObject.Find("TutorialPointer2").SetActive(false);
-
-
-                dragAndDropText.text = "CLICK A TURRET TO VIEW ITS STATS";
-
-                BuildManager.tutorialGhost = false;
-                hexTutorialDone = true;
-                return;
-
-            }
-
-            if (outerHexTutorial && innerHexTutorialTimer <= 0 && outerHexTutorialTimer <= 0 && timerRunning == false)
-            {
-
-                BuildManager.outerHexTutorial = true;
-                dragAndDropText.text = "TURRETS PLACED HERE WILL ATTACK BOTH LANES";
-                GameObject.Find("TutorialPointer2").transform.localScale = new Vector3(0.5f, 0.3f, 0.3f);
-                GameObject.Find("TutorialPointer").transform.localScale = new Vector3(0.5f, 0.3f, 0.3f);
-                GameObject.Find("TutorialPointer").transform.localPosition = new Vector3(0.1157f, 0.3979f, 0f);
-
-                outerHex1 = GameObject.Find("Hex Tile TopVertex1");
-                outerHex2 = GameObject.Find("Hex Tile TopVertex2");
-
-                GameObject[] hexes = GameObject.FindGameObjectsWithTag("Node");
-
-                foreach (GameObject hex in hexes)
-                {
-                    hex.GetComponent<MeshRenderer>().material.SetFloat(materialMetallicColor, 1);
-                    hex.transform.localScale = new Vector3(0, 0, 0);
-                }
-
-                outerHex1.transform.localScale = new Vector3(1, 1, 0.5f);
-                outerHex2.transform.localScale = new Vector3(1, 1, 0.5f);
-
-                outerHex1.GetComponent<MeshRenderer>().material.SetFloat(materialMetallicColor, 0.3f);
-                outerHex2.GetComponent<MeshRenderer>().material.SetFloat(materialMetallicColor, 0.3f);
-
-                originalColorHex = outerHex1.GetComponent<MeshRenderer>().material.GetColor(materialEmissionColor);
-
-                outerHex1.GetComponent<MeshRenderer>().material.SetColor(materialEmissionColor, new Color(1, 1, 1));
-                outerHex2.GetComponent<MeshRenderer>().material.SetColor(materialEmissionColor, new Color(1, 1, 1));
-
-                outerHex1.GetComponent<MeshRenderer>().material.color = new Color(1, 1, 1, 1);
-                outerHex2.GetComponent<MeshRenderer>().material.color = new Color(1, 1, 1, 1);
-
-                outerHexTutorialTimer = 6f;
-                timerRunning = true;
-            }
-        }
-
+       
     }
+
+
     void BuildTurret(TurretBlueprintShop blueprint)
     {
         if (PlayerStats.money < blueprint.cost)
@@ -213,7 +108,7 @@ public class Node : MonoBehaviour
 
         GameObject _turret = (GameObject)Instantiate(blueprint.pref, GetBuildPosition(), Quaternion.identity);
 
-        tutorialNodes = true;
+        Tutorial.tutorialNodes = true;
     
         turret = _turret;
         Turret Sturret = turret.transform.GetComponent<Turret>();
