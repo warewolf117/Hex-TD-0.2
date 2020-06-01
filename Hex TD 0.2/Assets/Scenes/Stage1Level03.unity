@@ -4108,7 +4108,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 921a99f582034a84c83d47bd50825d25, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startMoney: 250
+  startMoney: 400
 --- !u!114 &1105057853
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4142,7 +4142,7 @@ MonoBehaviour:
   nextLevelButton: {fileID: 741423925}
   levelClearedFailedText: {fileID: 919247954}
   SaveMoney: {fileID: 0}
-  actualLevel: 1
+  actualLevel: 3
 --- !u!114 &1105057855
 MonoBehaviour:
   m_ObjectHideFlags: 0

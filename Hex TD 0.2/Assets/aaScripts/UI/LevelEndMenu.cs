@@ -1,5 +1,4 @@
-﻿using TMPro;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 public class LevelEndMenu : MonoBehaviour
@@ -12,6 +11,9 @@ public class LevelEndMenu : MonoBehaviour
 
     bool endCheck = false;
     bool defeat = false;
+
+    public static int highestClearedLevel = 1;
+    public int actualLevel;
 
     /*public string menuSceneName = "MainMenu";
     ScreenFader screenFader;
@@ -28,6 +30,8 @@ public class LevelEndMenu : MonoBehaviour
             ui.SetActive(true);
             levelClearedFailedText.text = "Cleared";
             nextLevelButton.SetActive(true);
+            if (highestClearedLevel <= actualLevel)
+            highestClearedLevel ++;
         }
         
         
@@ -49,6 +53,17 @@ public class LevelEndMenu : MonoBehaviour
             }
             
         }
+    }
+    public void SaveLevelProgress()
+    {
+        SaveSystem.SaveLevelProgress(this);
+    }
+
+    public void LoadLevelProgress()
+    {
+        SaveData data = SaveSystem.LoadData();
+
+        highestClearedLevel = data.currentLevel;
     }
 
 }

@@ -4,13 +4,13 @@ using System.Runtime.Serialization.Formatters.Binary;
 
 public static class SaveSystem
 {
-   public static void SavePlayerStats (PlayerStats playerstats)
+   public static void SaveLevelProgress (LevelEndMenu levelEndMenu)
     {
         BinaryFormatter formatter = new BinaryFormatter();
         string path = Path.Combine(Application.persistentDataPath, "player.save");
         FileStream stream = new FileStream(path, FileMode.Create);
 
-        SaveData data = new SaveData(playerstats);
+        SaveData data = new SaveData(levelEndMenu);
 
         formatter.Serialize(stream, data);
         stream.Close();

@@ -1,10 +1,8 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class PlayerStats : MonoBehaviour
 {
-    public static int money; //static is so that money doesnt need a reference object
+    public static int money; 
     public int startMoney = 400;
     public static int Rounds;
 
@@ -14,15 +12,4 @@ public class PlayerStats : MonoBehaviour
         Rounds = 0;
     }
 
-    public void SaveMoney()
-    {
-        SaveSystem.SavePlayerStats(this);
-    }
-
-    public void LoadMoney()
-    {
-        SaveData data = SaveSystem.LoadData();
-
-        money = data.money;
-    }
 }
