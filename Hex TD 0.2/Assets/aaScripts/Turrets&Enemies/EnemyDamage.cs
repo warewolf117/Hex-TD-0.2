@@ -27,7 +27,6 @@ public class EnemyDamage : MonoBehaviour
     GameObject CollisionCenter;
 
 
-
     public void OnCollisionEnter(Collision collision)
     {     
         if(collision.transform.tag == "Turret")
@@ -36,11 +35,11 @@ public class EnemyDamage : MonoBehaviour
             
             this.collisionTurret = collision;
             CollisionTurret = collision.transform.gameObject;
+
         }
 
         if (collision.transform.tag == "Wall")
         {
-
             CollidedWithWall = true;
             this.collisionWall = collision;
             CollisionWall = collision.transform.gameObject;
@@ -67,6 +66,7 @@ public class EnemyDamage : MonoBehaviour
         }
         if (collision.transform.tag == "Wall")
         {
+
             CollidedWithWall = false;
             this.collisionWall = collision;
             CollisionWall = null;
