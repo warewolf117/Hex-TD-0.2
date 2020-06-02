@@ -39,6 +39,7 @@ public class ScreenFader : MonoBehaviour
         WaveSpawnerTopRight_Main.EnemyCount = 0;
         WaveSpawnerTopRight_Main.countdown = 4f;
         WaveSpawnerTopRight_Main.startFirstWave = 0;
+        Health.gameOver = false;
         //load a scene
     }
 

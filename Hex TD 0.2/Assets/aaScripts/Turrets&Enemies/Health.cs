@@ -14,6 +14,8 @@ public class Health : MonoBehaviour
 
     float laserPopupTimer = 0f;
 
+    public static int deadWallCounter = 1;
+
     public static bool gameOver = false;
 
     void Start()
@@ -127,6 +129,8 @@ public class Health : MonoBehaviour
         if (gameObject.tag == "Wall")
         {
             Destroy(this.gameObject);
+            deadWallCounter++;
+            Debug.Log(deadWallCounter);
            
         }
 
