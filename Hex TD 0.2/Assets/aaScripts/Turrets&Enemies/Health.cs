@@ -11,8 +11,11 @@ public class Health : MonoBehaviour
     public int worth;
     private bool checkAlive = true;
     public float TotalDamage = 0;
+    private float poisonDamage = 0;
+    private bool startPoison = false;
 
     float laserPopupTimer = 0f;
+    float poisonTimer = 0f;
 
     public static int deadWallCounter = 1;
 
@@ -21,7 +24,6 @@ public class Health : MonoBehaviour
     void Start()
     {
         cur_health = max_health;
-
     }
 
 
@@ -32,8 +34,6 @@ public class Health : MonoBehaviour
         {
             DamagePopup2.Create(gameObject.transform.position, amount);
         }
-
-
 
         cur_health -= amount;
         healthBar.fillAmount = cur_health / max_health;
@@ -75,9 +75,8 @@ public class Health : MonoBehaviour
             if (!gameOver)
             {
                 DamagePopup2.CreateLaser(gameObject.transform.position, f);
-                laserPopupTimer = 0.15f;
+                laserPopupTimer = 0.17f;
             }
-
 
         }
 
@@ -125,7 +124,6 @@ public class Health : MonoBehaviour
             WaveSpawnerTopRight_Main.EnemyCount--;
         }
 
-
         if (gameObject.tag == "Wall")
         {
             Destroy(this.gameObject);
@@ -139,17 +137,64 @@ public class Health : MonoBehaviour
             Destroy(this.gameObject);
 
         }
-
-
-
     }
 
 
+    public void PoisonDamage(float amount)
+    {
+        
+        startPoison = true;
+        if (amount > poisonDamage)
+        {
+            poisonDamage = amount;
+        }
+        
+
+    }
 
     // Update is called once per frame
     void Update()
     {
-
         laserPopupTimer -= Time.deltaTime;
+        poisonTimer -= Time.deltaTime;
+        if(startPoison)
+        {
+            if(poisonTimer <= 0)
+            {
+                cur_health -= poisonDamage;
+                healthBar.fillAmount = cur_health / max_health;
+
+                if (!gameOver)
+                {
+                    DamagePopup2.CreatePoison(gameObject.transform.position, poisonDamage);
+                }
+
+                if (healthBar.fillAmount < 0.8f && healthBar.fillAmount > 0.6f)
+                {
+                    healthBar.color = new Color32(196, 255, 0, 100);
+                }
+                else if (healthBar.fillAmount < 0.6f && healthBar.fillAmount > 0.4f)
+                {
+                    healthBar.color = new Color32(247, 255, 0, 100);
+                }
+                else if (healthBar.fillAmount < 0.4f && healthBar.fillAmount > 0.2f)
+                {
+                    healthBar.color = new Color32(255, 162, 0, 100);
+                }
+                else if (healthBar.fillAmount < 0.2f)
+                {
+                    healthBar.color = new Color32(255, 43, 0, 100);
+                }
+                if (cur_health <= 0 && checkAlive)
+                {
+                    Die();
+                    checkAlive = false;
+                    TotalDamage = 0;
+                }
+                poisonTimer = 0.5f;
+
+            }
+            
+        }
     }
 }

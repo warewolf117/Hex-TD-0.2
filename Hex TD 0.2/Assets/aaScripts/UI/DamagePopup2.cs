@@ -18,13 +18,26 @@ public class DamagePopup2 : MonoBehaviour
         return damagePopup;
     }
 
+    public static DamagePopup2 CreatePoison(Vector3 position, float damageAmount)
+    {
+
+        GameObject damagePopupTransform = DmgPopUpPooler.Instance.GetFromPool();
+        damagePopupTransform.transform.position = position;
+        damagePopupTransform.transform.rotation = Quaternion.identity;
+        //Transform damagePopupTransform = Instantiate(GameAssets.i.pfDamagePopup, position, Quaternion.identity);
+        DamagePopup2 damagePopup = damagePopupTransform.GetComponent<DamagePopup2>();
+        damagePopup.SetupPoison(damageAmount);
+
+        return damagePopup;
+    }
+
     public static DamagePopup2 CreateLaser(Vector3 position, float damageAmount)
     {
 
         float f = damageAmount;
         f = Mathf.Round(f * 1.0f) * 1f;
         GameObject damagePopupTransform = DmgPopUpPooler.Instance.GetFromPool();
-        damagePopupTransform.transform.position = position; // + Vector3.up * 2;
+        damagePopupTransform.transform.position = position + Vector3.right * 1f;
         damagePopupTransform.transform.rotation = Quaternion.identity;
 
         //Transform damagePopupTransform = Instantiate(GameAssets.i.pfDamagePopup, position + Vector3.up * 2 , Quaternion.identity);
@@ -39,45 +52,86 @@ public class DamagePopup2 : MonoBehaviour
 
     private static int sortingOrder;
 
-    private const float DISAPPEAR_TIMER_MAX = 0.2f;
+    private const float DISAPPEAR_TIMER_MAX = 0.8f;
 
     private static int CurrentPos;
 
     private TextMeshPro textMesh;
     private float disappearTimer;
-    private Color textColor;
+    private Color textColor = new Color(1, 1, 1, 1);
     private Vector3 moveVector;
+    private Vector3 Originalscale;
+    private Vector3 scale;
+    private float moveValue;
+    float disappearSpeed;
 
     private void Awake()
     {
         textMesh = transform.GetComponent<TextMeshPro>();
+        Originalscale = transform.localScale;
     }
+
 
     public void SetupL(float damageAmount)
     {
         Color Lasercolor = Color.magenta;
         textMesh.SetText(damageAmount.ToString());
+        textMesh.faceColor = Lasercolor;
         textMesh.color = Lasercolor;
-        disappearTimer = DISAPPEAR_TIMER_MAX;
+        textMesh.outlineColor = Color.red;
+        disappearTimer = 0.2f;
+        disappearSpeed = 8f;
 
-        moveVector = new Vector3(-0.7f, 1) * 10f;
+        moveValue = 15f;
+        moveVector = new Vector3(-0.7f, 1) * 5f;
 
+        scale = Originalscale;
         sortingOrder++;
         textMesh.sortingOrder = sortingOrder;
+        textColor.a = 1;
     }
 
     public void Setup(float damageAmount)
     {
-        Color turretcolor = Color.white;
+        Color turretcolor = Color.red;
         textMesh.SetText(damageAmount.ToString());
+        textMesh.faceColor = turretcolor;
         textMesh.color = turretcolor;
+        textMesh.outlineColor = Color.yellow;
         disappearTimer = DISAPPEAR_TIMER_MAX;
+        disappearSpeed = 2;
 
-        moveVector = new Vector3(-0.7f, 1) * 10f;
+        moveValue = 5f;
+        float xvar = Random.Range(-0.5f, 0.5f);
+        moveVector = new Vector3(xvar, 1) * 10f;
 
+        scale = Originalscale;
+        transform.localScale = Originalscale / 1.4f;
         sortingOrder++;
         textMesh.sortingOrder = sortingOrder;
+        textColor.a = 1;
     }
+    public void SetupPoison(float damageAmount)
+    {
+        Color poisoncolor = new Color(0.37f, 1, 0, 1);
+        textMesh.SetText(damageAmount.ToString());
+        textMesh.color = poisoncolor;
+        textMesh.faceColor = poisoncolor;
+        textMesh.outlineColor = Color.green;
+        disappearTimer = DISAPPEAR_TIMER_MAX;
+        disappearSpeed = 2;
+
+        moveValue = 5f;
+        float xvar = Random.Range(-0.3f, 0.3f);
+        moveVector = new Vector3(xvar, 1) * 10f;
+
+        scale = Originalscale;
+        transform.localScale = Originalscale / 3;
+        sortingOrder++;
+        textMesh.sortingOrder = sortingOrder;
+        textColor.a = 1;
+    }
+
 
     private void Update()
     {
@@ -101,7 +155,8 @@ public class DamagePopup2 : MonoBehaviour
 
 
         transform.position += (moveVector * Time.deltaTime);
-        moveVector -= moveVector * 7f * Time.deltaTime;
+        
+        moveVector -= moveVector * moveValue * Time.deltaTime;
 
         if (disappearTimer > DISAPPEAR_TIMER_MAX * .5f) //first half of the popup lifetime
         {
@@ -117,13 +172,21 @@ public class DamagePopup2 : MonoBehaviour
         disappearTimer -= Time.deltaTime;
         if (disappearTimer < 0)
         {
-            float disappearSpeed = 3f;
+            transform.position += Vector3.up * 0.05f;
+            
             textColor.a -= disappearSpeed * Time.deltaTime;
-            textMesh.color = textColor;
-            if (textColor.a < 0)
+            textMesh.faceColor = new Color(textMesh.faceColor.r, textMesh.faceColor.g, textMesh.faceColor.b, textColor.a);
+            textMesh.outlineColor = new Color(textMesh.outlineColor.r, textMesh.outlineColor.g, textMesh.outlineColor.b, textColor.a);
+            textMesh.color = new Color(textMesh.color.r, textMesh.color.g, textMesh.color.b, textColor.a);
+
+            if (textColor.a <= 0)
             {
                 // Destroy(gameObject);
+                transform.localScale = scale;
+                
+
                 DmgPopUpPooler.Instance.AddToPool(gameObject);
+
             }
         }
     }

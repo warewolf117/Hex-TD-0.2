@@ -20,6 +20,7 @@ public class Turret : MonoBehaviour
     public int range = 15;
     public float fireRate = 1f;
     public int bulletDamage;
+    public int poisonDamage;
 
     public static float rangeRender; 
     public float healthStatic;
@@ -29,6 +30,7 @@ public class Turret : MonoBehaviour
 
     public bool useBullet = false;
     public bool useMissile = false;
+    public bool usePoison = false;
     public bool focusBack = false;
     private float fireCountdown = 0f;
 
@@ -286,7 +288,7 @@ public class Turret : MonoBehaviour
         }
 
         lineRenderer.SetPosition(0, firePoint.position);
-        lineRenderer.SetPosition(1, target.position);
+        lineRenderer.SetPosition(1, new Vector3(target.position.x, target.position.y + 0.5f, target.position.z));
     }
 
     void Shoot()
@@ -314,6 +316,19 @@ public class Turret : MonoBehaviour
 
             if (missile != null)
                 missile.Seek1(target);
+        }
+        else if (usePoison)
+        {
+            GameObject PoisonGO = PoisonPooler.Instance.GetFromPool();
+            Maudio.PlayOneShot(Maudio.clip);
+            PoisonGO.transform.position = firePoint.position;
+            PoisonGO.transform.rotation = firePoint.rotation;
+            Poison poison = PoisonGO.GetComponent<Poison>();
+            poison.impactdamage = bulletDamage;
+            poison.damage = poisonDamage;
+
+            if (poison != null)
+                poison.Seek(target);
         }
 
     }

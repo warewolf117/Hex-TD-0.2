@@ -35,8 +35,8 @@ public class Bullet : MonoBehaviour
 
         if (TargetAquired == true && target != null)
         {
-            TargetPosition = target.position;
-            dir = target.position - transform.position;
+            TargetPosition = new Vector3(target.position.x, target.position.y + 0.5f, target.position.z);
+            dir = new Vector3(target.position.x, target.position.y + 0.5f, target.position.z) - transform.position;
             transform.Translate(dir.normalized * distancePerFrame, Space.World); //moves the bullet
             transform.LookAt(target);
 
