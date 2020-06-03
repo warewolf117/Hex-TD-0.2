@@ -17,7 +17,7 @@ public class Health : MonoBehaviour
     float laserPopupTimer = 0f;
     float poisonTimer = 0f;
 
-    public static int deadWallCounter = 1;
+    public static int deadWallCounter = 0;
 
     public static bool gameOver = false;
 
@@ -126,10 +126,9 @@ public class Health : MonoBehaviour
 
         if (gameObject.tag == "Wall")
         {
-            Destroy(this.gameObject);
             deadWallCounter++;
-            Debug.Log(deadWallCounter);
-           
+            Destroy(this.gameObject);
+                
         }
 
         if (gameObject.tag == "Turret")

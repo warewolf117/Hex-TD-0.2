@@ -8,7 +8,7 @@ public class PlayerStats : MonoBehaviour
     public static int Rounds;
 
     public static int oxygen;
-    public int startOxygen = 100;
+    public int startOxygen = 400;
 
     void Start ()
     {
