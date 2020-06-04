@@ -19,6 +19,7 @@ public class Turret : MonoBehaviour
 
     public int range = 15;
     public float fireRate = 1f;
+    private float startFireRate;
     public int bulletDamage;
     public int poisonDamage;
 
@@ -31,6 +32,7 @@ public class Turret : MonoBehaviour
     public bool useBullet = false;
     public bool useMissile = false;
     public bool usePoison = false;
+    public bool useMinigun = false;
     public bool focusBack = false;
     private float fireCountdown = 0f;
 
@@ -68,7 +70,7 @@ public class Turret : MonoBehaviour
 
     void Start()
     {
-        
+        startFireRate = fireRate;
         rangeRender = range;
       //  healthStatic = this.GetComponent<Health>().max_health;
 
@@ -299,6 +301,10 @@ public class Turret : MonoBehaviour
 
 
             }
+            if (useMinigun)
+            {
+                fireRate = startFireRate;
+            }
             return; //no target, return and do nothing 
         }
 
@@ -310,10 +316,16 @@ public class Turret : MonoBehaviour
         }
         else
         {
+            
             if (fireCountdown <= 0f)
             {
                 Shoot();
                 fireCountdown = 1f / fireRate;
+                if (useMinigun)
+                {
+                    if (fireRate < 10)
+                    fireRate += 0.5f;
+                }
             }
 
             fireCountdown -= Time.deltaTime;
@@ -327,6 +339,7 @@ public class Turret : MonoBehaviour
         Quaternion lookRotation = Quaternion.LookRotation(dir);
         Vector3 rotation = Quaternion.Lerp(partToRotate.rotation, lookRotation, Time.deltaTime * turnSpeed).eulerAngles;
         partToRotate.rotation = Quaternion.Euler(0f, rotation.y, 0f);
+        
     }
 
     void Laser()

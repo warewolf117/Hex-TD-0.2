@@ -8,7 +8,7 @@ public class OxygenUI : MonoBehaviour
     int previousOxygen = 0;
 
     private float timeSinceLastCalled;
-    private float oxygenDepleteRate = 100; //time in secs
+    public static float oxygenDepleteRate = 1000; //time in secs
 
     private float previousWallCrack1 = 0;
     private float previousWallCrack2 = 0;
