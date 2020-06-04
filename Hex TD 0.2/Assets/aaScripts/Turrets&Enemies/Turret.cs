@@ -68,7 +68,7 @@ public class Turret : MonoBehaviour
 
     void Start()
     {
-
+        
         rangeRender = range;
       //  healthStatic = this.GetComponent<Health>().max_health;
 
@@ -99,7 +99,7 @@ public class Turret : MonoBehaviour
         turretSector = nodeSector;
     }
 
-   
+
 
     void UpdateTarget()
     {
@@ -169,12 +169,67 @@ public class Turret : MonoBehaviour
 
         float shortestDistance = Mathf.Infinity; //sets shortestDistance to infinity if there is no enemy
         float furthestDistance = Mathf.NegativeInfinity;
+        GameObject currentEnemy = null;
         GameObject nearestEnemy = null;
         GameObject furthestEnemy = null;
 
+        if (usePoison)
+        {
+            foreach (GameObject enemy in enemies)
+            {
+                if (!enemy.GetComponent<Health>().isPoisoned)
+                {
+                    float distance = Vector3.Distance(transform.position, enemy.transform.position); //measures distance between turret and enemy
 
+                    if (distance < shortestDistance && distance <= range)
+                    {
+                        shortestDistance = distance;
+                        nearestEnemy = enemy;
+                        currentEnemy = nearestEnemy;
+                    }
 
-        if (focusBack == true)  //Back Targeting
+                    if (currentEnemy != null)
+                    {
+                        target = currentEnemy.transform;
+                        targetEnemy = currentEnemy.GetComponent<Health>();
+                        targetEnemyM = currentEnemy.GetComponent<BasicMovement>();
+                        return;
+                    }
+                    else
+                    {
+                        target = null;
+                    }
+                }
+
+            }
+            foreach (GameObject enemy in enemies)
+            {
+                if (enemy.GetComponent<Health>().isPoisoned)
+                {
+                    float distance = Vector3.Distance(transform.position, enemy.transform.position); //measures distance between turret and enemy
+
+                    if (distance < shortestDistance)
+                    {
+                        shortestDistance = distance;
+                        nearestEnemy = enemy;
+                    }
+
+                    if (nearestEnemy != null && shortestDistance <= range)
+                    {
+                        target = nearestEnemy.transform;
+                        targetEnemy = nearestEnemy.GetComponent<Health>();
+                        targetEnemyM = nearestEnemy.GetComponent<BasicMovement>();
+                    }
+                    else
+                    {
+                        target = null;
+                    }
+                }
+
+            }
+        } 
+
+        else if (focusBack == true && !usePoison)  //Back Targeting
         {
             foreach (GameObject enemy in enemies)
             {
@@ -200,10 +255,8 @@ public class Turret : MonoBehaviour
             }
         }
 
-        else //Regular Targeting
+        else if (!focusBack && !usePoison)//Regular Targeting
         {
-
-
             foreach (GameObject enemy in enemies)
             {
                 float distance = Vector3.Distance(transform.position, enemy.transform.position); //measures distance between turret and enemy
@@ -216,6 +269,7 @@ public class Turret : MonoBehaviour
                 }
 
             }
+
             if (nearestEnemy != null && shortestDistance <= range)
             {
                 target = nearestEnemy.transform;
@@ -319,6 +373,7 @@ public class Turret : MonoBehaviour
         }
         else if (usePoison)
         {
+            target.GetComponent<Health>().isPoisoned = true;
             GameObject PoisonGO = PoisonPooler.Instance.GetFromPool();
             Maudio.PlayOneShot(Maudio.clip);
             PoisonGO.transform.position = firePoint.position;

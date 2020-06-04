@@ -21,6 +21,8 @@ public class Health : MonoBehaviour
 
     public static bool gameOver = false;
 
+    public bool isPoisoned;
+
     void Start()
     {
         cur_health = max_health;
@@ -141,7 +143,7 @@ public class Health : MonoBehaviour
 
     public void PoisonDamage(float amount)
     {
-        
+        isPoisoned = true;
         startPoison = true;
         if (amount > poisonDamage)
         {
