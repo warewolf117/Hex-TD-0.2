@@ -6,6 +6,7 @@ public class Shop : MonoBehaviour
     public TurretBlueprintShop missileLauncher;
     public TurretBlueprintShop laserTurret;
     public TurretBlueprintShop minigunTurret;
+    public TurretBlueprintShop aoeTurret;
 
     public static bool turretBought = false;
 
@@ -36,6 +37,12 @@ public class Shop : MonoBehaviour
     public void SelectMinigunTurret()
     {
         buildManager.SelectTurretToBuild(minigunTurret);
+        turretBought = true;
+    }
+
+    public void SelectaoeTurret()
+    {
+        buildManager.SelectTurretToBuild(aoeTurret);
         turretBought = true;
     }
 }

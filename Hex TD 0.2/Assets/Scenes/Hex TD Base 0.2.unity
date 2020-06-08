@@ -2382,7 +2382,7 @@ PrefabInstance:
     - target: {fileID: 1976855768245999875, guid: 9161872ba4eb04f4386833bd6d69d3d8,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 196.42
+      value: 196.41998
       objectReference: {fileID: 0}
     - target: {fileID: 1976855768245999875, guid: 9161872ba4eb04f4386833bd6d69d3d8,
         type: 3}
@@ -3363,7 +3363,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: 155.44, y: 47.13}
+  m_AnchoredPosition: {x: 155.44, y: 47.130005}
   m_SizeDelta: {x: -321.96304, y: 94.26673}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &811001050
@@ -3459,11 +3459,16 @@ MonoBehaviour:
       type: 3}
     upgradeCost: 300
   minigunTurret:
-    pref: {fileID: 2700326730679675294, guid: 0034de05aa1a84d4e948d33471109874, type: 3}
+    pref: {fileID: 7726783044121333718, guid: af9da0b73f4968e40b1635a04d495f42, type: 3}
     cost: 250
-    upgradedPref: {fileID: 2700326730679675294, guid: ad3bb05e71ec67b4e825b301779f533f,
+    upgradedPref: {fileID: 7726783044121333718, guid: 7602c9c66fbe8ee46a7f04df8a12d947,
       type: 3}
     upgradeCost: 350
+  aoeTurret:
+    pref: {fileID: 0}
+    cost: 0
+    upgradedPref: {fileID: 0}
+    upgradeCost: 0
 --- !u!65 &811001054
 BoxCollider:
   m_ObjectHideFlags: 0
