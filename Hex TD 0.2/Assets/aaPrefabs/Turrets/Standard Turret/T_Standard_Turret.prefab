@@ -170,7 +170,7 @@ MeshRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: 4dedfe34ea7fc2d459cc0ca6405875c7, type: 2}
-  - {fileID: 2100000, guid: e32d7d32b35da4f4f8386bd2858ba8b1, type: 2}
+  - {fileID: 2100000, guid: b6f39c4a48a943b4d8aa68958acb84ad, type: 2}
   - {fileID: 2100000, guid: aaaf51e2fadef4742810f194a57aaf88, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
@@ -247,10 +247,13 @@ MonoBehaviour:
   range: 10
   fireRate: 1.5
   bulletDamage: 15
+  poisonDamage: 0
   healthStatic: 0
   impactDamageStatic: 0
   useBullet: 1
   useMissile: 0
+  usePoison: 0
+  useMinigun: 0
   focusBack: 0
   useLaser: 0
   LaserDamage: 0
@@ -278,6 +281,7 @@ MonoBehaviour:
   healthBar: {fileID: 0}
   worth: 0
   TotalDamage: 0
+  isPoisoned: 0
 --- !u!208 &-2375149290904793428
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -588,8 +592,8 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: e32d7d32b35da4f4f8386bd2858ba8b1, type: 2}
-  - {fileID: 2100000, guid: e32d7d32b35da4f4f8386bd2858ba8b1, type: 2}
+  - {fileID: 2100000, guid: b6f39c4a48a943b4d8aa68958acb84ad, type: 2}
+  - {fileID: 2100000, guid: b6f39c4a48a943b4d8aa68958acb84ad, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
