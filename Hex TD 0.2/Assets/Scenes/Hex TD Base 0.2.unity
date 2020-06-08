@@ -11088,6 +11088,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: TooltipCanvas
       objectReference: {fileID: 0}
+    - target: {fileID: 6648583859209802033, guid: d2610db0ce6bab54996001d2de610418,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6648583859209802042, guid: d2610db0ce6bab54996001d2de610418,
         type: 3}
       propertyPath: m_LocalPosition.x
