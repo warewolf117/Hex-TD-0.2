@@ -22,6 +22,7 @@ public class Turret : MonoBehaviour
     private float startFireRate;
     public int bulletDamage;
     public int poisonDamage;
+    public int aoeDamage;
 
     public static float rangeRender; 
     public float healthStatic;
@@ -33,6 +34,7 @@ public class Turret : MonoBehaviour
     public bool useMissile = false;
     public bool usePoison = false;
     public bool useMinigun = false;
+    public bool useAOE = false;
     public bool focusBack = false;
     private float fireCountdown = 0f;
 
@@ -66,8 +68,7 @@ public class Turret : MonoBehaviour
     private string EnemyBottomRight = "EnemyBottomRight";
     private string EnemyBottomLeft = "EnemyBottomLeft";
 
-
-
+ 
     void Start()
     {
         startFireRate = fireRate;
@@ -231,7 +232,7 @@ public class Turret : MonoBehaviour
             }
         } 
 
-        else if (focusBack == true && !usePoison)  //Back Targeting
+        if (focusBack == true)  //Back Targeting
         {
             foreach (GameObject enemy in enemies)
             {
@@ -256,8 +257,7 @@ public class Turret : MonoBehaviour
                 target = null;
             }
         }
-
-        else if (!focusBack && !usePoison)//Regular Targeting
+        else if (!focusBack || useAOE)//Regular Targeting
         {
             foreach (GameObject enemy in enemies)
             {
@@ -398,9 +398,27 @@ public class Turret : MonoBehaviour
             if (poison != null)
                 poison.Seek(target);
         }
+        else if (useAOE)
+        {
+            foreach (GameObject enemy in enemies)
+            {
+                if (enemy == null)
+                    return;
+
+                float distance = Vector3.Distance(transform.position, enemy.transform.position);
+                
+                if (distance <= range)
+                {
+
+                    Health healthScript = enemy.transform.gameObject.GetComponent<Health>();
+                    healthScript.takeDamage(aoeDamage);
+
+                }
+            }
+
+        }
 
     }
-
 
     // Shows turret range if selected
     void OnDrawGizmosSelected()

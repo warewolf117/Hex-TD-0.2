@@ -101,9 +101,6 @@ public class Missile : MonoBehaviour
             Health healthScript = target.transform.gameObject.GetComponent<Health>();
 
             healthScript.takeDamage(damage);
-
-
-
         }
         
 
