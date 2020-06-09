@@ -3,36 +3,48 @@ using UnityEngine.UI;
 
 public class LoadoutMenu : MonoBehaviour
 {
-    public ScreenFader screenFader;
 
     public Button[] turretSelectButtons;
 
-    public int turretQuantity = 3;
-    private int turretsSelected = 0;
+    public static int turretQuantity = 3;
+    public static int turretsSelected = 0;
+    private int previousTurretsSelected = 0;
 
-    public Text numberTurretsSelected;
+    public Text numberTurretsSelectedText;
 
     public static LevelEndMenu levelProgress;
 
     private void Start()
     {
-        selectableTurrets();      
     }
 
-    void selectableTurrets()
+    public void selectTurrets()
     {
-        turretsSelected ++;
+        if (turretsSelected < (turretQuantity + turretsSelected))
+        {
+            turretsSelected++;
+            turretQuantity--;
+        }
+    }
+
+   public void deselectTurrets()
+    {
+        if (turretsSelected > 0)
+        {
+            turretsSelected--;
+            turretQuantity++;
+        }
     }
 
     private void Update()
     {
-        
+        if (turretsSelected != previousTurretsSelected)
+        {
+            numberTurretsSelectedText.text = turretQuantity.ToString();
+            previousTurretsSelected = turretsSelected;
+        }
     }
 
-    public void SelectLevel(string levelName)
-    {
-        screenFader.FadeTo(levelName);
-    }
 
 
 }
