@@ -311,11 +311,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af4c2fc336624c34d8e83d832a0f3455, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  max_health: 750
+  max_health: 1500
   cur_health: 0
   healthBar: {fileID: 1903898917455635943}
   worth: 250
   TotalDamage: 0
+  isPoisoned: 0
 --- !u!114 &7855303999188464210
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -332,7 +333,7 @@ MonoBehaviour:
   target: {fileID: 0}
   CenterTarget: {fileID: 6334955249659344108, guid: 440f97069ec8181479dc2063ac0a40c5,
     type: 3}
-  startingSpeed: 1
+  startingSpeed: 0.8
   currentSpeed: 0
 --- !u!195 &7855303999188464211
 NavMeshAgent:

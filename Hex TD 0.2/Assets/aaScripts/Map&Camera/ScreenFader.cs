@@ -41,6 +41,14 @@ public class ScreenFader : MonoBehaviour
         WaveSpawnerTopRight_Main.startFirstWave = 0;
         OxygenUI.oxygenDepleteRate = 1000;
         Health.gameOver = false;
+
+        BasicMovement.WallBottomLeftDestroyed = false;
+        BasicMovement.WallBottomRightDestroyed = false;
+        BasicMovement.WallLeftDestroyed = false;
+        BasicMovement.WallRightDestroyed = false;
+        BasicMovement.WallTopLeftDestroyed = false;
+        BasicMovement.WallTopRightDestroyed = false;
+
         //load a scene
     }
 
