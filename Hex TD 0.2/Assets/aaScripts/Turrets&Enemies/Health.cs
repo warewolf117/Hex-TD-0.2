@@ -23,6 +23,15 @@ public class Health : MonoBehaviour
 
     public bool isPoisoned;
 
+    readonly string TagWall = "Wall";
+    readonly string TagTurret = "Turret";
+    readonly string TagEnemyTopLeft = "EnemyTopLeft";
+    readonly string TagEnemyTopRight = "EnemyTopRight";
+    readonly string TagEnemyLeft = "EnemyLeft";
+    readonly string TagEnemyRight = "EnemyRight";
+    readonly string TagEnemyBottomLeft = "EnemyBottomLeft";
+    readonly string TagEnemyBottomRight = "EnemyBottomRight";
+
     void Start()
     {
         cur_health = max_health;
@@ -32,10 +41,6 @@ public class Health : MonoBehaviour
     public void takeDamage(float amount)
     {
 
-        if(!gameOver)
-        {
-            DamagePopup2.Create(gameObject.transform.position, amount);
-        }
 
         cur_health -= amount;
         healthBar.fillAmount = cur_health / max_health;
@@ -72,17 +77,6 @@ public class Health : MonoBehaviour
         float f = TotalDamage;
         f = Mathf.Round(f * 10.0f) * 0.1f;
 
-        if (laserPopupTimer <= 0f)
-        {
-            if (!gameOver)
-            {
-                DamagePopup2.CreateLaser(gameObject.transform.position, f);
-                laserPopupTimer = 0.17f;
-            }
-
-        }
-
-
         cur_health -= amount;
         healthBar.fillAmount = cur_health / max_health;
         if (healthBar.fillAmount < 0.8f && healthBar.fillAmount > 0.6f)
@@ -117,8 +111,8 @@ public class Health : MonoBehaviour
         // Destroy literally erases an objects existence, thats why I kept the spawner away from the turrets
         // cus if the turret kills the spawner then spawns will stop 
 
-        if (gameObject.tag == "EnemyTopLeft" || gameObject.tag == "EnemyTopRight" || gameObject.tag == "EnemyLeft" ||
-            gameObject.tag == "EnemyRight" || gameObject.tag == "EnemyBottomLeft" || gameObject.tag == "EnemyBottomRight")
+        if (gameObject.CompareTag(TagEnemyTopLeft) || gameObject.CompareTag(TagEnemyTopRight) || gameObject.CompareTag(TagEnemyLeft) ||
+            gameObject.CompareTag(TagEnemyRight) || gameObject.CompareTag(TagEnemyBottomLeft) || gameObject.CompareTag(TagEnemyBottomRight))
         {
             Destroy(this.gameObject);
             PlayerStats.money += worth;
@@ -126,18 +120,54 @@ public class Health : MonoBehaviour
             WaveSpawnerTopRight_Main.EnemyCount--;
         }
 
-        if (gameObject.tag == "Wall")
+        else if (this.gameObject.CompareTag(TagWall))
         {
-            deadWallCounter++;
-            Destroy(this.gameObject);
-                
+
+            if (this.gameObject.name == "Hex Wall TopRight")
+            {
+                BasicMovement.WallTopRightDestroyed = true;
+                deadWallCounter++;
+                Destroy(this.gameObject);
+
+            }
+            else if (this.gameObject.name == "Hex Wall TopLeft")
+            {
+                BasicMovement.WallTopLeftDestroyed = true;
+                deadWallCounter++;
+                Destroy(this.gameObject);
+            }
+            else if (this.gameObject.name == "Hex Wall TopRight")
+            {
+                BasicMovement.WallRightDestroyed = true;
+                deadWallCounter++;
+                Destroy(this.gameObject);
+            }
+            else if (this.gameObject.name == "Hex Wall TopRight")
+            {
+                BasicMovement.WallLeftDestroyed = true;
+                deadWallCounter++;
+                Destroy(this.gameObject);
+            }
+            else if (this.gameObject.name == "Hex Wall TopRight")
+            {
+                BasicMovement.WallRightDestroyed = true;
+                deadWallCounter++;
+                Destroy(this.gameObject);
+            }
+            else if (this.gameObject.name == "Hex Wall TopRight")
+            {
+                BasicMovement.WallLeftDestroyed = true;
+                deadWallCounter++;
+                Destroy(this.gameObject);
+            }
         }
 
-        if (gameObject.tag == "Turret")
+        else if (gameObject.CompareTag(TagTurret))
         {
             Destroy(this.gameObject);
 
         }
+
     }
 
 
@@ -164,11 +194,6 @@ public class Health : MonoBehaviour
             {
                 cur_health -= poisonDamage;
                 healthBar.fillAmount = cur_health / max_health;
-
-                if (!gameOver)
-                {
-                    DamagePopup2.CreatePoison(gameObject.transform.position, poisonDamage);
-                }
 
                 if (healthBar.fillAmount < 0.8f && healthBar.fillAmount > 0.6f)
                 {

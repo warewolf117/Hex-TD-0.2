@@ -36,7 +36,7 @@ public class OxygenUI : MonoBehaviour
                         + ChangeMaterialColor.wallCrack3 + ChangeMaterialColor.wallCrack4
                         + ChangeMaterialColor.wallCrack5 + ChangeMaterialColor.wallCrack6);
 
-                Debug.Log(oxygenDepleteRate);
+                // Debug.Log(oxygenDepleteRate);
 
                 if (Health.deadWallCounter != previousDeadWallCounter)
                 {

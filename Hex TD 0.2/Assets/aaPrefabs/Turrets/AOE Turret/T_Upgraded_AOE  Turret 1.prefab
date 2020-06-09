@@ -493,7 +493,7 @@ GameObject:
   - component: {fileID: 3851666081217267172}
   - component: {fileID: 8311585620522251864}
   m_Layer: 0
-  m_Name: T_Upgraded_Laser Turret 1
+  m_Name: T_Upgraded_AOE  Turret 1
   m_TagString: Turret
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -529,8 +529,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a00e551548fb6c643ba98f8aaacb7e7f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  range: 15
-  fireRate: 2
+  range: 13
+  fireRate: 0.8
   bulletDamage: 0
   poisonDamage: 0
   aoeDamage: 5
