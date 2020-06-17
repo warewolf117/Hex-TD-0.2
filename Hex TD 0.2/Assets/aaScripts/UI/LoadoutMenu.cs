@@ -6,17 +6,21 @@ public class LoadoutMenu : MonoBehaviour
 
     public Button[] turretSelectButtons;
 
-    public static int turretQuantity = 3;
+    public static int turretQuantity = 4;
     public static int turretsSelected = 0;
     private int previousTurretsSelected = 0;
 
+    public static bool standartTurretSelected = false;
+    public static bool poisonTurretSelected = false;
+    public static bool laserTurretSelected = false;
+    public static bool minigunTurretSelected = false;
+    public static bool aoeTurretSelected = false;
+
+    private bool startupUpdate = true;
+     
     public Text numberTurretsSelectedText;
 
     public static LevelEndMenu levelProgress;
-
-    private void Start()
-    {
-    }
 
     public void selectTurrets()
     {
@@ -38,11 +42,55 @@ public class LoadoutMenu : MonoBehaviour
 
     private void Update()
     {
-        if (turretsSelected != previousTurretsSelected)
+        if (startupUpdate == true || turretsSelected != previousTurretsSelected)
         {
             numberTurretsSelectedText.text = turretQuantity.ToString();
             previousTurretsSelected = turretsSelected;
+            startupUpdate = false;
         }
+    }
+
+    public void StandartTurretSelected()
+    {
+        standartTurretSelected = true;
+    }
+    public void PoisonTurretSelected()
+    {
+        poisonTurretSelected = true;
+    }
+    public void LaserTurretSelected()
+    {
+        laserTurretSelected = true;
+    }
+    public void MinigunTurretSelected()
+    {
+        minigunTurretSelected = true;
+    }
+    public void AoETurretSelected()
+    {
+        aoeTurretSelected = true;
+    }
+
+
+    public void StandartTurretDeselected()
+    {
+        standartTurretSelected = false;
+    }
+    public void PoisonTurretDeselected()
+    {
+        poisonTurretSelected = false;
+    }
+    public void LaserTurretDeselected()
+    {
+        laserTurretSelected = false;
+    }
+    public void MinigunTurretDeselected()
+    {
+        minigunTurretSelected = false;
+    }
+    public void AoETurretDeselected()
+    {
+        aoeTurretSelected = false;
     }
 
 
