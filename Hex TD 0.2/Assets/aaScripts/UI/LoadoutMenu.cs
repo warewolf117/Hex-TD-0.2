@@ -8,7 +8,7 @@ public class LoadoutMenu : MonoBehaviour
 
     public static int turretQuantity = 4;
     public static int turretsSelected = 0;
-    private int previousTurretsSelected = 0;
+    public static int previousTurretsSelected = 0;
 
     public static bool standartTurretSelected = false;
     public static bool poisonTurretSelected = false;
