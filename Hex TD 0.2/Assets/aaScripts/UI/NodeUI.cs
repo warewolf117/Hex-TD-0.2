@@ -18,7 +18,7 @@ public class NodeUI : MonoBehaviour
     public static int damageValue;
     public static int rangeValue;
 
-    public TurretBlueprintShop standartTurret;
+    public TurretBlueprintShop standardTurret;
     public TurretBlueprintShop missileLauncher;
     public TurretBlueprintShop laserTurret;
 
