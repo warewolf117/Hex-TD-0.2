@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class TurretLevelUp : MonoBehaviour
 {
@@ -10,6 +11,14 @@ public class TurretLevelUp : MonoBehaviour
     int laserLevelUpCost = 12;
     int minigunLevelUpCost = 13;
     int aoeLevelUpCost = 14;
+
+    public Text upgradeCurrencyText;
+
+    public Text standardTurretLevelText;
+    public Text poisonTurretLevelText;
+    public Text laserTurretLevelText;
+    public Text minigunTurretLevelText;
+    public Text aoeTurretLevelText;
 
     bool[] standardUpgradeLevel = {true, false, false, false, false, false, false, false, false, false};
     bool[] poisonUpgradeLevel = { true, false, false, false, false, false, false, false, false, false };
@@ -29,33 +38,52 @@ public class TurretLevelUp : MonoBehaviour
     int minigunUpgradeLevelNumber = 0;
     int aoeUpgradeLevelNumber = 0;
 
+    private void Awake()
+    {
+        upgradeCurrencyText.text = PlayerStats.upgradeCurrency.ToString();
+    }
 
     public void LevelUpStandard()
     {       
             if (PlayerStats.upgradeCurrency >= standardLevelUpCost && standardPreviousUpgradeLevel < standardUpgradeLevelNumber
-            && (PlayerStats.upgradeCurrency - standardLevelUpCost) >= 0 && standardUpgradeLevelNumber < 11)
+            && (PlayerStats.upgradeCurrency - standardLevelUpCost) >= 0 && standardUpgradeLevelNumber < 9)
             {   
                 standardUpgradeLevel[standardUpgradeLevelNumber] = true;
-                standardLevelUpCost += standardLevelUpCost;
                 PlayerStats.upgradeCurrency -= standardLevelUpCost;
+                upgradeCurrencyText.text = PlayerStats.upgradeCurrency.ToString();
+                standardLevelUpCost += standardLevelUpCost;     
                 standardPreviousUpgradeLevel = standardUpgradeLevelNumber;
                 standardUpgradeLevelNumber++;
+                standardTurretLevelText.text = "LVL. " + (standardUpgradeLevelNumber + 1);
+
             
-                Debug.Log("upgrade level: " + standardUpgradeLevel[standardUpgradeLevelNumber]);
+                Debug.Log("upgrade level: " + standardUpgradeLevel[standardUpgradeLevelNumber -1]);
                 Debug.Log("upgradeCurrency: " + PlayerStats.upgradeCurrency);
-            }    
+            }
+        else if (standardUpgradeLevelNumber >= 9)
+        {
+            Debug.Log("max level reached");
+        }
+        else if (PlayerStats.upgradeCurrency < standardLevelUpCost || (PlayerStats.upgradeCurrency - standardLevelUpCost) < 0)
+                {
+                    Debug.Log("Insufficient funds");
+                }
+            
+
     }
 
     public void LevelUpPoison()
     {
         if (PlayerStats.upgradeCurrency >= poisonLevelUpCost && poisonPreviousUpgradeLevel < poisonUpgradeLevelNumber
-        && (PlayerStats.upgradeCurrency - poisonLevelUpCost) >= 0 && poisonUpgradeLevelNumber < 11)
+        && (PlayerStats.upgradeCurrency - poisonLevelUpCost) >= 0 && poisonUpgradeLevelNumber < 9)
         {
             poisonUpgradeLevel[poisonUpgradeLevelNumber] = true;
-            poisonLevelUpCost += poisonLevelUpCost;
             PlayerStats.upgradeCurrency -= poisonLevelUpCost;
+            upgradeCurrencyText.text = PlayerStats.upgradeCurrency.ToString();
+            poisonLevelUpCost += poisonLevelUpCost;
             poisonPreviousUpgradeLevel = poisonUpgradeLevelNumber;
             poisonUpgradeLevelNumber++;
+            poisonTurretLevelText.text = "LVL. " + (poisonUpgradeLevelNumber + 1);
 
             Debug.Log("upgrade level: " + poisonUpgradeLevel[poisonUpgradeLevelNumber]);
             Debug.Log("upgradeCurrency: " + PlayerStats.upgradeCurrency);
@@ -65,13 +93,15 @@ public class TurretLevelUp : MonoBehaviour
     public void LevelUpLaser()
     {
         if (PlayerStats.upgradeCurrency >= laserLevelUpCost && laserPreviousUpgradeLevel < laserUpgradeLevelNumber
-        && (PlayerStats.upgradeCurrency - laserLevelUpCost) >= 0 && laserUpgradeLevelNumber < 11)
+        && (PlayerStats.upgradeCurrency - laserLevelUpCost) >= 0 && laserUpgradeLevelNumber < 9)
         {
             laserUpgradeLevel[laserUpgradeLevelNumber] = true;
-            laserLevelUpCost += laserLevelUpCost;
             PlayerStats.upgradeCurrency -= laserLevelUpCost;
+            upgradeCurrencyText.text = PlayerStats.upgradeCurrency.ToString();
+            laserLevelUpCost += laserLevelUpCost;
             laserPreviousUpgradeLevel = laserUpgradeLevelNumber;
             laserUpgradeLevelNumber++;
+            laserTurretLevelText.text = "LVL. " + (laserUpgradeLevelNumber + 1);
 
             Debug.Log("upgrade level: " + laserUpgradeLevel[laserUpgradeLevelNumber]);
             Debug.Log("upgradeCurrency: " + PlayerStats.upgradeCurrency);
@@ -81,13 +111,15 @@ public class TurretLevelUp : MonoBehaviour
     public void LevelUpMinigun()
     {
         if (PlayerStats.upgradeCurrency >= minigunLevelUpCost && minigunPreviousUpgradeLevel < minigunUpgradeLevelNumber
-        && (PlayerStats.upgradeCurrency - minigunLevelUpCost) >= 0 && minigunUpgradeLevelNumber < 11)
+        && (PlayerStats.upgradeCurrency - minigunLevelUpCost) >= 0 && minigunUpgradeLevelNumber < 9)
         {
             minigunUpgradeLevel[minigunUpgradeLevelNumber] = true;
-            minigunLevelUpCost += minigunLevelUpCost;
             PlayerStats.upgradeCurrency -= minigunLevelUpCost;
+            upgradeCurrencyText.text = PlayerStats.upgradeCurrency.ToString();
+            minigunLevelUpCost += minigunLevelUpCost;
             minigunPreviousUpgradeLevel = minigunUpgradeLevelNumber;
             minigunUpgradeLevelNumber++;
+            minigunTurretLevelText.text = "LVL. " + (minigunUpgradeLevelNumber + 1);
 
             Debug.Log("upgrade level: " + minigunUpgradeLevel[minigunUpgradeLevelNumber]);
             Debug.Log("upgradeCurrency: " + PlayerStats.upgradeCurrency);
@@ -97,13 +129,15 @@ public class TurretLevelUp : MonoBehaviour
     public void LevelUpAoe()
     {
         if (PlayerStats.upgradeCurrency >= aoeLevelUpCost && aoePreviousUpgradeLevel < aoeUpgradeLevelNumber
-        && (PlayerStats.upgradeCurrency - aoeLevelUpCost) >= 0 && aoeUpgradeLevelNumber < 11)
+        && (PlayerStats.upgradeCurrency - aoeLevelUpCost) >= 0 && aoeUpgradeLevelNumber < 9)
         {
             aoeUpgradeLevel[aoeUpgradeLevelNumber] = true;
-            aoeLevelUpCost += aoeLevelUpCost;
             PlayerStats.upgradeCurrency -= aoeLevelUpCost;
+            upgradeCurrencyText.text = PlayerStats.upgradeCurrency.ToString();
+            aoeLevelUpCost += aoeLevelUpCost;
             aoePreviousUpgradeLevel = aoeUpgradeLevelNumber;
             aoeUpgradeLevelNumber++;
+            aoeTurretLevelText.text = "LVL. " + (aoeUpgradeLevelNumber + 1);
 
             Debug.Log("upgrade level: " + aoeUpgradeLevel[aoeUpgradeLevelNumber]);
             Debug.Log("upgradeCurrency: " + PlayerStats.upgradeCurrency);
