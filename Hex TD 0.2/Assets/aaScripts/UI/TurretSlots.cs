@@ -31,6 +31,7 @@ public class TurretSlots : MonoBehaviour
             slotPlaced = true;
             Debug.Log("Slot 5: Standart turret selected");
         }
+
         else if (poisonTurretPlaced == false && slotPlaced == false && LoadoutMenu.poisonTurretSelected == true)
         {
             //turretsSlot1[1].SetActive(true);

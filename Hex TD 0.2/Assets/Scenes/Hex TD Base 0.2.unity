@@ -303,6 +303,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Standard Turret Item S4
       objectReference: {fileID: 0}
+    - target: {fileID: 2090856915608775806, guid: 27f7dda7a437a8049af70167802d43a1,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2090856915608775807, guid: 27f7dda7a437a8049af70167802d43a1,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1673,7 +1678,7 @@ PrefabInstance:
     - target: {fileID: 1821426484789923260, guid: 52408470876f7e044b350d4e96a70351,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1821426484789923261, guid: 52408470876f7e044b350d4e96a70351,
         type: 3}
@@ -2586,7 +2591,7 @@ PrefabInstance:
     - target: {fileID: 2608979030222095041, guid: 3f0802afa927e8d419b4143c9a452226,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2608979030222095054, guid: 3f0802afa927e8d419b4143c9a452226,
         type: 3}
@@ -3063,36 +3068,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2cfecdfd5412ca54b89e894dd0b521e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  turretsSlot1:
-  - {fileID: 7694567427048335331, guid: 917f9121ca1a5b04dbf7883c3dcb4616, type: 3}
-  - {fileID: 9221111909173472851, guid: 2bca2e2997de6c641872128fc634c80a, type: 3}
-  - {fileID: 8623904671849291739, guid: a6833741b3dd98c4e97c5182347eae97, type: 3}
-  - {fileID: 3702282650648770512, guid: 1dea70df6ea145f44a9fcf7894e50eb1, type: 3}
-  - {fileID: 7730844738467876392, guid: 2c55f19d6d37b8b40b27a3941b09e4b6, type: 3}
-  turretsSlot2:
-  - {fileID: 3791640738778010923, guid: fbbefedd4cc6a9d4cac821fc579c369b, type: 3}
-  - {fileID: 5399551692400576864, guid: 5ff673165ebf6dc43b414d293ac80868, type: 3}
-  - {fileID: 2920724093844359049, guid: 75c3ab62349c10a49bf0b8a76d4f706a, type: 3}
-  - {fileID: 4238969580657697745, guid: 36960864188785e4297576c1715111a7, type: 3}
-  - {fileID: 4581009426270506436, guid: d67d4dee7c2f9ac4bbe8bdf575c7e9fc, type: 3}
-  turretsSlot3:
-  - {fileID: 6663911276040949425, guid: bb3751672c6a8434899f88290cc914ec, type: 3}
-  - {fileID: 642103280343239339, guid: acdb2187de2469f41ad2163040e89840, type: 3}
-  - {fileID: 8837553952440242732, guid: 22c9d3beb335de44da251cad9333b74f, type: 3}
-  - {fileID: 4003731526140011914, guid: e4f4c1bfdf4139f47b3f6d1a00e78a84, type: 3}
-  - {fileID: 6395440099557549719, guid: 9c6d8d1af46aa0540a108afc745796b4, type: 3}
-  turretsSlot4:
-  - {fileID: 2090856915608775806, guid: 27f7dda7a437a8049af70167802d43a1, type: 3}
-  - {fileID: 6316718383871275733, guid: bd5971c2db29786468f9db82f119e8a9, type: 3}
-  - {fileID: 2608979030222095041, guid: 3f0802afa927e8d419b4143c9a452226, type: 3}
-  - {fileID: 8026233598398316676, guid: 8ee91ea28bab59642a9d7cf0bd1b6cbd, type: 3}
-  - {fileID: 8125548430889023998, guid: a055212329348114ca0df5c81593afdb, type: 3}
-  turretsSlot5:
-  - {fileID: 9147568013438883933, guid: c8ffc3ac55ca94146a19bb5597d70cb6, type: 3}
-  - {fileID: 4532236880115801032, guid: 8e7ea02e5b4ae5249aa5bcd0578b3fe5, type: 3}
-  - {fileID: 4238880307705217651, guid: e18eafc2400d378428b66f3e494a0419, type: 3}
-  - {fileID: 1583452698360788114, guid: 56732784333b43c4aa62b29d032417b8, type: 3}
-  - {fileID: 1821426484789923260, guid: 52408470876f7e044b350d4e96a70351, type: 3}
 --- !u!1 &830558127 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7117491429222536066, guid: 981779e478cb8ba459988c6efa96add0,
@@ -4768,6 +4743,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Standard Turret Item S3
       objectReference: {fileID: 0}
+    - target: {fileID: 6663911276040949425, guid: bb3751672c6a8434899f88290cc914ec,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6663911276040949438, guid: bb3751672c6a8434899f88290cc914ec,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -5028,6 +5008,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startMoney: 600
+  startUpgradeCurrency: 400
   startOxygen: 100
 --- !u!114 &1105057853
 MonoBehaviour:
@@ -5837,7 +5818,7 @@ PrefabInstance:
     - target: {fileID: 7694567427048335331, guid: 917f9121ca1a5b04dbf7883c3dcb4616,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7694567427048335340, guid: 917f9121ca1a5b04dbf7883c3dcb4616,
         type: 3}
@@ -5882,7 +5863,7 @@ PrefabInstance:
     - target: {fileID: 4003731526140011914, guid: e4f4c1bfdf4139f47b3f6d1a00e78a84,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4003731526140011915, guid: e4f4c1bfdf4139f47b3f6d1a00e78a84,
         type: 3}
@@ -7098,6 +7079,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Standard Turret Item S2
       objectReference: {fileID: 0}
+    - target: {fileID: 3791640738778010923, guid: fbbefedd4cc6a9d4cac821fc579c369b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fbbefedd4cc6a9d4cac821fc579c369b, type: 3}
 --- !u!224 &1546736518 stripped
@@ -7571,7 +7557,7 @@ PrefabInstance:
     - target: {fileID: 5399551692400576864, guid: 5ff673165ebf6dc43b414d293ac80868,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5399551692400576865, guid: 5ff673165ebf6dc43b414d293ac80868,
         type: 3}
@@ -10719,7 +10705,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1889453732092101823
 Transform:
   m_ObjectHideFlags: 0

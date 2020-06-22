@@ -2,10 +2,13 @@
 
 public class PlayerStats : MonoBehaviour
 {
+    public static int Rounds;
+
     public static int money; 
     public int startMoney = 400;
 
-    public static int Rounds;
+    public static int upgradeCurrency;
+    public int startUpgradeCurrency = 4000;
 
     public static int oxygen;
     public int startOxygen = 400;
@@ -15,6 +18,7 @@ public class PlayerStats : MonoBehaviour
         money = startMoney;
         Rounds = 0;
         oxygen = startOxygen;
+        upgradeCurrency = startUpgradeCurrency;
     }
 
 }

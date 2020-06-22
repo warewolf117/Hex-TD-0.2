@@ -91,10 +91,6 @@ public class Node : MonoBehaviour
         child2.transform.GetComponent<MeshRenderer>().material.color = originalColor;
     }
 
-    private void Update()
-    {
-       
-    }
 
 
     void BuildTurret(TurretBlueprintShop blueprint)
