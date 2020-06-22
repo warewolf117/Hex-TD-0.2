@@ -6,11 +6,12 @@ public class LoadoutMenu : MonoBehaviour
 
     public Button[] turretSelectButtons;
 
-    public static int turretQuantity = 4;
+    public static int turretquanitybase = 3;
+    public static int turretQuantity;
     public static int turretsSelected = 0;
     public static int previousTurretsSelected = 0;
 
-    public static bool standartTurretSelected = false;
+    public static bool standardTurretSelected = false;
     public static bool poisonTurretSelected = false;
     public static bool laserTurretSelected = false;
     public static bool minigunTurretSelected = false;
@@ -22,6 +23,11 @@ public class LoadoutMenu : MonoBehaviour
 
     public static LevelEndMenu levelProgress;
 
+
+    private void Start()
+    {
+        turretQuantity = turretquanitybase;
+    }
     public void selectTurrets()
     {
         if (turretsSelected < (turretQuantity + turretsSelected))
@@ -29,6 +35,7 @@ public class LoadoutMenu : MonoBehaviour
             turretsSelected++;
             turretQuantity--;
         }
+
     }
 
    public void deselectTurrets()
@@ -38,6 +45,7 @@ public class LoadoutMenu : MonoBehaviour
             turretsSelected--;
             turretQuantity++;
         }
+
     }
 
     private void Update()
@@ -50,9 +58,14 @@ public class LoadoutMenu : MonoBehaviour
         }
     }
 
-    public void StandartTurretSelected()
+    public void ApplyPressed()
     {
-        standartTurretSelected = true;
+        numberTurretsSelectedText.text = turretQuantity.ToString();
+    }
+
+    public void StandardTurretSelected()
+    {
+        standardTurretSelected = true;
     }
     public void PoisonTurretSelected()
     {
@@ -72,9 +85,9 @@ public class LoadoutMenu : MonoBehaviour
     }
 
 
-    public void StandartTurretDeselected()
+    public void StandardTurretDeselected()
     {
-        standartTurretSelected = false;
+        standardTurretSelected = false;
     }
     public void PoisonTurretDeselected()
     {

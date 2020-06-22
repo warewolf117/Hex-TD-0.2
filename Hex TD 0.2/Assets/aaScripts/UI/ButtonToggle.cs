@@ -25,5 +25,10 @@ public class ButtonToggle : MonoBehaviour
         
     }
 
+    public void Apply()
+    {
+        deselectButton.SetActive(false);
+        selectButton.SetActive(true);
+    }
  
 }
