@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using JetBrains.Annotations;
+using UnityEngine;
 using UnityEngine.UI;
 
 public class OxygenUI : MonoBehaviour
@@ -19,10 +20,16 @@ public class OxygenUI : MonoBehaviour
 
     private int previousDeadWallCounter = 0;
 
+    bool startupUpdate = false;
   
     void Update()
     {
         oxygen = PlayerStats.oxygen;
+        if (startupUpdate == false)
+        {
+            UpdateOxygen();
+            startupUpdate = true;
+        }
 
         if (oxygen > 0)
         {
@@ -68,23 +75,20 @@ public class OxygenUI : MonoBehaviour
                 }  
             }
             timeSinceLastCalled += Time.deltaTime;
-            if (timeSinceLastCalled > oxygenDepleteRate)
+            if (timeSinceLastCalled > oxygenDepleteRate )
             {
                 PlayerStats.oxygen--;
                 timeSinceLastCalled = 0;
                 if (oxygen != previousOxygen)
                 {
-                    oxygenText.text = PlayerStats.oxygen.ToString();
+                    UpdateOxygen();
                     previousOxygen = oxygen;
                 }
             }
         }
-
-
-
-
-
-
-
+    }
+    public void UpdateOxygen()
+    {
+        oxygenText.text = PlayerStats.oxygen.ToString();
     }
 }

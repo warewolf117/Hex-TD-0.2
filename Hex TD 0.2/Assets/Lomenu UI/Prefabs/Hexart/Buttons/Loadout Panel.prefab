@@ -4260,7 +4260,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3f8bc2c1a0c2be4cbe6ccc8437d6dfd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  turretSelectButtons: []
   numberTurretsSelectedText: {fileID: 8777514140509199095}
 --- !u!114 &1576601046
 MonoBehaviour:
@@ -4292,6 +4291,16 @@ MonoBehaviour:
   laserTurretLevelText: {fileID: 2405882277317302198}
   minigunTurretLevelText: {fileID: 3096421563016239912}
   aoeTurretLevelText: {fileID: 6488922466070787629}
+  standardLevelUpCostText: {fileID: 783364096715919509}
+  poisonLevelUpCostText: {fileID: 5937036361746577986}
+  laserLevelUpCostText: {fileID: 1409826889895490370}
+  minigunLevelUpCostText: {fileID: 2947485137741925531}
+  aoeLevelUpCostText: {fileID: 5598009953824931243}
+  standardButton: {fileID: 8726398254907690258}
+  poisonButton: {fileID: 5880119832256087667}
+  laserButton: {fileID: 8366034204564748367}
+  minigunButton: {fileID: 693726910431436992}
+  aoeButton: {fileID: 8212707742822251773}
 --- !u!114 &1576601048
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4305,7 +4314,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startMoney: 400
-  startUpgradeCurrency: 70000
   startOxygen: 400
 --- !u!1 &3973228782266238368
 GameObject:
@@ -10234,7 +10242,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Level Up
+  m_Text: "Level Up \n$10"
 --- !u!1 &8416464127054397947
 GameObject:
   m_ObjectHideFlags: 0

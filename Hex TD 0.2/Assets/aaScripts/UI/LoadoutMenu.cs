@@ -4,8 +4,6 @@ using UnityEngine.UI;
 public class LoadoutMenu : MonoBehaviour
 {
 
-    public Button[] turretSelectButtons;
-
     public static int turretquanitybase = 3;
     public static int turretQuantity;
     public static int turretsSelected = 0;

@@ -7,6 +7,7 @@ public class ScreenFader : MonoBehaviour
 {
     public Image Image;
     public AnimationCurve curve;
+    int fadeSpeed = 2;
 
     private void Start()
     {
@@ -24,7 +25,7 @@ public class ScreenFader : MonoBehaviour
 
         while (t > 0)
         {
-            t -= Time.deltaTime * 1f;
+            t -= Time.deltaTime * fadeSpeed;
             float a = curve.Evaluate(t); //controls the curve
             Image.color = new Color(0f, 0f, 0f, a); // this modifies the alpha value
             WaveSpawnerTopRight_Main.fadeIn = true;
@@ -58,7 +59,7 @@ public class ScreenFader : MonoBehaviour
 
         while (t < 1f)
         {
-            t += Time.deltaTime * 0.5f;
+            t += Time.deltaTime * fadeSpeed;
             float a = curve.Evaluate(t); //controls the curve
             Image.color = new Color(0f, 0f, 0f, a); // this modifies the alpha value
             yield return 0; //skips to the next frame

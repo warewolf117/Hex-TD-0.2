@@ -6,6 +6,7 @@ public class LevelEndMenu : MonoBehaviour
     public GameObject ui;
     public GameObject nextLevelButton;
     public Text levelClearedFailedText;
+    public Text currencyGained;
 
     public GameObject SaveMoney;
 
@@ -14,6 +15,7 @@ public class LevelEndMenu : MonoBehaviour
 
     public static int highestClearedLevel = 1;
     public int actualLevel;
+    public int levelCurrencyGained;
 
     /*public string menuSceneName = "MainMenu";
     ScreenFader screenFader;
@@ -29,9 +31,11 @@ public class LevelEndMenu : MonoBehaviour
         {
             ui.SetActive(true);
             levelClearedFailedText.text = "Cleared";
+            currencyGained.text = "Got " + levelCurrencyGained + " currency";
             nextLevelButton.SetActive(true);
             if (highestClearedLevel <= actualLevel)
             highestClearedLevel ++;
+            TurretLevelUp.upgradeCurrency += levelCurrencyGained;
         }
         
         
