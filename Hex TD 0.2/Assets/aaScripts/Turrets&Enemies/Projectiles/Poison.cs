@@ -7,8 +7,8 @@ public class Poison : MonoBehaviour
     public GameObject Baudio;
     private Transform target;
 
-    public int damage;
-    public int impactdamage;
+    public float damage;
+    public float impactdamage;
     public float speed = 70f;
     public float SplashRadius = 0f;
     public GameObject impactEffect;

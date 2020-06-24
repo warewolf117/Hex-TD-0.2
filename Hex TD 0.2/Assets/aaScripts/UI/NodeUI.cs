@@ -15,7 +15,7 @@ public class NodeUI : MonoBehaviour
     public Text sellAmmount;
 
     public static float fireRateValue;
-    public static int damageValue;
+    public static float damageValue;
     public static int rangeValue;
 
     public TurretBlueprintShop standardTurret;
@@ -26,15 +26,14 @@ public class NodeUI : MonoBehaviour
     public Button upgradeButton;
 
     public bool tutorialCounter = false;
-
+    
     public void Stats()
     {
+        damageValue= Mathf.Round(damageValue * 10.0f) * 0.1f;
+
         fireRate.text = fireRateValue.ToString();
-
         damage.text = damageValue.ToString();
-
         range.text = rangeValue.ToString();
-
     }
 
 
@@ -76,17 +75,9 @@ public class NodeUI : MonoBehaviour
 
     }
 
-   /* public void DeactivateButton()
-    {
-        if (checkUI)
-        {
-            disableUIButton.SetActive(false);
-            checkUI = false;
-        }
-    }*/
 
     public void Upgrade()
-    {
+    {   
         target.UpgradeTurret(this.gameObject);
         tutorialCounter = true;
     }

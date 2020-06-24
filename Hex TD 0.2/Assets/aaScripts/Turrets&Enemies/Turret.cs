@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 using UnityEngine.SocialPlatforms;
+using JetBrains.Annotations;
 
 public class Turret : MonoBehaviour
 {
@@ -20,9 +21,10 @@ public class Turret : MonoBehaviour
     public int range = 15;
     public float fireRate = 1f;
     private float startFireRate;
-    public int bulletDamage;
-    public int poisonDamage;
-    public int aoeDamage;
+    private float statMultiplier = 1;
+    public float bulletDamage;
+    public float poisonDamage;
+    public float aoeDamage;
 
     public static float rangeRender; 
     public float healthStatic;
@@ -42,7 +44,7 @@ public class Turret : MonoBehaviour
 
     public bool useLaser = false;
 
-    public int LaserDamage;
+    public float laserDamage;
 
     public float Slowpct = 0.3f;
 
@@ -66,20 +68,51 @@ public class Turret : MonoBehaviour
 
 
  
-    void Start()
-    {
+    void Awake()
+    {    
+        if(useBullet && !useMinigun)
+        {
+            statMultiplier = TurretLevelUp.standardTurretMultiplier;
+            bulletDamage *= statMultiplier;
+            bulletDamage = Mathf.Round(bulletDamage * 10.0f) * 0.1f;
+        }
+
+        if(usePoison)
+        {
+            statMultiplier = TurretLevelUp.poisonTurretMultiplier;
+            bulletDamage *= statMultiplier;
+            bulletDamage = Mathf.Round(bulletDamage * 10.0f) * 0.1f;
+            poisonDamage *= statMultiplier;
+            poisonDamage = Mathf.Round(poisonDamage * 10.0f) * 0.1f;
+        }
+
+        if (useLaser)
+        {
+            statMultiplier = TurretLevelUp.laserTurretMultiplier;
+            laserDamage *= statMultiplier;
+            laserDamage = Mathf.Round(laserDamage * 10.0f) * 0.1f;
+        }
+
+        if(useMinigun && useBullet)
+        {
+            statMultiplier = TurretLevelUp.minigunTurretMultiplier;
+            bulletDamage *= statMultiplier;
+            bulletDamage = Mathf.Round(bulletDamage * 10.0f) * 0.1f;
+        }
+
+        if(useAOE)
+        {
+            statMultiplier = TurretLevelUp.aoeTurretMultiplier;
+            aoeDamage *= statMultiplier;
+            aoeDamage = Mathf.Round(aoeDamage * 10.0f) * 0.1f;
+        }
+        
+
         startFireRate = fireRate;
         rangeRender = range;
       //  healthStatic = this.GetComponent<Health>().max_health;
 
-        if (useLaser == true)
-        {
-            impactDamageStatic = LaserDamage;
-        }
-        else
-        {
-            impactDamageStatic = bulletDamage;
-        }
+     
 
     //   if (useLaser == true)
     //    {
@@ -99,7 +132,7 @@ public class Turret : MonoBehaviour
         turretSector = nodeSector;
     }
 
-
+    
 
     void UpdateTarget()
     {
@@ -291,7 +324,7 @@ public class Turret : MonoBehaviour
     void Laser()
 
     {
-        targetEnemy.takeDamageLaser(LaserDamage * Time.deltaTime);
+        targetEnemy.takeDamageLaser(laserDamage * Time.deltaTime);
         Maudio.Play();
         targetEnemyM.Slow(Slowpct);
 

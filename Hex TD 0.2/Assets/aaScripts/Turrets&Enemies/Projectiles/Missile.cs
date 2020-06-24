@@ -7,7 +7,7 @@ public class Missile : MonoBehaviour
     public GameObject Maudio;
     private Transform target;
 
-    public int damage;
+    public float damage;
     public float speed = 70f;
     public float SplashRadius = 0f;
     public GameObject impactEffect;

@@ -44,7 +44,6 @@ public class Node : MonoBehaviour
     private Color originalColorE;
 
     static readonly int materialEmissionColor = Shader.PropertyToID("_EmissionColor");
-    // NodeUI nodeUI;
 
     void Start()
     {
@@ -114,7 +113,7 @@ public class Node : MonoBehaviour
 
     }
 
-    void SendStatsToUI(GameObject turretS)
+    public void SendStatsToUI(GameObject turretS)
     {
         Turret currentTurret = turretS.GetComponent<Turret>();
         child = turretS.transform.GetChild(0).gameObject;
@@ -134,9 +133,8 @@ public class Node : MonoBehaviour
         }
         else
         {
-            NodeUI.damageValue = currentTurret.LaserDamage;
+            NodeUI.damageValue = currentTurret.laserDamage;
         }
-
     }
 
     public void UpgradeTurret(GameObject nodeUI)

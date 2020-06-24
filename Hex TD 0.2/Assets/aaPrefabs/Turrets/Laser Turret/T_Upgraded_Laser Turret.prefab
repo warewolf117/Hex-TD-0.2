@@ -532,13 +532,18 @@ MonoBehaviour:
   range: 10
   fireRate: 1
   bulletDamage: 0
+  poisonDamage: 0
+  aoeDamage: 0
   healthStatic: 0
   impactDamageStatic: 0
   useBullet: 0
   useMissile: 0
+  usePoison: 0
+  useMinigun: 0
+  useAOE: 0
   focusBack: 0
   useLaser: 1
-  LaserDamage: 50
+  laserDamage: 60
   Slowpct: 0.5
   turnSpeed: 10
   firePoint: {fileID: 1692980856274244631}
@@ -693,6 +698,7 @@ MonoBehaviour:
   healthBar: {fileID: 0}
   worth: 0
   TotalDamage: 0
+  isPoisoned: 0
 --- !u!208 &-7552102420278382102
 NavMeshObstacle:
   m_ObjectHideFlags: 0

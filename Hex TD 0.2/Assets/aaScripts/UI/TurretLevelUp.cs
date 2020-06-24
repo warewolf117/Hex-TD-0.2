@@ -32,7 +32,50 @@ public class TurretLevelUp : MonoBehaviour
     public Button minigunButton;
     public Button aoeButton;
 
-    bool[] standardUpgradeLevel = {true, false, false, false, false, false, false, false, false, false};
+    //Standard Turret Values
+    public Text StandardText_Damage;
+    public Text StandardText_RateOfFire;
+    public Text StandardText_Range;
+
+    private float StandardValue_Damage = 15;
+    private float StandardValue_RateOfFire = 1;
+    private float StandardValue_Range = 10;
+
+    //Poison Turret Values
+    public Text PoisonText_Damage;
+    public Text PoisonText_RateOfFire;
+    public Text PoisonText_Range;
+
+    private float PoisonValue_Damage = 15;
+    private float PoisonValue_RateOfFire = 1;
+    private float PoisonValue_Range = 10;
+    //Laser Turret Values
+    public Text LaserText_Damage;
+    public Text LaserText_RateOfFire;
+    public Text LaserText_Range;
+
+    private float LaserValue_Damage = 15;
+    private float LaserValue_RateOfFire = 1;
+    private float LaserValue_Range = 10;
+    //Minigun Turret Values
+    public Text MinigunText_Damage;
+    public Text MinigunText_RateOfFire;
+    public Text MinigunText_Range;
+
+    private float MinigunValue_Damage = 15;
+    private float MinigunValue_RateOfFire = 1;
+    private float MinigunValue_Range = 10;
+    //AOE Turret Values
+    public Text AOEText_Damage;
+    public Text AOEText_RateOfFire;
+    public Text AOEText_Range;
+
+    private float AOEValue_Damage = 15;
+    private float AOEValue_RateOfFire = 1;
+    private float AOEValue_Range = 10;
+
+
+    bool[] standardUpgradeLevel = { true, false, false, false, false, false, false, false, false, false };
     bool[] poisonUpgradeLevel = { true, false, false, false, false, false, false, false, false, false };
     bool[] laserUpgradeLevel = { true, false, false, false, false, false, false, false, false, false };
     bool[] minigunUpgradeLevel = { true, false, false, false, false, false, false, false, false, false };
@@ -50,6 +93,12 @@ public class TurretLevelUp : MonoBehaviour
     int minigunUpgradeLevelNumber = 0;
     int aoeUpgradeLevelNumber = 0;
 
+    public static float standardTurretMultiplier = 1;
+    public static float poisonTurretMultiplier = 1;
+    public static float laserTurretMultiplier = 1;
+    public static float minigunTurretMultiplier = 1;
+    public static float aoeTurretMultiplier = 1;
+
     bool startupUpdate = false;
 
     public static int upgradeCurrency = 50000;
@@ -66,6 +115,8 @@ public class TurretLevelUp : MonoBehaviour
             standardLevelUpCostText.text = "Level Up\n$ " + standardLevelUpCost;
             standardPreviousUpgradeLevel = standardUpgradeLevelNumber;
             standardUpgradeLevelNumber++;
+            standardTurretMultiplier *= 1.2f;
+            StandardText_Damage.text = (StandardValue_Damage * standardTurretMultiplier).ToString("F0");
             standardTurretLevelText.text = "LVL. " + (standardUpgradeLevelNumber + 1);
         }
         if (standardUpgradeLevelNumber == 9)
@@ -89,6 +140,7 @@ public class TurretLevelUp : MonoBehaviour
             poisonLevelUpCostText.text = "Level Up\n$ " + poisonLevelUpCost;
             poisonPreviousUpgradeLevel = poisonUpgradeLevelNumber;
             poisonUpgradeLevelNumber++;
+            poisonTurretMultiplier *= 1.2f;
             poisonTurretLevelText.text = "LVL. " + (poisonUpgradeLevelNumber + 1);
         }
         if (poisonUpgradeLevelNumber == 9)
@@ -111,6 +163,7 @@ public class TurretLevelUp : MonoBehaviour
             laserLevelUpCostText.text = "Level Up\n$ " + laserLevelUpCost;
             laserPreviousUpgradeLevel = laserUpgradeLevelNumber;
             laserUpgradeLevelNumber++;
+            laserTurretMultiplier *= 1.2f;
             laserTurretLevelText.text = "LVL. " + (laserUpgradeLevelNumber + 1);
         }
         if (laserUpgradeLevelNumber == 9)
@@ -133,6 +186,7 @@ public class TurretLevelUp : MonoBehaviour
             minigunLevelUpCostText.text = "Level Up\n$ " + minigunLevelUpCost;
             minigunPreviousUpgradeLevel = minigunUpgradeLevelNumber;
             minigunUpgradeLevelNumber++;
+            minigunTurretMultiplier *= 1.2f;
             minigunTurretLevelText.text = "LVL. " + (minigunUpgradeLevelNumber + 1);
         }
         if (minigunUpgradeLevelNumber == 9)
@@ -155,6 +209,7 @@ public class TurretLevelUp : MonoBehaviour
             aoeLevelUpCostText.text = "Level Up\n$ " + aoeLevelUpCost;
             aoePreviousUpgradeLevel = aoeUpgradeLevelNumber;
             aoeUpgradeLevelNumber++;
+            aoeTurretMultiplier *= 1.2f;
             aoeTurretLevelText.text = "LVL. " + (aoeUpgradeLevelNumber + 1);
         }
         if (aoeUpgradeLevelNumber == 9)
