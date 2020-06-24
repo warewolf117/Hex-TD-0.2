@@ -21,26 +21,16 @@ public class BasicMovement : MonoBehaviour
 
     public static bool WallTopRightDestroyed = false;
     public static bool WallBottomRightDestroyed = false;
-    public static bool WallRightDestroyed = false;
     public static bool WallTopLeftDestroyed = false;
     public static bool WallBottomLeftDestroyed = false;
-    public static bool WallLeftDestroyed = false;
 
-    bool topLeft = false;
-    bool topRight = false;
     bool Left = false;
     bool Right = false;
-    bool bottomLeft = false;
-    bool bottomRight = false;
 
     bool meshTargetChanged = false;
 
-    readonly string TagEnemyTopRight = "EnemyTopRight";
-    readonly string TagEnemyTopLeft = "EnemyTopLeft";
     readonly string TagEnemyRight = "EnemyRight";
     readonly string TagEnemyLeft = "EnemyLeft";
-    readonly string TagEnemyBottomRight = "EnemyBottomRight";
-    readonly string TagEnemyBottomLeft = "EnemyBottomLeft";
 
 
     public void MoveTarget(Transform moveTarget)
@@ -52,40 +42,11 @@ public class BasicMovement : MonoBehaviour
     {
         currentSpeed = startingSpeed;
 
-        if (gameObject.CompareTag(TagEnemyTopRight))
-        {
-            topRight = true;
-            if (WallTopRightDestroyed)
-            {
-                navMeshAgent.destination = CenterTarget.position;
-            }
-            else
-            {
-                if (gameObject.activeSelf)
-                {
-                    navMeshAgent.destination = target.position;
-                }
-            }
-        }
-        else if (gameObject.CompareTag(TagEnemyTopLeft))
-        {
-            topLeft = true;
-            if (WallTopLeftDestroyed)
-            {
-                navMeshAgent.destination = CenterTarget.position;
-            }
-            else
-            {
-                if (gameObject.activeSelf)
-                {
-                    navMeshAgent.destination = target.position;
-                }
-            }
-        }
-        else if (gameObject.CompareTag(TagEnemyRight))
+
+        if (gameObject.CompareTag(TagEnemyRight))
         {
             Right = true;
-            if (WallRightDestroyed)
+            if (WallTopRightDestroyed || WallBottomRightDestroyed)
             {
                 navMeshAgent.destination = CenterTarget.position;
             }
@@ -100,7 +61,7 @@ public class BasicMovement : MonoBehaviour
         else if(gameObject.CompareTag(TagEnemyLeft))
         {
             Left = true;
-            if (WallLeftDestroyed)
+            if (WallTopLeftDestroyed || WallBottomLeftDestroyed)
             {
                 navMeshAgent.destination = CenterTarget.position;
             }
@@ -112,39 +73,7 @@ public class BasicMovement : MonoBehaviour
                 }
             }
         }
-        else if (gameObject.CompareTag(TagEnemyBottomRight))
-        {
-            bottomRight = true;
-            if (WallBottomRightDestroyed)
-            {
-                navMeshAgent.destination = CenterTarget.position;
-            }
-            else
-            {
-                if (gameObject.activeSelf)
-                {
-                    navMeshAgent.destination = target.position;
-                }
-            }
-        }
-        else if (gameObject.CompareTag(TagEnemyBottomLeft))
-        {
-            bottomLeft = true;
-            if (WallBottomLeftDestroyed)
-            {
-                navMeshAgent.destination = CenterTarget.position;
-            }
-            else
-            {
-                if (gameObject.activeSelf)
-                {
-                    navMeshAgent.destination = target.position;
-                }
-            }
-        }
-
-
-
+       
     } 
     public void Slow(float pct)
     {
@@ -172,25 +101,10 @@ public class BasicMovement : MonoBehaviour
         if (meshTargetChanged)
             return;
 
-        if (topRight)
+
+        if (Right)
         {
-            if (WallTopRightDestroyed)
-            {
-                navMeshAgent.destination = CenterTarget.position;
-                meshTargetChanged = true;
-            }
-        }
-        else if(topLeft)
-        {
-            if (WallTopLeftDestroyed)
-            {
-                navMeshAgent.destination = CenterTarget.position;
-                meshTargetChanged = true;
-            }
-        }
-        else if (Right)
-        {
-            if (WallRightDestroyed)
+            if (WallTopRightDestroyed || WallBottomRightDestroyed)
             {
                 navMeshAgent.destination = CenterTarget.position;
                 meshTargetChanged = true;
@@ -199,28 +113,12 @@ public class BasicMovement : MonoBehaviour
 
         else if (Left)
         {
-            if (WallLeftDestroyed)
+            if (WallTopLeftDestroyed || WallBottomLeftDestroyed)
             {
                 navMeshAgent.destination = CenterTarget.position;
                 meshTargetChanged = true;
             }
-        }
-        else if (bottomRight)
-        {
-            if (WallRightDestroyed)
-            {
-                navMeshAgent.destination = CenterTarget.position;
-                meshTargetChanged = true;
-            }
-        }
-        else if (bottomLeft)
-        {
-            if (WallLeftDestroyed)
-            {
-                navMeshAgent.destination = CenterTarget.position;
-                meshTargetChanged = true;
-            }
-        }
+        }        
     }
 }
    

@@ -64,7 +64,7 @@ public class WaveSpawnerBottomLeft : MonoBehaviour
             if (noEnemiesComing == false)
             {
                 waveStarter.SetActive(true);
-                Instantiate(waveStarter, WaveIndicatorPosition.position, Quaternion.Euler(90f, -120f, 60f));
+                Instantiate(waveStarter, WaveIndicatorPosition.position, Quaternion.Euler(90f, -90f, 30f));
                 waveStarterPlaced = true;
 
             }
@@ -98,7 +98,7 @@ public class WaveSpawnerBottomLeft : MonoBehaviour
             if (waveIndicatorPlaced == false && waveIndex > 1 && noEnemiesComing == false)
             {
                 waveIndicator.SetActive(true);
-                Instantiate(waveIndicator, WaveIndicatorPosition.position, Quaternion.Euler(90f, -120f, 60f));
+                Instantiate(waveIndicator, WaveIndicatorPosition.position, Quaternion.Euler(90f, -90f, 30f));
 
                 waveIndicatorPlaced = true;
             }
@@ -134,7 +134,7 @@ public class WaveSpawnerBottomLeft : MonoBehaviour
                 BasicMovement basicMovement1 = enemy.transform.gameObject.GetComponent<BasicMovement>();
                 basicMovement1.MoveTarget(Target1);
                 clone = Instantiate(enemy, spawnPoint1.position + position1, spawnPoint1.rotation);
-                clone.tag = "EnemyBottomLeft";
+                clone.tag = "EnemyLeft";
                 Wave.EnemiesAlive++;
                 spawnSpacer++;
                 
@@ -147,7 +147,7 @@ public class WaveSpawnerBottomLeft : MonoBehaviour
                 BasicMovement basicMovement2 = enemy.transform.gameObject.GetComponent<BasicMovement>();
                 basicMovement2.MoveTarget(Target2);
                 clone = Instantiate(enemy, spawnPoint2.position + position2, spawnPoint2.rotation);
-                clone.tag = "EnemyBottomLeft";
+                clone.tag = "EnemyLeft";
                 Wave.EnemiesAlive++;
                 spawnSpacer++;
                 
@@ -158,7 +158,7 @@ public class WaveSpawnerBottomLeft : MonoBehaviour
                 BasicMovement basicMovement3 = enemy.transform.gameObject.GetComponent<BasicMovement>();
                 basicMovement3.MoveTarget(Target3);
                 clone = Instantiate(enemy, spawnPoint3.position + position3, spawnPoint3.rotation);
-                clone.tag = "EnemyBottomLeft";
+                clone.tag = "EnemyLeft";
                 Wave.EnemiesAlive++;
                 spawnSpacer++;
                 
@@ -170,7 +170,7 @@ public class WaveSpawnerBottomLeft : MonoBehaviour
                 BasicMovement basicMovement4 = enemy.transform.gameObject.GetComponent<BasicMovement>();
                 basicMovement4.MoveTarget(Target4);
                 clone = Instantiate(enemy, spawnPoint4.position + position4, spawnPoint4.rotation);
-                clone.tag = "EnemyBottomLeft";
+                clone.tag = "EnemyLeft";
                 Wave.EnemiesAlive++;
                 spawnSpacer++;
                 
@@ -181,7 +181,7 @@ public class WaveSpawnerBottomLeft : MonoBehaviour
                 BasicMovement basicMovement5 = enemy.transform.gameObject.GetComponent<BasicMovement>();
                 basicMovement5.MoveTarget(Target5);
                 clone = Instantiate(enemy, spawnPoint5.position + position5, spawnPoint5.rotation);
-                clone.tag = "EnemyBottomLeft";
+                clone.tag = "EnemyLeft";
                 Wave.EnemiesAlive++;
                 spawnSpacer = 1;
                

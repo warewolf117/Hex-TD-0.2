@@ -61,12 +61,9 @@ public class Turret : MonoBehaviour
     public GameObject turretGhost;
 
     private string GhostTurret = "GhostTurret";
-    private string EnemyTopLeft = "EnemyTopLeft";
-    private string EnemyTopRight = "EnemyTopRight";
     private string EnemyRight = "EnemyRight";
     private string EnemyLeft = "EnemyLeft";
-    private string EnemyBottomRight = "EnemyBottomRight";
-    private string EnemyBottomLeft = "EnemyBottomLeft";
+
 
  
     void Start()
@@ -111,64 +108,13 @@ public class Turret : MonoBehaviour
 
         if (turretSector == 1)
         {
-            enemies = GameObject.FindGameObjectsWithTag(EnemyTopLeft);
+            enemies = GameObject.FindGameObjectsWithTag(EnemyLeft);
         }
         else if (turretSector == 2)
         {
-            var enemy1 = GameObject.FindGameObjectsWithTag(EnemyTopLeft);
-            var enemy2 = GameObject.FindGameObjectsWithTag(EnemyTopRight);
-            enemies = enemy1.Concat(enemy2).ToArray();
-        }
-        else if (turretSector == 3)
-        {
-            enemies = GameObject.FindGameObjectsWithTag(EnemyTopRight);
-        }
-        else if (turretSector == 4)
-        {
-            var enemy1 = GameObject.FindGameObjectsWithTag(EnemyTopRight);
-            var enemy2 = GameObject.FindGameObjectsWithTag(EnemyRight);
-            enemies = enemy1.Concat(enemy2).ToArray();
-        }
-        else if (turretSector == 5)
-        {
             enemies = GameObject.FindGameObjectsWithTag(EnemyRight);
         }
-        else if (turretSector == 6)
-        {
-            var enemy1 = GameObject.FindGameObjectsWithTag(EnemyBottomRight);
-            var enemy2 = GameObject.FindGameObjectsWithTag(EnemyRight);
-            enemies = enemy1.Concat(enemy2).ToArray();
-        }
-        else if (turretSector == 7)
-        {
-            enemies = GameObject.FindGameObjectsWithTag(EnemyBottomRight);
-        }
-        else if (turretSector == 8)
-        {
-            var enemy1 = GameObject.FindGameObjectsWithTag(EnemyBottomRight);
-            var enemy2 = GameObject.FindGameObjectsWithTag(EnemyBottomLeft);
-            enemies = enemy1.Concat(enemy2).ToArray();
-        }
-        else if (turretSector == 9)
-        {
-            enemies = GameObject.FindGameObjectsWithTag(EnemyBottomLeft);
-        }
-        else if (turretSector == 10)
-        {
-            var enemy1 = GameObject.FindGameObjectsWithTag(EnemyBottomLeft);
-            var enemy2 = GameObject.FindGameObjectsWithTag(EnemyLeft);
-            enemies = enemy1.Concat(enemy2).ToArray();
-        }
-        else if (turretSector == 11)
-        {
-            enemies = GameObject.FindGameObjectsWithTag(EnemyLeft);
-        }
-        else if (turretSector == 12)
-        {
-            var enemy1 = GameObject.FindGameObjectsWithTag(EnemyLeft);
-            var enemy2 = GameObject.FindGameObjectsWithTag(EnemyTopLeft);
-            enemies = enemy1.Concat(enemy2).ToArray();
-        }
+
 
         float shortestDistance = Mathf.Infinity; //sets shortestDistance to infinity if there is no enemy
         float furthestDistance = Mathf.NegativeInfinity;

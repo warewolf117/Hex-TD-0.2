@@ -25,16 +25,15 @@ public class Health : MonoBehaviour
 
     readonly string TagWall = "Wall";
     readonly string TagTurret = "Turret";
-    readonly string TagEnemyTopLeft = "EnemyTopLeft";
-    readonly string TagEnemyTopRight = "EnemyTopRight";
     readonly string TagEnemyLeft = "EnemyLeft";
     readonly string TagEnemyRight = "EnemyRight";
-    readonly string TagEnemyBottomLeft = "EnemyBottomLeft";
-    readonly string TagEnemyBottomRight = "EnemyBottomRight";
 
     void Start()
     {
         cur_health = max_health;
+
+        if (healthBar != null)
+        healthBar.fillAmount = cur_health / max_health;
     }
 
 
@@ -111,8 +110,7 @@ public class Health : MonoBehaviour
         // Destroy literally erases an objects existence, thats why I kept the spawner away from the turrets
         // cus if the turret kills the spawner then spawns will stop 
 
-        if (gameObject.CompareTag(TagEnemyTopLeft) || gameObject.CompareTag(TagEnemyTopRight) || gameObject.CompareTag(TagEnemyLeft) ||
-            gameObject.CompareTag(TagEnemyRight) || gameObject.CompareTag(TagEnemyBottomLeft) || gameObject.CompareTag(TagEnemyBottomRight))
+        if (gameObject.CompareTag(TagEnemyLeft) || gameObject.CompareTag(TagEnemyRight))
         {
             Destroy(this.gameObject);
             PlayerStats.money += worth;
@@ -136,27 +134,15 @@ public class Health : MonoBehaviour
                 deadWallCounter++;
                 Destroy(this.gameObject);
             }
-            else if (this.gameObject.name == "Hex Wall TopRight")
+            else if (this.gameObject.name == "Hex Wall BottomRight")
             {
-                BasicMovement.WallRightDestroyed = true;
+                BasicMovement.WallBottomRightDestroyed = true;
                 deadWallCounter++;
                 Destroy(this.gameObject);
             }
-            else if (this.gameObject.name == "Hex Wall TopRight")
+            else if (this.gameObject.name == "Hex Wall BottomLeft")
             {
-                BasicMovement.WallLeftDestroyed = true;
-                deadWallCounter++;
-                Destroy(this.gameObject);
-            }
-            else if (this.gameObject.name == "Hex Wall TopRight")
-            {
-                BasicMovement.WallRightDestroyed = true;
-                deadWallCounter++;
-                Destroy(this.gameObject);
-            }
-            else if (this.gameObject.name == "Hex Wall TopRight")
-            {
-                BasicMovement.WallLeftDestroyed = true;
+                BasicMovement.WallBottomLeftDestroyed = true;
                 deadWallCounter++;
                 Destroy(this.gameObject);
             }

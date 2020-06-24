@@ -45,8 +45,6 @@ public class ScreenFader : MonoBehaviour
 
         BasicMovement.WallBottomLeftDestroyed = false;
         BasicMovement.WallBottomRightDestroyed = false;
-        BasicMovement.WallLeftDestroyed = false;
-        BasicMovement.WallRightDestroyed = false;
         BasicMovement.WallTopLeftDestroyed = false;
         BasicMovement.WallTopRightDestroyed = false;
 

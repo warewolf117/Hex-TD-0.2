@@ -391,6 +391,7 @@ MonoBehaviour:
   healthBar: {fileID: 8303955376541260730}
   worth: 50
   TotalDamage: 0
+  isPoisoned: 0
 --- !u!114 &9046099113086372751
 MonoBehaviour:
   m_ObjectHideFlags: 0
