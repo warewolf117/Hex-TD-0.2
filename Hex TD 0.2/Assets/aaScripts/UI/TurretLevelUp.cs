@@ -46,7 +46,7 @@ public class TurretLevelUp : MonoBehaviour
     public Text PoisonText_RateOfFire;
     public Text PoisonText_Range;
 
-    private float PoisonValue_Damage = 15;
+    private float PoisonValue_Damage = 10;
     private float PoisonValue_RateOfFire = 1;
     private float PoisonValue_Range = 10;
     //Laser Turret Values
@@ -54,7 +54,7 @@ public class TurretLevelUp : MonoBehaviour
     public Text LaserText_RateOfFire;
     public Text LaserText_Range;
 
-    private float LaserValue_Damage = 15;
+    private float LaserValue_Damage = 30;
     private float LaserValue_RateOfFire = 1;
     private float LaserValue_Range = 10;
     //Minigun Turret Values
@@ -62,7 +62,7 @@ public class TurretLevelUp : MonoBehaviour
     public Text MinigunText_RateOfFire;
     public Text MinigunText_Range;
 
-    private float MinigunValue_Damage = 15;
+    private float MinigunValue_Damage = 2;
     private float MinigunValue_RateOfFire = 1;
     private float MinigunValue_Range = 10;
     //AOE Turret Values
@@ -70,7 +70,7 @@ public class TurretLevelUp : MonoBehaviour
     public Text AOEText_RateOfFire;
     public Text AOEText_Range;
 
-    private float AOEValue_Damage = 15;
+    private float AOEValue_Damage = 5;
     private float AOEValue_RateOfFire = 1;
     private float AOEValue_Range = 10;
 
@@ -103,6 +103,30 @@ public class TurretLevelUp : MonoBehaviour
 
     public static int upgradeCurrency = 50000;
 
+
+    private void Start()
+    {
+        //Standard Turret Values
+        standardTurretLevelText.text = "LVL. " + (standardUpgradeLevelNumber + 1);
+        StandardText_Damage.text = (StandardValue_Damage * standardTurretMultiplier).ToString("F0");
+
+        //Poison Turret Values
+        poisonTurretLevelText.text = "LVL. " + (standardUpgradeLevelNumber + 1);
+        PoisonText_Damage.text = (PoisonValue_Damage * poisonTurretMultiplier).ToString("F0");
+
+        //Laser Turret Values
+        laserTurretLevelText.text = "LVL. " + (standardUpgradeLevelNumber + 1);
+        LaserText_Damage.text = (LaserValue_Damage * laserTurretMultiplier).ToString("F0");
+
+        //Minigun Turret Values
+        minigunTurretLevelText.text = "LVL. " + (standardUpgradeLevelNumber + 1);
+        MinigunText_Damage.text = (MinigunValue_Damage * minigunTurretMultiplier).ToString("F0");
+
+        //AOE Turret Values
+        aoeTurretLevelText.text = "LVL. " + (standardUpgradeLevelNumber + 1);
+        AOEText_Damage.text = (AOEValue_Damage * aoeTurretMultiplier).ToString("F0");
+
+    }
     public void LevelUpStandard()
     {
         if (upgradeCurrency >= standardLevelUpCost && standardPreviousUpgradeLevel < standardUpgradeLevelNumber
@@ -141,6 +165,7 @@ public class TurretLevelUp : MonoBehaviour
             poisonPreviousUpgradeLevel = poisonUpgradeLevelNumber;
             poisonUpgradeLevelNumber++;
             poisonTurretMultiplier *= 1.2f;
+            PoisonText_Damage.text = (PoisonValue_Damage * poisonTurretMultiplier).ToString("F0");
             poisonTurretLevelText.text = "LVL. " + (poisonUpgradeLevelNumber + 1);
         }
         if (poisonUpgradeLevelNumber == 9)
@@ -164,6 +189,7 @@ public class TurretLevelUp : MonoBehaviour
             laserPreviousUpgradeLevel = laserUpgradeLevelNumber;
             laserUpgradeLevelNumber++;
             laserTurretMultiplier *= 1.2f;
+            LaserText_Damage.text = (LaserValue_Damage * laserTurretMultiplier).ToString("F0");
             laserTurretLevelText.text = "LVL. " + (laserUpgradeLevelNumber + 1);
         }
         if (laserUpgradeLevelNumber == 9)
@@ -187,6 +213,7 @@ public class TurretLevelUp : MonoBehaviour
             minigunPreviousUpgradeLevel = minigunUpgradeLevelNumber;
             minigunUpgradeLevelNumber++;
             minigunTurretMultiplier *= 1.2f;
+            MinigunText_Damage.text = (MinigunValue_Damage * minigunTurretMultiplier).ToString("F0");
             minigunTurretLevelText.text = "LVL. " + (minigunUpgradeLevelNumber + 1);
         }
         if (minigunUpgradeLevelNumber == 9)
@@ -210,6 +237,7 @@ public class TurretLevelUp : MonoBehaviour
             aoePreviousUpgradeLevel = aoeUpgradeLevelNumber;
             aoeUpgradeLevelNumber++;
             aoeTurretMultiplier *= 1.2f;
+            AOEText_Damage.text = (AOEValue_Damage * aoeTurretMultiplier).ToString("F0");
             aoeTurretLevelText.text = "LVL. " + (aoeUpgradeLevelNumber + 1);
         }
         if (aoeUpgradeLevelNumber == 9)
